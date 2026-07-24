@@ -191,17 +191,260 @@
     }
   }
 
+  /* ============================================================
+     BACKEND INTEGRATION — Fetch API
+     ============================================================ */
+
+  const API_BASE = window.location.origin;
+
+  /** Read Django CSRF token from the cookie. */
+  function getCSRFToken() {
+    const match = document.cookie.match(/csrftoken=([^;]+)/);
+    return match ? match[1] : '';
+  }
+
+  /** Remove error messages. */
+  function clearErrors() {
+    document.querySelectorAll('.field-error').forEach(el => el.remove());
+  }
+
+  /** Show error below a field. */
+  function showFieldError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+    const wrapper = field.closest('.form-group');
+    if (!wrapper) return;
+    const existing = wrapper.querySelector('.field-error');
+    if (existing) existing.remove();
+    const errorEl = document.createElement('span');
+    errorEl.className = 'field-error';
+    errorEl.style.cssText = 'color:#ef4444;font-size:12px;margin-top:4px;display:block;';
+    errorEl.textContent = message;
+    wrapper.appendChild(errorEl);
+  }
+
+  /** Backend field → frontend input ID maps. */
+  const STEP1_FIELD_MAP = {
+    full_name: 'fullName',
+    age: 'age',
+    gender: 'gender',
+    occupation: 'occupation',
+    city: 'city',
+    preferred_language: 'language',
+  };
+
+  const STEP2_FIELD_MAP = {
+    monthly_income: 'monthlyIncome',
+    monthly_expenses: 'monthlyExpenses',
+    savings: 'savings',
+    existing_loans: 'existingLoans',
+    upi_usage: 'upiUsage',
+    bill_payment_habit: 'billHabit',
+  };
+
+  const STEP3_FIELD_MAP = {
+    investment_experience: 'investExp',
+    emergency_fund: 'emergencyFund',
+    monthly_investment_budget: 'investBudget',
+    financial_goal: 'financialGoal',
+    risk_preference: 'riskPref',
+    investment_duration: 'investDuration',
+  };
+
+  /** Display backend errors. */
+  function renderErrors(errors, fieldMap) {
+    clearErrors();
+    for (const [field, messages] of Object.entries(errors)) {
+      const frontId = fieldMap[field] || field;
+      const msg = Array.isArray(messages) ? messages[0] : messages;
+      showFieldError(frontId, msg);
+    }
+  }
+
+  /** POST a step's data and return the parsed response. */
+  async function postStep(endpoint, payload) {
+    const res = await fetch(`${API_BASE}${endpoint}`, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken(),
+      },
+      body: JSON.stringify(payload),
+    });
+    return res.json();
+  }
+
+  /** Collect Step 1 form data. */
+  function getStep1Data() {
+    return {
+      full_name: document.getElementById('fullName')?.value.trim() || '',
+      age: parseInt(document.getElementById('age')?.value, 10) || 0,
+      gender: document.getElementById('gender')?.value || '',
+      occupation: document.getElementById('occupation')?.value.trim() || '',
+      city: document.getElementById('city')?.value.trim() || '',
+      preferred_language: document.getElementById('language')?.value || '',
+    };
+  }
+
+  /** Collect Step 2 form data. */
+  function getStep2Data() {
+    return {
+      monthly_income: document.getElementById('monthlyIncome')?.value.trim() || '',
+      monthly_expenses: document.getElementById('monthlyExpenses')?.value.trim() || '',
+      savings: document.getElementById('savings')?.value.trim() || '',
+      existing_loans: document.getElementById('existingLoans')?.value || '',
+      upi_usage: document.getElementById('upiUsage')?.value || '',
+      bill_payment_habit: document.getElementById('billHabit')?.value || '',
+    };
+  }
+
+  /** Collect Step 3 form data. */
+  function getStep3Data() {
+    return {
+      investment_experience: document.getElementById('investExp')?.value || '',
+      emergency_fund: document.getElementById('emergencyFund')?.value || '',
+      monthly_investment_budget: document.getElementById('investBudget')?.value.trim() || '',
+      financial_goal: document.getElementById('financialGoal')?.value || '',
+      risk_preference: document.getElementById('riskPref')?.value || '',
+      investment_duration: document.getElementById('investDuration')?.value || '',
+    };
+  }
+
+  /** Set a form field's value safely. */
+  function setVal(id, value) {
+    const el = document.getElementById(id);
+    if (el && value !== null && value !== undefined && value !== '') {
+      el.value = value;
+    }
+  }
+
+  /** Populate form fields from saved profile data (for resume). */
+  function populateFromProfile(data) {
+    // Step 1
+    setVal('fullName', data.full_name);
+    setVal('age', data.age);
+    setVal('gender', data.gender);
+    setVal('occupation', data.occupation);
+    setVal('city', data.city);
+    setVal('language', data.preferred_language);
+
+    // Step 2
+    setVal('monthlyIncome', data.monthly_income);
+    setVal('monthlyExpenses', data.monthly_expenses);
+    setVal('savings', data.savings);
+    setVal('existingLoans', data.existing_loans);
+    setVal('upiUsage', data.upi_usage);
+    setVal('billHabit', data.bill_payment_habit);
+
+    // Step 3
+    setVal('investExp', data.investment_experience);
+    setVal('emergencyFund', data.emergency_fund);
+    setVal('investBudget', data.monthly_investment_budget);
+    setVal('financialGoal', data.financial_goal);
+    setVal('riskPref', data.risk_preference);
+    setVal('investDuration', data.investment_duration);
+  }
+
+  /** Set button to loading state. */
+  function setLoading(isLoading) {
+    if (!btnNext) return;
+    if (isLoading) {
+      btnNext.disabled = true;
+      btnNext.style.opacity = '0.7';
+      if (nextBtnText) nextBtnText.textContent = 'Saving…';
+    } else {
+      btnNext.disabled = false;
+      btnNext.style.opacity = '';
+      // Text will be restored by updateWizard
+    }
+  }
+
   /* ---------- BUTTON EVENT LISTENERS ---------- */
   if (btnNext) {
-    btnNext.addEventListener('click', function (e) {
+    btnNext.addEventListener('click', async function (e) {
       e.preventDefault();
-      if (currentStep < 4) {
-        currentStep++;
-        updateWizard(currentStep);
-      } else {
-        // UI only finish feedback
-        btnNext.style.transform = 'scale(0.96)';
-        setTimeout(() => { btnNext.style.transform = ''; }, 150);
+      clearErrors();
+
+      if (currentStep === 1) {
+        // ── Save Step 1, then advance ──
+        setLoading(true);
+        try {
+          const result = await postStep('/api/onboarding/step1/', getStep1Data());
+          if (result.success) {
+            currentStep = 2;
+            updateWizard(currentStep);
+          } else if (result.errors) {
+            renderErrors(result.errors, STEP1_FIELD_MAP);
+          } else {
+            showFieldError('fullName', result.message || 'Save failed.');
+          }
+        } catch (err) {
+          console.error('Step 1 error:', err);
+          showFieldError('fullName', 'Network error. Please try again.');
+        } finally {
+          setLoading(false);
+          updateWizard(currentStep);
+        }
+
+      } else if (currentStep === 2) {
+        // ── Save Step 2, then advance ──
+        setLoading(true);
+        try {
+          const result = await postStep('/api/onboarding/step2/', getStep2Data());
+          if (result.success) {
+            currentStep = 3;
+            updateWizard(currentStep);
+          } else if (result.errors) {
+            renderErrors(result.errors, STEP2_FIELD_MAP);
+          } else {
+            showFieldError('monthlyIncome', result.message || 'Save failed.');
+          }
+        } catch (err) {
+          console.error('Step 2 error:', err);
+          showFieldError('monthlyIncome', 'Network error. Please try again.');
+        } finally {
+          setLoading(false);
+          updateWizard(currentStep);
+        }
+
+      } else if (currentStep === 3) {
+        // ── Save Step 3, then advance ──
+        setLoading(true);
+        try {
+          const result = await postStep('/api/onboarding/step3/', getStep3Data());
+          if (result.success) {
+            currentStep = 4;
+            updateWizard(currentStep);
+          } else if (result.errors) {
+            renderErrors(result.errors, STEP3_FIELD_MAP);
+          } else {
+            showFieldError('investExp', result.message || 'Save failed.');
+          }
+        } catch (err) {
+          console.error('Step 3 error:', err);
+          showFieldError('investExp', 'Network error. Please try again.');
+        } finally {
+          setLoading(false);
+          updateWizard(currentStep);
+        }
+
+      } else if (currentStep === 4) {
+        // ── Finish onboarding ──
+        setLoading(true);
+        try {
+          const result = await postStep('/api/onboarding/finish/', {});
+          if (result.success) {
+            window.location.href = result.data.redirect;
+          } else {
+            alert(result.message || 'Could not finish onboarding.');
+          }
+        } catch (err) {
+          console.error('Finish error:', err);
+          alert('Network error. Please try again.');
+        } finally {
+          setLoading(false);
+        }
       }
     });
   }
@@ -211,6 +454,7 @@
       e.preventDefault();
       if (currentStep > 1) {
         currentStep--;
+        clearErrors();
         updateWizard(currentStep);
       }
     });
@@ -221,12 +465,46 @@
       e.preventDefault();
       if (currentStep < 4) {
         currentStep++;
+        clearErrors();
         updateWizard(currentStep);
       }
     });
   }
 
-  // Initialize Step 1 on load
+  /* ---------- RESUME: Load saved data on page load ---------- */
+  async function resumeOnboarding() {
+    try {
+      const res = await fetch(`${API_BASE}/api/onboarding/review/`, {
+        credentials: 'same-origin',
+      });
+      if (!res.ok) return; // Not logged in or server error — start from step 1
+      const json = await res.json();
+      if (!json.success) return;
+
+      const data = json.data;
+
+      // If onboarding is already complete, redirect to dashboard
+      if (data.onboarding_completed) {
+        window.location.href = '/04-dashboard/dashboard.html';
+        return;
+      }
+
+      // Populate form fields with saved data
+      populateFromProfile(data);
+
+      // Jump to the correct step
+      if (data.current_step && data.current_step > 1) {
+        currentStep = data.current_step;
+        updateWizard(currentStep);
+      }
+    } catch (err) {
+      console.error('Resume onboarding error:', err);
+      // Fail silently — start from step 1
+    }
+  }
+
+  // Initialize Step 1 on load, then try to resume
   updateWizard(1);
+  resumeOnboarding();
 
 })();
