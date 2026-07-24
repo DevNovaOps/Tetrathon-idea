@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../Finora"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "13-education",
+		"liveServer.settings.port": 5501
+	}
+}
