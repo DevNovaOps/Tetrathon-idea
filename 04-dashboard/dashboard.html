@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finora — AI Financial Dashboard</title>
+  <meta name="description" content="Transparent AI Credit Intelligence & Financial Overview Dashboard" />
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <!-- Background Ambient Glow & Grid -->
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--3" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <!-- Main Dashboard Container -->
+  <div class="dashboard-container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="../01-landing-page/index.html" class="brand-logo" aria-label="Finora Home">
+          <div class="brand-icon">
+            <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="8" fill="url(#brandGrad)"/>
+              <path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/>
+              <defs>
+                <linearGradient id="brandGrad" x1="0" y1="0" x2="28" y2="28">
+                  <stop stop-color="#6366F1"/>
+                  <stop offset="1" stop-color="#8B5CF6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">Finora</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li>
+            <a href="#overview" class="nav-link active">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#credit-score" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>Credit Score</span>
+            </a>
+          </li>
+          <li>
+            <a href="#improve-score" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/>
+              </svg>
+              <span>Improve Score</span>
+            </a>
+          </li>
+          <li>
+            <a href="#ai-assistant" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12L2.5 7.5"/><path d="M12 12v10"/>
+              </svg>
+              <span>AI Assistant</span>
+            </a>
+          </li>
+          <li>
+            <a href="#risk-profile" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+              </svg>
+              <span>Risk Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="#investments" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              <span>Investments</span>
+            </a>
+          </li>
+          <li>
+            <a href="#simulator" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+              </svg>
+              <span>Growth Simulator</span>
+            </a>
+          </li>
+          <li>
+            <a href="#reports" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              <span>Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="#learn" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              <span>Educational Hub</span>
+            </a>
+          </li>
+          <li>
+            <a href="#achievements" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+              </svg>
+              <span>Achievements</span>
+            </a>
+          </li>
+          <li>
+            <a href="#notifications" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+              <span>Notifications</span>
+            </a>
+          </li>
+          <li>
+            <a href="#profile" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
+              <span>Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="#settings" class="nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar User Badge -->
+      <div class="sidebar-user">
+        <div class="user-avatar-small">
+          <span>D</span>
+        </div>
+        <div class="user-info-small">
+          <span class="user-name-small">Dev</span>
+          <span class="user-tier-small">Pro AI Plan</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+
+      <!-- TOP GLASS NAVIGATION BAR -->
+      <header class="top-nav">
+        <div class="greeting-area">
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div>
+            <h1 class="welcome-title">Welcome back, Dev 👋</h1>
+            <p class="welcome-subtitle">Here's your financial overview</p>
+          </div>
+        </div>
+
+        <div class="nav-actions-right">
+          <!-- Search Box -->
+          <div class="search-box">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" placeholder="Search..." aria-label="Search" />
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Theme">
+            <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+
+          <!-- Notification Bell -->
+          <button class="notification-btn" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="bell-badge"></span>
+          </button>
+
+          <!-- User Avatar Profile -->
+          <div class="user-profile-btn">
+            <div class="profile-avatar-circle">
+              <span>D</span>
+            </div>
+            <span class="profile-username">Dev</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- DASHBOARD CONTENT WRAPPER -->
+      <div class="dashboard-body">
+
+        <!-- 1. TOP 5 ANALYTICS CARDS -->
+        <section class="stat-cards-row">
+
+          <!-- Card 1: Credit Score -->
+          <div class="stat-card reveal">
+            <div class="stat-card-header">
+              <span class="stat-label">Credit Score</span>
+              <span class="badge badge--green">Excellent</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-number count-up" data-target="730">0</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext green-text">Top 5% of borrowers</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Risk Profile -->
+          <div class="stat-card reveal reveal--delay-1">
+            <div class="stat-card-header">
+              <span class="stat-label">Risk Profile</span>
+              <span class="badge badge--orange">Moderate</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-text-val orange-text">Moderate</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext">Updated today</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Monthly Investment -->
+          <div class="stat-card reveal reveal--delay-2">
+            <div class="stat-card-header">
+              <span class="stat-label">Monthly Investment</span>
+              <span class="badge badge--purple">Recommended</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-number">₹2,000</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext purple-text">+12% auto-allocated</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Expected Returns -->
+          <div class="stat-card reveal reveal--delay-3">
+            <div class="stat-card-header">
+              <span class="stat-label">Expected Returns</span>
+              <span class="badge badge--blue">in 5 years</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-number">₹3.45L</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext blue-text">Based on Monte Carlo AI</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Savings Rate -->
+          <div class="stat-card reveal reveal--delay-4">
+            <div class="stat-card-header">
+              <span class="stat-label">Savings Rate</span>
+              <span class="badge badge--green">Great job!</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-number"><span class="count-up" data-target="24">0</span>%</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext green-text">+4% above target</span>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- 2. MAIN CHARTS SECTION (2 COLUMNS) -->
+        <section class="charts-grid">
+
+          <!-- Left: Income vs Expense Bar Chart -->
+          <div class="chart-card reveal">
+            <div class="card-title-row">
+              <div>
+                <h3 class="card-title">Income vs Expense</h3>
+                <p class="card-subtitle">2026 Monthly Breakdown</p>
+              </div>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="legend-dot legend-dot--income"></span> Income</span>
+                <span class="legend-item"><span class="legend-dot legend-dot--expense"></span> Expense</span>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="incomeExpenseChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Right: Spending Categories Donut Chart -->
+          <div class="chart-card reveal reveal--delay-1">
+            <div class="card-title-row">
+              <div>
+                <h3 class="card-title">Spending Categories</h3>
+                <p class="card-subtitle">Current Month Distribution</p>
+              </div>
+            </div>
+            <div class="donut-chart-wrapper">
+              <div class="donut-container">
+                <canvas id="spendingDonutChart"></canvas>
+                <div class="donut-center-info">
+                  <span class="donut-center-val">₹32.4k</span>
+                  <span class="donut-center-lbl">Spent</span>
+                </div>
+              </div>
+              <div class="category-legend">
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #3B82F6;"></span>
+                  <span class="cat-name">Housing</span>
+                  <span class="cat-pct">40%</span>
+                </div>
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #F97316;"></span>
+                  <span class="cat-name">Food</span>
+                  <span class="cat-pct">20%</span>
+                </div>
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #10B981;"></span>
+                  <span class="cat-name">Transport</span>
+                  <span class="cat-pct">15%</span>
+                </div>
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #A855F7;"></span>
+                  <span class="cat-name">Entertainment</span>
+                  <span class="cat-pct">15%</span>
+                </div>
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #06B6D4;"></span>
+                  <span class="cat-name">Others</span>
+                  <span class="cat-pct">10%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- 3. FINANCIAL SUMMARY WIDGETS (6 MINI CARDS) -->
+        <section class="summary-widgets-row">
+          <div class="widget-card reveal">
+            <div class="widget-icon widget-icon--green">💰</div>
+            <div class="widget-info">
+              <span class="widget-title">Total Savings</span>
+              <span class="widget-val">₹4,25,000</span>
+              <span class="widget-trend green-text">↑ 14% growth</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-1">
+            <div class="widget-icon widget-icon--blue">📈</div>
+            <div class="widget-info">
+              <span class="widget-title">Monthly Income</span>
+              <span class="widget-val">₹85,000</span>
+              <span class="widget-trend blue-text">Primary salary</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-2">
+            <div class="widget-icon widget-icon--orange">💳</div>
+            <div class="widget-info">
+              <span class="widget-title">Monthly Expenses</span>
+              <span class="widget-val">₹32,400</span>
+              <span class="widget-trend">38% of income</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-3">
+            <div class="widget-icon widget-icon--purple">💎</div>
+            <div class="widget-info">
+              <span class="widget-title">Net Worth</span>
+              <span class="widget-val">₹18,50,000</span>
+              <span class="widget-trend green-text">↑ 22% YoY</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-4">
+            <div class="widget-icon widget-icon--cyan">🚀</div>
+            <div class="widget-info">
+              <span class="widget-title">Investment Portfolio</span>
+              <span class="widget-val">₹12,80,000</span>
+              <span class="widget-trend purple-text">8 Active assets</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-5">
+            <div class="widget-icon widget-icon--rose">🛡️</div>
+            <div class="widget-info">
+              <span class="widget-title">Emergency Fund</span>
+              <span class="widget-val">₹1,50,000</span>
+              <span class="widget-trend green-text">4.5 Months safe</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- 4. AI INSIGHTS SECTION -->
+        <section class="insights-section">
+          <div class="section-title-row reveal">
+            <div class="title-with-badge">
+              <span class="sparkle-icon">✨</span>
+              <h2 class="section-heading">AI Financial Intelligence Insights</h2>
+            </div>
+            <span class="ai-live-badge"><span class="pulse-dot"></span> Live AI Stream</span>
+          </div>
+
+          <div class="insights-grid">
+
+            <div class="insight-card reveal">
+              <div class="insight-icon-box green-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2">
+                  <path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/>
+                </svg>
+              </div>
+              <div class="insight-body">
+                <div class="insight-header">
+                  <h4 class="insight-title">Your savings improved by 18%.</h4>
+                  <span class="badge badge--green">High Priority</span>
+                </div>
+                <p class="insight-desc">Disciplined spending in food and entertainment contributed to ₹5,400 extra monthly savings.</p>
+              </div>
+            </div>
+
+            <div class="insight-card reveal reveal--delay-1">
+              <div class="insight-icon-box blue-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div class="insight-body">
+                <div class="insight-header">
+                  <h4 class="insight-title">Your credit score can increase by 30 points.</h4>
+                  <span class="badge badge--blue">Actionable</span>
+                </div>
+                <p class="insight-desc">Lowering card utilization from 24% to 15% before your next statement billing date will boost score.</p>
+              </div>
+            </div>
+
+            <div class="insight-card reveal reveal--delay-2">
+              <div class="insight-icon-box purple-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
+              <div class="insight-body">
+                <div class="insight-header">
+                  <h4 class="insight-title">Reduce unnecessary spending by 8%.</h4>
+                  <span class="badge badge--purple">Optimization</span>
+                </div>
+                <p class="insight-desc">Recurring streaming subscriptions & dining out accounted for ₹3,200 of non-essential monthly outflow.</p>
+              </div>
+            </div>
+
+            <div class="insight-card reveal">
+              <div class="insight-icon-box emerald-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                  <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </div>
+              <div class="insight-body">
+                <div class="insight-header">
+                  <h4 class="insight-title">Maintain timely bill payments.</h4>
+                  <span class="badge badge--green">Credit Tip</span>
+                </div>
+                <p class="insight-desc">You have 100% on-time payment track record across 42 consecutive billing cycles.</p>
+              </div>
+            </div>
+
+            <div class="insight-card reveal reveal--delay-1">
+              <div class="insight-icon-box orange-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              <div class="insight-body">
+                <div class="insight-header">
+                  <h4 class="insight-title">Investment risk remains moderate.</h4>
+                  <span class="badge badge--orange">Portfolio</span>
+                </div>
+                <p class="insight-desc">Asset allocation is 65% Equities, 25% Fixed Income, and 10% Gold/Crypto for optimal balance.</p>
+              </div>
+            </div>
+
+            <div class="insight-card reveal reveal--delay-2">
+              <div class="insight-icon-box cyan-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <div class="insight-body">
+                <div class="insight-header">
+                  <h4 class="insight-title">Emergency fund covers 4.5 months.</h4>
+                  <span class="badge badge--cyan">Safety Net</span>
+                </div>
+                <p class="insight-desc">Your liquid emergency reserves exceed the 3-month safety benchmark by 50%.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- 5. QUICK ACTIONS & RECENT ACTIVITY (2 COLUMNS) -->
+        <section class="bottom-grid">
+
+          <!-- Left: Quick Action Cards -->
+          <div class="quick-actions-card reveal">
+            <div class="card-title-row">
+              <h3 class="card-title">Quick Actions</h3>
+              <span class="card-sub-badge">AI Tools</span>
+            </div>
+
+            <div class="actions-grid">
+
+              <div class="action-btn-card">
+                <div class="action-icon-box indigo-bg">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </div>
+                <div class="action-text">
+                  <span class="action-name">Improve Credit Score</span>
+                  <span class="action-sub">View AI Roadmap</span>
+                </div>
+                <span class="action-arrow">→</span>
+              </div>
+
+              <div class="action-btn-card">
+                <div class="action-icon-box emerald-bg">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+                  </svg>
+                </div>
+                <div class="action-text">
+                  <span class="action-name">Start AI Assessment</span>
+                  <span class="action-sub">Run Neural Check</span>
+                </div>
+                <span class="action-arrow">→</span>
+              </div>
+
+              <div class="action-btn-card">
+                <div class="action-icon-box purple-bg">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  </svg>
+                </div>
+                <div class="action-text">
+                  <span class="action-name">View Investment Plan</span>
+                  <span class="action-sub">Smart Allocation</span>
+                </div>
+                <span class="action-arrow">→</span>
+              </div>
+
+              <div class="action-btn-card">
+                <div class="action-icon-box cyan-bg">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+                  </svg>
+                </div>
+                <div class="action-text">
+                  <span class="action-name">Open Growth Simulator</span>
+                  <span class="action-sub">Monte Carlo Engine</span>
+                </div>
+                <span class="action-arrow">→</span>
+              </div>
+
+              <div class="action-btn-card">
+                <div class="action-icon-box rose-bg">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F43F5E" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                </div>
+                <div class="action-text">
+                  <span class="action-name">Download Report</span>
+                  <span class="action-sub">Export PDF Summary</span>
+                </div>
+                <span class="action-arrow">→</span>
+              </div>
+
+              <div class="action-btn-card">
+                <div class="action-icon-box amber-bg">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  </svg>
+                </div>
+                <div class="action-text">
+                  <span class="action-name">Learn Finance</span>
+                  <span class="action-sub">Educational Guides</span>
+                </div>
+                <span class="action-arrow">→</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: Recent Activity Timeline -->
+          <div class="activity-card reveal reveal--delay-1">
+            <div class="card-title-row">
+              <h3 class="card-title">Recent Activity</h3>
+              <a href="#" class="view-all-link">View All</a>
+            </div>
+
+            <div class="timeline-list">
+
+              <div class="activity-item">
+                <div class="activity-icon-col">
+                  <div class="act-icon act-icon--bill">⚡</div>
+                  <div class="act-line"></div>
+                </div>
+                <div class="activity-details">
+                  <div class="act-main-row">
+                    <span class="act-name">Electricity Bill Paid</span>
+                    <span class="act-amt neg-amt">-₹1,450</span>
+                  </div>
+                  <span class="act-time">Yesterday · Auto-debit verified</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon-col">
+                  <div class="act-icon act-icon--salary">💼</div>
+                  <div class="act-line"></div>
+                </div>
+                <div class="activity-details">
+                  <div class="act-main-row">
+                    <span class="act-name">Salary Credited</span>
+                    <span class="act-amt pos-amt">+₹85,000</span>
+                  </div>
+                  <span class="act-time">2 days ago · Direct Deposit</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon-col">
+                  <div class="act-icon act-icon--invest">📈</div>
+                  <div class="act-line"></div>
+                </div>
+                <div class="activity-details">
+                  <div class="act-main-row">
+                    <span class="act-name">Investment Added</span>
+                    <span class="act-amt pos-amt">+₹2,000</span>
+                  </div>
+                  <span class="act-time">3 days ago · Index Fund SIP</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon-col">
+                  <div class="act-icon act-icon--score">⭐</div>
+                  <div class="act-line"></div>
+                </div>
+                <div class="activity-details">
+                  <div class="act-main-row">
+                    <span class="act-name">Credit Score Updated</span>
+                    <span class="act-amt pos-amt">730 Excellent</span>
+                  </div>
+                  <span class="act-time">4 days ago · Experian Bureau Sync</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon-col">
+                  <div class="act-icon act-icon--risk">🛡️</div>
+                </div>
+                <div class="activity-details">
+                  <div class="act-main-row">
+                    <span class="act-name">Risk Assessment Completed</span>
+                    <span class="act-amt neutral-amt">Moderate Risk</span>
+                  </div>
+                  <span class="act-time">5 days ago · AI Neural Evaluation</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="dashboard.js"></script>
+</body>
+</html>
