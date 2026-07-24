@@ -18,6 +18,9 @@ urlpatterns = [
     # API — Onboarding
     path('api/onboarding/', include('onboarding.urls')),
 
+    # API — Dashboard
+    path('api/dashboard/', include('dashboard.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 

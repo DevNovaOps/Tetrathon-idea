@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Project apps
     'accounts.apps.AccountsConfig',
     'onboarding.apps.OnboardingConfig',
+    'dashboard.apps.DashboardConfig',
 ]
 
 # ---------------------------------------------------------------------------
