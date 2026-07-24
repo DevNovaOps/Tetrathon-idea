@@ -1,6 +1,6 @@
 /* ===================================================
-   FINORA — Page 5: Credit Score Styles
-   Light & Dark | Gauge | Charts | Glassmorphism
+   FINORA — Page 5: Credit Score Styles (Enhanced Aesthetics)
+   Vibrant Ambient Glows | Glassmorphism | Radial Gradients
    =================================================== */
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -9,11 +9,11 @@
 [data-theme="light"]{
   --bg-body:#F4F7FC;--bg-sidebar:#FFFFFF;--bg-topnav:rgba(255,255,255,0.85);
   --bg-card:#FFFFFF;--bg-card-hover:#F8FAFF;--bg-input:#F1F5F9;
-  --accent:#4F46E5;--accent-hover:#4338CA;--accent-glow:rgba(79,70,229,0.18);--accent-light:rgba(79,70,229,0.08);
+  --accent:#4F46E5;--accent-hover:#4338CA;--accent-glow:rgba(79,70,229,0.22);--accent-light:rgba(79,70,229,0.08);
   --text-primary:#0F172A;--text-secondary:#475569;--text-muted:#94A3B8;--text-heading:#0F172A;
   --border:rgba(0,0,0,0.08);--border-light:rgba(0,0,0,0.05);
-  --shadow-card:0 4px 20px rgba(0,0,0,0.04),0 0 0 1px rgba(0,0,0,0.05);
-  --shadow-card-hover:0 12px 35px rgba(0,0,0,0.08),0 0 0 1px rgba(79,70,229,0.15);
+  --shadow-card:0 4px 25px rgba(0,0,0,0.05),0 0 0 1px rgba(0,0,0,0.06);
+  --shadow-card-hover:0 14px 40px rgba(0,0,0,0.1),0 0 0 1px rgba(79,70,229,0.2);
   --gauge-track:#E2E8F0;
   --badge-green-bg:rgba(16,185,129,0.1);--badge-green-text:#059669;
   --badge-orange-bg:rgba(249,115,22,0.1);--badge-orange-text:#D97706;
@@ -22,21 +22,21 @@
   --badge-cyan-bg:rgba(6,182,212,0.1);--badge-cyan-text:#0891B2;
 }
 
-/* ===== DARK THEME ===== */
+/* ===== DARK THEME (Default) ===== */
 [data-theme="dark"]{
-  --bg-body:#070B14;--bg-sidebar:#0B1120;--bg-topnav:rgba(11,17,32,0.85);
-  --bg-card:rgba(15,23,42,0.65);--bg-card-hover:rgba(20,30,55,0.8);--bg-input:#141C2E;
-  --accent:#6366F1;--accent-hover:#818CF8;--accent-glow:rgba(99,102,241,0.25);--accent-light:rgba(99,102,241,0.12);
+  --bg-body:#050811;--bg-sidebar:#080D1A;--bg-topnav:rgba(8,13,26,0.85);
+  --bg-card:rgba(13,21,38,0.7);--bg-card-hover:rgba(18,29,52,0.85);--bg-input:#121A2D;
+  --accent:#6366F1;--accent-hover:#818CF8;--accent-glow:rgba(99,102,241,0.35);--accent-light:rgba(99,102,241,0.15);
   --text-primary:#F1F5F9;--text-secondary:#94A3B8;--text-muted:#64748B;--text-heading:#FFFFFF;
-  --border:rgba(255,255,255,0.07);--border-light:rgba(255,255,255,0.05);
-  --shadow-card:0 4px 25px rgba(0,0,0,0.35),0 0 0 1px rgba(255,255,255,0.06);
-  --shadow-card-hover:0 14px 40px rgba(0,0,0,0.5),0 0 25px rgba(99,102,241,0.15),0 0 0 1px rgba(99,102,241,0.3);
-  --gauge-track:rgba(255,255,255,0.08);
-  --badge-green-bg:rgba(16,185,129,0.15);--badge-green-text:#10B981;
-  --badge-orange-bg:rgba(249,115,22,0.15);--badge-orange-text:#F97316;
-  --badge-purple-bg:rgba(168,85,247,0.15);--badge-purple-text:#C084FC;
-  --badge-blue-bg:rgba(59,130,246,0.15);--badge-blue-text:#60A5FA;
-  --badge-cyan-bg:rgba(6,182,212,0.15);--badge-cyan-text:#22D3EE;
+  --border:rgba(255,255,255,0.09);--border-light:rgba(255,255,255,0.06);
+  --shadow-card:0 8px 32px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.08),inset 0 1px 0 rgba(255,255,255,0.1);
+  --shadow-card-hover:0 16px 48px rgba(0,0,0,0.6),0 0 35px rgba(99,102,241,0.25),0 0 0 1px rgba(99,102,241,0.4);
+  --gauge-track:rgba(255,255,255,0.1);
+  --badge-green-bg:rgba(16,185,129,0.18);--badge-green-text:#10B981;
+  --badge-orange-bg:rgba(249,115,22,0.18);--badge-orange-text:#F97316;
+  --badge-purple-bg:rgba(168,85,247,0.18);--badge-purple-text:#C084FC;
+  --badge-blue-bg:rgba(59,130,246,0.18);--badge-blue-text:#60A5FA;
+  --badge-cyan-bg:rgba(6,182,212,0.18);--badge-cyan-text:#22D3EE;
 }
 
 :root{
@@ -49,12 +49,34 @@
 html{-webkit-font-smoothing:antialiased;}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-body);color:var(--text-primary);min-height:100vh;overflow-x:hidden;line-height:1.5;transition:background var(--transition-med),color var(--transition-med);}
 
-/* ---- BG GLOW ---- */
-.bg-glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;}
-.bg-glow--1{width:650px;height:650px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);top:-10%;right:5%;}
-.bg-glow--2{width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,0.12) 0%,transparent 70%);bottom:0;left:10%;}
-.bg-glow--3{width:450px;height:450px;background:radial-gradient(circle,rgba(168,85,247,0.1) 0%,transparent 70%);top:40%;right:25%;}
-.bg-grid-overlay{position:fixed;inset:0;background-image:radial-gradient(var(--border) 1px,transparent 1px);background-size:36px 36px;opacity:0.4;pointer-events:none;z-index:0;}
+/* ---- VIBRANT ANIMATED BACKGROUND GLOWS ---- */
+.bg-glow{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0;opacity:0.65;animation:floatGlow 12s ease-in-out infinite alternate;}
+.bg-glow--1{width:700px;height:700px;background:radial-gradient(circle,rgba(99,102,241,0.28) 0%,rgba(139,92,246,0.12) 50%,transparent 70%);top:-15%;right:2%;}
+.bg-glow--2{width:600px;height:600px;background:radial-gradient(circle,rgba(16,185,129,0.2) 0%,rgba(6,182,212,0.1) 50%,transparent 70%);bottom:-10%;left:5%;animation-delay:-6s;}
+.bg-glow--3{width:550px;height:550px;background:radial-gradient(circle,rgba(249,115,22,0.15) 0%,rgba(168,85,247,0.12) 50%,transparent 70%);top:35%;left:30%;animation-delay:-3s;}
+
+@keyframes floatGlow{
+  0%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(30px,-20px) scale(1.06);}
+  100%{transform:translate(-20px,25px) scale(0.95);}
+}
+
+.bg-grid-overlay{
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:40px 40px;
+  opacity:0.7;
+  pointer-events:none;
+  z-index:0;
+}
+
+[data-theme="light"] .bg-grid-overlay{
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+}
 
 /* ---- LAYOUT ---- */
 .dashboard-container{display:flex;min-height:100vh;position:relative;z-index:1;}
@@ -101,9 +123,24 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 /* ---- PAGE BODY ---- */
 .page-body{padding:32px;display:flex;flex-direction:column;gap:28px;}
 
-/* ---- GLASS CARD ---- */
-.glass-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:all var(--transition-fast);}
-.glass-card:hover{box-shadow:var(--shadow-card-hover);}
+/* ---- ENHANCED GLASS CARDS ---- */
+.glass-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:24px;
+  box-shadow:var(--shadow-card);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  position:relative;
+  overflow:hidden;
+  transition:all var(--transition-fast);
+}
+
+.glass-card:hover{
+  box-shadow:var(--shadow-card-hover);
+  border-color:var(--accent-glow);
+}
 
 .card-heading{font-size:16px;font-weight:700;color:var(--text-heading);margin-bottom:4px;}
 .card-sub{font-size:12px;color:var(--text-muted);}
@@ -122,13 +159,22 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 /* ===== ROW 1: GAUGE + FACTORS ===== */
 .hero-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 
-/* -- Gauge -- */
-.gauge-card{text-align:center;}
+/* -- Gauge Card with Rich Internal Ambient Radial Gradient -- */
+.gauge-card{
+  text-align:center;
+  background:radial-gradient(ellipse at 50% 30%, rgba(16,185,129,0.12) 0%, rgba(99,102,241,0.08) 45%, var(--bg-card) 85%);
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+[data-theme="light"] .gauge-card{
+  background:radial-gradient(ellipse at 50% 30%, rgba(16,185,129,0.1) 0%, rgba(79,70,229,0.05) 50%, #FFFFFF 85%);
+}
+
 .gauge-wrapper{position:relative;max-width:280px;margin:20px auto 0;}
-.gauge-svg{width:100%;height:auto;}
+.gauge-svg{width:100%;height:auto;filter:drop-shadow(0 8px 16px rgba(16,185,129,0.2));}
 .gauge-labels{display:flex;justify-content:space-between;padding:0 8px;margin-top:-8px;font-size:13px;font-weight:600;color:var(--text-muted);}
 .gauge-center{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);text-align:center;}
-.gauge-score{display:block;font-size:56px;font-weight:900;color:var(--text-heading);letter-spacing:-2px;line-height:1;}
+.gauge-score{display:block;font-size:56px;font-weight:900;color:var(--text-heading);letter-spacing:-2px;line-height:1;text-shadow:0 0 20px rgba(16,185,129,0.3);}
 .gauge-rating{display:block;font-size:14px;font-weight:700;color:#10B981;letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
 .gauge-updated{display:block;font-size:11px;color:var(--text-muted);margin-top:4px;}
 
