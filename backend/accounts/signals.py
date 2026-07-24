@@ -11,6 +11,11 @@ logger = logging.getLogger('accounts')
 def create_user_profile(sender, instance, created, **kwargs):
     """Auto-create a UserProfile whenever a new User is created."""
     if created:
+        from django.db import transaction
         from onboarding.models import UserProfile
-        UserProfile.objects.get_or_create(user=instance)
-        logger.debug('UserProfile created for: %s', instance.email)
+        
+        def do_create():
+            UserProfile.objects.get_or_create(user=instance)
+            logger.debug('UserProfile created for: %s', instance.email)
+            
+        transaction.on_commit(do_create)

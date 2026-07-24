@@ -35,6 +35,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     onboarding_completed = models.BooleanField(default=False)
 
+    # Production tracking and localization
+    last_activity = models.DateTimeField(null=True, blank=True)
+    login_count = models.PositiveIntegerField(default=0)
+    timezone = models.CharField(max_length=50, default='UTC')
+    preferred_currency = models.CharField(max_length=10, default='INR')
+
     # Timestamps
     date_joined = models.DateTimeField(auto_now_add=True)
     created_at = models.DateTimeField(auto_now_add=True)

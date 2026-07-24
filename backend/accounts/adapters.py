@@ -37,7 +37,9 @@ class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
             return
 
         email = sociallogin.account.extra_data.get('email', '').lower()
-        if not email:
+        is_verified = sociallogin.account.extra_data.get('email_verified', False)
+        if not email or not is_verified:
+            # We don't link if the email isn't verified by Google
             return
 
         from .models import User

@@ -87,7 +87,14 @@ class LoginView(APIView):
                 status=status.HTTP_403_FORBIDDEN,
             )
 
+        from django.utils import timezone
+        
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        
+        # Update login tracking
+        user.last_activity = timezone.now()
+        user.login_count += 1
+        user.save(update_fields=['last_activity', 'login_count', 'updated_at'])
 
         # Remember-me: long session vs short session
         remember = serializer.validated_data.get('remember_me', False)

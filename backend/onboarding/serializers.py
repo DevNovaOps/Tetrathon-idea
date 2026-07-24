@@ -1,4 +1,7 @@
 """Serializers for onboarding steps — server-side validation."""
+import re
+from decimal import Decimal, InvalidOperation
+
 from rest_framework import serializers
 
 from .constants import (
@@ -27,6 +30,25 @@ def _choice_validator(choices, field_label: str):
             )
 
     return validator
+
+
+def _clean_currency(value: str) -> Decimal:
+    """Strip currency symbols, commas, and suffixes, then convert to Decimal."""
+    if not isinstance(value, str):
+        return value
+    # Remove everything except digits and decimal point
+    cleaned = re.sub(r'[^\d.]', '', value)
+    try:
+        return Decimal(cleaned) if cleaned else None
+    except InvalidOperation:
+        raise serializers.ValidationError('Invalid currency format.')
+
+def _format_currency(value, suffix='') -> str:
+    """Format decimal back to frontend string format."""
+    if value is None:
+        return ""
+    # Just format as integer with commas and ₹ symbol
+    return f"₹{int(value):,}{suffix}"
 
 
 class Step1Serializer(serializers.Serializer):
@@ -76,23 +98,32 @@ class Step2Serializer(serializers.Serializer):
     upi_usage = serializers.CharField(max_length=50)
     bill_payment_habit = serializers.CharField(max_length=50)
 
-    def validate_monthly_income(self, value: str) -> str:
+    def validate_monthly_income(self, value: str) -> Decimal:
         value = value.strip()
         if not value:
             raise serializers.ValidationError('Monthly income is required.')
-        return value
+        val = _clean_currency(value)
+        if val is None:
+            raise serializers.ValidationError('Invalid currency format.')
+        return val
 
-    def validate_monthly_expenses(self, value: str) -> str:
+    def validate_monthly_expenses(self, value: str) -> Decimal:
         value = value.strip()
         if not value:
             raise serializers.ValidationError('Monthly expenses is required.')
-        return value
+        val = _clean_currency(value)
+        if val is None:
+            raise serializers.ValidationError('Invalid currency format.')
+        return val
 
-    def validate_savings(self, value: str) -> str:
+    def validate_savings(self, value: str) -> Decimal:
         value = value.strip()
         if not value:
             raise serializers.ValidationError('Current savings is required.')
-        return value
+        val = _clean_currency(value)
+        if val is None:
+            raise serializers.ValidationError('Invalid currency format.')
+        return val
 
     def validate_existing_loans(self, value: str) -> str:
         _choice_validator(EXISTING_LOAN_CHOICES, 'loan type')(value)
@@ -125,11 +156,14 @@ class Step3Serializer(serializers.Serializer):
         _choice_validator(EMERGENCY_FUND_CHOICES, 'emergency fund')(value)
         return value
 
-    def validate_monthly_investment_budget(self, value: str) -> str:
+    def validate_monthly_investment_budget(self, value: str) -> Decimal:
         value = value.strip()
         if not value:
             raise serializers.ValidationError('Monthly investment budget is required.')
-        return value
+        val = _clean_currency(value)
+        if val is None:
+            raise serializers.ValidationError('Invalid currency format.')
+        return val
 
     def validate_financial_goal(self, value: str) -> str:
         _choice_validator(FINANCIAL_GOAL_CHOICES, 'financial goal')(value)
@@ -156,9 +190,9 @@ class ReviewSerializer(serializers.Serializer):
     preferred_language = serializers.CharField(read_only=True)
 
     # Financial
-    monthly_income = serializers.CharField(read_only=True)
-    monthly_expenses = serializers.CharField(read_only=True)
-    savings = serializers.CharField(read_only=True)
+    monthly_income = serializers.SerializerMethodField()
+    monthly_expenses = serializers.SerializerMethodField()
+    savings = serializers.SerializerMethodField()
     existing_loans = serializers.CharField(read_only=True)
     upi_usage = serializers.CharField(read_only=True)
     bill_payment_habit = serializers.CharField(read_only=True)
@@ -166,10 +200,22 @@ class ReviewSerializer(serializers.Serializer):
     # Investment
     investment_experience = serializers.CharField(read_only=True)
     emergency_fund = serializers.CharField(read_only=True)
-    monthly_investment_budget = serializers.CharField(read_only=True)
+    monthly_investment_budget = serializers.SerializerMethodField()
     financial_goal = serializers.CharField(read_only=True)
     risk_preference = serializers.CharField(read_only=True)
     investment_duration = serializers.CharField(read_only=True)
+
+    def get_monthly_income(self, obj) -> str:
+        return _format_currency(obj.monthly_income)
+        
+    def get_monthly_expenses(self, obj) -> str:
+        return _format_currency(obj.monthly_expenses)
+        
+    def get_savings(self, obj) -> str:
+        return _format_currency(obj.savings)
+        
+    def get_monthly_investment_budget(self, obj) -> str:
+        return _format_currency(obj.monthly_investment_budget, ' / month')
 
     # Progress
     current_step = serializers.IntegerField(read_only=True)

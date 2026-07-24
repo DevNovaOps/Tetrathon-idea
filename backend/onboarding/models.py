@@ -40,9 +40,9 @@ class UserProfile(models.Model):
     )
 
     # ── Step 2: Financial Profile ─────────────────────────────────────
-    monthly_income = models.CharField(max_length=50, blank=True)
-    monthly_expenses = models.CharField(max_length=50, blank=True)
-    savings = models.CharField(max_length=50, blank=True)
+    monthly_income = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    monthly_expenses = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    savings = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     existing_loans = models.CharField(
         max_length=50, choices=EXISTING_LOAN_CHOICES, blank=True,
     )
@@ -60,7 +60,7 @@ class UserProfile(models.Model):
     emergency_fund = models.CharField(
         max_length=50, choices=EMERGENCY_FUND_CHOICES, blank=True,
     )
-    monthly_investment_budget = models.CharField(max_length=50, blank=True)
+    monthly_investment_budget = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     financial_goal = models.CharField(
         max_length=50, choices=FINANCIAL_GOAL_CHOICES, blank=True,
     )
@@ -70,6 +70,11 @@ class UserProfile(models.Model):
     investment_duration = models.CharField(
         max_length=50, choices=INVESTMENT_DURATION_CHOICES, blank=True,
     )
+
+    # ── Future Architecture (Dashboard/AI/Credit) ─────────────────────
+    credit_score = models.PositiveIntegerField(null=True, blank=True)
+    total_assets = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
+    risk_score = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
 
     # ── Progress Tracking ─────────────────────────────────────────────
     current_step = models.PositiveIntegerField(default=1)
