@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finora — Transparent AI Credit Intelligence</title>
+  <meta name="description" content="Get smart credit insights, personalized investment advice, and grow your wealth using transparent AI. Finora is the next-gen AI-powered FinTech platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="#" class="nav-logo" aria-label="Finora Home">
+        <div class="nav-logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="14" fill="url(#navLogoGrad)"/>
+            <path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/>
+            <defs>
+              <linearGradient id="navLogoGrad" x1="0" y1="0" x2="28" y2="28">
+                <stop stop-color="#4F46E5"/>
+                <stop offset="1" stop-color="#7C3AED"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span>FinTech</span>
+      </a>
+
+      <!-- Center Links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it Works</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+
+      <!-- Right Actions -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.3 3.3l1.4 1.4M13.3 13.3l1.4 1.4M3.3 14.7l1.4-1.4M13.3 4.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M15.5 9.5a6.5 6.5 0 01-7-7 6.5 6.5 0 107 7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <a href="#" class="btn btn-primary btn-nav" id="getStartedNav">Get Started</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <!-- Ambient glow blobs -->
+    <div class="hero-glow hero-glow--1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow--2" aria-hidden="true"></div>
+
+    <div class="hero-container">
+      <!-- LEFT SIDE: Copy -->
+      <div class="hero-content reveal">
+        <h1 class="hero-heading">
+          AI-Powered<br/>
+          <span class="hero-heading--gradient">Financial</span> Freedom<br/>
+          For Everyone
+        </h1>
+
+        <p class="hero-subheading">
+          Get smart credit insights, personalized
+          investment advice, and grow your wealth
+          with our AI financial assistant.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary btn-hero" id="heroGetStarted">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#" class="btn btn-outline btn-hero" id="heroTryDemo">
+            Try Demo
+          </a>
+        </div>
+
+        <div class="hero-trusted">
+          <span class="trusted-label">Trusted by 10,000+ users</span>
+          <div class="trusted-logos">
+            <div class="trusted-logo" aria-label="Google">
+              <svg width="74" height="24" viewBox="0 0 74 24" fill="none">
+                <path d="M8.16 18.48C3.6 18.48 0 14.76 0 10.2s3.6-8.28 8.16-8.28c2.52 0 4.32.96 5.64 2.22l-1.58 1.58c-.96-.9-2.26-1.6-4.06-1.6-3.32 0-5.92 2.68-5.92 6.08s2.6 6.08 5.92 6.08c2.16 0 3.38-.86 4.16-1.66.64-.64 1.06-1.56 1.22-2.82H8.16v-2.2h7.52c.08.38.12.84.12 1.34 0 1.6-.44 3.58-1.86 5-1.38 1.44-3.14 2.2-5.78 2.2z" fill="currentColor"/>
+                <path d="M26.14 10.26c0 3.56-2.78 6.18-6.18 6.18s-6.18-2.62-6.18-6.18c0-3.58 2.78-6.18 6.18-6.18s6.18 2.6 6.18 6.18zm-2.7 0c0-2.22-1.62-3.74-3.48-3.74S16.48 8.04 16.48 10.26s1.62 3.74 3.48 3.74 3.48-1.52 3.48-3.74z" fill="currentColor"/>
+                <path d="M38.06 10.26c0 3.56-2.78 6.18-6.18 6.18s-6.18-2.62-6.18-6.18c0-3.58 2.78-6.18 6.18-6.18s6.18 2.6 6.18 6.18zm-2.7 0c0-2.22-1.62-3.74-3.48-3.74s-3.48 1.52-3.48 3.74 1.62 3.74 3.48 3.74 3.48-1.52 3.48-3.74z" fill="currentColor"/>
+                <path d="M49.48 4.4v11.06c0 4.56-2.68 6.42-5.86 6.42-2.98 0-4.78-2-5.46-3.64l2.36-.98c.42 1 1.44 2.18 3.1 2.18 2.02 0 3.28-1.26 3.28-3.62v-.88h-.1c-.6.74-1.76 1.4-3.22 1.4-3.06 0-5.86-2.66-5.86-6.1 0-3.44 2.8-6.18 5.86-6.18 1.46 0 2.62.66 3.22 1.38h.1v-.98h2.58v-.06zm-2.38 5.92c0-2.18-1.46-3.78-3.32-3.78-1.88 0-3.46 1.6-3.46 3.78 0 2.16 1.58 3.72 3.46 3.72 1.86 0 3.32-1.56 3.32-3.72z" fill="currentColor"/>
+                <path d="M53.22 1.2v15h-2.64v-15h2.64z" fill="currentColor"/>
+                <path d="M63.28 12.78l2.1 1.4c-.68 1-2.3 2.74-5.12 2.74-3.5 0-6.1-2.7-6.1-6.18 0-3.68 2.62-6.18 5.8-6.18 3.2 0 4.76 2.54 5.28 3.92l.28.7-8.24 3.42c.64 1.24 1.62 1.86 3 1.86 1.4 0 2.36-.68 3-1.72v.04zm-6.46-2.22l5.5-2.28c-.3-.78-1.22-1.32-2.3-1.32-1.38 0-3.3 1.22-3.2 3.6z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="trusted-logo" aria-label="Microsoft">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="0" y="0" width="9" height="9" fill="currentColor" opacity="0.8"/>
+                <rect x="11" y="0" width="9" height="9" fill="currentColor" opacity="0.6"/>
+                <rect x="0" y="11" width="9" height="9" fill="currentColor" opacity="0.5"/>
+                <rect x="11" y="11" width="9" height="9" fill="currentColor" opacity="0.7"/>
+              </svg>
+              <span>Microsoft</span>
+            </div>
+            <div class="trusted-logo" aria-label="Stripe">
+              <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+                <path d="M6.4 6.6c0-.88.72-1.22 1.92-1.22 1.72 0 3.88.52 5.6 1.46V2.12C12.24 1.44 10.6 1 8.32 1 3.72 1 .6 3.44.6 7.2c0 5.88 8.08 4.94 8.08 7.48 0 1.04-.92 1.38-2.18 1.38-1.88 0-4.3-.78-6.22-1.82v4.84C2.36 19.96 4.46 20.5 6.5 20.5c4.72 0 7.96-2.34 7.96-6.14C14.48 8.88 6.4 10.02 6.4 6.6z" fill="currentColor" transform="translate(0,-1)"/>
+              </svg>
+              <span>stripe</span>
+            </div>
+            <div class="trusted-logo" aria-label="AWS">
+              <svg width="24" height="16" viewBox="0 0 24 16" fill="none">
+                <path d="M7.16 5.7c0 .28.04.5.1.66.08.18.16.36.28.56.04.06.06.14.06.2 0 .1-.06.18-.18.28l-.6.4c-.08.06-.16.08-.24.08-.1 0-.18-.04-.28-.14a2.9 2.9 0 01-.32-.42c-.1-.16-.18-.34-.28-.54C4.82 7.78 3.9 8.3 2.72 8.3c-.84 0-1.52-.24-2-.72S.2 6.52.2 5.82c0-.76.26-1.38.8-1.84.54-.46 1.26-.7 2.18-.7.3 0 .62.02.96.08.34.06.68.14 1.04.24v-.66c0-.68-.14-1.16-.42-1.44-.28-.28-.78-.42-1.48-.42-.32 0-.66.04-1 .12s-.68.18-1 .32a2.6 2.6 0 01-.32.12c-.06.02-.1.02-.14.02-.12 0-.18-.08-.18-.26v-.46c0-.14.02-.24.06-.3.04-.06.12-.12.26-.18.32-.16.7-.3 1.14-.4C2.56.18 3.02.12 3.5.12c1.06 0 1.84.24 2.34.72.5.48.74 1.2.74 2.18v2.88l.58-.2zM3.14 7c.3 0 .6-.06.92-.16.32-.1.6-.3.84-.56.14-.16.24-.34.3-.54.06-.2.1-.44.1-.72V4.5a7.3 7.3 0 00-.82-.16 6.5 6.5 0 00-.84-.06c-.6 0-1.04.12-1.34.36-.3.24-.44.58-.44 1.02 0 .42.1.72.34.94.22.2.56.3.94.3v.1z" fill="currentColor"/>
+                <path d="M11.42 8.18c-.16 0-.26-.02-.34-.08-.08-.04-.14-.16-.2-.32L8.68 1.16c-.06-.18-.1-.28-.1-.34 0-.12.06-.2.18-.2h.94c.16 0 .28.02.34.08.08.04.14.16.18.32l1.52 6 1.42-6c.04-.18.1-.28.18-.32.08-.06.2-.08.36-.08h.76c.16 0 .28.02.36.08.08.04.14.16.18.32l1.44 6.08L18 1.02c.04-.18.1-.28.18-.32.08-.06.18-.08.34-.08h.9c.12 0 .2.06.2.2 0 .04-.02.08-.02.14-.02.06-.04.12-.08.22l-2.28 6.62c-.06.18-.12.28-.2.32-.08.06-.18.08-.34.08h-.82c-.16 0-.28-.02-.36-.08-.08-.06-.14-.16-.18-.34l-1.42-5.84-1.4 5.82c-.04.18-.1.3-.18.34-.08.06-.22.08-.36.08h-.82l.18.18z" fill="currentColor"/>
+                <path d="M22.6 8.38c-.46 0-.92-.06-1.36-.16-.44-.1-.78-.22-.98-.36-.14-.08-.22-.16-.26-.24-.02-.08-.04-.16-.04-.24v-.48c0-.18.08-.26.2-.26.06 0 .1.02.16.04.04.02.12.06.2.1.28.14.58.24.9.32.34.08.66.12.98.12.52 0 .92-.1 1.2-.3.28-.2.44-.48.44-.84 0-.24-.08-.46-.24-.64-.16-.18-.46-.34-.88-.48l-1.26-.4c-.64-.2-1.12-.5-1.4-.88-.28-.38-.44-.8-.44-1.24 0-.36.08-.68.24-.96.16-.28.36-.52.64-.72.26-.2.58-.34.94-.44.36-.1.74-.14 1.14-.14.2 0 .42.02.62.04.22.04.42.08.6.14.18.06.34.12.48.18.14.06.24.14.32.2.1.08.18.16.22.26.04.08.06.2.06.32v.44c0 .18-.08.28-.2.28-.08 0-.2-.06-.36-.16-.54-.36-1.14-.54-1.82-.54-.46 0-.84.08-1.08.26-.26.18-.38.44-.38.8 0 .26.08.48.26.66.18.18.5.36.96.52l1.24.4c.62.2 1.08.48 1.34.84.26.36.4.78.4 1.22 0 .38-.08.72-.24 1.02-.16.3-.38.56-.66.78-.28.22-.62.38-1.02.48-.42.12-.86.18-1.34.18h.08z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="trusted-logo" aria-label="Coinbase">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <circle cx="10" cy="10" r="4" fill="currentColor" opacity="0.6"/>
+              </svg>
+              <span>coinbase</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: Dashboard Preview -->
+      <div class="hero-dashboard reveal reveal--delay">
+        <div class="dashboard-wrapper">
+          <!-- Glow behind dashboard -->
+          <div class="dashboard-glow" aria-hidden="true"></div>
+
+          <div class="dashboard-frame">
+            <!-- Sidebar (visible primarily in dark theme) -->
+            <aside class="dash-sidebar">
+              <div class="dash-sidebar-logo">
+                <div class="dash-logo-dot"></div>
+                <span>Finora</span>
+              </div>
+              <nav class="dash-sidebar-nav">
+                <div class="dash-nav-item active">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+                  <span>Dashboard</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12l3-4 3 2.5 3-5 3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Analytics</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M2 7h12" stroke="currentColor" stroke-width="1.2"/></svg>
+                  <span>Cards</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                  <span>History</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 13V3l8 5-8 5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+                  <span>Transfers</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2 15c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.2"/></svg>
+                  <span>Profile</span>
+                </div>
+              </nav>
+            </aside>
+
+            <!-- Main Dashboard Content -->
+            <div class="dash-main">
+              <!-- Dashboard Header -->
+              <div class="dash-topbar">
+                <div class="dash-topbar-title">
+                  <span class="dash-topbar-label">Your Credit Score</span>
+                </div>
+                <div class="dash-topbar-actions">
+                  <div class="dash-search">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                  </div>
+                  <div class="dash-notif">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5a3.5 3.5 0 00-3.5 3.5v2.5L2 9.5h10L10.5 7.5V5A3.5 3.5 0 007 1.5zM5.5 10a1.5 1.5 0 003 0" stroke="currentColor" stroke-width="1.1"/></svg>
+                  </div>
+                  <div class="dash-user-avatar"></div>
+                </div>
+              </div>
+
+              <!-- Credit Score Gauge Section -->
+              <div class="dash-score-section">
+                <!-- LIGHT MODE: Semicircular Gauge -->
+                <div class="gauge-semi">
+                  <svg viewBox="0 0 220 130" class="gauge-semi-svg">
+                    <defs>
+                      <linearGradient id="gaugeSemiGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+                        <stop offset="0%" stop-color="#EF4444"/>
+                        <stop offset="25%" stop-color="#F97316"/>
+                        <stop offset="50%" stop-color="#EAB308"/>
+                        <stop offset="75%" stop-color="#84CC16"/>
+                        <stop offset="100%" stop-color="#22C55E"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Background arc -->
+                    <path d="M 25 110 A 85 85 0 0 1 195 110" stroke="#E2E8F0" stroke-width="16" fill="none" stroke-linecap="round" class="gauge-bg"/>
+                    <!-- Colored arc -->
+                    <path d="M 25 110 A 85 85 0 0 1 195 110" stroke="url(#gaugeSemiGrad)" stroke-width="16" fill="none" stroke-linecap="round"
+                      stroke-dasharray="267" stroke-dashoffset="53" class="gauge-fill"/>
+                    <!-- Needle -->
+                    <line x1="110" y1="110" x2="164" y2="42" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" class="gauge-needle"/>
+                    <circle cx="110" cy="110" r="6" fill="#1E293B" class="gauge-needle-dot"/>
+                    <circle cx="110" cy="110" r="3" fill="#fff" class="gauge-needle-center"/>
+                  </svg>
+                  <div class="gauge-semi-score">
+                    <span class="score-number">742</span>
+                  </div>
+                  <div class="gauge-semi-labels">
+                    <span>Poor</span>
+                    <span>Fair</span>
+                    <span>Good</span>
+                    <span>Excellent</span>
+                  </div>
+                </div>
+
+                <!-- DARK MODE: Circular Gauge -->
+                <div class="gauge-circle">
+                  <svg viewBox="0 0 120 120" class="gauge-circle-svg">
+                    <defs>
+                      <linearGradient id="gaugeCircleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#4F7CFF"/>
+                        <stop offset="100%" stop-color="#19D3AE"/>
+                      </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="48" stroke="#1E293B" stroke-width="8" fill="none"/>
+                    <circle cx="60" cy="60" r="48" stroke="url(#gaugeCircleGrad)" stroke-width="8" fill="none"
+                      stroke-dasharray="301.6" stroke-dashoffset="60" stroke-linecap="round"
+                      transform="rotate(-90 60 60)" class="gauge-circle-fill"/>
+                  </svg>
+                  <div class="gauge-circle-score">
+                    <span class="score-number">730</span>
+                    <span class="score-label">Excellent</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stats Row -->
+              <div class="dash-stats-row">
+                <div class="dash-stat-card">
+                  <div class="stat-icon stat-icon--green">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M4 5l3-3 3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value">₹2,100</span>
+                    <span class="stat-label">Income</span>
+                  </div>
+                  <span class="stat-badge stat-badge--up">+12%</span>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="stat-icon stat-icon--blue">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 6h10" stroke="currentColor" stroke-width="1.2"/></svg>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value">₹850</span>
+                    <span class="stat-label">Expenses</span>
+                  </div>
+                  <span class="stat-badge stat-badge--down">-4%</span>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="stat-icon stat-icon--purple">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.76 3.57 3.94.57-2.85 2.78.67 3.93L7 10.1l-3.52 1.85.67-3.93L1.3 5.14l3.94-.57L7 1z" stroke="currentColor" stroke-width="1.1" fill="none"/></svg>
+                  </div>
+                  <div class="stat-info">
+                    <span class="stat-value">₹1,250</span>
+                    <span class="stat-label">Savings</span>
+                  </div>
+                  <span class="stat-badge stat-badge--up">+8%</span>
+                </div>
+              </div>
+
+              <!-- Chart Area -->
+              <div class="dash-chart-area">
+                <div class="dash-chart-header">
+                  <span class="dash-chart-title">Spending Overview</span>
+                  <div class="dash-chart-tabs">
+                    <span class="chart-tab active">Week</span>
+                    <span class="chart-tab">Month</span>
+                    <span class="chart-tab">Year</span>
+                  </div>
+                </div>
+                <div class="dash-chart">
+                  <svg viewBox="0 0 300 80" preserveAspectRatio="none" class="chart-svg">
+                    <defs>
+                      <linearGradient id="chartAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--chart-fill-start)" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="var(--chart-fill-end)" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Grid lines -->
+                    <line x1="0" y1="20" x2="300" y2="20" stroke="var(--chart-grid)" stroke-width="0.5"/>
+                    <line x1="0" y1="40" x2="300" y2="40" stroke="var(--chart-grid)" stroke-width="0.5"/>
+                    <line x1="0" y1="60" x2="300" y2="60" stroke="var(--chart-grid)" stroke-width="0.5"/>
+                    <!-- Area fill -->
+                    <path d="M0,55 Q30,52 60,48 T120,35 T180,40 T240,22 T300,18 V80 H0 Z"
+                      fill="url(#chartAreaGrad)"/>
+                    <!-- Line -->
+                    <path d="M0,55 Q30,52 60,48 T120,35 T180,40 T240,22 T300,18"
+                      stroke="var(--chart-line)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <!-- Dots -->
+                    <circle cx="60" cy="48" r="3" fill="var(--chart-line)" class="chart-dot"/>
+                    <circle cx="120" cy="35" r="3" fill="var(--chart-line)" class="chart-dot"/>
+                    <circle cx="180" cy="40" r="3" fill="var(--chart-line)" class="chart-dot"/>
+                    <circle cx="240" cy="22" r="3" fill="var(--chart-line)" class="chart-dot"/>
+                  </svg>
+                  <!-- Chart Labels -->
+                  <div class="chart-labels">
+                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
