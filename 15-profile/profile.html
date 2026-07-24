@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finora — My Profile</title>
+  <meta name="description" content="Manage your personal information, financial overview, and account details in one place."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="profile.css"/>
+</head>
+<body>
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--3" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <div class="dashboard-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../01-landing-page/index.html" class="brand-logo"><div class="brand-icon"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="8" fill="url(#bG)"/><path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/><defs><linearGradient id="bG" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs></svg></div><span class="brand-name">Finora</span></a></div>
+      <nav class="sidebar-nav"><ul class="nav-list">
+        <li><a href="../04-dashboard/dashboard.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Dashboard</span></a></li>
+        <li><a href="../05-credit-score/credit-score.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Credit Score</span></a></li>
+        <li><a href="../06-improve-score/improve-score.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg><span>Improve Score</span></a></li>
+        <li><a href="../07-ai-assistant/ai-assistant.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/></svg><span>AI Assistant</span></a></li>
+        <li><a href="../08-risk-profile/risk-profile.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span>Risk Profile</span></a></li>
+        <li><a href="../09-investment/investment.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Investments</span></a></li>
+        <li><a href="../10-growth-simulator/growth-simulator.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Simulator</span></a></li>
+        <li><a href="../11-reports/reports.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Reports</span></a></li>
+        <li><a href="../13-education/education.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Learn</span></a></li>
+        <li><a href="../14-achievements/achievements.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>Achievements</span></a></li>
+        <li><a href="../12-notifications/notifications.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Notifications</span></a></li>
+        <li><a href="#" class="nav-link active"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></a></li>
+        <li><a href="../16-settings/settings.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Settings</span></a></li>
+      </ul></nav>
+      <div class="sidebar-user"><div class="user-avatar-small"><span>D</span></div><div class="user-info-small"><span class="user-name-small">Dev</span><span class="user-tier-small">Pro AI Plan</span></div></div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+      <header class="top-nav">
+        <div class="greeting-area">
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+          <div><h1 class="welcome-title">My Profile</h1><p class="welcome-subtitle">Manage your personal information, financial overview, and account details in one place.</p></div>
+        </div>
+        <div class="nav-actions-right">
+          <button class="icon-btn" id="themeToggle" aria-label="Toggle Theme"><svg class="ti ti--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="ti ti--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+          <button class="icon-btn" aria-label="Notifications"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="bell-badge"></span></button>
+          <div class="user-profile-btn"><div class="profile-avatar-circle"><span>D</span></div><span class="profile-username">Dev</span></div>
+        </div>
+      </header>
+
+      <div class="page-body">
+
+        <!-- PROFILE HEADER CARD (Matching Reference Image 15) -->
+        <section class="profile-header-card glass-card reveal">
+          <div class="ph-main-row">
+            <div class="ph-avatar-wrap">
+              <div class="ph-avatar-circle"><span>D</span></div>
+              <span class="ph-status-dot" title="Verified Account">✓</span>
+            </div>
+            <div class="ph-info-col">
+              <div class="ph-name-line">
+                <h2 class="ph-user-name">Dev Sharma</h2>
+                <span class="ph-verified-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Verified User</span>
+              </div>
+              <div class="ph-meta-pills">
+                <span>📧 devsharma@gmail.com</span>
+                <span>📱 +91 98765 43210</span>
+                <span>🗓 Member Since May 2024</span>
+              </div>
+            </div>
+            <button class="btn btn-outline ph-edit-btn">Edit Profile</button>
+          </div>
+        </section>
+
+        <!-- PERSONAL INFORMATION GRID (Matching Reference Image 15) -->
+        <section class="info-section glass-card reveal reveal--d1">
+          <h3 class="card-heading" style="margin-bottom:20px;">Personal Information</h3>
+          <div class="info-grid">
+            <div class="info-cell">
+              <span class="info-label">Full Name</span>
+              <span class="info-value">Dev Sharma</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Email</span>
+              <span class="info-value">devsharma@gmail.com</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Phone</span>
+              <span class="info-value">+91 98765 43210</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Location</span>
+              <span class="info-value">Vadodara, Gujarat, India</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Occupation</span>
+              <span class="info-value">Student</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Member Since</span>
+              <span class="info-value">May 2024</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Gender / Age</span>
+              <span class="info-value">Male, 22 Years</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Preferred Language</span>
+              <span class="info-value">English (US)</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- FINANCIAL SNAPSHOT -->
+        <section class="snapshot-section">
+          <h2 class="section-heading reveal">Financial Snapshot</h2>
+          <div class="snapshot-grid">
+            <div class="snap-card glass-card reveal"><span class="snap-icon purple-bg">🛡️</span><span class="snap-label">Credit Score</span><span class="snap-val purple-text">730 <span class="snap-sub">Excellent</span></span></div>
+            <div class="snap-card glass-card reveal reveal--d1"><span class="snap-icon blue-bg">⚖️</span><span class="snap-label">Risk Profile</span><span class="snap-val blue-text">Moderate</span></div>
+            <div class="snap-card glass-card reveal reveal--d2"><span class="snap-icon green-bg">💰</span><span class="snap-label">Monthly Income</span><span class="snap-val">₹50,000</span></div>
+            <div class="snap-card glass-card reveal reveal--d3"><span class="snap-icon cyan-bg">🏦</span><span class="snap-label">Monthly Savings</span><span class="snap-val cyan-text">₹18,000</span></div>
+            <div class="snap-card glass-card reveal reveal--d4"><span class="snap-icon orange-bg">📈</span><span class="snap-label">Investment Portfolio</span><span class="snap-val orange-text">₹2,00,000</span></div>
+            <div class="snap-card glass-card reveal reveal--d5"><span class="snap-icon emerald-bg">💎</span><span class="snap-label">Net Worth</span><span class="snap-val green-text">₹4,85,000</span></div>
+            <div class="snap-card glass-card reveal"><span class="snap-icon pink-bg">❤️</span><span class="snap-label">Financial Health</span><span class="snap-val green-text">91 / 100</span></div>
+          </div>
+        </section>
+
+        <!-- GOALS & ACHIEVEMENTS + CONNECTED SERVICES (2 Columns) -->
+        <section class="mid-grid">
+
+          <!-- GOALS & ACHIEVEMENTS -->
+          <div class="glass-card reveal">
+            <h3 class="card-heading" style="margin-bottom:16px;">Goals & Achievements Progress</h3>
+            <div class="goal-list">
+              <div class="goal-item">
+                <div class="goal-labels"><span>Financial Goal: Buy a House</span><span class="green-text">68%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:68%"></div></div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-labels"><span>Emergency Fund Goal</span><span class="blue-text">80%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-labels"><span>Learning Progress</span><span class="purple-text">60%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
+              </div>
+              <div class="goal-item goal-badge-row">
+                <span>Achievements Unlocked</span>
+                <span class="goal-badge-val">18 / 25 Badges</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONNECTED SERVICES -->
+          <div class="glass-card reveal reveal--d1">
+            <h3 class="card-heading" style="margin-bottom:16px;">Connected Services</h3>
+            <div class="services-list">
+              <div class="service-row"><div class="svc-left"><span class="svc-icon blue-bg">🏦</span><div><h4>Bank Account</h4><p>HDFC Bank •••• 4821</p></div></div><span class="svc-badge green-badge">Connected</span></div>
+              <div class="service-row"><div class="svc-left"><span class="svc-icon purple-bg">⚡</span><div><h4>UPI ID</h4><p>devsharma@upi</p></div></div><span class="svc-badge green-badge">Connected</span></div>
+              <div class="service-row"><div class="svc-left"><span class="svc-icon green-bg">📧</span><div><h4>Email Verification</h4><p>devsharma@gmail.com</p></div></div><span class="svc-badge green-badge">Verified</span></div>
+              <div class="service-row"><div class="svc-left"><span class="svc-icon cyan-bg">📱</span><div><h4>Mobile Number</h4><p>+91 98765 43210</p></div></div><span class="svc-badge green-badge">Verified</span></div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ACCOUNT ACTIVITY TIMELINE -->
+        <section class="activity-section glass-card reveal">
+          <h3 class="card-heading" style="margin-bottom:18px;">Recent Account Activity</h3>
+          <div class="timeline">
+            <div class="timeline-item"><div class="tl-dot green-bg">✓</div><div class="tl-content"><h4>Completed Learning Module</h4><p>"Mutual Funds Basics" finished.</p></div><span class="tl-time">Today, 2:15 PM</span></div>
+            <div class="timeline-item"><div class="tl-dot blue-bg">📄</div><div class="tl-content"><h4>Downloaded Financial Report</h4><p>May 2024 monthly report PDF generated.</p></div><span class="tl-time">Yesterday, 10:30 AM</span></div>
+            <div class="timeline-item"><div class="tl-dot purple-bg">📈</div><div class="tl-content"><h4>Started Investment Plan</h4><p>Initiated ₹2,000 monthly SIP.</p></div><span class="tl-time">May 20, 2026</span></div>
+            <div class="timeline-item"><div class="tl-dot orange-bg">🛡️</div><div class="tl-content"><h4>Generated Credit Score</h4><p>Updated score fetched: 730 Excellent.</p></div><span class="tl-time">May 15, 2026</span></div>
+            <div class="timeline-item"><div class="tl-dot cyan-bg">🤖</div><div class="tl-content"><h4>Completed AI Assessment</h4><p>Moderate risk tolerance assigned by Finora AI.</p></div><span class="tl-time">May 10, 2026</span></div>
+            <div class="timeline-item"><div class="tl-dot emerald-bg">👤</div><div class="tl-content"><h4>Profile Created</h4><p>Joined Finora platform.</p></div><span class="tl-time">May 1, 2026</span></div>
+          </div>
+        </section>
+
+        <!-- ACCOUNT STATISTICS GRID -->
+        <section class="stats-section">
+          <h2 class="section-heading reveal">Account Statistics</h2>
+          <div class="astats-grid">
+            <div class="astat glass-card reveal"><span class="astat-emoji blue-bg">📄</span><span class="astat-label">Reports Generated</span><span class="astat-val">12</span></div>
+            <div class="astat glass-card reveal reveal--d1"><span class="astat-emoji purple-bg">🤖</span><span class="astat-label">AI Assessments</span><span class="astat-val">8</span></div>
+            <div class="astat glass-card reveal reveal--d2"><span class="astat-emoji green-bg">💼</span><span class="astat-label">Investment Plans</span><span class="astat-val">5</span></div>
+            <div class="astat glass-card reveal reveal--d3"><span class="astat-emoji orange-bg">📚</span><span class="astat-label">Courses Completed</span><span class="astat-val">18</span></div>
+            <div class="astat glass-card reveal reveal--d4"><span class="astat-emoji cyan-bg">🔔</span><span class="astat-label">Notifications</span><span class="astat-val">42</span></div>
+            <div class="astat glass-card reveal reveal--d5"><span class="astat-emoji emerald-bg">🔥</span><span class="astat-label">Login Streak</span><span class="astat-val green-text">30 Days</span></div>
+          </div>
+        </section>
+
+        <!-- QUICK ACTIONS -->
+        <section class="quick-actions-section">
+          <h2 class="section-heading reveal">Quick Actions</h2>
+          <div class="qa-grid">
+            <div class="qa-card glass-card reveal"><span class="qa-icon blue-bg">✏️</span><h4>Edit Profile</h4><p>Update personal details</p></div>
+            <div class="qa-card glass-card reveal reveal--d1"><span class="qa-icon green-bg">📥</span><h4>Download My Data</h4><p>Export account archive</p></div>
+            <div class="qa-card glass-card reveal reveal--d2"><span class="qa-icon purple-bg">📊</span><h4>View Reports</h4><p>Check financial summaries</p></div>
+            <div class="qa-card glass-card reveal reveal--d3"><span class="qa-icon orange-bg">⚙️</span><h4>Manage Settings</h4><p>Configure preferences</p></div>
+            <div class="qa-card glass-card reveal reveal--d4"><span class="qa-icon cyan-bg">💬</span><h4>Contact Support</h4><p>Get assistance 24/7</p></div>
+            <div class="qa-card glass-card reveal reveal--d5"><span class="qa-icon emerald-bg">🏆</span><h4>View Achievements</h4><p>Check unlocked badges</p></div>
+          </div>
+        </section>
+
+        <!-- ABOUT ME -->
+        <section class="about-me-section reveal">
+          <div class="about-me-card glass-card">
+            <div class="am-header"><span class="am-icon purple-bg">💬</span><h3 class="card-heading">About Me</h3></div>
+            <p class="am-text">"I am focused on improving my financial health through disciplined savings, smart investments, and continuous financial learning with Finora."</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+  <script src="profile.js"></script>
+</body>
+</html>
