@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Finora — Secure login to your AI-powered financial dashboard.">
+    <title>Finora — Authentication</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Force dark theme immediately -->
+    <script>document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+
+<body>
+    <!-- Background Layers -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+    <div class="bg-noise"></div>
+
+    <!-- Main Layout -->
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <!-- Sun (light mode icon) -->
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1"  x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22"  x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1"  y1="12" x2="3"  y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon (dark mode icon) -->
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <main class="auth-container" id="authContainer">
+
+        <!-- ====== LEFT: Form Panel ====== -->
+        <section class="auth-left" id="authLeft">
+
+            <!-- Brand -->
+            <a href="#" class="brand" id="brand">
+                <div class="brand-icon">
+                    <!-- Shield icon -->
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L3 6.5V11C3 15.55 6.84 19.74 12 21C17.16 19.74 21 15.55 21 11V6.5L12 2Z"
+                              fill="rgba(255,255,255,0.90)" />
+                        <path d="M9 12l2 2 4-4" stroke="rgba(99,102,241,0.7)" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="brand-name">Finora</span>
+            </a>
+
+            <!-- Auth Card -->
+            <div class="auth-card" id="authCard">
+
+                <!-- ── LOGIN FORM ── -->
+                <div class="auth-form active" id="loginForm">
+                    <div class="auth-header">
+                        <h1 class="auth-title">Welcome Back <span class="wave-emoji">👋</span></h1>
+                        <p class="auth-subtitle">Login to continue your financial journey.</p>
+                    </div>
+
+                    <form class="form" id="loginFormEl" autocomplete="off" novalidate>
+
+                        <!-- Email -->
+                        <div class="input-group" id="loginEmailGroup">
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="3"/>
+                                        <path d="M22 7L13.03 12.7a1.94 1.94 0 01-2.06 0L2 7"/>
+                                    </svg>
+                                </span>
+                                <input type="email" id="loginEmail" class="input"
+                                       placeholder=" " autocomplete="off">
+                                <label for="loginEmail" class="input-label">Email address</label>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="input-group" id="loginPasswordGroup">
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="3"/>
+                                        <path d="M7 11V7a5 5 0 0110 0v4"/>
+                                        <circle cx="12" cy="16" r="1"/>
+                                    </svg>
+                                </span>
+                                <input type="password" id="loginPassword" class="input"
+                                       placeholder=" " autocomplete="off">
+                                <label for="loginPassword" class="input-label">Password</label>
+                                <button type="button" class="password-toggle"
+                                        id="loginPwdToggle" aria-label="Toggle password visibility">
+                                    <svg class="eye-open" width="17" height="17" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                    <svg class="eye-closed" width="17" height="17" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round"
+                                         style="display:none">
+                                        <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                                        <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                                        <path d="M14.12 14.12a3 3 0 11-4.24-4.24"/>
+                                        <line x1="1" y1="1" x2="23" y2="23"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Remember Me + Forgot -->
+                        <div class="form-extras">
+                            <label class="checkbox-wrapper" id="rememberLabel">
+                                <input type="checkbox" id="rememberMe">
+                                <span class="checkmark">
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                        <path d="M2 5l2.5 2.5L8 2.5" stroke="currentColor"
+                                              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <span class="checkbox-text">Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-link" id="forgotLink">Forgot Password?</a>
+                        </div>
+
+                        <!-- Login CTA -->
+                        <button type="button" class="btn-primary" id="loginBtn">
+                            <span class="btn-text">Login</span>
+                            <span class="btn-ripple"></span>
+                            <span class="btn-shimmer"></span>
+                        </button>
+                    </form>
+
+                    <!-- Divider -->
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                        <span class="divider-text">or continue with</span>
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <!-- Social Buttons -->
+                    <div class="social-buttons">
+                        <button type="button" class="btn-social" id="loginGoogleBtn" aria-label="Continue with Google">
+                            <svg width="19" height="19" viewBox="0 0 24 24">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                            </svg>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="btn-social" id="loginAppleBtn" aria-label="Continue with Apple">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            <span>Apple</span>
+                        </button>
+                        <button type="button" class="btn-social" id="loginMicrosoftBtn" aria-label="Continue with Microsoft">
+                            <svg width="19" height="19" viewBox="0 0 24 24">
+                                <path d="M11.4 2H2v9.4h9.4z" fill="#F25022"/>
+                                <path d="M22 2h-9.4v9.4H22z" fill="#7FBA00"/>
+                                <path d="M11.4 12.6H2V22h9.4z" fill="#00A4EF"/>
+                                <path d="M22 12.6h-9.4V22H22z" fill="#FFB900"/>
+                            </svg>
+                            <span>Microsoft</span>
+                        </button>
+                    </div>
+
+                    <!-- Switch -->
+                    <p class="auth-switch-text">
+                        Don't have an account?
+                        <button type="button" class="switch-btn" id="goToSignup">Sign up</button>
+                    </p>
+                </div>
+
+                <!-- ── SIGNUP FORM ── -->
+                <div class="auth-form" id="signupForm">
+                    <div class="auth-header">
+                        <h1 class="auth-title">Create Account <span class="sparkle-emoji">✨</span></h1>
+                        <p class="auth-subtitle">Start your AI-powered financial journey today.</p>
+                    </div>
+
+                    <form class="form" id="signupFormEl" autocomplete="off" novalidate>
+
+                        <!-- Full Name -->
+                        <div class="input-group" id="signupNameGroup">
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </span>
+                                <input type="text" id="signupName" class="input"
+                                       placeholder=" " autocomplete="off">
+                                <label for="signupName" class="input-label">Full Name</label>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="input-group" id="signupEmailGroup">
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="3"/>
+                                        <path d="M22 7L13.03 12.7a1.94 1.94 0 01-2.06 0L2 7"/>
+                                    </svg>
+                                </span>
+                                <input type="email" id="signupEmail" class="input"
+                                       placeholder=" " autocomplete="off">
+                                <label for="signupEmail" class="input-label">Email address</label>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="input-group" id="signupPasswordGroup">
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="3"/>
+                                        <path d="M7 11V7a5 5 0 0110 0v4"/>
+                                        <circle cx="12" cy="16" r="1"/>
+                                    </svg>
+                                </span>
+                                <input type="password" id="signupPassword" class="input"
+                                       placeholder=" " autocomplete="off">
+                                <label for="signupPassword" class="input-label">Password</label>
+                                <button type="button" class="password-toggle"
+                                        id="signupPwdToggle" aria-label="Toggle password visibility">
+                                    <svg class="eye-open" width="17" height="17" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                    <svg class="eye-closed" width="17" height="17" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round"
+                                         style="display:none">
+                                        <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                                        <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                                        <path d="M14.12 14.12a3 3 0 11-4.24-4.24"/>
+                                        <line x1="1" y1="1" x2="23" y2="23"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="input-group" id="signupConfirmGroup">
+                            <div class="input-wrapper">
+                                <span class="input-icon">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="3"/>
+                                        <path d="M7 11V7a5 5 0 0110 0v4"/>
+                                        <path d="M9.5 16l2 2 3-3"/>
+                                    </svg>
+                                </span>
+                                <input type="password" id="signupConfirm" class="input"
+                                       placeholder=" " autocomplete="off">
+                                <label for="signupConfirm" class="input-label">Confirm Password</label>
+                                <button type="button" class="password-toggle"
+                                        id="signupConfirmToggle" aria-label="Toggle password visibility">
+                                    <svg class="eye-open" width="17" height="17" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                    <svg class="eye-closed" width="17" height="17" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="1.8"
+                                         stroke-linecap="round" stroke-linejoin="round"
+                                         style="display:none">
+                                        <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                                        <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                                        <path d="M14.12 14.12a3 3 0 11-4.24-4.24"/>
+                                        <line x1="1" y1="1" x2="23" y2="23"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Terms -->
+                        <div class="form-extras">
+                            <label class="checkbox-wrapper" id="termsLabel">
+                                <input type="checkbox" id="termsCheck">
+                                <span class="checkmark">
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                        <path d="M2 5l2.5 2.5L8 2.5" stroke="currentColor"
+                                              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <span class="checkbox-text">I agree to the
+                                    <a href="#" class="terms-link">Terms &amp; Conditions</a>
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Create Account CTA -->
+                        <button type="button" class="btn-primary" id="signupBtn">
+                            <span class="btn-text">Create Account</span>
+                            <span class="btn-ripple"></span>
+                            <span class="btn-shimmer"></span>
+                        </button>
+                    </form>
+
+                    <!-- Divider -->
+                    <div class="divider">
+                        <span class="divider-line"></span>
+                        <span class="divider-text">or continue with</span>
+                        <span class="divider-line"></span>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="social-buttons">
+                        <button type="button" class="btn-social" id="signupGoogleBtn" aria-label="Continue with Google">
+                            <svg width="19" height="19" viewBox="0 0 24 24">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                            </svg>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="btn-social" id="signupAppleBtn" aria-label="Continue with Apple">
+                            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            <span>Apple</span>
+                        </button>
+                        <button type="button" class="btn-social" id="signupMicrosoftBtn" aria-label="Continue with Microsoft">
+                            <svg width="19" height="19" viewBox="0 0 24 24">
+                                <path d="M11.4 2H2v9.4h9.4z" fill="#F25022"/>
+                                <path d="M22 2h-9.4v9.4H22z" fill="#7FBA00"/>
+                                <path d="M11.4 12.6H2V22h9.4z" fill="#00A4EF"/>
+                                <path d="M22 12.6h-9.4V22H22z" fill="#FFB900"/>
+                            </svg>
+                            <span>Microsoft</span>
+                        </button>
+                    </div>
+
+                    <!-- Switch -->
+                    <p class="auth-switch-text">
+                        Already have an account?
+                        <button type="button" class="switch-btn" id="goToLogin">Login</button>
+                    </p>
+                </div>
+
+            </div><!-- /auth-card -->
+        </section><!-- /auth-left -->
+
+        <!-- ====== RIGHT: 3D Lock Illustration ====== -->
+        <section class="auth-right" id="authRight">
+            <div class="right-ambient"></div>
+
+            <div class="illustration-container" id="illustrationContainer">
+                <!-- Orbit rings -->
+                <div class="orbit-ring ring-1"></div>
+                <div class="orbit-ring ring-2"></div>
+                <div class="orbit-ring ring-3"></div>
+
+                <!-- Floating particles -->
+                <div class="particle p1"></div>
+                <div class="particle p2"></div>
+                <div class="particle p3"></div>
+                <div class="particle p4"></div>
+                <div class="particle p5"></div>
+                <div class="particle p6"></div>
+
+                <!-- Mini floating squares -->
+                <div class="mini-sq sq1"></div>
+                <div class="mini-sq sq2"></div>
+                <div class="mini-sq sq3"></div>
+
+                <!-- 3D Lock Cube -->
+                <div class="lock-cube" id="lockCube">
+                    <!-- Rotating glow ring -->
+                    <div class="cube-ring"></div>
+
+                    <!-- Cube body -->
+                    <div class="cube-body">
+                        <!-- Lock SVG -->
+                        <svg class="lock-svg" width="56" height="56" viewBox="0 0 24 24"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <defs>
+                                <linearGradient id="lockBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%"   stop-color="#e0d9ff"/>
+                                    <stop offset="50%"  stop-color="#c4b5fd"/>
+                                    <stop offset="100%" stop-color="#a78bfa"/>
+                                </linearGradient>
+                                <linearGradient id="lockArcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%"   stop-color="#ddd6fe"/>
+                                    <stop offset="100%" stop-color="#a78bfa"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Lock shackle -->
+                            <path d="M7 11V7a5 5 0 0110 0v4"
+                                  stroke="url(#lockArcGrad)" stroke-width="2"/>
+                            <!-- Lock body -->
+                            <rect x="3" y="11" width="18" height="11" rx="3"
+                                  fill="url(#lockBodyGrad)" stroke="url(#lockBodyGrad)"
+                                  stroke-width="0.3" opacity="0.95"/>
+                            <!-- Keyhole dot -->
+                            <circle cx="12" cy="16" r="1.8"
+                                    fill="rgba(79,70,229,0.7)" stroke="none"/>
+                            <!-- Keyhole stem -->
+                            <path d="M12 17.5v2" stroke="rgba(79,70,229,0.6)"
+                                  stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- Ground shadow -->
+                    <div class="cube-shadow"></div>
+                </div><!-- /lock-cube -->
+
+            </div><!-- /illustration-container -->
+        </section><!-- /auth-right -->
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
