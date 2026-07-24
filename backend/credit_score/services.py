@@ -1,13 +1,13 @@
 """
 Service Layer for Credit Score Module.
-Orchestrates calculation, explanation generation, and DB updates.
+Orchestrates calculation, explanation generation, and DB updates using single-responsibility generators.
 """
 from django.utils import timezone
 from onboarding.models import UserProfile
 from .metrics import FinancialMetricsCalculator
 from .scoring import WeightedScoringEngine
-from .explanations import ExplanationGenerator
-from .constants import FEATURE_LABELS
+from .generators import HistoryGenerator, BreakdownGenerator, ExplanationGenerator, RecommendationGenerator
+from .constants import FEATURE_LABELS, METRIC_WEIGHTS
 
 class CreditScoreService:
     """Service to generate and persist credit scores."""
@@ -15,85 +15,75 @@ class CreditScoreService:
     @staticmethod
     def get_or_calculate_credit_profile(user) -> dict:
         """
-        Retrieves user profile, runs the scoring engine, saves the score,
-        and returns the full dictionary response for the API.
+        Retrieves user profile, runs the scoring pipeline, saves the score,
+        and returns the full structured dictionary for the API.
         """
         profile = getattr(user, 'profile', None)
         if not profile:
             raise ValueError("User profile not found. Complete onboarding first.")
+            
+        if not profile.monthly_income:
+            raise ValueError("Incomplete financial data. Update profile to generate score.")
 
-        # 1. Calculate base sub-metrics (0-100)
-        metrics_calc = FinancialMetricsCalculator(profile)
-        sub_metrics = metrics_calc.calculate_all()
+        # 1. Financial Metrics Calculator
+        metrics_data = FinancialMetricsCalculator(profile).calculate()
 
-        # 2. Run Weighted Scoring Engine
-        scoring_engine = WeightedScoringEngine(sub_metrics)
-        score_data = scoring_engine.calculate()
+        # 2. Weighted Scoring Engine
+        score_data = WeightedScoringEngine(metrics_data).calculate()
 
-        # 3. Save the results back to UserProfile
+        # 3. Save to DB
         profile.credit_score = score_data["credit_score"]
         profile.risk_score = score_data["risk_score"]
         profile.save(update_fields=['credit_score', 'risk_score', 'updated_at'])
 
-        # 4. Generate Explanations
-        explainer = ExplanationGenerator(profile, sub_metrics)
-        explanations = explainer.generate_all()
+        # 4. History Generator
+        history = HistoryGenerator(score_data["credit_score"]).generate()
 
-        # 5. Format Breakdown and Feature Importance for UI
-        breakdown = []
+        # 5. Explanations Generator
+        explanations = ExplanationGenerator(metrics_data, profile).generate()
+
+        # 6. Recommendations Generator
+        recommendations = RecommendationGenerator(metrics_data, profile).generate()
+
+        # 7. Breakdown Generator
+        breakdown = BreakdownGenerator(metrics_data["scores"]).generate()
+
+        # 8. Feature Importance (Dynamic based on weights and actual score impact)
         feature_importance = []
-        
-        # Color mapping for UI elements
-        color_map = {
-            "payment_behaviour": {"bg": "green-bg", "text": "green-text", "hex": "#10B981", "icon": "💳"},
-            "savings_habit": {"bg": "blue-bg", "text": "blue-text", "hex": "#3B82F6", "icon": "🏦"},
-            "financial_stability": {"bg": "purple-bg", "text": "purple-text", "hex": "#A855F7", "icon": "📊"},
-            "investment_behaviour": {"bg": "cyan-bg", "text": "cyan-text", "hex": "#06B6D4", "icon": "📈"},
-            "upi_activity": {"bg": "indigo-bg", "text": "indigo-text", "hex": "#6366F1", "icon": "📱"},
-            "utility_bills": {"bg": "emerald-bg", "text": "emerald-text", "hex": "#059669", "icon": "⚡"},
-        }
-        
         prog_colors = ["green", "blue", "indigo", "cyan", "purple", "orange"]
         idx = 0
-
-        for key, val in sub_metrics.items():
+        
+        # Calculate maximum possible impact sum vs actual
+        for key, raw_score in metrics_data["scores"].items():
+            weight = METRIC_WEIGHTS.get(key, 0)
+            actual_contribution = (raw_score * weight) 
+            # Normalize to 0-100 based on weight
+            normalized_pct = int((actual_contribution / (100 * weight)) * 100) if weight > 0 else 0
+            
             label = FEATURE_LABELS.get(key, key)
-            c = color_map.get(key, color_map["payment_behaviour"])
-            
-            # Breakdown Card
-            breakdown.append({
-                "key": key,
-                "title": label,
-                "percentage": val,
-                "icon": c["icon"],
-                "bg_class": c["bg"],
-                "text_class": c["text"],
-                "hex_color": c["hex"]
-            })
-            
-            # Feature Importance Bar
             feature_importance.append({
                 "label": label,
-                "percentage": val,
+                "percentage": normalized_pct,
                 "color_class": prog_colors[idx % len(prog_colors)]
             })
             idx += 1
             
-        # Sort feature importance by highest impact (highest score)
         feature_importance = sorted(feature_importance, key=lambda x: x["percentage"], reverse=True)
 
+        # Assemble Final API Payload exactly as requested
         return {
             "score": score_data["credit_score"],
             "grade": score_data["grade"],
             "risk_level": score_data["risk_level"],
             "category": score_data["category"],
             "risk_score": score_data["risk_score"],
+            "financial_metrics": metrics_data["raw"],
+            "feature_importance": feature_importance,
             "positive_factors": explanations["positive_factors"],
             "negative_factors": explanations["negative_factors"],
-            "feature_importance": feature_importance,
             "breakdown": breakdown,
-            "history": score_data["history"],
-            "recommendations": explanations["recommendations"],
+            "history": history,
+            "recommendations": recommendations,
             "ai_explanations": explanations["ai_explanations"],
             "updated_at": profile.updated_at.strftime("%B %d, %Y")
         }

@@ -32,7 +32,7 @@
   /* ---- REVEAL ON SCROLL ---- */
   function checkReveals() {
     const trigger = window.innerHeight * 0.92;
-    revealEls.forEach(el => { if (el.getBoundingClientRect().top < trigger) el.classList.add('visible'); });
+    document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < trigger) el.classList.add('visible'); });
   }
   window.addEventListener('scroll', checkReveals, { passive: true });
   window.addEventListener('load', checkReveals);
@@ -284,8 +284,8 @@
       if (miniCards.length >= 4) {
           miniCards[0].textContent = data.risk_level;
           miniCards[1].textContent = data.category;
-          miniCards[2].textContent = data.recommendations.top_strength;
-          miniCards[3].textContent = data.recommendations.improvement_opportunity;
+          miniCards[2].textContent = data.recommendations?.top_strength || 'General';
+          miniCards[3].textContent = data.recommendations?.improvement_opportunity || 'None';
       }
       
       // 4. Feature Importance
@@ -304,11 +304,27 @@
           });
       }
 
-      // 5. AI Explanations
+      // 5. AI Explanations & Recommendations combined
       const aiGrid = document.querySelector('.ai-grid');
-      if (aiGrid && data.ai_explanations) {
+      if (aiGrid) {
           aiGrid.innerHTML = '';
-          data.ai_explanations.forEach((exp, idx) => {
+          
+          let combinedCards = [];
+          if (data.ai_explanations) {
+              combinedCards = combinedCards.concat(data.ai_explanations);
+          }
+          if (data.recommendations && data.recommendations.actionable_steps) {
+              data.recommendations.actionable_steps.forEach(rec => {
+                  combinedCards.push({
+                      title: "Actionable Recommendation",
+                      desc: rec,
+                      icon_color: "orange",
+                      icon_type: "alert"
+                  });
+              });
+          }
+
+          combinedCards.slice(0, 8).forEach((exp, idx) => {
               let svgIcon = '';
               if (exp.icon_type === 'check') svgIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`;
               else if (exp.icon_type === 'alert') svgIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
@@ -344,6 +360,7 @@
                   <div class="bd-bar-fill" style="--w:${bd.percentage}%; --c:${bd.hex_color};"></div>
                 </div>
                 <span class="bd-pct ${bd.text_class}">${bd.percentage}%</span>
+                <p class="bd-desc">${bd.description || ''}</p>
               </div>`;
           });
       }

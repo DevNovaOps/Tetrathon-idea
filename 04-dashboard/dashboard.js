@@ -305,7 +305,8 @@
     if (elSidebarAvatar) elSidebarAvatar.innerHTML = `<span>${data.user.initials}</span>`;
     if (elSidebarName) elSidebarName.textContent = data.user.full_name;
     if (elSidebarTier) elSidebarTier.textContent = `Member since ${data.user.member_since}`;
-    if (elWelcomeTitle) elWelcomeTitle.textContent = `Welcome back, ${data.user.full_name.split(' ')[0]} 👋`;
+    const welcome = document.querySelector('.welcome-title');
+    if (welcome) welcome.textContent = `Welcome back, ${data.user.full_name} 👋`;
     if (elTopAvatar) elTopAvatar.innerHTML = `<span>${data.user.initials}</span>`;
     if (elTopUsername) elTopUsername.textContent = data.user.full_name;
 
