@@ -73,84 +73,79 @@
       <!-- PAGE BODY -->
       <div class="page-body">
 
-        <!-- ROW 1: GAUGE + ABOUT YOU + SUITABLE INVESTMENTS -->
-        <section class="hero-row">
+        <!-- ROW 1: MAIN HERO CARD (Compact Split Layout Matching Reference Image 08 Exactly) -->
+        <section class="main-hero-card glass-card reveal">
+          <div class="hero-split-grid">
 
-          <!-- LEFT: Risk Gauge -->
-          <div class="gauge-card glass-card reveal">
-            <h2 class="card-heading" style="text-align:center;">Your Risk Profile</h2>
-            <div class="gauge-wrapper">
-              <svg viewBox="0 0 260 155" class="gauge-svg" id="riskGaugeSvg">
-                <defs>
-                  <linearGradient id="riskGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#10B981"/>
-                    <stop offset="40%" stop-color="#EAB308"/>
-                    <stop offset="65%" stop-color="#F97316"/>
-                    <stop offset="100%" stop-color="#EF4444"/>
-                  </linearGradient>
-                </defs>
-                <!-- Track -->
-                <path d="M30 135 A100 100 0 0 1 230 135" fill="none" stroke="var(--gauge-track)" stroke-width="20" stroke-linecap="round"/>
-                <!-- Fill -->
-                <path d="M30 135 A100 100 0 0 1 230 135" fill="none" stroke="url(#riskGaugeGrad)" stroke-width="20" stroke-linecap="round" id="riskGaugeArc" stroke-dasharray="0 314"/>
-                <!-- Needle -->
-                <line id="riskNeedle" x1="130" y1="135" x2="130" y2="55" stroke="var(--text-heading)" stroke-width="3" stroke-linecap="round" opacity="0"/>
-                <!-- Needle Center -->
-                <circle cx="130" cy="135" r="8" fill="var(--accent)" stroke="var(--bg-card)" stroke-width="3"/>
-              </svg>
-              <div class="gauge-labels-row">
-                <span class="gauge-label-text green-text">Low</span>
-                <span class="gauge-label-text orange-text">Moderate</span>
-                <span class="gauge-label-text red-text">High</span>
-              </div>
-              <div class="gauge-center-text">
-                <span class="risk-level-big" id="riskLevelText">Moderate</span>
-                <span class="risk-sub-label">Risk</span>
-                <span class="confidence-badge"><span class="pulse-dot"></span> 91% Confidence</span>
+            <!-- LEFT: Gauge Column -->
+            <div class="gauge-col">
+              <h2 class="card-heading" style="text-align:center; margin-bottom: 8px;">Your Risk Profile</h2>
+              <div class="gauge-wrapper">
+                <svg viewBox="0 0 260 145" class="gauge-svg" id="riskGaugeSvg">
+                  <defs>
+                    <linearGradient id="riskGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#10B981"/>
+                      <stop offset="40%" stop-color="#EAB308"/>
+                      <stop offset="65%" stop-color="#F97316"/>
+                      <stop offset="100%" stop-color="#EF4444"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M30 130 A100 100 0 0 1 230 130" fill="none" stroke="var(--gauge-track)" stroke-width="22" stroke-linecap="round"/>
+                  <path d="M30 130 A100 100 0 0 1 230 130" fill="none" stroke="url(#riskGaugeGrad)" stroke-width="22" stroke-linecap="round" id="riskGaugeArc" stroke-dasharray="0 314"/>
+                  <line id="riskNeedle" x1="130" y1="130" x2="130" y2="50" stroke="var(--text-heading)" stroke-width="3.5" stroke-linecap="round" opacity="0"/>
+                  <circle cx="130" cy="130" r="9" fill="var(--accent)" stroke="var(--bg-card)" stroke-width="3"/>
+                </svg>
+                <div class="gauge-labels-row">
+                  <span class="gauge-label-text green-text">Low</span>
+                  <span class="gauge-label-text orange-text">Moderate</span>
+                  <span class="gauge-label-text red-text">High</span>
+                </div>
+                <div class="gauge-center-text">
+                  <span class="risk-level-big" id="riskLevelText">Moderate</span>
+                  <span class="risk-sub-label">Risk</span>
+                  <span class="confidence-badge"><span class="pulse-dot"></span> 91% Confidence</span>
+                </div>
               </div>
             </div>
+
+            <!-- RIGHT: About You + Suitable Investments -->
+            <div class="info-col">
+
+              <!-- About You Inner Card -->
+              <div class="inner-info-card">
+                <h3 class="inner-heading">About You</h3>
+                <div class="about-text">
+                  <p>You are a <strong>balanced investor</strong>. You prefer stability with moderate returns.</p>
+                  <p>Your income and savings behaviour indicate <strong>consistent financial discipline</strong>.</p>
+                </div>
+              </div>
+
+              <!-- Suitable Investments Inner Card -->
+              <div class="inner-info-card">
+                <h3 class="inner-heading">Suitable For</h3>
+                <div class="suitable-list">
+                  <div class="suitable-item">
+                    <div class="suit-icon green-bg">📈</div>
+                    <div class="suit-info"><span class="suit-name">Index Funds</span><span class="suit-meta">Low Risk · 10–12% Returns</span></div>
+                  </div>
+                  <div class="suitable-item">
+                    <div class="suit-icon blue-bg">🏦</div>
+                    <div class="suit-info"><span class="suit-name">Debt Funds</span><span class="suit-meta">Low Risk · 6–8% Returns</span></div>
+                  </div>
+                  <div class="suitable-item">
+                    <div class="suit-icon purple-bg">⚖️</div>
+                    <div class="suit-info"><span class="suit-name">Balanced Funds</span><span class="suit-meta">Moderate Risk · 8–14% Returns</span></div>
+                  </div>
+                  <div class="suitable-item">
+                    <div class="suit-icon orange-bg">🪙</div>
+                    <div class="suit-info"><span class="suit-name">Gold ETFs</span><span class="suit-meta">Low Risk · 8–10% Returns</span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
           </div>
-
-          <!-- RIGHT: About You + Suitable Investments -->
-          <div class="right-info-col">
-            <!-- About You -->
-            <div class="glass-card reveal reveal--delay-1">
-              <h3 class="card-heading">About You</h3>
-              <div class="about-text">
-                <p>You are a <strong>balanced investor</strong>. You prefer stability with moderate returns.</p>
-                <p>Your income and savings behaviour indicate <strong>consistent financial discipline</strong>.</p>
-                <p>AI recommends investments that balance growth potential with capital preservation.</p>
-              </div>
-            </div>
-
-            <!-- Suitable Investments -->
-            <div class="glass-card reveal reveal--delay-2">
-              <h3 class="card-heading">Suitable For</h3>
-              <div class="suitable-list">
-                <div class="suitable-item">
-                  <div class="suit-icon green-bg">📈</div>
-                  <div class="suit-info"><span class="suit-name">Index Funds</span><span class="suit-meta">Low Risk · 10–12% Returns</span></div>
-                </div>
-                <div class="suitable-item">
-                  <div class="suit-icon blue-bg">🏦</div>
-                  <div class="suit-info"><span class="suit-name">Debt Funds</span><span class="suit-meta">Low Risk · 6–8% Returns</span></div>
-                </div>
-                <div class="suitable-item">
-                  <div class="suit-icon purple-bg">⚖️</div>
-                  <div class="suit-info"><span class="suit-name">Balanced Funds</span><span class="suit-meta">Moderate Risk · 8–14% Returns</span></div>
-                </div>
-                <div class="suitable-item">
-                  <div class="suit-icon orange-bg">🪙</div>
-                  <div class="suit-info"><span class="suit-name">Gold ETFs</span><span class="suit-meta">Low Risk · 8–10% Returns</span></div>
-                </div>
-                <div class="suitable-item">
-                  <div class="suit-icon cyan-bg">💧</div>
-                  <div class="suit-info"><span class="suit-name">Liquid Funds</span><span class="suit-meta">Very Low Risk · 4–6% Returns</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </section>
 
         <!-- ROW 2: RISK BREAKDOWN METRICS -->
