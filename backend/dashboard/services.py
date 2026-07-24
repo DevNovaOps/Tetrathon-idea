@@ -4,6 +4,7 @@ from decimal import Decimal
 
 from django.utils import timezone
 from onboarding.models import UserProfile
+from credit_score.services import CreditScoreService
 from .constants import DEFAULT_EXPENSE_DISTRIBUTION
 
 
@@ -80,22 +81,24 @@ class DashboardAnalyticsService:
         savings_rate = round((cash_flow / income) * 100) if income > 0 else 0
         expense_ratio = round((expenses / income) * 100) if income > 0 else 0
 
-        # Health score simple heuristic
-        health_score = 50
-        if savings_rate >= 20: health_score += 20
-        if self.profile.emergency_fund and "Yes" in self.profile.emergency_fund: health_score += 15
-        if self.profile.monthly_investment_budget and self.profile.monthly_investment_budget > 0: health_score += 15
+        # Get real credit score from CreditScore module
+        # If it hasn't been calculated yet, this will calculate and save it.
+        try:
+            cs_data = CreditScoreService.get_or_calculate_credit_profile(self.user)
+            health_score = cs_data.get('score', 0)
+        except ValueError:
+            health_score = 0
 
         # Readiness
         readiness = 40
-        if health_score > 70: readiness += 40
+        if health_score > 650: readiness += 40
         if self.profile.investment_experience and "Intermediate" in self.profile.investment_experience: readiness += 20
 
         return {
             "savings_rate": savings_rate,
             "expense_ratio": expense_ratio,
             "monthly_cash_flow": self._format_currency(cash_flow),
-            "financial_health_score": min(health_score, 100),
+            "financial_health_score": health_score,
             "profile_completion": self._calculate_profile_completion(),
             "investment_readiness_score": min(readiness, 100),
             "goal_progress": 45,  # Dummy value for UI
