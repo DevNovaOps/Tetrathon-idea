@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finora — Notifications</title>
+  <meta name="description" content="Stay informed with personalized financial alerts and AI recommendations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="notifications.css" />
+</head>
+<body>
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--3" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <div class="dashboard-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../01-landing-page/index.html" class="brand-logo"><div class="brand-icon"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="8" fill="url(#bGrad)"/><path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/><defs><linearGradient id="bGrad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs></svg></div><span class="brand-name">Finora</span></a></div>
+      <nav class="sidebar-nav"><ul class="nav-list">
+        <li><a href="../04-dashboard/dashboard.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Dashboard</span></a></li>
+        <li><a href="../05-credit-score/credit-score.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Credit Score</span></a></li>
+        <li><a href="../06-improve-score/improve-score.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg><span>Improve Score</span></a></li>
+        <li><a href="../07-ai-assistant/ai-assistant.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/></svg><span>AI Assistant</span></a></li>
+        <li><a href="../08-risk-profile/risk-profile.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span>Risk Profile</span></a></li>
+        <li><a href="../09-investment/investment.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Investments</span></a></li>
+        <li><a href="../10-growth-simulator/growth-simulator.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Simulator</span></a></li>
+        <li><a href="../11-reports/reports.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Reports</span></a></li>
+        <li><a href="#" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Learn</span></a></li>
+        <li><a href="#" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>Achievements</span></a></li>
+        <li><a href="#" class="nav-link active"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Notifications</span></a></li>
+        <li><a href="#" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></a></li>
+        <li><a href="#" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Settings</span></a></li>
+      </ul></nav>
+      <div class="sidebar-user"><div class="user-avatar-small"><span>D</span></div><div class="user-info-small"><span class="user-name-small">Dev</span><span class="user-tier-small">Pro AI Plan</span></div></div>
+    </aside>
+
+    <main class="main-content">
+      <!-- TOP NAV -->
+      <header class="top-nav">
+        <div class="greeting-area">
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+          <div><h1 class="welcome-title">Notifications</h1><p class="welcome-subtitle">Stay informed with personalized financial alerts and AI recommendations.</p></div>
+        </div>
+        <div class="nav-actions-right">
+          <button class="icon-btn" id="themeToggle" aria-label="Toggle Theme"><svg class="ti ti--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="ti ti--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+          <button class="icon-btn" aria-label="Notifications"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="bell-badge"></span></button>
+          <div class="user-profile-btn"><div class="profile-avatar-circle"><span>D</span></div><span class="profile-username">Dev</span></div>
+        </div>
+      </header>
+
+      <div class="page-body">
+
+        <!-- FILTER CHIPS -->
+        <div class="filter-bar reveal">
+          <button class="chip active">All</button>
+          <button class="chip">Unread <span class="chip-count">5</span></button>
+          <button class="chip">Bills</button>
+          <button class="chip">Investments</button>
+          <button class="chip">Credit Score</button>
+          <button class="chip">Security</button>
+          <button class="chip">Education</button>
+          <button class="chip">AI Insights</button>
+        </div>
+
+        <!-- 2-COLUMN LAYOUT: NOTIF LIST + STATS PANEL -->
+        <div class="notif-layout">
+
+          <!-- LEFT: NOTIFICATION LIST -->
+          <div class="notif-list-col">
+
+            <!-- TODAY GROUP -->
+            <div class="notif-group reveal">
+              <h3 class="group-label">Today</h3>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon green-bg">⚡</div>
+                <div class="notif-body">
+                  <h4>Electricity Bill Paid Successfully</h4>
+                  <p>Your electricity bill of ₹1,250 has been paid on time.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">Just Now</span><span class="notif-badge badge--green">Success</span></div>
+              </div>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon blue-bg">💰</div>
+                <div class="notif-body">
+                  <h4>Salary Credited — ₹50,000 Added</h4>
+                  <p>Your monthly salary has been deposited to your primary account.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">30 min ago</span></div>
+              </div>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon purple-bg">🛡️</div>
+                <div class="notif-body">
+                  <h4>Credit Score Updated — 730</h4>
+                  <p>Your credit score increased by +18 points this month. Great job!</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">1 hr ago</span><span class="notif-badge badge--purple">Credit</span></div>
+              </div>
+            </div>
+
+            <!-- THIS WEEK GROUP -->
+            <div class="notif-group reveal reveal--d1">
+              <h3 class="group-label">This Week</h3>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon orange-bg">🧠</div>
+                <div class="notif-body">
+                  <h4>AI Recommendation</h4>
+                  <p>Increase your monthly SIP by ₹500 to improve 5-year returns by 28%.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">2 days ago</span><span class="notif-badge badge--orange">Priority</span></div>
+              </div>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon blue-bg">📊</div>
+                <div class="notif-body">
+                  <h4>Investment Reminder</h4>
+                  <p>Your monthly SIP of ₹2,000 is due tomorrow. Ensure sufficient balance.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">3 days ago</span></div>
+              </div>
+
+              <div class="notif-card glass-card">
+                <div class="notif-icon cyan-bg">🛟</div>
+                <div class="notif-body">
+                  <h4>Emergency Fund Reminder</h4>
+                  <p>Maintain at least 6 months of expenses in your emergency fund.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">4 days ago</span></div>
+              </div>
+
+              <div class="notif-card glass-card">
+                <div class="notif-icon green-bg">📈</div>
+                <div class="notif-body">
+                  <h4>Weekly Financial Summary</h4>
+                  <p>Your savings improved by 8% this week. Keep up the momentum!</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">5 days ago</span></div>
+              </div>
+            </div>
+
+            <!-- OLDER GROUP -->
+            <div class="notif-group reveal reveal--d2">
+              <h3 class="group-label">Older</h3>
+
+              <div class="notif-card glass-card">
+                <div class="notif-icon purple-bg">🏆</div>
+                <div class="notif-body"><h4>Portfolio Milestone Reached</h4><p>Your investment portfolio crossed ₹1,00,000 for the first time!</p></div>
+                <div class="notif-meta"><span class="notif-time">1 week ago</span></div>
+              </div>
+              <div class="notif-card glass-card">
+                <div class="notif-icon blue-bg">📄</div>
+                <div class="notif-body"><h4>Financial Report Generated</h4><p>Your April 2024 financial report is ready to download.</p></div>
+                <div class="notif-meta"><span class="notif-time">2 weeks ago</span></div>
+              </div>
+              <div class="notif-card glass-card">
+                <div class="notif-icon green-bg">📚</div>
+                <div class="notif-body"><h4>New Educational Article</h4><p>"How to Build an Emergency Fund in 6 Months" is now available.</p></div>
+                <div class="notif-meta"><span class="notif-time">2 weeks ago</span></div>
+              </div>
+              <div class="notif-card glass-card">
+                <div class="notif-icon orange-bg">👤</div>
+                <div class="notif-body"><h4>Profile Updated Successfully</h4><p>Your contact details and investment preferences have been updated.</p></div>
+                <div class="notif-meta"><span class="notif-time">3 weeks ago</span></div>
+              </div>
+              <div class="notif-card glass-card">
+                <div class="notif-icon cyan-bg">✅</div>
+                <div class="notif-body"><h4>Risk Assessment Completed</h4><p>Your risk profile has been analyzed. View your results in Risk Profile.</p></div>
+                <div class="notif-meta"><span class="notif-time">1 month ago</span></div>
+              </div>
+            </div>
+
+            <!-- VIEW ALL CTA -->
+            <div class="view-all-cta reveal reveal--d3">
+              <button class="btn btn-outline btn-full">View All Notifications</button>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: STATS + QUICK ACTIONS -->
+          <div class="stats-col">
+
+            <div class="glass-card stats-card reveal">
+              <h3 class="card-heading" style="margin-bottom:16px;">Notification Stats</h3>
+              <div class="stat-list">
+                <div class="stat-row"><span class="stat-label">Unread</span><span class="stat-val" style="color:#EF4444;">5</span></div>
+                <div class="stat-row"><span class="stat-label">Today's Alerts</span><span class="stat-val">3</span></div>
+                <div class="stat-row"><span class="stat-label">This Week</span><span class="stat-val">8</span></div>
+                <div class="stat-row"><span class="stat-label">AI Recommendations</span><span class="stat-val blue-text">6</span></div>
+                <div class="stat-row"><span class="stat-label">Security Alerts</span><span class="stat-val green-text">0</span></div>
+              </div>
+            </div>
+
+            <div class="glass-card actions-card reveal reveal--d1">
+              <h3 class="card-heading" style="margin-bottom:14px;">Quick Actions</h3>
+              <div class="qa-list">
+                <button class="qa-btn"><span class="qa-icon">✓</span> Mark All as Read</button>
+                <button class="qa-btn"><span class="qa-icon">📥</span> Download History</button>
+                <button class="qa-btn"><span class="qa-icon">⚙️</span> Manage Preferences</button>
+                <button class="qa-btn"><span class="qa-icon">🧠</span> View AI Recommendations</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="notifications.js"></script>
+</body>
+</html>
