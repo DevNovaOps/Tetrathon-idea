@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finora — Financial Reports</title>
+  <meta name="description" content="Track your financial performance with AI-powered analytics and detailed reports." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="reports.css" />
+</head>
+<body>
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--3" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <div class="dashboard-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../01-landing-page/index.html" class="brand-logo"><div class="brand-icon"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="8" fill="url(#bGrad)"/><path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/><defs><linearGradient id="bGrad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs></svg></div><span class="brand-name">Finora</span></a></div>
+      <nav class="sidebar-nav"><ul class="nav-list">
+        <li><a href="../04-dashboard/dashboard.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Dashboard</span></a></li>
+        <li><a href="../05-credit-score/credit-score.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Credit Score</span></a></li>
+        <li><a href="../06-improve-score/improve-score.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg><span>Improve Score</span></a></li>
+        <li><a href="../07-ai-assistant/ai-assistant.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/></svg><span>AI Assistant</span></a></li>
+        <li><a href="../08-risk-profile/risk-profile.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span>Risk Profile</span></a></li>
+        <li><a href="../09-investment/investment.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Investments</span></a></li>
+        <li><a href="../10-growth-simulator/growth-simulator.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Simulator</span></a></li>
+        <li><a href="#" class="nav-link active"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Reports</span></a></li>
+        <li><a href="#" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Learn</span></a></li>
+        <li><a href="#" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>Achievements</span></a></li>
+        <li><a href="../12-notifications/notifications.html" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Notifications</span></a></li>
+        <li><a href="#" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></a></li>
+        <li><a href="#" class="nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Settings</span></a></li>
+      </ul></nav>
+      <div class="sidebar-user"><div class="user-avatar-small"><span>D</span></div><div class="user-info-small"><span class="user-name-small">Dev</span><span class="user-tier-small">Pro AI Plan</span></div></div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+      <!-- TOP NAV -->
+      <header class="top-nav">
+        <div class="greeting-area">
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+          <div><h1 class="welcome-title">Financial Reports</h1><p class="welcome-subtitle">Track your financial performance with AI-powered analytics and detailed reports.</p></div>
+        </div>
+        <div class="nav-actions-right">
+          <div class="month-selector"><span>May 2024</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <button class="icon-btn" id="themeToggle" aria-label="Toggle Theme"><svg class="ti ti--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="ti ti--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+          <button class="icon-btn" aria-label="Notifications"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="bell-badge"></span></button>
+          <div class="user-profile-btn"><div class="profile-avatar-circle"><span>D</span></div><span class="profile-username">Dev</span></div>
+        </div>
+      </header>
+
+      <div class="page-body">
+
+        <!-- ROW 1: TOP SUMMARY (4 cards matching reference image 11) -->
+        <section class="top-summary-row">
+          <div class="top-sum-card glass-card reveal">
+            <span class="ts-badge blue-bg">💰</span>
+            <span class="ts-label">Total Income</span>
+            <span class="ts-val">₹62,000</span>
+          </div>
+          <div class="top-sum-card glass-card reveal reveal--d1">
+            <span class="ts-badge red-bg">📉</span>
+            <span class="ts-label">Total Expenses</span>
+            <span class="ts-val">₹38,500</span>
+          </div>
+          <div class="top-sum-card glass-card reveal reveal--d2">
+            <span class="ts-badge green-bg">🏦</span>
+            <span class="ts-label">Total Savings</span>
+            <span class="ts-val">₹23,500</span>
+          </div>
+          <div class="top-sum-card glass-card reveal reveal--d3">
+            <span class="ts-badge purple-bg">📊</span>
+            <span class="ts-label">Investments</span>
+            <span class="ts-val">₹10,000</span>
+          </div>
+        </section>
+
+        <!-- ROW 2: MONTHLY BAR CHART (matching reference 11) -->
+        <section class="chart-section glass-card reveal">
+          <div class="chart-header">
+            <div><h2 class="card-heading">Monthly Financial Overview</h2><p class="card-sub">Income vs Expenses vs Savings</p></div>
+            <div class="chart-legend-inline">
+              <span class="cl-item"><span class="cl-dot" style="background:#6366F1"></span>Income</span>
+              <span class="cl-item"><span class="cl-dot" style="background:#EF4444"></span>Expense</span>
+              <span class="cl-item"><span class="cl-dot" style="background:#10B981"></span>Savings</span>
+            </div>
+          </div>
+          <div class="bar-chart-box"><canvas id="monthlyBarChart"></canvas></div>
+        </section>
+
+        <!-- ROW 3: EXPENSE DONUT + PERFORMANCE METRICS -->
+        <section class="mid-grid">
+          <div class="glass-card reveal">
+            <h3 class="card-heading">Expense Breakdown</h3>
+            <p class="card-sub" style="margin-bottom:14px;">Category-wise analysis</p>
+            <div class="donut-box"><canvas id="expenseDonutChart"></canvas></div>
+          </div>
+
+          <div class="perf-col">
+            <h3 class="card-heading reveal" style="margin-bottom:14px;">Monthly Performance</h3>
+            <div class="perf-grid">
+              <div class="perf-card glass-card reveal reveal--d1"><span class="perf-emoji green-bg">📈</span><span class="perf-label">Savings Rate</span><span class="perf-val green-text">24%</span></div>
+              <div class="perf-card glass-card reveal reveal--d2"><span class="perf-emoji blue-bg">📊</span><span class="perf-label">Investment Growth</span><span class="perf-val blue-text">+12%</span></div>
+              <div class="perf-card glass-card reveal reveal--d3"><span class="perf-emoji purple-bg">🛡️</span><span class="perf-label">Credit Score Δ</span><span class="perf-val purple-text">+18 pts</span></div>
+              <div class="perf-card glass-card reveal reveal--d4"><span class="perf-emoji orange-bg">📉</span><span class="perf-label">Expense Reduction</span><span class="perf-val orange-text">-6%</span></div>
+              <div class="perf-card glass-card reveal reveal--d5"><span class="perf-emoji cyan-bg">🛟</span><span class="perf-label">Emergency Fund</span><span class="perf-val cyan-text">4 Months</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ROW 4: AI FINANCIAL INSIGHTS -->
+        <section class="insights-section">
+          <div class="section-title-row reveal"><div class="title-with-badge"><span>🧠</span><h2 class="section-heading">AI Financial Insights</h2></div></div>
+          <div class="insights-grid">
+            <div class="ins-card glass-card reveal"><div class="ins-icon green-bg">✓</div><div class="ins-body"><h4>Your savings have improved over the past 3 months.</h4><p>Consistent monthly savings of ₹18,000+ shows strong financial discipline.</p></div></div>
+            <div class="ins-card glass-card reveal reveal--d1"><div class="ins-icon orange-bg">⚠</div><div class="ins-body"><h4>Shopping expenses remain slightly above average.</h4><p>Consider setting a ₹5,000 monthly cap on discretionary shopping.</p></div></div>
+            <div class="ins-card glass-card reveal reveal--d2"><div class="ins-icon blue-bg">📈</div><div class="ins-body"><h4>Your investment consistency is excellent.</h4><p>Regular SIP of ₹2,000/month has compounded to ₹10,000 portfolio value.</p></div></div>
+            <div class="ins-card glass-card reveal reveal--d3"><div class="ins-icon purple-bg">💳</div><div class="ins-body"><h4>Continue maintaining timely bill payments.</h4><p>Your on-time payment streak of 18 months directly boosts credit score.</p></div></div>
+          </div>
+        </section>
+
+        <!-- ROW 5: DOWNLOAD REPORTS -->
+        <section class="download-section">
+          <h2 class="section-heading reveal" style="margin-bottom:16px;">Download Reports</h2>
+          <div class="download-grid">
+            <div class="dl-card glass-card reveal"><span class="dl-icon blue-bg">📄</span><h4>Monthly Report</h4><p>May 2024 summary</p><button class="btn btn-outline btn-sm">Download PDF</button></div>
+            <div class="dl-card glass-card reveal reveal--d1"><span class="dl-icon green-bg">📊</span><h4>Quarterly Report</h4><p>Q2 2024 breakdown</p><button class="btn btn-outline btn-sm">Download PDF</button></div>
+            <div class="dl-card glass-card reveal reveal--d2"><span class="dl-icon purple-bg">📋</span><h4>Annual Report</h4><p>FY 2023-24</p><button class="btn btn-outline btn-sm">Download PDF</button></div>
+            <div class="dl-card glass-card reveal reveal--d3"><span class="dl-icon orange-bg">💼</span><h4>Investment Summary</h4><p>Portfolio details</p><button class="btn btn-outline btn-sm">Download PDF</button></div>
+            <div class="dl-card glass-card reveal reveal--d4"><span class="dl-icon cyan-bg">🛡️</span><h4>Credit Report</h4><p>Score history</p><button class="btn btn-outline btn-sm">Download PDF</button></div>
+            <div class="dl-card glass-card reveal reveal--d5"><span class="dl-icon emerald-bg">❤️</span><h4>Financial Health</h4><p>Overall analysis</p><button class="btn btn-outline btn-sm">Download PDF</button></div>
+          </div>
+        </section>
+
+        <!-- ROW 6: FINANCIAL HEALTH SCORE -->
+        <section class="health-score-section reveal">
+          <div class="health-card glass-card">
+            <h3 class="card-heading" style="text-align:center;margin-bottom:16px;">Financial Health Score</h3>
+            <div class="health-ring-wrap">
+              <svg class="health-ring-svg" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="var(--gauge-track)" stroke-width="10"/>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="url(#healthGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 327" id="healthArc" transform="rotate(-90 60 60)"/>
+                <defs><linearGradient id="healthGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#6366F1"/></linearGradient></defs>
+              </svg>
+              <div class="health-ring-center"><span class="health-score-big" id="healthScoreText">0</span><span class="health-score-sub">/ 100</span></div>
+            </div>
+            <p class="health-verdict green-text">Excellent Financial Health</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+  <script src="reports.js"></script>
+</body>
+</html>
