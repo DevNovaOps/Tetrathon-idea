@@ -36,6 +36,9 @@ urlpatterns = [
     # API — Investment
     path('api/investment/', include('investment.urls')),
 
+    # API — Simulator
+    path('api/simulator/', include('growth_simulator.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 

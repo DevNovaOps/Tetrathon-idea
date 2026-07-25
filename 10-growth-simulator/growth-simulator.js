@@ -9,7 +9,7 @@
   const themeToggle = document.getElementById('themeToggle');
   const mobileToggle = document.getElementById('mobileToggle');
   const sidebar = document.getElementById('sidebar');
-  const revealEls = document.querySelectorAll('.reveal');
+  function getRevealEls() { return document.querySelectorAll('.reveal'); }
 
   const monthlySlider = document.getElementById('monthlySlider');
   const monthlyValText = document.getElementById('monthlyValText');
@@ -42,48 +42,70 @@
   /* ---- REVEAL ON SCROLL ---- */
   function checkReveals() {
     const trigger = window.innerHeight * 0.92;
-    revealEls.forEach(el => { if (el.getBoundingClientRect().top < trigger) el.classList.add('visible'); });
+    getRevealEls().forEach(el => { if (el.getBoundingClientRect().top < trigger) el.classList.add('visible'); });
   }
   window.addEventListener('scroll', checkReveals, { passive: true });
   window.addEventListener('load', checkReveals);
   setTimeout(checkReveals, 100);
 
-  /* ---- INTERACTIVE CONTROLS ---- */
-  let monthlyInvestment = 2000;
-  let years = 5;
-  let scenario = 'moderate'; // conservative, moderate, aggressive
+  /* ---- INTERACTIVE CONTROLS & API ---- */
+  let monthlyInvestment = null;
+  let years = null;
+  let scenario = null; // conservative, moderate, aggressive
+
+  let debounceTimer = null;
+  let currentAbortController = null;
 
   function formatRupees(num) {
     return '₹' + num.toLocaleString('en-IN');
   }
 
-  function updateCalculations() {
-    const totalMonths = years * 12;
-    const totalInvested = monthlyInvestment * totalMonths;
+  async function fetchSimulationData() {
+    // Abort previous request to prevent race conditions
+    if (currentAbortController) {
+      currentAbortController.abort();
+    }
+    currentAbortController = new AbortController();
 
-    let rate = 0.12;
-    if (scenario === 'conservative') rate = 0.08;
-    if (scenario === 'aggressive') rate = 0.16;
+    try {
+      // Build query string based on current user selections
+      const params = new URLSearchParams();
+      if (monthlyInvestment) params.append('sip', monthlyInvestment);
+      if (years) params.append('years', years);
+      if (scenario) params.append('scenario', scenario);
 
-    // Monthly compounding SIP formula: FV = P * [((1 + i)^n - 1) / i] * (1 + i)
-    const i = rate / 12;
-    const fv = monthlyInvestment * (((Math.pow(1 + i, totalMonths) - 1) / i) * (1 + i));
-    const returns = Math.max(0, fv - totalInvested);
+      const url = `http://127.0.0.1:8000/api/simulator/project/?${params.toString()}`;
+      
+      const res = await fetch(url, {
+        credentials: 'include',
+        signal: currentAbortController.signal
+      });
 
-    if (monthlyValText) monthlyValText.textContent = formatRupees(monthlyInvestment);
-    if (periodValText) periodValText.textContent = years + (years === 1 ? ' Year' : ' Years');
+      if (!res.ok) throw new Error("Failed to fetch simulator data");
+      const data = await res.json();
+      populateUI(data);
 
-    if (totalInvestedText) totalInvestedText.textContent = formatRupees(Math.round(totalInvested));
-    if (estReturnsText) estReturnsText.textContent = formatRupees(Math.round(returns));
-    if (futureValueText) futureValueText.textContent = formatRupees(Math.round(fv));
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        console.log("Fetch aborted due to newer request");
+      } else {
+        console.error(err);
+      }
+    }
+  }
 
-    updateChartData();
+  function triggerUpdate() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      fetchSimulationData();
+    }, 300); // 300ms debounce
   }
 
   if (monthlySlider) {
     monthlySlider.addEventListener('input', e => {
       monthlyInvestment = parseInt(e.target.value, 10);
-      updateCalculations();
+      if (monthlyValText) monthlyValText.textContent = formatRupees(monthlyInvestment);
+      triggerUpdate();
     });
   }
 
@@ -92,7 +114,7 @@
       periodPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       years = parseInt(pill.getAttribute('data-years'), 10);
-      updateCalculations();
+      triggerUpdate();
     });
   });
 
@@ -101,7 +123,7 @@
       scenarioTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       scenario = tab.getAttribute('data-scenario');
-      updateCalculations();
+      triggerUpdate();
     });
   });
 
@@ -194,27 +216,178 @@
     });
   }
 
-  function updateChartData() {
-    if (!growthChart) return;
+  function populateUI(data) {
+    // Initialize component state variables to backend defaults if null
+    monthlyInvestment = data.summary_metrics.monthly_sip;
+    years = data.summary_metrics.horizon_years;
+    scenario = data.active_scenario;
 
-    // Dynamically compute 5-year data points for all 3 scenarios
-    const yearsArr = [1, 2, 3, 4, 5];
-    const labels = yearsArr.map(y => 'Year ' + y);
+    // 1. Controls
+    if (monthlySlider) monthlySlider.value = monthlyInvestment;
+    if (monthlyValText) monthlyValText.textContent = formatRupees(monthlyInvestment);
+    if (periodValText) periodValText.textContent = years + (years === 1 ? ' Year' : ' Years');
 
-    const calcDataset = (rate) => {
-      const i = rate / 12;
-      return yearsArr.map(yr => {
-        const n = yr * 12;
-        const fv = monthlyInvestment * (((Math.pow(1 + i, n) - 1) / i) * (1 + i));
-        return Math.round(fv);
+    // Expected Return Display
+    const exReturn = document.querySelector('.strategy-info-row .ctrl-val-med.green-text');
+    if (exReturn) exReturn.textContent = data.summary_metrics.expected_cagr + " p.a.";
+    
+    // Sync Scenario Tabs
+    scenarioTabs.forEach(t => {
+      if(t.getAttribute('data-scenario') === scenario) t.classList.add('active');
+      else t.classList.remove('active');
+    });
+
+    // Sync Pills
+    periodPills.forEach(p => {
+      if(parseInt(p.getAttribute('data-years'), 10) === years) p.classList.add('active');
+      else p.classList.remove('active');
+    });
+
+    // 2. Summary Metrics
+    if (totalInvestedText) totalInvestedText.textContent = formatRupees(data.summary_metrics.total_invested);
+    if (estReturnsText) estReturnsText.textContent = formatRupees(data.summary_metrics.estimated_returns);
+    if (futureValueText) futureValueText.textContent = formatRupees(data.summary_metrics.future_value);
+
+    // 3. Scenario Cards
+    const scenGrid = document.querySelector('.scenario-grid');
+    if (scenGrid && data.scenarios) {
+      scenGrid.innerHTML = '';
+      data.scenarios.forEach((scen, idx) => {
+        const isActive = scen.id === scenario ? 'active-scen-card' : '';
+        scenGrid.innerHTML += `
+          <div class="scen-card glass-card ${isActive} reveal reveal--delay-${idx}">
+            <div class="scen-header">
+              <span class="scen-icon ${scen.color}-bg">${scen.icon}</span>
+              <span class="badge badge--${scen.color}">${scen.cagr}% Returns</span>
+            </div>
+            <h3 class="scen-title">${scen.name}</h3>
+            <p class="scen-desc">${scen.desc}</p>
+            <div class="scen-value-wrap">
+              <span class="scen-lbl">${years}-Year Portfolio</span>
+              <span class="scen-val ${scen.color}-text">${formatRupees(scen.future_value)}</span>
+            </div>
+          </div>
+        `;
       });
-    };
+    }
 
-    growthChart.data.labels = labels;
-    growthChart.data.datasets[0].data = calcDataset(0.16); // Aggressive
-    growthChart.data.datasets[1].data = calcDataset(0.12); // Moderate
-    growthChart.data.datasets[2].data = calcDataset(0.08); // Conservative
-    growthChart.update();
+    // 4. Update Chart.js Data
+    if (growthChart && data.chart_data) {
+      growthChart.data.labels = data.chart_data.labels;
+      
+      const theme = html.getAttribute('data-theme') || 'dark';
+      const isDark = theme === 'dark';
+
+      // Rebuild datasets
+      const colors = {
+        'aggressive': { border: '#A855F7', bg: 'rgba(168,85,247,0.08)' },
+        'moderate': { border: '#6366F1', bg: 'rgba(99,102,241,0.12)' },
+        'conservative': { border: '#F97316', bg: 'rgba(249,115,22,0.05)' }
+      };
+
+      growthChart.data.datasets = data.chart_data.datasets.map(ds => {
+        const c = colors[ds.id] || colors['moderate'];
+        return {
+          label: ds.label,
+          data: ds.data,
+          borderColor: c.border,
+          backgroundColor: c.bg,
+          fill: true,
+          tension: 0.4,
+          borderWidth: 3,
+          pointRadius: 4,
+          pointBackgroundColor: c.border
+        };
+      });
+      growthChart.update();
+    }
+
+    // 5. Goal Tracker
+    const goalBox = document.querySelector('.goal-box');
+    if (goalBox && data.goal_tracker) {
+      const g = data.goal_tracker;
+      const statusBadge = document.querySelector('.insights-goal-grid .badge');
+      if (statusBadge) {
+        statusBadge.textContent = g.status;
+        statusBadge.className = 'badge ' + (g.progress_pct >= 100 ? 'badge--green' : (g.progress_pct >= 80 ? 'badge--blue' : 'badge--orange'));
+      }
+
+      goalBox.innerHTML = `
+        <div class="goal-header">
+          <span class="goal-emoji">🏠</span>
+          <div>
+            <h4 class="goal-name">${g.name}</h4>
+            <span class="goal-target">Target: ${formatRupees(g.target)}</span>
+          </div>
+        </div>
+        <div class="goal-progress-wrap">
+          <div class="goal-progress-labels">
+            <span>Current: ${formatRupees(g.current)}</span>
+            <span class="green-text">${g.progress_pct}% Progress</span>
+          </div>
+          <div class="goal-track">
+            <div class="goal-fill" style="width: ${Math.min(100, g.progress_pct)}%;"></div>
+          </div>
+        </div>
+        <div class="goal-footer">
+          <span class="goal-time-tag">⏱️ Estimated Completion: <strong>${g.estimated_completion}</strong></span>
+          <span class="goal-status-tag">Status: <strong>${g.status}</strong></span>
+        </div>
+      `;
+    }
+
+    // 6. AI Insights
+    const insList = document.querySelector('.sim-insights-list');
+    if (insList && data.ai_insights) {
+      insList.innerHTML = '';
+      data.ai_insights.forEach(ins => {
+        insList.innerHTML += `
+          <div class="sim-ins-item">
+            <span class="sim-ins-icon ${ins.color}-bg">${ins.icon}</span>
+            <div class="sim-ins-text">
+              <h4>${ins.title}</h4>
+              <p>${ins.desc}</p>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // 7. Timeline Journey
+    const timeline = document.querySelector('.journey-timeline-row');
+    if (timeline && data.timeline) {
+      let timelineHTML = '';
+      data.timeline.forEach((step, idx) => {
+        timelineHTML += `
+          <div class="j-step">
+            <span class="j-icon">${step.icon}</span>
+            <span class="j-name">${step.name}</span>
+            <span class="j-sub">${step.sub}</span>
+          </div>
+        `;
+        if (idx < data.timeline.length - 1) {
+          timelineHTML += `<div class="j-arrow">➔</div>`;
+        }
+      });
+      timeline.innerHTML = timelineHTML;
+    }
+
+    // Educational Disclaimer
+    if (data.educational_disclaimer) {
+      const footer = document.querySelector('.compound-timeline-section');
+      if (footer) {
+        let disc = document.getElementById('apiDisclaimer');
+        if (!disc) {
+          disc = document.createElement('p');
+          disc.id = 'apiDisclaimer';
+          disc.style = 'text-align: center; font-size: 0.8rem; opacity: 0.6; margin-top: 2rem; width: 100%;';
+          footer.parentElement.appendChild(disc);
+        }
+        disc.innerText = data.educational_disclaimer;
+      }
+    }
+
+    checkReveals();
   }
 
   function updateChartTheme(theme) {
@@ -235,7 +408,7 @@
   /* ---- BOOT ---- */
   function boot() {
     initChart();
-    updateCalculations();
+    fetchSimulationData(); // Replaces updateCalculations
   }
 
   document.addEventListener('DOMContentLoaded', boot);

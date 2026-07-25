@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'ai_assistant.apps.AiAssistantConfig',
     'risk_profile.apps.RiskProfileConfig',
     'investment.apps.InvestmentConfig',
+    'growth_simulator.apps.GrowthSimulatorConfig',
 ]
 
 # ---------------------------------------------------------------------------
