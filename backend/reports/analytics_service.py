@@ -16,13 +16,13 @@ class AnalyticsService:
 
         try:
             inv_profile = InvestmentProfile.objects.get(user=user)
-            investment_value = float(inv_profile.current_portfolio_value or 0)
+            investment_value = float(inv_profile.monthly_sip * 12 or 0)
         except InvestmentProfile.DoesNotExist:
             investment_value = 0.0
 
         try:
             risk_profile = RiskProfile.objects.get(user=user)
-            risk_level = risk_profile.risk_level
+            risk_level = risk_profile.risk_bucket
         except RiskProfile.DoesNotExist:
             risk_level = "Unknown"
 

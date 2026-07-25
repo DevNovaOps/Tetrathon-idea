@@ -1,20 +1,30 @@
+import datetime
+
 class HistoryService:
     @staticmethod
-    def get_available_months():
-        # Simulated available months for the dropdown filter
-        return [
-            {"value": "2024-07", "label": "July 2024"},
-            {"value": "2024-06", "label": "June 2024"},
-            {"value": "2024-05", "label": "May 2024"},
-            {"value": "2024-04", "label": "April 2024"}
-        ]
+    def get_available_months(user=None):
+        # Generate the last 12 months up to the current month deterministically
+        months = []
+        today = datetime.date.today()
+        
+        # Determine how far back to go. If user has a join date, we could use that,
+        # but to ensure a good UX we'll always show at least the last 12 months.
+        
+        for i in range(12):
+            m = today.month - i
+            y = today.year
+            while m <= 0:
+                m += 12
+                y -= 1
+            
+            val_str = f"{y}-{m:02d}"
+            label_str = datetime.date(y, m, 1).strftime("%B %Y")
+            
+            months.append({
+                "value": val_str,
+                "label": label_str
+            })
+            
+        return months
 
-class ExportService:
-    @staticmethod
-    def generate_export_link(report_type):
-        # Mock export generation
-        return {
-            "status": "success",
-            "message": f"Export for {report_type} generated successfully.",
-            "url": f"/media/exports/mock_{report_type}.pdf"
-        }
+

@@ -47,5 +47,8 @@ class HistoryView(APIView):
 
 class ExportView(APIView):
     def get(self, request):
+        user = request.user if request.user.is_authenticated else None
         report_type = request.query_params.get("type", "monthly")
-        return Response(ExportService.generate_export_link(report_type))
+        month = request.query_params.get("month")
+        year = request.query_params.get("year")
+        return ExportService.generate_pdf(report_type, user, month, year)

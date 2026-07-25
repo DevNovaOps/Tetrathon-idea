@@ -2,6 +2,7 @@ from .analytics_service import AnalyticsService
 from .chart_service import ChartService
 from .insight_service import InsightService
 from .history_service import HistoryService
+from .financial_health_engine import FinancialHealthEngine
 
 class ReportService:
     @staticmethod
@@ -19,5 +20,6 @@ class ReportService:
                 "expenses": ChartService.get_expense_breakdown(user)
             },
             "insights": InsightService.get_insights(user),
+            "health": FinancialHealthEngine.calculate_health(user),
             "available_months": HistoryService.get_available_months()
         }
