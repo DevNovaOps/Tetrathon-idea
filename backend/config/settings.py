@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'credit_score.apps.CreditScoreConfig',
     'improve_score.apps.ImproveScoreConfig',
+    'ai_assistant',
 ]
 
 # ---------------------------------------------------------------------------
