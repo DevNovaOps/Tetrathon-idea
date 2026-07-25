@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'improve_score.apps.ImproveScoreConfig',
     'ai_assistant.apps.AiAssistantConfig',
     'risk_profile.apps.RiskProfileConfig',
+    'investment.apps.InvestmentConfig',
 ]
 
 # ---------------------------------------------------------------------------

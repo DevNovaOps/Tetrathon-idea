@@ -33,6 +33,9 @@ urlpatterns = [
     # API — Risk Profile
     path('api/risk-profile/', include('risk_profile.urls')),
 
+    # API — Investment
+    path('api/investment/', include('investment.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 
