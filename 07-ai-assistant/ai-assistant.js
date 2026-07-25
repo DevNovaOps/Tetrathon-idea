@@ -120,6 +120,8 @@
     </div>`;
     typingIndicator.insertAdjacentHTML('beforebegin', msgHtml);
     scrollToBottom();
+    // Return the newly inserted message element
+    return typingIndicator.previousElementSibling;
   }
 
   /* ---- STEPPER UPDATE ---- */
@@ -181,7 +183,7 @@
     if (isWaiting || !answer.trim()) return;
     isWaiting = true;
 
-    addUserMessage(answer);
+    const userMsgEl = addUserMessage(answer);
     if (chatInput) chatInput.value = '';
     showTyping();
 
@@ -207,6 +209,18 @@
       if (json.success && json.data) {
         const d = json.data;
         conversationId = d.conversation_id;
+
+        // If the backend parsed and formatted the answer, update the user bubble
+        if (d.formatted_answer && userMsgEl) {
+          const p = userMsgEl.querySelector('p');
+          if (p) p.textContent = d.formatted_answer;
+        }
+
+        if (d.error) {
+          addAIMessage(d.assistant_message, d.chips, false);
+          isWaiting = false;
+          return;
+        }
 
         if (d.step) updateStepper(d.step);
         if (d.summary_items) updateSummaryPanel(d.summary_items);

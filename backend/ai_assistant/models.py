@@ -46,6 +46,7 @@ class AssessmentAnswer(models.Model):
     question_key = models.CharField(max_length=50)
     question = models.CharField(max_length=255)
     answer = models.CharField(max_length=255)
+    numeric_value = models.IntegerField(null=True, blank=True)
     weight = models.FloatField(default=1.0)
     created_at = models.DateTimeField(auto_now_add=True)
 

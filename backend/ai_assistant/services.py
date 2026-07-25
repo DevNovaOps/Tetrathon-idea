@@ -10,6 +10,7 @@ from .conversation_manager import get_question, get_progress, TOTAL_QUESTIONS
 from .risk_engine import RiskEngine
 from .recommendation_engine import RecommendationEngine
 from .prompt_templates import GREETING_PROMPT, QUESTION_TRANSITION_PROMPT, SUMMARY_PROMPT
+from .utils.amount_parser import normalize_amount
 
 logger = logging.getLogger('ai_assistant')
 
@@ -47,6 +48,9 @@ class AssistantService:
         # Get first question
         q = get_question(0)
         question_text = q['question']
+        if q.get('type') == 'amount':
+            question_text += "\n\n*(You can also type any amount)*"
+
         ConversationMessage.objects.create(
             conversation=conversation, role='assistant', content=question_text
         )
@@ -76,9 +80,37 @@ class AssistantService:
             # Already past all questions — return assessment
             return AssistantService._generate_assessment(conversation)
 
-        # Store user message
+        # Process answer based on question type
+        numeric_value = None
+        formatted_answer = answer
+        
+        if current_q.get('type') == 'amount':
+            parsed = normalize_amount(answer)
+            if not parsed:
+                # Invalid amount, reject and prompt again without advancing
+                error_msg = "Please enter a valid amount (e.g., 30000, 30k, 1.5cr, or ₹30,000)."
+                q_text = current_q['question']
+                if current_q.get('type') == 'amount':
+                    q_text += "\n\n*(You can also type any amount)*"
+                    
+                return {
+                    "conversation_id": str(conversation.id),
+                    "completed": False,
+                    "assistant_message": error_msg,
+                    "question": q_text,
+                    "chips": current_q['chips'],
+                    "step": current_step + 1,
+                    "progress": get_progress(current_step),
+                    "error": True,
+                    "formatted_answer": None
+                }
+            
+            numeric_value = parsed['value']
+            formatted_answer = parsed['display']
+
+        # Store user message (using formatted answer if applicable)
         ConversationMessage.objects.create(
-            conversation=conversation, role='user', content=answer
+            conversation=conversation, role='user', content=formatted_answer
         )
 
         # Store assessment answer
@@ -86,7 +118,8 @@ class AssistantService:
             conversation=conversation,
             question_key=current_q['key'],
             question=current_q['question'],
-            answer=answer,
+            answer=formatted_answer,
+            numeric_value=numeric_value,
             weight=current_q['weight'],
         )
 
@@ -98,11 +131,11 @@ class AssistantService:
         # Check if we have more questions
         next_q = get_question(next_step)
         if next_q:
-            # Generate natural transition via Groq
+            # Generate natural transition via Groq using the formatted answer
             try:
                 transition = GroqService.chat(
                     QUESTION_TRANSITION_PROMPT.format(
-                        previous_answer=answer,
+                        previous_answer=formatted_answer,
                         previous_topic=current_q['topic'],
                         next_topic=next_q['topic'],
                     )
@@ -115,18 +148,25 @@ class AssistantService:
                 conversation=conversation, role='assistant', content=transition
             )
 
+            next_q_text = next_q['question']
+            if next_q.get('type') == 'amount':
+                next_q_text += "\n\n*(You can also type any amount)*"
+
             return {
                 "conversation_id": str(conversation.id),
                 "completed": False,
                 "assistant_message": transition,
-                "question": next_q['question'],
+                "question": next_q_text,
                 "chips": next_q['chips'],
                 "step": next_step + 1,
                 "progress": get_progress(next_step),
+                "formatted_answer": formatted_answer
             }
         else:
             # All questions answered — generate assessment
-            return AssistantService._generate_assessment(conversation)
+            result = AssistantService._generate_assessment(conversation)
+            result["formatted_answer"] = formatted_answer
+            return result
 
     @staticmethod
     @transaction.atomic
@@ -257,11 +297,15 @@ class AssistantService:
         for a in conversation.answers.all():
             summary_items.append({"label": a.question.replace("?", "").strip(), "value": a.answer})
 
+        current_q_text = current_q['question'] if current_q else None
+        if current_q and current_q.get('type') == 'amount':
+            current_q_text += "\n\n*(You can also type any amount)*"
+
         return {
             "conversation_id": str(conversation.id),
             "completed": False,
             "messages": messages,
-            "question": current_q['question'] if current_q else None,
+            "question": current_q_text,
             "chips": current_q['chips'] if current_q else [],
             "step": conversation.current_step + 1,
             "progress": get_progress(conversation.current_step),
