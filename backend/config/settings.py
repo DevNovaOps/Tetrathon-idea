@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'onboarding.apps.OnboardingConfig',
     'dashboard.apps.DashboardConfig',
     'credit_score.apps.CreditScoreConfig',
+    'improve_score.apps.ImproveScoreConfig',
 ]
 
 # ---------------------------------------------------------------------------

@@ -24,6 +24,9 @@ urlpatterns = [
     # API — Credit Score
     path('api/credit-score/', include('credit_score.urls')),
 
+    # API — Improve Score
+    path('api/improve-score/', include('improve_score.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 
