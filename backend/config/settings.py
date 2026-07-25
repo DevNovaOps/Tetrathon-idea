@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'risk_profile.apps.RiskProfileConfig',
     'investment.apps.InvestmentConfig',
     'growth_simulator.apps.GrowthSimulatorConfig',
+    'reports.apps.ReportsConfig',
+    'web.apps.WebConfig',
 ]
 
 # ---------------------------------------------------------------------------
@@ -78,7 +80,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [FRONTEND_DIR],
+        'DIRS': [BASE_DIR / 'templates', FRONTEND_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -200,8 +202,8 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 # Redirect URLs after allauth login/signup
-LOGIN_REDIRECT_URL = '/03-onboarding/index.html'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/01-landing-page/index.html'
+LOGIN_REDIRECT_URL = '/onboarding/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 # ---------------------------------------------------------------------------
 # Internationalization
@@ -215,7 +217,7 @@ USE_TZ = True
 # Static Files — serve frontend assets
 # ---------------------------------------------------------------------------
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [FRONTEND_DIR]
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # ---------------------------------------------------------------------------
 # Default primary key field type

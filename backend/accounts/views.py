@@ -7,6 +7,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.urls import reverse
 
 from .serializers import LoginSerializer, RegisterSerializer, UserSerializer
 from .services import authenticate_user, register_user
@@ -43,7 +44,7 @@ class RegisterView(APIView):
                     'message': 'Account created successfully.',
                     'data': {
                         'user': UserSerializer(user).data,
-                        'redirect': '/03-onboarding/index.html',
+                        'redirect': reverse('onboarding'),
                     },
                 },
                 status=status.HTTP_201_CREATED,
@@ -102,9 +103,9 @@ class LoginView(APIView):
 
         # Determine redirect target
         redirect_url = (
-            '/04-dashboard/dashboard.html'
+            reverse('dashboard')
             if user.onboarding_completed
-            else '/03-onboarding/index.html'
+            else reverse('onboarding')
         )
 
         return Response(
@@ -132,7 +133,7 @@ class LogoutView(APIView):
             {
                 'success': True,
                 'message': 'Logged out successfully.',
-                'data': {'redirect': '/01-landing-page/index.html'},
+                'data': {'redirect': reverse('landing')},
             },
             status=status.HTTP_200_OK,
         )

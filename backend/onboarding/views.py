@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.urls import reverse
 
 from .models import UserProfile
 from .serializers import ReviewSerializer, Step1Serializer, Step2Serializer, Step3Serializer
@@ -155,7 +156,7 @@ class FinishView(APIView):
                     'message': 'Onboarding completed successfully! Welcome to Finora.',
                     'data': {
                         'onboarding_completed': profile.onboarding_completed,
-                        'redirect': '/04-dashboard/dashboard.html',
+                        'redirect': reverse('dashboard'),
                     },
                 },
                 status=status.HTTP_200_OK,

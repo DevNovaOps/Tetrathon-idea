@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Improve My Score{% endblock %}
+{% block page_title %}Improve My Score{% endblock %}
+{% block page_subtitle %}A personalized roadmap to build a stronger financial profile.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'improve_score/improve-score.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'improve_score/improve-score.js' %}"></script>
+{% endblock %}
+{% block top_nav_extras %}
+<div class="search-box"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search..." /></div>
+{% endblock %}
+
+{% block content %}
+
+
+      <!-- PAGE BODY -->
+      <div class="page-body">
+
+        <!-- SECTION 1: TOP SCORE ROADMAP HERO (Matching Reference Image 06) -->
+        <section class="roadmap-hero-card glass-card reveal">
+
+          <div class="roadmap-grid">
+
+            <!-- LEFT: Current Score Card -->
+            <div class="score-card current-score-card">
+              <span class="score-card-label">Current Score</span>
+              <div class="score-number-big">730</div>
+              <span class="score-rating-tag green-tag">Excellent</span>
+            </div>
+
+            <!-- CENTER: Step-by-Step Vertical Connected Roadmap -->
+            <div class="roadmap-journey">
+              <div class="journey-step done-step">
+                <div class="step-num-badge">1</div>
+                <div class="step-content">
+                  <span class="step-title">Pay Utility Bills On Time</span>
+                  <span class="step-desc">100% on-time electricity & internet payments.</span>
+                </div>
+                <span class="status-check">✓ Done</span>
+                <span class="arrow-indicator">→</span>
+              </div>
+
+              <div class="journey-connector"></div>
+
+              <div class="journey-step done-step">
+                <div class="step-num-badge">2</div>
+                <div class="step-content">
+                  <span class="step-title">Increase Monthly Savings</span>
+                  <span class="step-desc">Savings rate boosted to 24% of net income.</span>
+                </div>
+                <span class="status-check">✓ Done</span>
+                <span class="arrow-indicator">→</span>
+              </div>
+
+              <div class="journey-connector"></div>
+
+              <div class="journey-step active-step">
+                <div class="step-num-badge active-num">3</div>
+                <div class="step-content">
+                  <span class="step-title">Reduce Credit Utilization</span>
+                  <span class="step-desc">Target bringing utilization from 24% down to 15%.</span>
+                </div>
+                <span class="status-pending">In Progress</span>
+                <span class="arrow-indicator">→</span>
+              </div>
+
+              <div class="journey-connector"></div>
+
+              <div class="journey-step">
+                <div class="step-num-badge">4</div>
+                <div class="step-content">
+                  <span class="step-title">Maintain Consistent Investments</span>
+                  <span class="step-desc">Keep recurring monthly SIPs active for 6 months.</span>
+                </div>
+                <span class="status-pending">Upcoming</span>
+                <span class="arrow-indicator">→</span>
+              </div>
+
+              <div class="journey-connector"></div>
+
+              <div class="journey-step">
+                <div class="step-num-badge">5</div>
+                <div class="step-content">
+                  <span class="step-title">Build Emergency Fund</span>
+                  <span class="step-desc">Expand liquid reserve fund to cover 6 full months.</span>
+                </div>
+                <span class="status-pending">Upcoming</span>
+                <span class="arrow-indicator">→</span>
+              </div>
+            </div>
+
+            <!-- RIGHT: Target Score Card -->
+            <div class="score-card target-score-card">
+              <span class="score-card-label">Target Score</span>
+              <div class="score-number-big glow-text">820</div>
+              <span class="score-rating-tag green-tag">Excellent</span>
+            </div>
+
+          </div>
+
+          <!-- BOTTOM PROGRESS BAR INSIDE HERO -->
+          <div class="progress-bar-container">
+            <div class="progress-bar-header">
+              <span class="progress-label-text">Overall Roadmap Progress</span>
+              <span class="progress-pct-badge">2 / 5 Completed</span>
+            </div>
+            <div class="progress-track-wide">
+              <div class="progress-fill-green" id="roadmapProgressFill" style="width: 40%;"></div>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- SECTION 2: EXPECTED SCORE TRAJECTORY CARDS -->
+        <section class="trajectory-row">
+          <div class="trajectory-card glass-card reveal">
+            <div class="traj-icon">📍</div>
+            <div class="traj-info">
+              <span class="traj-label">Current Score</span>
+              <span class="traj-score">730</span>
+              <span class="traj-sub green-text">Baseline Verified</span>
+            </div>
+          </div>
+
+          <div class="traj-arrow-connector">➔</div>
+
+          <div class="trajectory-card glass-card reveal reveal--delay-1">
+            <div class="traj-icon">📈</div>
+            <div class="traj-info">
+              <span class="traj-label">Estimated 60-Day Score</span>
+              <span class="traj-score blue-text">760</span>
+              <span class="traj-sub">+30 Points Increase</span>
+            </div>
+          </div>
+
+          <div class="traj-arrow-connector">➔</div>
+
+          <div class="trajectory-card glass-card target-glow-card reveal reveal--delay-2">
+            <div class="traj-icon">🏆</div>
+            <div class="traj-info">
+              <span class="traj-label">Target Score Goal</span>
+              <span class="traj-score glow-text">820</span>
+              <span class="traj-sub green-text">+90 Points Total Gain</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- SECTION 3: AI ACTIONABLE RECOMMENDATIONS -->
+        <section class="ai-recommendations-section">
+          <div class="section-title-row reveal">
+            <div class="title-with-badge">
+              <span class="sparkle-icon">🚀</span>
+              <h2 class="section-heading">AI Recommended Action Items</h2>
+            </div>
+            <span class="ai-live-badge"><span class="pulse-dot"></span> Personalized Plan</span>
+          </div>
+
+          <div class="recommendations-grid">
+
+            <div class="rec-card glass-card reveal">
+              <div class="rec-header">
+                <span class="badge badge--green">High Priority</span>
+                <span class="score-boost-badge">+20 Points</span>
+              </div>
+              <h3 class="rec-title">Increase savings by ₹2,000 monthly</h3>
+              <p class="rec-desc">Automate ₹2,000 monthly SIP transfer to Index Funds to boost financial stability signal.</p>
+              <div class="rec-meta">
+                <span class="meta-tag">⚡ Difficulty: <strong>Easy</strong></span>
+                <span class="meta-tag">⏱️ Time: <strong>30 Days</strong></span>
+              </div>
+            </div>
+
+            <div class="rec-card glass-card reveal reveal--delay-1">
+              <div class="rec-header">
+                <span class="badge badge--blue">Medium Priority</span>
+                <span class="score-boost-badge">+15 Points</span>
+              </div>
+              <h3 class="rec-title">Reduce discretionary spending</h3>
+              <p class="rec-desc">Cut non-essential dining and streaming subscriptions by 10% to improve disposable income buffer.</p>
+              <div class="rec-meta">
+                <span class="meta-tag">⚡ Difficulty: <strong>Medium</strong></span>
+                <span class="meta-tag">⏱️ Time: <strong>45 Days</strong></span>
+              </div>
+            </div>
+
+            <div class="rec-card glass-card reveal reveal--delay-2">
+              <div class="rec-header">
+                <span class="badge badge--purple">Critical</span>
+                <span class="score-boost-badge">+25 Points</span>
+              </div>
+              <h3 class="rec-title">Avoid late utility bill payments</h3>
+              <p class="rec-desc">Enable auto-pay for electricity, internet, and water bills to maintain a 100% clean credit history.</p>
+              <div class="rec-meta">
+                <span class="meta-tag">⚡ Difficulty: <strong>Easy</strong></span>
+                <span class="meta-tag">⏱️ Time: <strong>Immediate</strong></span>
+              </div>
+            </div>
+
+            <div class="rec-card glass-card reveal">
+              <div class="rec-header">
+                <span class="badge badge--cyan">Stability</span>
+                <span class="score-boost-badge">+18 Points</span>
+              </div>
+              <h3 class="rec-title">Maintain monthly investments</h3>
+              <p class="rec-desc">Keep recurring mutual fund SIPs active without skipping cycles to demonstrate disciplined habits.</p>
+              <div class="rec-meta">
+                <span class="meta-tag">⚡ Difficulty: <strong>Medium</strong></span>
+                <span class="meta-tag">⏱️ Time: <strong>90 Days</strong></span>
+              </div>
+            </div>
+
+            <div class="rec-card glass-card reveal reveal--delay-1">
+              <div class="rec-header">
+                <span class="badge badge--orange">Security</span>
+                <span class="score-boost-badge">+12 Points</span>
+              </div>
+              <h3 class="rec-title">Build an emergency fund</h3>
+              <p class="rec-desc">Deposit ₹5,000 monthly into high-yield savings to expand emergency liquidity coverage to 6 months.</p>
+              <div class="rec-meta">
+                <span class="meta-tag">⚡ Difficulty: <strong>Medium</strong></span>
+                <span class="meta-tag">⏱️ Time: <strong>6 Months</strong></span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- SECTION 4: MONTHLY ACTION PLAN & SUCCESS METRICS (2 COLUMNS) -->
+        <section class="plan-metrics-grid">
+
+          <!-- Left: Monthly Action Plan -->
+          <div class="glass-card reveal">
+            <h3 class="card-heading" style="margin-bottom:18px;">4-Week Action Plan</h3>
+            <div class="weekly-plan-list">
+              <div class="week-item">
+                <div class="week-badge">Week 1</div>
+                <div class="week-info">
+                  <span class="week-title">Bill Payments & Auto-Pay</span>
+                  <span class="week-desc">Enable automated billing for utility & phone accounts.</span>
+                </div>
+                <span class="badge badge--green">Complete</span>
+              </div>
+
+              <div class="week-item">
+                <div class="week-badge">Week 2</div>
+                <div class="week-info">
+                  <span class="week-title">Savings & Budgeting</span>
+                  <span class="week-desc">Allocate 24% income to high-yield liquid savings.</span>
+                </div>
+                <span class="badge badge--green">Complete</span>
+              </div>
+
+              <div class="week-item">
+                <div class="week-badge week-badge--active">Week 3</div>
+                <div class="week-info">
+                  <span class="week-title">Investments & SIP Sync</span>
+                  <span class="week-desc">Review equity mutual fund allocation and index SIPs.</span>
+                </div>
+                <span class="badge badge--blue">In Progress</span>
+              </div>
+
+              <div class="week-item">
+                <div class="week-badge">Week 4</div>
+                <div class="week-info">
+                  <span class="week-title">Review & Score Sync</span>
+                  <span class="week-desc">Sync credit bureau logs and evaluate score progress.</span>
+                </div>
+                <span class="badge badge--purple">Upcoming</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Success Metrics -->
+          <div class="glass-card reveal reveal--delay-1">
+            <h3 class="card-heading" style="margin-bottom:18px;">Expected Success Metrics</h3>
+            <div class="metrics-list">
+
+              <div class="metric-item">
+                <div class="metric-icon-box green-bg">📈</div>
+                <div class="metric-content">
+                  <span class="metric-name">Expected Credit Improvement</span>
+                  <div class="metric-bar-track"><div class="metric-bar-fill" style="--w:90%; --c:#10B981;"></div></div>
+                </div>
+                <span class="metric-value green-text">+90 Pts</span>
+              </div>
+
+              <div class="metric-item">
+                <div class="metric-icon-box blue-bg">🛡️</div>
+                <div class="metric-content">
+                  <span class="metric-name">Financial Stability Score</span>
+                  <div class="metric-bar-track"><div class="metric-bar-fill" style="--w:92%; --c:#3B82F6;"></div></div>
+                </div>
+                <span class="metric-value blue-text">92 / 100</span>
+              </div>
+
+              <div class="metric-item">
+                <div class="metric-icon-box purple-bg">💎</div>
+                <div class="metric-content">
+                  <span class="metric-name">Investment Readiness</span>
+                  <div class="metric-bar-track"><div class="metric-bar-fill" style="--w:85%; --c:#A855F7;"></div></div>
+                </div>
+                <span class="metric-value purple-text">High</span>
+              </div>
+
+              <div class="metric-item">
+                <div class="metric-icon-box cyan-bg">⚡</div>
+                <div class="metric-content">
+                  <span class="metric-name">Risk Profile Reduction</span>
+                  <div class="metric-bar-track"><div class="metric-bar-fill" style="--w:75%; --c:#06B6D4;"></div></div>
+                </div>
+                <span class="metric-value" style="color:#06B6D4;">-35% Risk</span>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- SECTION 5: MOTIVATION SUCCESS CARD -->
+        <section class="motivation-section reveal">
+          <div class="motivation-card glass-card">
+            <div class="motivation-icon">🌟</div>
+            <div class="motivation-content">
+              <h3 class="motivation-title">You're already doing great, Dev!</h3>
+              <p class="motivation-text">Complete <strong>three more recommendations</strong> on your roadmap to reach your target score of <strong>820</strong> and unlock premium loan rates.</p>
+            </div>
+            <a href="#" class="btn btn-primary btn-motivation">Continue Roadmap →</a>
+          </div>
+        </section>
+
+      </div>
+    
+{% endblock %}

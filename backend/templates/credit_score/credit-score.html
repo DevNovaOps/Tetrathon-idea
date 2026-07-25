@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Your Credit Score{% endblock %}
+{% block page_title %}Your Credit Score{% endblock %}
+{% block page_subtitle %}Understand your financial health with transparent AI-powered insights.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'credit_score/credit-score.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'credit_score/credit-score.js' %}"></script>
+{% endblock %}
+{% block top_nav_extras %}
+<div class="search-box"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search..." /></div>
+{% endblock %}
+
+{% block content %}
+
+
+      <!-- PAGE BODY -->
+      <div class="page-body">
+
+        <!-- ROW 1: Gauge + Score Factors -->
+        <section class="hero-row">
+
+          <!-- LEFT: Credit Score Gauge -->
+          <div class="gauge-card glass-card reveal">
+            <h2 class="card-heading">Your Credit Score</h2>
+            <div class="gauge-wrapper">
+              <svg viewBox="0 0 260 145" class="gauge-svg" id="gaugeSvg">
+                <defs>
+                  <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#EF4444"/>
+                    <stop offset="25%" stop-color="#F97316"/>
+                    <stop offset="50%" stop-color="#EAB308"/>
+                    <stop offset="75%" stop-color="#22C55E"/>
+                    <stop offset="100%" stop-color="#10B981"/>
+                  </linearGradient>
+                </defs>
+                <!-- Track -->
+                <path d="M30 130 A100 100 0 0 1 230 130" fill="none" stroke="var(--gauge-track)" stroke-width="18" stroke-linecap="round"/>
+                <!-- Fill -->
+                <path d="M30 130 A100 100 0 0 1 230 130" fill="none" stroke="url(#gaugeGrad)" stroke-width="18" stroke-linecap="round" id="gaugeArc" stroke-dasharray="0 314"/>
+                <!-- Needle dot -->
+                <circle id="needleDot" cx="130" cy="130" r="6" fill="var(--accent)" opacity="0"/>
+              </svg>
+              <div class="gauge-labels">
+                <span class="gauge-min">300</span>
+                <span class="gauge-max">900</span>
+              </div>
+              <div class="gauge-center">
+                <span class="gauge-score" id="gaugeScore">0</span>
+                <span class="gauge-rating">Excellent</span>
+                <span class="gauge-updated">Updated today</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Score Factors -->
+          <div class="factors-card glass-card reveal reveal--delay-1">
+            <h2 class="card-heading">Score Factors</h2>
+
+            <div class="factors-group">
+              <h4 class="factors-label positive-label">Positive Factors</h4>
+              <div class="factor-item positive">
+                <span class="factor-icon">✓</span>
+                <div class="factor-body">
+                  <span class="factor-name">On-time Utility Bill Payments</span>
+                  <span class="factor-impact badge badge--green">High Impact</span>
+                </div>
+              </div>
+              <div class="factor-item positive">
+                <span class="factor-icon">✓</span>
+                <div class="factor-body">
+                  <span class="factor-name">Low Credit Utilization</span>
+                  <span class="factor-impact badge badge--green">High Impact</span>
+                </div>
+              </div>
+              <div class="factor-item positive">
+                <span class="factor-icon">✓</span>
+                <div class="factor-body">
+                  <span class="factor-name">Good UPI Transactions</span>
+                  <span class="factor-impact badge badge--blue">Medium</span>
+                </div>
+              </div>
+              <div class="factor-item positive">
+                <span class="factor-icon">✓</span>
+                <div class="factor-body">
+                  <span class="factor-name">Consistent Savings</span>
+                  <span class="factor-impact badge badge--blue">Medium</span>
+                </div>
+              </div>
+              <div class="factor-item positive">
+                <span class="factor-icon">✓</span>
+                <div class="factor-body">
+                  <span class="factor-name">Stable Monthly Income</span>
+                  <span class="factor-impact badge badge--cyan">Steady</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="factors-group">
+              <h4 class="factors-label negative-label">Negative Factors</h4>
+              <div class="factor-item negative">
+                <span class="factor-icon">✗</span>
+                <div class="factor-body">
+                  <span class="factor-name">High Shopping Spends</span>
+                  <span class="factor-impact badge badge--orange">Reduce</span>
+                </div>
+              </div>
+              <div class="factor-item negative">
+                <span class="factor-icon">✗</span>
+                <div class="factor-body">
+                  <span class="factor-name">Low Emergency Fund</span>
+                  <span class="factor-impact badge badge--orange">Build Up</span>
+                </div>
+              </div>
+              <div class="factor-item negative">
+                <span class="factor-icon">✗</span>
+                <div class="factor-body">
+                  <span class="factor-name">Short Credit History</span>
+                  <span class="factor-impact badge badge--purple">Time-based</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ROW 2: Quick Insight Cards -->
+        <section class="quick-insights-row">
+          <div class="insight-mini-card glass-card reveal">
+            <div class="mini-icon green-bg">🛡️</div>
+            <div><span class="mini-label">Risk Level</span><span class="mini-val green-text">Low Risk</span></div>
+          </div>
+          <div class="insight-mini-card glass-card reveal reveal--delay-1">
+            <div class="mini-icon blue-bg">⭐</div>
+            <div><span class="mini-label">Score Category</span><span class="mini-val blue-text">Excellent</span></div>
+          </div>
+          <div class="insight-mini-card glass-card reveal reveal--delay-2">
+            <div class="mini-icon purple-bg">💪</div>
+            <div><span class="mini-label">Top Strength</span><span class="mini-val purple-text">Bill Payments</span></div>
+          </div>
+          <div class="insight-mini-card glass-card reveal reveal--delay-3">
+            <div class="mini-icon orange-bg">🎯</div>
+            <div><span class="mini-label">Improvement Opportunity</span><span class="mini-val orange-text">Savings Fund</span></div>
+          </div>
+        </section>
+
+        <!-- ROW 3: Score History + Feature Importance -->
+        <section class="charts-row">
+
+          <!-- Score History Line Chart -->
+          <div class="glass-card reveal">
+            <div class="card-title-row">
+              <div><h3 class="card-heading">Score History</h3><p class="card-sub">Monthly trend over 2026</p></div>
+              <span class="live-badge"><span class="pulse-dot"></span> Live Sync</span>
+            </div>
+            <div class="chart-box" style="height:240px;">
+              <canvas id="scoreHistoryChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Feature Importance -->
+          <div class="glass-card reveal reveal--delay-1">
+            <h3 class="card-heading">Feature Importance</h3>
+            <p class="card-sub" style="margin-bottom:18px;">AI-determined credit factor weights</p>
+            <div class="progress-list">
+              <div class="progress-item"><span class="prog-label">Electricity Bills</span><div class="prog-track"><div class="prog-fill prog-fill--green" style="--w:95%"></div></div><span class="prog-pct">95%</span></div>
+              <div class="progress-item"><span class="prog-label">Credit Utilization</span><div class="prog-track"><div class="prog-fill prog-fill--blue" style="--w:90%"></div></div><span class="prog-pct">90%</span></div>
+              <div class="progress-item"><span class="prog-label">UPI Usage</span><div class="prog-track"><div class="prog-fill prog-fill--indigo" style="--w:88%"></div></div><span class="prog-pct">88%</span></div>
+              <div class="progress-item"><span class="prog-label">Savings</span><div class="prog-track"><div class="prog-fill prog-fill--cyan" style="--w:80%"></div></div><span class="prog-pct">80%</span></div>
+              <div class="progress-item"><span class="prog-label">Monthly Income</span><div class="prog-track"><div class="prog-fill prog-fill--purple" style="--w:75%"></div></div><span class="prog-pct">75%</span></div>
+              <div class="progress-item"><span class="prog-label">Shopping Behaviour</span><div class="prog-track"><div class="prog-fill prog-fill--orange" style="--w:45%"></div></div><span class="prog-pct">45%</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ROW 4: AI Explanation Cards -->
+        <section class="ai-section">
+          <div class="section-title-row reveal">
+            <div class="title-with-badge"><span class="sparkle-icon">🧠</span><h2 class="section-heading">AI Score Explanation</h2></div>
+            <span class="ai-live-badge"><span class="pulse-dot"></span> Neural Analysis</span>
+          </div>
+          <div class="ai-grid">
+            <div class="ai-card glass-card reveal">
+              <div class="ai-card-icon green-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+              <div class="ai-card-body">
+                <h4>Your score increased because utility bills were paid on time.</h4>
+                <p>100% on-time payment record across electricity, water, and internet for 12 consecutive months boosted reliability signals.</p>
+              </div>
+            </div>
+            <div class="ai-card glass-card reveal reveal--delay-1">
+              <div class="ai-card-icon blue-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
+              <div class="ai-card-body">
+                <h4>Your savings behaviour improved significantly.</h4>
+                <p>Monthly savings rate jumped from 18% to 24%, exceeding the 20% benchmark recommended by financial health models.</p>
+              </div>
+            </div>
+            <div class="ai-card glass-card reveal reveal--delay-2">
+              <div class="ai-card-icon orange-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              <div class="ai-card-body">
+                <h4>Reducing unnecessary expenses can increase your score.</h4>
+                <p>Dining out and subscription services account for ₹4,800/month — cutting 30% would add an estimated 15-20 points.</p>
+              </div>
+            </div>
+            <div class="ai-card glass-card reveal reveal--delay-3">
+              <div class="ai-card-icon purple-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div class="ai-card-body">
+                <h4>Maintaining investments may improve long-term stability.</h4>
+                <p>Consistent SIP contributions signal financial discipline to AI scoring models and can add 10-25 points over 6 months.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ROW 5: Credit Score Breakdown -->
+        <section class="breakdown-section">
+          <h2 class="section-heading reveal">Credit Score Breakdown</h2>
+          <div class="breakdown-grid">
+            <div class="breakdown-card glass-card reveal">
+              <div class="bd-icon green-bg">💳</div>
+              <h4 class="bd-title">Payment Behaviour</h4>
+              <div class="bd-bar-track"><div class="bd-bar-fill" style="--w:96%; --c:#10B981;"></div></div>
+              <span class="bd-pct green-text">96%</span>
+              <p class="bd-desc">Near-perfect on-time payment history across all accounts.</p>
+            </div>
+            <div class="breakdown-card glass-card reveal reveal--delay-1">
+              <div class="bd-icon blue-bg">🏦</div>
+              <h4 class="bd-title">Savings Habit</h4>
+              <div class="bd-bar-track"><div class="bd-bar-fill" style="--w:82%; --c:#3B82F6;"></div></div>
+              <span class="bd-pct blue-text">82%</span>
+              <p class="bd-desc">Consistent monthly savings above the recommended 20% threshold.</p>
+            </div>
+            <div class="breakdown-card glass-card reveal reveal--delay-2">
+              <div class="bd-icon purple-bg">📊</div>
+              <h4 class="bd-title">Financial Stability</h4>
+              <div class="bd-bar-track"><div class="bd-bar-fill" style="--w:78%; --c:#A855F7;"></div></div>
+              <span class="bd-pct purple-text">78%</span>
+              <p class="bd-desc">Steady income-to-expense ratio with low debt obligations.</p>
+            </div>
+            <div class="breakdown-card glass-card reveal reveal--delay-3">
+              <div class="bd-icon cyan-bg">📈</div>
+              <h4 class="bd-title">Investment Behaviour</h4>
+              <div class="bd-bar-track"><div class="bd-bar-fill" style="--w:70%; --c:#06B6D4;"></div></div>
+              <span class="bd-pct" style="color:#06B6D4;">70%</span>
+              <p class="bd-desc">Active SIP contributions and diversified portfolio allocation.</p>
+            </div>
+            <div class="breakdown-card glass-card reveal reveal--delay-4">
+              <div class="bd-icon indigo-bg">📱</div>
+              <h4 class="bd-title">UPI Activity</h4>
+              <div class="bd-bar-track"><div class="bd-bar-fill" style="--w:88%; --c:#6366F1;"></div></div>
+              <span class="bd-pct" style="color:#6366F1;">88%</span>
+              <p class="bd-desc">Regular digital transactions demonstrating financial engagement.</p>
+            </div>
+            <div class="breakdown-card glass-card reveal reveal--delay-5">
+              <div class="bd-icon emerald-bg">⚡</div>
+              <h4 class="bd-title">Utility Bills</h4>
+              <div class="bd-bar-track"><div class="bd-bar-fill" style="--w:95%; --c:#059669;"></div></div>
+              <span class="bd-pct green-text">95%</span>
+              <p class="bd-desc">Timely electricity, water, and internet payments every month.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    
+{% endblock %}

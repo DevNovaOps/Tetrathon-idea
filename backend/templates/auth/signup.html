@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finora — Create Your Account</title>
+  <meta name="description" content="Start building a stronger financial future today with Finora AI credit intelligence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'auth/signup.css' %}" />
+</head>
+<body>
+  <!-- BACKGROUND GLOWS & GRID -->
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--3" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <!-- THEME TOGGLE BUTTON -->
+  <button class="theme-toggle-floating" id="themeToggle" aria-label="Toggle Theme">
+    <svg class="ti ti--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="ti ti--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+
+  <!-- MAIN PAGE CONTAINER -->
+  <div class="auth-page-wrapper">
+    <div class="auth-layout">
+
+      <!-- LEFT SIDE: BRANDING & 3D STAGE ILLUSTRATION -->
+      <div class="auth-brand-side">
+        
+        <!-- LOGO HEADER -->
+        <div class="brand-header">
+          <a href="{% url 'landing' %}" class="brand-logo">
+            <div class="brand-icon">
+              <svg width="34" height="34" viewBox="0 0 28 28" fill="none">
+                <rect width="28" height="28" rx="8" fill="url(#bGrad)"/>
+                <path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/>
+                <defs>
+                  <linearGradient id="bGrad" x1="0" y1="0" x2="28" y2="28">
+                    <stop stop-color="#6366F1"/>
+                    <stop offset="1" stop-color="#8B5CF6"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="brand-title-wrap">
+              <span class="brand-name">Finora</span>
+              <span class="brand-tagline">Transparent AI Credit Intelligence</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- HEADLINE & SUBTITLE -->
+        <div class="brand-hero-text">
+          <h1 class="brand-headline">Smarter Finance<br/><span class="headline-highlight">Starts Here</span></h1>
+          <p class="brand-subtitle">Access AI-powered credit intelligence, personalized investment recommendations, and transparent financial insights.</p>
+        </div>
+
+        <!-- 3D STAGE & DASHBOARD CARD -->
+        <div class="stage-container">
+          <div class="podium-backdrop-glow"></div>
+
+          <!-- 3D PODIUM BASE -->
+          <div class="podium-3d-base">
+            <div class="podium-ring podium-ring--top"></div>
+            <div class="podium-ring podium-ring--mid"></div>
+            <div class="podium-ring podium-ring--bot"></div>
+          </div>
+
+          <!-- CENTRAL DASHBOARD SCREEN CARD -->
+          <div class="stage-dashboard-card glass-card">
+            <div class="dash-card-header">
+              <span class="dash-card-title">Financial Overview</span>
+              <div class="dash-card-dots"><span></span><span></span><span></span></div>
+            </div>
+            <div class="dash-card-body">
+              <div class="dash-gauge-box">
+                <span class="dgb-label">Credit Score</span>
+                <span class="dgb-val">730</span>
+                <span class="dgb-tag green-tag">Excellent</span>
+                <div class="gauge-arc-wrap">
+                  <svg viewBox="0 0 100 55" class="gauge-svg">
+                    <path d="M10,50 A40,40 0 0,1 90,50" fill="none" stroke="var(--gauge-track-bg)" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M10,50 A40,40 0 0,1 90,50" fill="none" stroke="url(#gArcGrad)" stroke-width="8" stroke-dasharray="90 126" stroke-linecap="round"/>
+                    <defs>
+                      <linearGradient id="gArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#EF4444"/>
+                        <stop offset="50%" stop-color="#F59E0B"/>
+                        <stop offset="100%" stop-color="#10B981"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="dash-chart-box">
+                <span class="dcb-label">Portfolio Growth</span>
+                <span class="dcb-val green-text">+18%</span>
+                <span class="dcb-sub">This Month</span>
+                <div class="chart-line-wrap">
+                  <svg viewBox="0 0 120 40" class="mini-line-svg">
+                    <path d="M0,35 Q30,30 50,15 T90,25 T120,5 L120,40 L0,40 Z" fill="url(#chartGradArea)" opacity="0.25"/>
+                    <path d="M0,35 Q30,30 50,15 T90,25 T120,5" fill="none" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FLOATING BADGES -->
+          <div class="float-badge float-badge--ai glass-card">
+            <span class="fb-icon purple-bg">🧠</span>
+            <span class="fb-text">AI Powered</span>
+          </div>
+          <div class="float-badge float-badge--cs glass-card">
+            <span class="fb-label">Credit Score</span>
+            <span class="fb-val">730</span>
+            <span class="fb-tag green-tag">Excellent</span>
+          </div>
+          <div class="float-badge float-badge--pg glass-card">
+            <span class="fb-label">Portfolio Growth</span>
+            <span class="fb-val green-text">+18%</span>
+          </div>
+        </div>
+
+        <!-- FOOTER BADGES -->
+        <div class="brand-trust-row">
+          <div class="dark-trust-banner dark-only">
+            <span class="tb-icon purple-bg">🛡️</span>
+            <p class="tb-text">"Your data is secure with bank-grade encryption and advanced AI protection."</p>
+          </div>
+          <div class="light-feature-pills light-only">
+            <div class="lfp-card glass-card"><span class="lfp-icon purple-bg">🔒</span><div><strong>Bank-Grade Security</strong><span>256-bit Encryption</span></div></div>
+            <div class="lfp-card glass-card"><span class="lfp-icon blue-bg">🧠</span><div><strong>AI-Powered Insights</strong><span>Smart & Personalized</span></div></div>
+            <div class="lfp-card glass-card"><span class="lfp-icon green-bg">🛡️</span><div><strong>Privacy First</strong><span>Your data is safe</span></div></div>
+          </div>
+        </div>
+
+        <div class="left-copyright">
+          <span>© 2026 Finora Inc. All rights reserved.</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE: SIGNUP FORM -->
+      <div class="auth-form-side">
+        <div class="auth-card glass-card">
+          
+          <div class="auth-header">
+            <h2 class="auth-title">Create Your Account</h2>
+            <p class="auth-subtitle">Start building a stronger financial future today</p>
+          </div>
+
+          <form class="auth-form" id="signupForm" onsubmit="return false;">
+            
+            <div class="form-group">
+              <label class="form-label" for="fullName">Full Name</label>
+              <div class="input-wrap">
+                <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                <input type="text" id="fullName" class="form-input" placeholder="Dev Sharma" required value="Dev Sharma"/>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="signupEmail">Email Address</label>
+                <div class="input-wrap">
+                  <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                  <input type="email" id="signupEmail" class="form-input" placeholder="dev@gmail.com" required value="devsharma@gmail.com"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="signupPhone">Phone Number</label>
+                <div class="input-wrap">
+                  <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                  <input type="tel" id="signupPhone" class="form-input" placeholder="+91 98765 43210" required value="+91 98765 43210"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="countrySelect">Country</label>
+              <div class="input-wrap">
+                <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+                <select id="countrySelect" class="form-input form-select">
+                  <option value="IN" selected>India (₹)</option>
+                  <option value="US">United States ($)</option>
+                  <option value="UK">United Kingdom (£)</option>
+                  <option value="AE">United Arab Emirates (AED)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="signupPassword">Password</label>
+                <div class="input-wrap">
+                  <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                  <input type="password" id="signupPassword" class="form-input" placeholder="••••••••••••" required value="Password@123"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="confirmPassword">Confirm Password</label>
+                <div class="input-wrap">
+                  <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                  <input type="password" id="confirmPassword" class="form-input" placeholder="••••••••••••" required value="Password@123"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-options-row">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="agreeTerms" checked required/>
+                <span class="checkmark"></span>
+                <span class="cb-text">I agree to <a href="#" class="link-highlight">Terms</a> & <a href="#" class="link-highlight">Privacy</a></span>
+              </label>
+            </div>
+
+            <a href="{% url 'onboarding' %}" class="btn btn-primary btn-full">
+              <span>Create Account</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <div class="auth-divider">
+              <span>or continue with</span>
+            </div>
+
+            <div class="social-btn-grid">
+              <button type="button" class="btn btn-social">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+                <span>Google</span>
+              </button>
+              <button type="button" class="btn btn-social">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#00A4EF" d="M1 1h10v10H1z"/><path fill="#7FBA00" d="M13 1h10v10H13z"/><path fill="#F25022" d="M1 13h10v10H1z"/><path fill="#FFB900" d="M13 13h10v10H13z"/></svg>
+                <span>Microsoft</span>
+              </button>
+              <button type="button" class="btn btn-social">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.66-.8 1.11-1.92.99-3.04-.96.04-2.13.64-2.82 1.44-.61.71-1.15 1.86-1.01 2.96 1.08.08 2.18-.56 2.84-1.36z"/></svg>
+                <span>Apple</span>
+              </button>
+            </div>
+
+          </form>
+
+          <div class="auth-footer">
+            <p>Already have an account? <a href="{% url 'login' %}" class="link-highlight">Sign In</a></p>
+          </div>
+
+        </div>
+
+        <div class="right-footer-links">
+          <a href="#">Terms of Service</a>
+          <span>•</span>
+          <a href="#">Privacy Policy</a>
+          <span>•</span>
+          <a href="#">Support</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script src="{% static 'auth/signup.js' %}"></script>
+</body>
+</html>

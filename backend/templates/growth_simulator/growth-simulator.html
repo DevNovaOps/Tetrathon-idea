@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Investment Growth Simulator{% endblock %}
+{% block page_title %}Investment Growth Simulator{% endblock %}
+{% block page_subtitle %}Visualize how your investments can grow over time using compounding projections.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'growth_simulator/growth-simulator.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'growth_simulator/growth-simulator.js' %}"></script>
+{% endblock %}
+{% block top_nav_extras %}
+<div class="search-box"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search..." /></div>
+{% endblock %}
+
+{% block content %}
+
+
+      <!-- PAGE BODY -->
+      <div class="page-body">
+
+        <!-- SECTION 1: SIMULATOR HERO SPLIT (CONTROLS LEFT, CHART RIGHT) -->
+        <section class="simulator-hero-grid">
+
+          <!-- Left Controls Column (Matching Image 10) -->
+          <div class="controls-col">
+
+            <!-- Monthly Investment Slider Card -->
+            <div class="glass-card ctrl-card reveal">
+              <span class="ctrl-label">Monthly Investment</span>
+              <div class="ctrl-val-big" id="monthlyValText">₹2,000</div>
+              <div class="slider-wrapper">
+                <input type="range" class="custom-slider" id="monthlySlider" min="500" max="10000" step="500" value="2000" />
+                <div class="slider-range-labels"><span>₹500</span><span>₹5,000</span><span>₹10,000</span></div>
+              </div>
+            </div>
+
+            <!-- Investment Period Pill Card -->
+            <div class="glass-card ctrl-card reveal reveal--delay-1">
+              <span class="ctrl-label">Investment Period</span>
+              <div class="ctrl-val-big" id="periodValText">5 Years</div>
+              <div class="period-pills">
+                <button class="pill-btn" data-years="1">1Y</button>
+                <button class="pill-btn" data-years="3">3Y</button>
+                <button class="pill-btn active" data-years="5">5Y</button>
+              </div>
+            </div>
+
+            <!-- Return & Strategy Card -->
+            <div class="glass-card ctrl-card reveal reveal--delay-2">
+              <div class="strategy-info-row">
+                <div>
+                  <span class="ctrl-label">Expected Return</span>
+                  <span class="ctrl-val-med green-text">12% p.a.</span>
+                </div>
+                <div>
+                  <span class="ctrl-label">Investment Type</span>
+                  <span class="ctrl-val-med blue-text">Moderate</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Chart Column (Matching Image 10) -->
+          <div class="chart-col glass-card reveal reveal--delay-1">
+
+            <div class="chart-header-row">
+              <div class="chart-title-wrap">
+                <h2 class="card-heading">Growth Simulator</h2>
+                <p class="card-sub">Compounding wealth trajectory over time</p>
+              </div>
+
+              <!-- Scenario Tabs -->
+              <div class="scenario-tabs">
+                <button class="scenario-tab" data-scenario="conservative">Conservative</button>
+                <button class="scenario-tab active" data-scenario="moderate">Moderate</button>
+                <button class="scenario-tab" data-scenario="aggressive">Aggressive</button>
+              </div>
+            </div>
+
+            <!-- Growth Line Chart -->
+            <div class="line-chart-box">
+              <canvas id="growthChart"></canvas>
+            </div>
+
+            <!-- End Values Legend Badges -->
+            <div class="chart-legend-badges">
+              <div class="leg-badge leg-purple"><span class="leg-dot"></span> Aggressive: <strong>₹8.45 L</strong></div>
+              <div class="leg-badge leg-blue"><span class="leg-dot"></span> Moderate: <strong>₹5.60 L</strong></div>
+              <div class="leg-badge leg-orange"><span class="leg-dot"></span> Conservative: <strong>₹3.12 L</strong></div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- SECTION 2: RESULT SUMMARY CARDS (4 CARDS) -->
+        <section class="results-row">
+          <div class="result-card glass-card reveal">
+            <span class="res-icon blue-bg">💸</span>
+            <div class="res-info">
+              <span class="res-label">Total Invested</span>
+              <span class="res-val" id="totalInvestedText">₹1,20,000</span>
+              <span class="res-sub">Principal Outlay</span>
+            </div>
+          </div>
+
+          <div class="result-card glass-card reveal reveal--delay-1">
+            <span class="res-icon green-bg">📈</span>
+            <div class="res-info">
+              <span class="res-label">Estimated Returns</span>
+              <span class="res-val green-text" id="estReturnsText">₹68,000</span>
+              <span class="res-sub green-text">+56.6% Capital Gain</span>
+            </div>
+          </div>
+
+          <div class="result-card glass-card target-glow-card reveal reveal--delay-2">
+            <span class="res-icon purple-bg">🏆</span>
+            <div class="res-info">
+              <span class="res-label">Future Portfolio Value</span>
+              <span class="res-val glow-text" id="futureValueText">₹1,88,000</span>
+              <span class="res-sub green-text">At 5 Year Maturity</span>
+            </div>
+          </div>
+
+          <div class="result-card glass-card reveal reveal--delay-3">
+            <span class="res-icon cyan-bg">⚡</span>
+            <div class="res-info">
+              <span class="res-label">Monthly Wealth Growth</span>
+              <span class="res-val cyan-text">Positive</span>
+              <span class="res-sub">+14.2% Momentum</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: SCENARIO COMPARISON CARDS -->
+        <section class="scenarios-section">
+          <div class="section-title-row reveal">
+            <div>
+              <h2 class="section-heading">Scenario Projections Comparison</h2>
+              <p class="card-sub">Compare 5-year future value across risk models</p>
+            </div>
+            <span class="badge badge--blue">3 Risk Scenarios</span>
+          </div>
+
+          <div class="scenario-grid">
+
+            <div class="scen-card glass-card reveal">
+              <div class="scen-header">
+                <span class="scen-icon orange-bg">🛡️</span>
+                <span class="badge badge--orange">8% Returns</span>
+              </div>
+              <h3 class="scen-title">Conservative Scenario</h3>
+              <p class="scen-desc">Debt funds & fixed-income focus for high capital protection.</p>
+              <div class="scen-value-wrap">
+                <span class="scen-lbl">5-Year Portfolio</span>
+                <span class="scen-val orange-text">₹1,48,000</span>
+              </div>
+            </div>
+
+            <div class="scen-card glass-card active-scen-card reveal reveal--delay-1">
+              <div class="scen-header">
+                <span class="scen-icon blue-bg">⚖️</span>
+                <span class="badge badge--green">12% Returns</span>
+              </div>
+              <h3 class="scen-title">Moderate Scenario (Recommended)</h3>
+              <p class="scen-desc">Balanced 40% equity index & 60% debt mix for optimal growth.</p>
+              <div class="scen-value-wrap">
+                <span class="scen-lbl">5-Year Portfolio</span>
+                <span class="scen-val green-text">₹1,88,000</span>
+              </div>
+            </div>
+
+            <div class="scen-card glass-card reveal reveal--delay-2">
+              <div class="scen-header">
+                <span class="scen-icon purple-bg">🚀</span>
+                <span class="badge badge--purple">16% Returns</span>
+              </div>
+              <h3 class="scen-title">Aggressive Scenario</h3>
+              <p class="scen-desc">Equity index & blue-chip stock heavy allocation for maximum return.</p>
+              <div class="scen-value-wrap">
+                <span class="scen-lbl">5-Year Portfolio</span>
+                <span class="scen-val purple-text">₹2,35,000</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 4: AI INSIGHTS & GOAL TRACKER (2 COLUMNS) -->
+        <section class="insights-goal-grid">
+
+          <!-- Left: AI Simulator Insights -->
+          <div class="glass-card reveal">
+            <h3 class="card-heading" style="margin-bottom:16px;">AI Growth Insights</h3>
+            <div class="sim-insights-list">
+              <div class="sim-ins-item">
+                <span class="sim-ins-icon green-bg">💡</span>
+                <div class="sim-ins-text">
+                  <h4>Increasing SIP by ₹500 boosts returns significantly</h4>
+                  <p>Adding ₹500/month generates an additional ₹42,000 over 5 years via compound interest.</p>
+                </div>
+              </div>
+
+              <div class="sim-ins-item">
+                <span class="sim-ins-icon blue-bg">⏳</span>
+                <div class="sim-ins-text">
+                  <h4>Long-term investing smooths out market volatility</h4>
+                  <p>Staying invested for 5+ years eliminates 92% of short-term downside risk.</p>
+                </div>
+              </div>
+
+              <div class="sim-ins-item">
+                <span class="sim-ins-icon purple-bg">🔄</span>
+                <div class="sim-ins-text">
+                  <h4>Continue investing consistently via SIP</h4>
+                  <p>Regular monthly investments beat lump-sum timing in 87% of market cycles.</p>
+                </div>
+              </div>
+
+              <div class="sim-ins-item">
+                <span class="sim-ins-icon orange-bg">⚠️</span>
+                <div class="sim-ins-text">
+                  <h4>Avoid premature withdrawals</h4>
+                  <p>Early redemption breaks the exponential compounding curve in years 4 and 5.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Goal Tracker Card -->
+          <div class="glass-card reveal reveal--delay-1">
+            <div class="card-title-row" style="margin-bottom:12px;">
+              <h3 class="card-heading">Financial Goal Tracker</h3>
+              <span class="badge badge--green">On Track</span>
+            </div>
+
+            <div class="goal-box">
+              <div class="goal-header">
+                <span class="goal-emoji">🏠</span>
+                <div>
+                  <h4 class="goal-name">Buy a House Down Payment</h4>
+                  <span class="goal-target">Target: ₹2,75,000</span>
+                </div>
+              </div>
+
+              <div class="goal-progress-wrap">
+                <div class="goal-progress-labels">
+                  <span>Current: ₹1,88,000</span>
+                  <span class="green-text">68% Progress</span>
+                </div>
+                <div class="goal-track">
+                  <div class="goal-fill" style="width: 68%;"></div>
+                </div>
+              </div>
+
+              <div class="goal-footer">
+                <span class="goal-time-tag">⏱️ Estimated Completion: <strong>4 Years</strong></span>
+                <span class="goal-status-tag">Status: <strong>Active Growth</strong></span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- SECTION 5: BOTTOM COMPOUND TIMELINE -->
+        <section class="compound-timeline-section reveal">
+          <div class="timeline-card glass-card">
+            <h3 class="card-heading" style="text-align:center; margin-bottom:20px;">Compounding Wealth Journey</h3>
+            <div class="journey-timeline-row">
+              <div class="j-step">
+                <span class="j-icon">📍</span>
+                <span class="j-name">Today</span>
+                <span class="j-sub">Start SIP</span>
+              </div>
+              <div class="j-arrow">➔</div>
+              <div class="j-step">
+                <span class="j-icon">💳</span>
+                <span class="j-name">Monthly SIP</span>
+                <span class="j-sub">₹2,000 / mo</span>
+              </div>
+              <div class="j-arrow">➔</div>
+              <div class="j-step">
+                <span class="j-icon">📈</span>
+                <span class="j-name">Compound Growth</span>
+                <span class="j-sub">+56.6% Returns</span>
+              </div>
+              <div class="j-arrow">➔</div>
+              <div class="j-step">
+                <span class="j-icon">🏆</span>
+                <span class="j-name">Goal Achieved</span>
+                <span class="j-sub">₹1,88,000 Wealth</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    
+{% endblock %}

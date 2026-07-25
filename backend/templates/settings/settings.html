@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Settings{% endblock %}
+{% block page_title %}Settings{% endblock %}
+{% block page_subtitle %}Manage your Finora account, preferences, appearance, privacy, and notifications.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'settings/settings.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'settings/settings.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="page-body">
+
+      <!-- SETTINGS LIST (Matching Ref Image 16 — Clean Row-based Settings) -->
+      <div class="settings-card glass-card reveal">
+
+        <!-- Appearance -->
+        <div class="setting-row" id="appearanceRow">
+          <div class="setting-row-left"><span class="setting-icon purple-bg">🎨</span><div class="setting-text"><h4>Appearance</h4><p>Choose your visual theme</p></div></div>
+          <div class="setting-row-right"><span class="setting-value" id="themeLabel">Dark Mode</span><span class="chevron">›</span></div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="setting-row">
+          <div class="setting-row-left"><span class="setting-icon blue-bg">🔔</span><div class="setting-text"><h4>Notifications</h4><p>Manage your notifications</p></div></div>
+          <div class="setting-row-right"><span class="chevron">›</span></div>
+        </div>
+
+        <!-- Privacy & Security -->
+        <div class="setting-row">
+          <div class="setting-row-left"><span class="setting-icon green-bg">🔐</span><div class="setting-text"><h4>Privacy & Security</h4><p>Manage your data and security</p></div></div>
+          <div class="setting-row-right"><span class="chevron">›</span></div>
+        </div>
+
+        <!-- Language -->
+        <div class="setting-row">
+          <div class="setting-row-left"><span class="setting-icon orange-bg">🌐</span><div class="setting-text"><h4>Language</h4><p>Select your preferred language</p></div></div>
+          <div class="setting-row-right"><span class="setting-value">English</span><span class="chevron">›</span></div>
+        </div>
+
+        <!-- Export Data -->
+        <div class="setting-row">
+          <div class="setting-row-left"><span class="setting-icon cyan-bg">📥</span><div class="setting-text"><h4>Export Data</h4><p>Download your data</p></div></div>
+          <div class="setting-row-right"><span class="chevron">›</span></div>
+        </div>
+
+        <div class="setting-divider"></div>
+
+        <!-- Delete Account -->
+        <div class="setting-row danger-row">
+          <div class="setting-row-left"><span class="setting-icon red-bg">🗑️</span><div class="setting-text"><h4 class="danger-text">Delete Account</h4><p>Permanently delete your account</p></div></div>
+          <div class="setting-row-right"><span class="chevron">›</span></div>
+        </div>
+
+      </div>
+
+      <!-- NOTIFICATION TOGGLES -->
+      <div class="settings-card glass-card reveal reveal--d1">
+        <h3 class="settings-section-title">Notification Preferences</h3>
+        <div class="toggle-row"><span>Bill Reminders</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+        <div class="toggle-row"><span>Investment Updates</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+        <div class="toggle-row"><span>Credit Score Alerts</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+        <div class="toggle-row"><span>Educational Updates</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+        <div class="toggle-row"><span>Marketing Emails</span><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+        <div class="toggle-row"><span>AI Recommendations</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+        <div class="toggle-row"><span>Weekly Reports</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+        <div class="toggle-row"><span>Monthly Reports</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+      </div>
+
+      <!-- SUPPORT -->
+      <div class="settings-card glass-card reveal reveal--d2">
+        <h3 class="settings-section-title">Support & Info</h3>
+        <div class="support-grid">
+          <div class="support-item"><span>❓</span><span>Help Center</span></div>
+          <div class="support-item"><span>📖</span><span>FAQs</span></div>
+          <div class="support-item"><span>💬</span><span>Contact Support</span></div>
+          <div class="support-item"><span>📝</span><span>Send Feedback</span></div>
+          <div class="support-item"><span>📄</span><span>Terms & Conditions</span></div>
+          <div class="support-item"><span>🔒</span><span>Privacy Policy</span></div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="settings-card glass-card reveal reveal--d3">
+        <h3 class="settings-section-title">About Finora</h3>
+        <div class="about-grid">
+          <div class="about-row"><span class="about-label">Version</span><span class="about-val">1.0.0</span></div>
+          <div class="about-row"><span class="about-label">AI Model</span><span class="about-val">Finora AI</span></div>
+          <div class="about-row"><span class="about-label">Application Status</span><span class="about-val green-text">● Connected</span></div>
+        </div>
+      </div>
+
+    </div>
+  
+{% endblock %}

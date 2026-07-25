@@ -39,12 +39,15 @@ urlpatterns = [
     # API — Simulator
     path('api/simulator/', include('growth_simulator.urls')),
 
+    # API — Reports
+    path('api/reports/', include('reports.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 
-    # Root redirect to landing page
-    path('', RedirectView.as_view(url='/01-landing-page/index.html', permanent=False)),
-    
+    # Web routes
+    path('', include('web.urls')),
+
     # Serve static files at root
     re_path(r'^(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS[0]}),
 ]

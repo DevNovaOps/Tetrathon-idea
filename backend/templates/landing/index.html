@@ -1,0 +1,592 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finora — Transparent AI Credit Intelligence</title>
+  <meta name="description" content="Get smart credit insights, personalized investment advice, and grow your wealth using transparent AI. Finora is the next-gen AI-powered FinTech platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'landing/style.css' %}" />
+</head>
+<body>
+
+  <!-- ===== FIXED NAVIGATION BAR ===== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="#home" class="nav-logo" aria-label="Finora Home">
+        <div class="nav-logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="url(#navLogoGrad)"/>
+            <path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/>
+            <defs>
+              <linearGradient id="navLogoGrad" x1="0" y1="0" x2="28" y2="28">
+                <stop stop-color="#6366F1"/>
+                <stop offset="1" stop-color="#8B5CF6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span>Finora</span>
+      </a>
+
+      <!-- Center Nav Links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-item active">Home</a></li>
+        <li><a href="#features" class="nav-item">Features</a></li>
+        <li><a href="#how-it-works" class="nav-item">How It Works</a></li>
+        <li><a href="#benefits" class="nav-item">Benefits</a></li>
+        <li><a href="#pricing" class="nav-item">Pricing</a></li>
+        <li><a href="#about" class="nav-item">About</a></li>
+      </ul>
+
+      <!-- Right Actions -->
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.3 3.3l1.4 1.4M13.3 13.3l1.4 1.4M3.3 14.7l1.4-1.4M13.3 4.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M15.5 9.5a6.5 6.5 0 01-7-7 6.5 6.5 0 107 7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <a href="{% url 'login' %}" class="btn btn-primary btn-nav" id="getStartedNav">Get Started</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== 1. HERO SECTION (HOME) ===== -->
+  <section class="hero" id="home">
+    <div class="hero-glow hero-glow--1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow--2" aria-hidden="true"></div>
+
+    <div class="hero-container">
+      <div class="hero-content reveal">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Transparent AI Credit Intelligence</span>
+        </div>
+
+        <h1 class="hero-heading">
+          AI-Powered<br/>
+          <span class="hero-heading--accent">Financial Freedom</span><br/>
+          For Everyone
+        </h1>
+
+        <p class="hero-subheading">
+          Get smart credit insights, personalized investment advice, and grow your wealth with our AI financial assistant.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="{% url 'login' %}" class="btn btn-primary btn-hero">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#how-it-works" class="btn btn-outline btn-hero">
+            Try Demo
+          </a>
+        </div>
+
+        <div class="hero-trusted">
+          <span class="trusted-label">Trusted by 10,000+ users & leading teams</span>
+          <div class="trusted-logos">
+            <div class="trusted-logo" aria-label="Google">
+              <svg width="70" height="22" viewBox="0 0 70 22" fill="none">
+                <text x="0" y="17" font-family="'Inter', sans-serif" font-weight="600" font-size="15" fill="currentColor">Google</text>
+              </svg>
+            </div>
+            <div class="trusted-logo" aria-label="Microsoft">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect width="7.5" height="7.5" fill="#F25022"/>
+                <rect x="8.5" width="7.5" height="7.5" fill="#7FBA00"/>
+                <rect y="8.5" width="7.5" height="7.5" fill="#00A4EF"/>
+                <rect x="8.5" y="8.5" width="7.5" height="7.5" fill="#FFB900"/>
+              </svg>
+              <span>Microsoft</span>
+            </div>
+            <div class="trusted-logo" aria-label="Stripe">
+              <span class="stripe-text">stripe</span>
+            </div>
+            <div class="trusted-logo" aria-label="AWS">
+              <span class="aws-text">aws</span>
+            </div>
+            <div class="trusted-logo" aria-label="Coinbase">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.8"/>
+                <rect x="5.5" y="5.5" width="5" height="5" rx="1" fill="currentColor"/>
+              </svg>
+              <span>coinbase</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Dashboard Preview -->
+      <div class="hero-dashboard reveal reveal--delay">
+        <div class="dashboard-wrapper">
+          <div class="dashboard-glow" aria-hidden="true"></div>
+
+          <div class="dashboard-frame">
+            <aside class="dash-sidebar">
+              <div class="dash-sidebar-logo">
+                <div class="dash-logo-box">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <rect width="16" height="16" rx="4" fill="#6366F1"/>
+                  </svg>
+                </div>
+                <span>Finora</span>
+              </div>
+
+              <nav class="dash-sidebar-nav">
+                <div class="dash-nav-item active">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.4"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.4"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.4"/><rect x="9" y="9" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.4"/></svg>
+                  <span>Overview</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 12L5.5 7.5L8.5 10L11.5 5L14.5 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Analytics</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 6.5H14.5" stroke="currentColor" stroke-width="1.4"/></svg>
+                  <span>Cards</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  <span>Wallets</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.5V8L10.5 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  <span>History</span>
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5V3M8 13V14.5M1.5 8H3M13 8H14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  <span>Settings</span>
+                </div>
+              </nav>
+
+              <div class="dash-sidebar-profile">
+                <div class="profile-avatar"></div>
+                <div class="profile-info">
+                  <span class="profile-name">Alex M.</span>
+                  <span class="profile-tier">Premium</span>
+                </div>
+              </div>
+            </aside>
+
+            <div class="dash-main">
+              <div class="dash-topbar">
+                <h2 class="dash-title">Dashboard</h2>
+                <div class="dash-topbar-right">
+                  <div class="dash-search-box">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 9.5L12.5 12.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    <span>Search...</span>
+                  </div>
+                  <div class="dash-bell-btn">
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2A3.5 3.5 0 004.5 5.5V8.5L3 11H13L11.5 8.5V5.5A3.5 3.5 0 008 2zM6.5 12.5A1.5 1.5 0 009.5 12.5" stroke="currentColor" stroke-width="1.3"/></svg>
+                    <span class="bell-dot"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dash-grid">
+                <div class="dash-card dash-card--credit">
+                  <div class="dash-card-header">
+                    <span class="dash-card-title">Your <span class="title-dot">◆</span> Credit</span>
+                    <span class="dash-pill-btn">Monthly</span>
+                  </div>
+                  <div class="gauge-container">
+                    <svg viewBox="0 0 200 115" class="credit-gauge-svg">
+                      <defs>
+                        <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#EF4444"/>
+                          <stop offset="35%" stop-color="#F59E0B"/>
+                          <stop offset="70%" stop-color="#10B981"/>
+                          <stop offset="100%" stop-color="#10B981"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M 25 100 A 75 75 0 0 1 175 100" stroke="var(--gauge-track)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                      <path d="M 25 100 A 75 75 0 0 1 175 100" stroke="url(#arcGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                    </svg>
+                    <div class="gauge-center-text">
+                      <span class="gauge-score">730</span>
+                      <span class="gauge-rating">EXCELLENT</span>
+                    </div>
+                  </div>
+                  <div class="credit-metrics">
+                    <div class="metric-col"><span class="metric-label">Payment</span><span class="metric-value metric-value--green">98%</span></div>
+                    <div class="metric-col"><span class="metric-label">Utilization</span><span class="metric-value">24%</span></div>
+                    <div class="metric-col"><span class="metric-label">Age</span><span class="metric-value">4.2yr</span></div>
+                  </div>
+                </div>
+
+                <div class="dash-card dash-card--revenue">
+                  <div class="dash-card-header">
+                    <span class="dash-card-title">Revenue</span>
+                    <div class="dash-header-dots"><span class="dot dot--blue"></span><span class="dot dot--green"></span></div>
+                  </div>
+                  <div class="revenue-chart-container">
+                    <svg viewBox="0 0 240 100" preserveAspectRatio="none" class="revenue-chart-svg">
+                      <defs>
+                        <linearGradient id="revenueGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#6366F1" stop-opacity="0.35"/>
+                          <stop offset="100%" stop-color="#6366F1" stop-opacity="0.0"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M0,70 Q30,60 60,65 T120,50 T180,40 T240,15 V100 H0 Z" fill="url(#revenueGrad)"/>
+                      <path d="M0,70 Q30,60 60,65 T120,50 T180,40 T240,15" stroke="#6366F1" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                      <circle cx="210" cy="25" r="4" fill="#6366F1" class="glowing-point"/>
+                    </svg>
+                    <div class="revenue-months"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
+                  </div>
+                </div>
+
+                <div class="dash-card dash-card--investments">
+                  <div class="dash-card-header">
+                    <span class="dash-card-title">Investments</span>
+                    <a href="#" class="dash-see-all">See all</a>
+                  </div>
+                  <div class="investments-list">
+                    <div class="invest-row">
+                      <div class="invest-bar invest-bar--orange"></div><div class="invest-icon invest-icon--btc">B</div>
+                      <div class="invest-details"><span class="invest-name">Bitcoin</span><span class="invest-sub">BTC · Crypto</span></div>
+                      <div class="invest-numbers"><span class="invest-price">$12,480</span><span class="invest-change invest-change--up">+5.2%</span></div>
+                    </div>
+                    <div class="invest-row">
+                      <div class="invest-bar invest-bar--purple"></div><div class="invest-icon invest-icon--eth">Ξ</div>
+                      <div class="invest-details"><span class="invest-name">Ethereum</span><span class="invest-sub">ETH · Crypto</span></div>
+                      <div class="invest-numbers"><span class="invest-price">$8,340</span><span class="invest-change invest-change--up">+3.1%</span></div>
+                    </div>
+                    <div class="invest-row">
+                      <div class="invest-bar invest-bar--green"></div><div class="invest-icon invest-icon--aapl">A</div>
+                      <div class="invest-details"><span class="invest-name">Apple Inc.</span><span class="invest-sub">AAPL · Stock</span></div>
+                      <div class="invest-numbers"><span class="invest-price">$5,920</span><span class="invest-change invest-change--up">+1.8%</span></div>
+                    </div>
+                    <div class="invest-row">
+                      <div class="invest-bar invest-bar--red"></div><div class="invest-icon invest-icon--tsla">T</div>
+                      <div class="invest-details"><span class="invest-name">Tesla</span><span class="invest-sub">TSLA · Stock</span></div>
+                      <div class="invest-numbers"><span class="invest-price">$3,150</span><span class="invest-change invest-change--down">-2.4%</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dash-card-stack">
+                  <div class="dash-card dash-stat-item">
+                    <div class="stat-icon-box stat-icon-box--blue"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                    <div class="stat-text-group"><span class="stat-big-val">$48.3k</span><span class="stat-sub-label">Balance</span></div>
+                  </div>
+                  <div class="dash-card dash-stat-item">
+                    <div class="stat-icon-box stat-icon-box--green"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <div class="stat-text-group"><span class="stat-big-val stat-big-val--green">+12.5%</span><span class="stat-sub-label">Returns</span></div>
+                  </div>
+                  <div class="dash-card dash-stat-item">
+                    <div class="stat-icon-box stat-icon-box--purple"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.5V8L10.5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+                    <div class="stat-text-group"><span class="stat-big-val">24</span><span class="stat-sub-label">Active</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. FEATURES SECTION ===== -->
+  <section class="section section--features" id="features">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <div class="section-badge">✨ Core Features</div>
+        <h2 class="section-title">AI Engine Designed For Modern Wealth</h2>
+        <p class="section-subtitle">Experience next-generation financial intelligence built on transparent neural architectures.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon-box feature-icon-box--indigo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 class="feature-title">AI Credit Scoring</h3>
+          <p class="feature-desc">Dynamic real-time credit score modeling powered by multi-variate machine learning engines.</p>
+        </div>
+        <div class="feature-card reveal reveal--delay-1">
+          <div class="feature-icon-box feature-icon-box--emerald"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 class="feature-title">Explainable AI</h3>
+          <p class="feature-desc">No black-box decisions. Understand every factor influencing your financial recommendations clearly.</p>
+        </div>
+        <div class="feature-card reveal reveal--delay-2">
+          <div class="feature-icon-box feature-icon-box--rose"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/><path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3 class="feature-title">Risk Assessment</h3>
+          <p class="feature-desc">Proactive anomaly detection and portfolio risk profiling with automated risk mitigation alerts.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon-box feature-icon-box--violet"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M23 6L13.5 15.5L8.5 10.5L1 18M23 6H17M23 6V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 class="feature-title">Investment Advisor</h3>
+          <p class="feature-desc">Tailored portfolio allocation and algorithmic rebalancing customized to your financial goals.</p>
+        </div>
+        <div class="feature-card reveal reveal--delay-1">
+          <div class="feature-icon-box feature-icon-box--amber"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21H16M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3 class="feature-title">Growth Simulator</h3>
+          <p class="feature-desc">Simulate scenario-based market outcomes and project wealth growth with interactive Monte Carlo models.</p>
+        </div>
+        <div class="feature-card reveal reveal--delay-2">
+          <div class="feature-icon-box feature-icon-box--cyan"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3 class="feature-title">Financial Reports</h3>
+          <p class="feature-desc">Automated tax-optimized summaries, monthly breakdown statements, and actionable credit logs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. HOW IT WORKS SECTION ===== -->
+  <section class="section section--timeline" id="how-it-works">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <div class="section-badge">⚙️ Seamless Process</div>
+        <h2 class="section-title">How Finora Works For You</h2>
+        <p class="section-subtitle">Get started in minutes with our transparent four-step intelligence pipeline.</p>
+      </div>
+
+      <div class="timeline-wrapper">
+        <div class="timeline-line" aria-hidden="true"></div>
+        <div class="timeline-step reveal">
+          <div class="timeline-badge">01</div>
+          <div class="timeline-content">
+            <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3 class="step-title">Create Profile</h3>
+            <p class="step-desc">Connect your accounts securely in under 60 seconds with bank-grade 256-bit encryption.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal reveal--delay-1">
+          <div class="timeline-badge">02</div>
+          <div class="timeline-content">
+            <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h3 class="step-title">AI Behavior Analysis</h3>
+            <p class="step-desc">Our neutral neural network evaluates income stability, debt ratios, and spending trends.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal reveal--delay-2">
+          <div class="timeline-badge">03</div>
+          <div class="timeline-content">
+            <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h3 class="step-title">Transparent Credit Score</h3>
+            <p class="step-desc">Receive an instant, bias-free credit assessment with step-by-step improvement drivers.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal reveal--delay-3">
+          <div class="timeline-badge">04</div>
+          <div class="timeline-content">
+            <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3 class="step-title">Personalized Growth Plan</h3>
+            <p class="step-desc">Unlock curated investment strategies and automated wealth accumulation pathways.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. BENEFITS SECTION ===== -->
+  <section class="section section--benefits" id="benefits">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <div class="section-badge">🚀 Why Choose Us</div>
+        <h2 class="section-title">Built For Complete Financial Control</h2>
+        <p class="section-subtitle">Finora combines cutting-edge AI precision with transparent user privacy.</p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card reveal">
+          <div class="benefit-icon-wrapper"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 12A3 3 0 119 12a3 3 0 016 0z" stroke="currentColor" stroke-width="2"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3 class="benefit-title">Transparent AI</h3>
+          <p class="benefit-desc">Full visibility into algorithm decision factors so you always know why recommendations were made.</p>
+        </div>
+        <div class="benefit-card reveal reveal--delay-1">
+          <div class="benefit-icon-wrapper"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21V19C22.9993 17.1137 21.7644 15.467 19.973 14.93" stroke="currentColor" stroke-width="2"/><path d="M16 3.13C17.795 3.66 19.03 5.31 19.03 7.2C19.03 9.09 17.795 10.74 16 11.27" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3 class="benefit-title">Financial Inclusion</h3>
+          <p class="benefit-desc">Unbiased scoring models tailored for freelancers, entrepreneurs, and non-traditional income streams.</p>
+        </div>
+        <div class="benefit-card reveal reveal--delay-2">
+          <div class="benefit-icon-wrapper"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3 class="benefit-title">Easy Credit Insights</h3>
+          <p class="benefit-desc">Clear, digestible breakdowns of your credit factors with step-by-step improvement actions.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon-wrapper"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2V22M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3 class="benefit-title">Smart Investment Planning</h3>
+          <p class="benefit-desc">Algorithmic asset allocation aligned with your risk tolerance and long-term targets.</p>
+        </div>
+        <div class="benefit-card reveal reveal--delay-1">
+          <div class="benefit-icon-wrapper"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3 class="benefit-title">Secure Platform</h3>
+          <p class="benefit-desc">SOC2 Type II certified infrastructure with zero-knowledge data encryption standard.</p>
+        </div>
+        <div class="benefit-card reveal reveal--delay-2">
+          <div class="benefit-icon-wrapper"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3 class="benefit-title">Fast Decisions</h3>
+          <p class="benefit-desc">Instant loan suitability signals and credit approvals without days of manual paperwork.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. PRICING SECTION ===== -->
+  <section class="section section--pricing" id="pricing">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <div class="section-badge">💰 Transparent Plans</div>
+        <h2 class="section-title">Simple, Predictable Pricing</h2>
+        <p class="section-subtitle">Choose the plan that fits your financial ambitions. No hidden fees ever.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <div class="pricing-card-header">
+            <h3 class="plan-name">Starter</h3>
+            <p class="plan-desc">Perfect for individuals starting their credit journey.</p>
+            <div class="plan-price"><span class="price-currency">$</span><span class="price-val">0</span><span class="price-period">/forever free</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Basic AI Credit Score</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Monthly Credit Updates</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Essential Expense Tracking</span></li>
+            <li class="disabled"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M12 4L4 12" stroke="#64748B" stroke-width="2" stroke-linecap="round"/></svg><span>AI Investment Advisor</span></li>
+          </ul>
+          <a href="{% url 'login' %}" class="btn btn-outline btn-pricing">Get Started Free</a>
+        </div>
+
+        <div class="pricing-card pricing-card--popular reveal reveal--delay-1">
+          <div class="popular-badge">Most Popular</div>
+          <div class="pricing-card-header">
+            <h3 class="plan-name">Professional</h3>
+            <p class="plan-desc">For proactive investors and growing wealth builders.</p>
+            <div class="plan-price"><span class="price-currency">$</span><span class="price-val">29</span><span class="price-period">/month</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Real-Time AI Credit Intelligence</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Explainable AI Factor Breakdown</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Automated Investment Advisor</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Unlimited Scenario Growth Simulations</span></li>
+          </ul>
+          <a href="{% url 'login' %}" class="btn btn-primary btn-pricing">Start 14-Day Free Trial</a>
+        </div>
+
+        <div class="pricing-card reveal reveal--delay-2">
+          <div class="pricing-card-header">
+            <h3 class="plan-name">Premium</h3>
+            <p class="plan-desc">For high-net-worth portfolios & custom needs.</p>
+            <div class="plan-price"><span class="price-currency">$</span><span class="price-val">79</span><span class="price-period">/month</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Everything in Professional</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Dedicated Financial Strategist</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Tax-Loss Harvesting Tools</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#10B981" stroke-width="2" stroke-linecap="round"/></svg><span>Priority 24/7 Concierge Support</span></li>
+          </ul>
+          <a href="{% url 'login' %}" class="btn btn-outline btn-pricing">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. ABOUT SECTION ===== -->
+  <section class="section section--about" id="about">
+    <div class="section-container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div class="section-badge">ℹ️ About Finora</div>
+          <h2 class="section-title">Democratizing Financial Intelligence Through AI</h2>
+          <p class="about-lead">Finora was founded on a simple conviction: financial credit scoring and investment intelligence should be transparent, accessible, and completely unbiased.</p>
+          <p class="about-body">Our mission is to empower millions of individuals worldwide with clear credit insights, automated risk management, and personalized wealth creation strategies powered by explainable artificial intelligence.</p>
+        </div>
+
+        <div class="about-values reveal reveal--delay-1">
+          <h3 class="values-title">Our Core Values</h3>
+          <div class="values-grid">
+            <div class="value-item"><div class="value-icon">🤝</div><h4>Trust</h4><p>Bank-level security and non-custodial privacy built into every layer.</p></div>
+            <div class="value-item"><div class="value-icon">🔍</div><h4>Transparency</h4><p>Zero black boxes. We explain every score adjustment and recommendation.</p></div>
+            <div class="value-item"><div class="value-icon">💡</div><h4>Innovation</h4><p>Continuous AI research driving cutting-edge financial algorithms.</p></div>
+            <div class="value-item"><div class="value-icon">🛡️</div><h4>Security</h4><p>SOC2 certified data protection ensuring your financial safety.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="footer-logo">
+            <div class="nav-logo-icon">
+              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                <rect width="28" height="28" rx="8" fill="url(#footLogoGrad)"/>
+                <path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/>
+                <defs><linearGradient id="footLogoGrad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs>
+              </svg>
+            </div>
+            <span>Finora</span>
+          </a>
+          <p class="footer-tagline">Transparent AI Credit Intelligence for modern wealth management.</p>
+        </div>
+
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press Kit</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#features">AI Scoring</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Documentation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">System Status</a></li>
+              <li><a href="#">Security</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Preferences</a></li>
+              <li><a href="#">Compliance</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Finora Inc. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.58 8.58 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'landing/script.js' %}"></script>
+</body>
+</html>

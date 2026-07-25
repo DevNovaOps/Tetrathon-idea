@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile{% endblock %}
+{% block page_title %}My Profile{% endblock %}
+{% block page_subtitle %}Manage your personal information, financial overview, and account details in one place.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profile/profile.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'profile/profile.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+      <div class="page-body">
+
+        <!-- PROFILE HEADER CARD (Matching Reference Image 15) -->
+        <section class="profile-header-card glass-card reveal">
+          <div class="ph-main-row">
+            <div class="ph-avatar-wrap">
+              <div class="ph-avatar-circle"><span>D</span></div>
+              <span class="ph-status-dot" title="Verified Account">✓</span>
+            </div>
+            <div class="ph-info-col">
+              <div class="ph-name-line">
+                <h2 class="ph-user-name">Dev Sharma</h2>
+                <span class="ph-verified-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Verified User</span>
+              </div>
+              <div class="ph-meta-pills">
+                <span>📧 devsharma@gmail.com</span>
+                <span>📱 +91 98765 43210</span>
+                <span>🗓 Member Since May 2024</span>
+              </div>
+            </div>
+            <button class="btn btn-outline ph-edit-btn">Edit Profile</button>
+          </div>
+        </section>
+
+        <!-- PERSONAL INFORMATION GRID (Matching Reference Image 15) -->
+        <section class="info-section glass-card reveal reveal--d1">
+          <h3 class="card-heading" style="margin-bottom:20px;">Personal Information</h3>
+          <div class="info-grid">
+            <div class="info-cell">
+              <span class="info-label">Full Name</span>
+              <span class="info-value">Dev Sharma</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Email</span>
+              <span class="info-value">devsharma@gmail.com</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Phone</span>
+              <span class="info-value">+91 98765 43210</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Location</span>
+              <span class="info-value">Vadodara, Gujarat, India</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Occupation</span>
+              <span class="info-value">Student</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Member Since</span>
+              <span class="info-value">May 2024</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Gender / Age</span>
+              <span class="info-value">Male, 22 Years</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Preferred Language</span>
+              <span class="info-value">English (US)</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- FINANCIAL SNAPSHOT -->
+        <section class="snapshot-section">
+          <h2 class="section-heading reveal">Financial Snapshot</h2>
+          <div class="snapshot-grid">
+            <div class="snap-card glass-card reveal"><span class="snap-icon purple-bg">🛡️</span><span class="snap-label">Credit Score</span><span class="snap-val purple-text">730 <span class="snap-sub">Excellent</span></span></div>
+            <div class="snap-card glass-card reveal reveal--d1"><span class="snap-icon blue-bg">⚖️</span><span class="snap-label">Risk Profile</span><span class="snap-val blue-text">Moderate</span></div>
+            <div class="snap-card glass-card reveal reveal--d2"><span class="snap-icon green-bg">💰</span><span class="snap-label">Monthly Income</span><span class="snap-val">₹50,000</span></div>
+            <div class="snap-card glass-card reveal reveal--d3"><span class="snap-icon cyan-bg">🏦</span><span class="snap-label">Monthly Savings</span><span class="snap-val cyan-text">₹18,000</span></div>
+            <div class="snap-card glass-card reveal reveal--d4"><span class="snap-icon orange-bg">📈</span><span class="snap-label">Investment Portfolio</span><span class="snap-val orange-text">₹2,00,000</span></div>
+            <div class="snap-card glass-card reveal reveal--d5"><span class="snap-icon emerald-bg">💎</span><span class="snap-label">Net Worth</span><span class="snap-val green-text">₹4,85,000</span></div>
+            <div class="snap-card glass-card reveal"><span class="snap-icon pink-bg">❤️</span><span class="snap-label">Financial Health</span><span class="snap-val green-text">91 / 100</span></div>
+          </div>
+        </section>
+
+        <!-- GOALS & ACHIEVEMENTS + CONNECTED SERVICES (2 Columns) -->
+        <section class="mid-grid">
+
+          <!-- GOALS & ACHIEVEMENTS -->
+          <div class="glass-card reveal">
+            <h3 class="card-heading" style="margin-bottom:16px;">Goals & Achievements Progress</h3>
+            <div class="goal-list">
+              <div class="goal-item">
+                <div class="goal-labels"><span>Financial Goal: Buy a House</span><span class="green-text">68%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:68%"></div></div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-labels"><span>Emergency Fund Goal</span><span class="blue-text">80%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
+              </div>
+              <div class="goal-item">
+                <div class="goal-labels"><span>Learning Progress</span><span class="purple-text">60%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
+              </div>
+              <div class="goal-item goal-badge-row">
+                <span>Achievements Unlocked</span>
+                <span class="goal-badge-val">18 / 25 Badges</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONNECTED SERVICES -->
+          <div class="glass-card reveal reveal--d1">
+            <h3 class="card-heading" style="margin-bottom:16px;">Connected Services</h3>
+            <div class="services-list">
+              <div class="service-row"><div class="svc-left"><span class="svc-icon blue-bg">🏦</span><div><h4>Bank Account</h4><p>HDFC Bank •••• 4821</p></div></div><span class="svc-badge green-badge">Connected</span></div>
+              <div class="service-row"><div class="svc-left"><span class="svc-icon purple-bg">⚡</span><div><h4>UPI ID</h4><p>devsharma@upi</p></div></div><span class="svc-badge green-badge">Connected</span></div>
+              <div class="service-row"><div class="svc-left"><span class="svc-icon green-bg">📧</span><div><h4>Email Verification</h4><p>devsharma@gmail.com</p></div></div><span class="svc-badge green-badge">Verified</span></div>
+              <div class="service-row"><div class="svc-left"><span class="svc-icon cyan-bg">📱</span><div><h4>Mobile Number</h4><p>+91 98765 43210</p></div></div><span class="svc-badge green-badge">Verified</span></div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ACCOUNT ACTIVITY TIMELINE -->
+        <section class="activity-section glass-card reveal">
+          <h3 class="card-heading" style="margin-bottom:18px;">Recent Account Activity</h3>
+          <div class="timeline">
+            <div class="timeline-item"><div class="tl-dot green-bg">✓</div><div class="tl-content"><h4>Completed Learning Module</h4><p>"Mutual Funds Basics" finished.</p></div><span class="tl-time">Today, 2:15 PM</span></div>
+            <div class="timeline-item"><div class="tl-dot blue-bg">📄</div><div class="tl-content"><h4>Downloaded Financial Report</h4><p>May 2024 monthly report PDF generated.</p></div><span class="tl-time">Yesterday, 10:30 AM</span></div>
+            <div class="timeline-item"><div class="tl-dot purple-bg">📈</div><div class="tl-content"><h4>Started Investment Plan</h4><p>Initiated ₹2,000 monthly SIP.</p></div><span class="tl-time">May 20, 2026</span></div>
+            <div class="timeline-item"><div class="tl-dot orange-bg">🛡️</div><div class="tl-content"><h4>Generated Credit Score</h4><p>Updated score fetched: 730 Excellent.</p></div><span class="tl-time">May 15, 2026</span></div>
+            <div class="timeline-item"><div class="tl-dot cyan-bg">🤖</div><div class="tl-content"><h4>Completed AI Assessment</h4><p>Moderate risk tolerance assigned by Finora AI.</p></div><span class="tl-time">May 10, 2026</span></div>
+            <div class="timeline-item"><div class="tl-dot emerald-bg">👤</div><div class="tl-content"><h4>Profile Created</h4><p>Joined Finora platform.</p></div><span class="tl-time">May 1, 2026</span></div>
+          </div>
+        </section>
+
+        <!-- ACCOUNT STATISTICS GRID -->
+        <section class="stats-section">
+          <h2 class="section-heading reveal">Account Statistics</h2>
+          <div class="astats-grid">
+            <div class="astat glass-card reveal"><span class="astat-emoji blue-bg">📄</span><span class="astat-label">Reports Generated</span><span class="astat-val">12</span></div>
+            <div class="astat glass-card reveal reveal--d1"><span class="astat-emoji purple-bg">🤖</span><span class="astat-label">AI Assessments</span><span class="astat-val">8</span></div>
+            <div class="astat glass-card reveal reveal--d2"><span class="astat-emoji green-bg">💼</span><span class="astat-label">Investment Plans</span><span class="astat-val">5</span></div>
+            <div class="astat glass-card reveal reveal--d3"><span class="astat-emoji orange-bg">📚</span><span class="astat-label">Courses Completed</span><span class="astat-val">18</span></div>
+            <div class="astat glass-card reveal reveal--d4"><span class="astat-emoji cyan-bg">🔔</span><span class="astat-label">Notifications</span><span class="astat-val">42</span></div>
+            <div class="astat glass-card reveal reveal--d5"><span class="astat-emoji emerald-bg">🔥</span><span class="astat-label">Login Streak</span><span class="astat-val green-text">30 Days</span></div>
+          </div>
+        </section>
+
+        <!-- QUICK ACTIONS -->
+        <section class="quick-actions-section">
+          <h2 class="section-heading reveal">Quick Actions</h2>
+          <div class="qa-grid">
+            <div class="qa-card glass-card reveal"><span class="qa-icon blue-bg">✏️</span><h4>Edit Profile</h4><p>Update personal details</p></div>
+            <div class="qa-card glass-card reveal reveal--d1"><span class="qa-icon green-bg">📥</span><h4>Download My Data</h4><p>Export account archive</p></div>
+            <div class="qa-card glass-card reveal reveal--d2"><span class="qa-icon purple-bg">📊</span><h4>View Reports</h4><p>Check financial summaries</p></div>
+            <div class="qa-card glass-card reveal reveal--d3"><span class="qa-icon orange-bg">⚙️</span><h4>Manage Settings</h4><p>Configure preferences</p></div>
+            <div class="qa-card glass-card reveal reveal--d4"><span class="qa-icon cyan-bg">💬</span><h4>Contact Support</h4><p>Get assistance 24/7</p></div>
+            <div class="qa-card glass-card reveal reveal--d5"><span class="qa-icon emerald-bg">🏆</span><h4>View Achievements</h4><p>Check unlocked badges</p></div>
+          </div>
+        </section>
+
+        <!-- ABOUT ME -->
+        <section class="about-me-section reveal">
+          <div class="about-me-card glass-card">
+            <div class="am-header"><span class="am-icon purple-bg">💬</span><h3 class="card-heading">About Me</h3></div>
+            <p class="am-text">"I am focused on improving my financial health through disciplined savings, smart investments, and continuous financial learning with Finora."</p>
+          </div>
+        </section>
+
+      </div>
+    
+{% endblock %}

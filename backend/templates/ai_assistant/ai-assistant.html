@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}AI Financial Assistant{% endblock %}
+{% block page_title %}AI Financial Assistant{% endblock %}
+{% block page_subtitle %}Your intelligent financial companion that understands your financial profile.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'ai_assistant/ai-assistant.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'ai_assistant/ai-assistant.js' %}"></script>
+{% endblock %}
+{% block top_nav_extras %}
+<div class="search-box"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search..." /></div>
+{% endblock %}
+
+{% block content %}
+
+
+      <!-- PAGE BODY: 3-COLUMN LAYOUT -->
+      <div class="page-body">
+        <div class="assistant-layout">
+
+          <!-- LEFT: Assessment Progress Stepper -->
+          <div class="stepper-panel glass-card reveal">
+            <h3 class="stepper-heading">Assessment Progress</h3>
+            <div class="stepper">
+              <div class="stepper-step done" data-step="1">
+                <div class="step-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="step-line"></div>
+                <div class="step-info"><span class="step-number">1</span><span class="step-label">Monthly Income</span></div>
+              </div>
+              <div class="stepper-step done" data-step="2">
+                <div class="step-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="step-line"></div>
+                <div class="step-info"><span class="step-number">2</span><span class="step-label">Monthly Expenses</span></div>
+              </div>
+              <div class="stepper-step done" data-step="3">
+                <div class="step-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="step-line"></div>
+                <div class="step-info"><span class="step-number">3</span><span class="step-label">Savings</span></div>
+              </div>
+              <div class="stepper-step done" data-step="4">
+                <div class="step-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="step-line"></div>
+                <div class="step-info"><span class="step-number">4</span><span class="step-label">Emergency Fund</span></div>
+              </div>
+              <div class="stepper-step done" data-step="5">
+                <div class="step-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="step-line"></div>
+                <div class="step-info"><span class="step-number">5</span><span class="step-label">Investment Exp.</span></div>
+              </div>
+              <div class="stepper-step active" data-step="6">
+                <div class="step-dot">6</div>
+                <div class="step-line"></div>
+                <div class="step-info"><span class="step-number">6</span><span class="step-label">Risk Preference</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CENTER: Chat Area -->
+          <div class="chat-panel glass-card reveal reveal--delay-1">
+            <div class="chat-messages" id="chatMessages">
+
+              <!-- AI Greeting -->
+              <div class="message ai-message fade-in">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble">
+                  <div class="msg-sender">Finora AI</div>
+                  <p>Hi Dev 👋</p>
+                  <p>I'm your AI Financial Assistant. Let's understand your financial profile before generating your personalized investment recommendation.</p>
+                  <span class="msg-time">10:00 AM</span>
+                </div>
+              </div>
+
+              <!-- Q1 -->
+              <div class="message ai-message fade-in">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble">
+                  <p>What is your monthly income?</p>
+                  <div class="suggestion-chips">
+                    <span class="chip">₹15,000</span>
+                    <span class="chip">₹25,000</span>
+                    <span class="chip">₹50,000</span>
+                    <span class="chip">₹1,00,000+</span>
+                  </div>
+                  <span class="msg-time">10:00 AM</span>
+                </div>
+              </div>
+
+              <!-- A1 -->
+              <div class="message user-message fade-in">
+                <div class="msg-bubble user-bubble">
+                  <p>₹25,000</p>
+                  <span class="msg-time">10:01 AM</span>
+                </div>
+                <div class="msg-avatar user-avatar">D</div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="message ai-message fade-in">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble">
+                  <p>What are your monthly expenses?</p>
+                  <div class="suggestion-chips">
+                    <span class="chip">₹10,000</span>
+                    <span class="chip">₹15,000</span>
+                    <span class="chip">₹20,000</span>
+                    <span class="chip">₹30,000+</span>
+                  </div>
+                  <span class="msg-time">10:01 AM</span>
+                </div>
+              </div>
+
+              <!-- A2 -->
+              <div class="message user-message fade-in">
+                <div class="msg-bubble user-bubble">
+                  <p>₹15,000</p>
+                  <span class="msg-time">10:02 AM</span>
+                </div>
+                <div class="msg-avatar user-avatar">D</div>
+              </div>
+
+              <!-- Q3 -->
+              <div class="message ai-message fade-in">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble">
+                  <p>How much do you currently save every month?</p>
+                  <div class="suggestion-chips">
+                    <span class="chip">₹2,000</span>
+                    <span class="chip">₹5,000</span>
+                    <span class="chip">₹10,000</span>
+                    <span class="chip">₹20,000+</span>
+                  </div>
+                  <span class="msg-time">10:02 AM</span>
+                </div>
+              </div>
+
+              <!-- A3 -->
+              <div class="message user-message fade-in">
+                <div class="msg-bubble user-bubble">
+                  <p>₹5,000</p>
+                  <span class="msg-time">10:03 AM</span>
+                </div>
+                <div class="msg-avatar user-avatar">D</div>
+              </div>
+
+              <!-- Q4 -->
+              <div class="message ai-message fade-in">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble">
+                  <p>Do you have an emergency fund?</p>
+                  <div class="suggestion-chips">
+                    <span class="chip">Yes</span>
+                    <span class="chip">No</span>
+                    <span class="chip">Building One</span>
+                  </div>
+                  <span class="msg-time">10:03 AM</span>
+                </div>
+              </div>
+
+              <!-- A4 -->
+              <div class="message user-message fade-in">
+                <div class="msg-bubble user-bubble">
+                  <p>Yes</p>
+                  <span class="msg-time">10:04 AM</span>
+                </div>
+                <div class="msg-avatar user-avatar">D</div>
+              </div>
+
+              <!-- Q5 -->
+              <div class="message ai-message fade-in">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble">
+                  <p>How much investment experience do you have?</p>
+                  <div class="suggestion-chips">
+                    <span class="chip">None</span>
+                    <span class="chip">Beginner</span>
+                    <span class="chip">Intermediate</span>
+                    <span class="chip">Advanced</span>
+                  </div>
+                  <span class="msg-time">10:04 AM</span>
+                </div>
+              </div>
+
+              <!-- A5 -->
+              <div class="message user-message fade-in">
+                <div class="msg-bubble user-bubble">
+                  <p>Beginner</p>
+                  <span class="msg-time">10:05 AM</span>
+                </div>
+                <div class="msg-avatar user-avatar">D</div>
+              </div>
+
+              <!-- Q6 -->
+              <div class="message ai-message fade-in">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble">
+                  <p>How much investment risk are you comfortable taking?</p>
+                  <div class="suggestion-chips">
+                    <span class="chip">Low</span>
+                    <span class="chip active-chip">Moderate</span>
+                    <span class="chip">High</span>
+                  </div>
+                  <span class="msg-time">10:05 AM</span>
+                </div>
+              </div>
+
+              <!-- A6 -->
+              <div class="message user-message fade-in">
+                <div class="msg-bubble user-bubble">
+                  <p>Moderate</p>
+                  <span class="msg-time">10:06 AM</span>
+                </div>
+                <div class="msg-avatar user-avatar">D</div>
+              </div>
+
+              <!-- AI Summary Confirmation -->
+              <div class="message ai-message fade-in">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble summary-bubble">
+                  <p>✅ Thank you, Dev! I've collected all the information I need.</p>
+                  <p>I'm now analyzing your financial profile to generate your personalized <strong>Risk Assessment</strong>.</p>
+                  <a href="{% url 'risk-profile' %}" class="btn btn-primary btn-inline">View Risk Assessment →</a>
+                  <span class="msg-time">10:06 AM</span>
+                </div>
+              </div>
+
+              <!-- Typing Indicator -->
+              <div class="message ai-message" id="typingIndicator" style="display:none;">
+                <div class="msg-avatar ai-avatar">🤖</div>
+                <div class="msg-bubble ai-bubble typing-bubble">
+                  <div class="typing-dots"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Chat Input Bar -->
+            <div class="chat-input-bar">
+              <input type="text" class="chat-input" id="chatInput" placeholder="Type your answer..." />
+              <button class="send-btn" id="sendBtn" aria-label="Send">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT: Summary Card -->
+          <div class="summary-panel glass-card reveal reveal--delay-2">
+            <h3 class="summary-heading">AI Summary</h3>
+            <p class="summary-sub">Collected Information</p>
+
+            <div class="summary-list">
+              <div class="summary-item">
+                <span class="sum-label">Monthly Income</span>
+                <span class="sum-value">₹25,000</span>
+              </div>
+              <div class="summary-item">
+                <span class="sum-label">Monthly Expenses</span>
+                <span class="sum-value">₹15,000</span>
+              </div>
+              <div class="summary-item">
+                <span class="sum-label">Savings</span>
+                <span class="sum-value">₹5,000</span>
+              </div>
+              <div class="summary-item">
+                <span class="sum-label">Emergency Fund</span>
+                <span class="sum-value green-text">Yes</span>
+              </div>
+              <div class="summary-item">
+                <span class="sum-label">Investment Exp.</span>
+                <span class="sum-value blue-text">Beginner</span>
+              </div>
+              <div class="summary-item">
+                <span class="sum-label">Risk Preference</span>
+                <span class="sum-value orange-text">Moderate</span>
+              </div>
+            </div>
+
+            <div class="summary-status">
+              <span class="status-dot green-pulse"></span>
+              <span class="status-text">Ready for Assessment</span>
+            </div>
+
+            <a href="{% url 'risk-profile' %}" class="btn btn-primary btn-full">Generate Risk Profile →</a>
+          </div>
+
+        </div>
+      </div>
+    
+{% endblock %}

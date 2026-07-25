@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+{% block page_title %}{% endblock %}
+{% block page_subtitle %}Here's your financial overview{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'dashboard/dashboard.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+      <!-- DASHBOARD CONTENT WRAPPER -->
+      <div class="dashboard-body">
+
+        <!-- 1. TOP 5 ANALYTICS CARDS -->
+        <section class="stat-cards-row">
+
+          <!-- Card 1: Health Score -->
+          <div class="stat-card reveal">
+            <div class="stat-card-header">
+              <span class="stat-label">Health Score</span>
+              <span class="badge badge--green" id="val-health-badge">Excellent</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-number count-up" id="val-health-score" data-target="730">0</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext green-text">Top 5% of borrowers</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Risk Profile -->
+          <div class="stat-card reveal reveal--delay-1">
+            <div class="stat-card-header">
+              <span class="stat-label">Risk Profile</span>
+              <span class="badge badge--orange">Assessment</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-text-val orange-text" id="val-risk-profile">Moderate</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext">Updated today</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Monthly Investment -->
+          <div class="stat-card reveal reveal--delay-2">
+            <div class="stat-card-header">
+              <span class="stat-label">Monthly Investment</span>
+              <span class="badge badge--purple">Budget</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-number" id="val-monthly-investment">₹2,000</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext purple-text">Auto-allocated</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Expected Returns -->
+          <div class="stat-card reveal reveal--delay-3">
+            <div class="stat-card-header">
+              <span class="stat-label">Cash Flow</span>
+              <span class="badge badge--blue">per month</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-number" id="val-cash-flow">₹3.45L</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext blue-text">Income minus expenses</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Savings Rate -->
+          <div class="stat-card reveal reveal--delay-4">
+            <div class="stat-card-header">
+              <span class="stat-label">Savings Rate</span>
+              <span class="badge badge--green">Great job!</span>
+            </div>
+            <div class="stat-value-box">
+              <span class="stat-number"><span class="count-up" id="val-savings-rate" data-target="24">0</span>%</span>
+            </div>
+            <div class="stat-footer">
+              <span class="stat-subtext green-text">+4% above target</span>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- 2. MAIN CHARTS SECTION (2 COLUMNS) -->
+        <section class="charts-grid">
+
+          <!-- Left: Income vs Expense Bar Chart -->
+          <div class="chart-card reveal">
+            <div class="card-title-row">
+              <div>
+                <h3 class="card-title">Income vs Expense</h3>
+                <p class="card-subtitle">2026 Monthly Breakdown</p>
+              </div>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="legend-dot legend-dot--income"></span> Income</span>
+                <span class="legend-item"><span class="legend-dot legend-dot--expense"></span> Expense</span>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="incomeExpenseChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Right: Spending Categories Donut Chart -->
+          <div class="chart-card reveal reveal--delay-1">
+            <div class="card-title-row">
+              <div>
+                <h3 class="card-title">Spending Categories</h3>
+                <p class="card-subtitle">Current Month Distribution</p>
+              </div>
+            </div>
+            <div class="donut-chart-wrapper">
+              <div class="donut-container">
+                <canvas id="spendingDonutChart"></canvas>
+                <div class="donut-center-info">
+                  <span class="donut-center-val">₹32.4k</span>
+                  <span class="donut-center-lbl">Spent</span>
+                </div>
+              </div>
+              <div class="category-legend">
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #3B82F6;"></span>
+                  <span class="cat-name">Housing</span>
+                  <span class="cat-pct">40%</span>
+                </div>
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #F97316;"></span>
+                  <span class="cat-name">Food</span>
+                  <span class="cat-pct">20%</span>
+                </div>
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #10B981;"></span>
+                  <span class="cat-name">Transport</span>
+                  <span class="cat-pct">15%</span>
+                </div>
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #A855F7;"></span>
+                  <span class="cat-name">Entertainment</span>
+                  <span class="cat-pct">15%</span>
+                </div>
+                <div class="category-item">
+                  <span class="cat-dot" style="background: #06B6D4;"></span>
+                  <span class="cat-name">Others</span>
+                  <span class="cat-pct">10%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- 3. FINANCIAL SUMMARY WIDGETS (6 MINI CARDS) -->
+        <section class="summary-widgets-row">
+          <div class="widget-card reveal">
+            <div class="widget-icon widget-icon--green">💰</div>
+            <div class="widget-info">
+              <span class="widget-title">Total Savings</span>
+              <span class="widget-val" id="val-total-savings">₹4,25,000</span>
+              <span class="widget-trend green-text">Liquid assets</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-1">
+            <div class="widget-icon widget-icon--blue">📈</div>
+            <div class="widget-info">
+              <span class="widget-title">Monthly Income</span>
+              <span class="widget-val" id="val-monthly-income">₹85,000</span>
+              <span class="widget-trend blue-text">Primary inflows</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-2">
+            <div class="widget-icon widget-icon--orange">💳</div>
+            <div class="widget-info">
+              <span class="widget-title">Monthly Expenses</span>
+              <span class="widget-val" id="val-monthly-expenses">₹32,400</span>
+              <span class="widget-trend">Monthly outflows</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-3">
+            <div class="widget-icon widget-icon--purple">💎</div>
+            <div class="widget-info">
+              <span class="widget-title">Expense Ratio</span>
+              <span class="widget-val" id="val-expense-ratio">38%</span>
+              <span class="widget-trend green-text">Of income</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-4">
+            <div class="widget-icon widget-icon--cyan">🚀</div>
+            <div class="widget-info">
+              <span class="widget-title">Profile Completion</span>
+              <span class="widget-val" id="val-profile-completion">100%</span>
+              <span class="widget-trend purple-text">Ready for AI</span>
+            </div>
+          </div>
+
+          <div class="widget-card reveal reveal--delay-5">
+            <div class="widget-icon widget-icon--rose">🛡️</div>
+            <div class="widget-info">
+              <span class="widget-title">Emergency Fund</span>
+              <span class="widget-val" id="val-emergency-fund">₹1,50,000</span>
+              <span class="widget-trend green-text">Safety Net</span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- 4. AI INSIGHTS SECTION -->
+        <section class="insights-section">
+          <div class="section-title-row reveal">
+            <div class="title-with-badge">
+              <span class="sparkle-icon">✨</span>
+              <h2 class="section-heading">AI Financial Intelligence Insights</h2>
+            </div>
+            <span class="ai-live-badge"><span class="pulse-dot"></span> Live AI Stream</span>
+          </div>
+
+          <div class="insights-grid" id="insights-container">
+            <!-- Dynamically populated by JS -->
+          </div>
+        </section>
+
+
+        <!-- 5. QUICK ACTIONS & RECENT ACTIVITY (2 COLUMNS) -->
+        <section class="bottom-grid">
+
+          <!-- Left: Quick Action Cards -->
+          <div class="quick-actions-card reveal">
+            <div class="card-title-row">
+              <h3 class="card-title">Quick Actions</h3>
+              <span class="card-sub-badge">AI Tools</span>
+            </div>
+
+            <div class="actions-grid" id="quick-actions-container">
+              <!-- Dynamically populated by JS -->
+            </div>
+          </div>
+
+          <!-- Right: Recent Activity Timeline -->
+          <div class="activity-card reveal reveal--delay-1">
+            <div class="card-title-row">
+              <h3 class="card-title">Recent Activity</h3>
+              <a href="#" class="view-all-link">View All</a>
+            </div>
+
+            <div class="timeline-list" id="activity-container">
+              <!-- Dynamically populated by JS -->
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    
+{% endblock %}

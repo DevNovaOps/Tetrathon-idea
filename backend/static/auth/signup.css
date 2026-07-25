@@ -1,0 +1,20 @@
+/* ===================================================
+   FINORA — Sign Up Styles
+   =================================================== */
+@import url("login.css");
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.form-select {
+  appearance: none;
+  cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}

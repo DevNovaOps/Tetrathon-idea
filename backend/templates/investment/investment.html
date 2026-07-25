@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Personalized Investment Portfolio{% endblock %}
+{% block page_title %}Personalized Investment Portfolio{% endblock %}
+{% block page_subtitle %}Based on your financial profile and AI risk assessment, Finora recommends the following allocation.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'investment/investment.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'investment/investment.js' %}"></script>
+{% endblock %}
+{% block top_nav_extras %}
+<div class="search-box"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search..." /></div>
+{% endblock %}
+
+{% block content %}
+
+
+      <!-- PAGE BODY -->
+      <div class="page-body">
+
+        <!-- SECTION 1: TOP SUMMARY CARDS -->
+        <section class="summary-cards-row">
+          <div class="summary-card glass-card reveal">
+            <span class="sum-card-label">Target Portfolio Value</span>
+            <span class="sum-card-value">₹2,00,000</span>
+            <span class="sum-card-sub green-text">5-Year Growth Plan</span>
+          </div>
+          <div class="summary-card glass-card reveal reveal--delay-1">
+            <span class="sum-card-label">Risk Profile</span>
+            <span class="sum-card-value orange-text">Moderate</span>
+            <span class="sum-card-sub">Balanced Horizon</span>
+          </div>
+          <div class="summary-card glass-card reveal reveal--delay-2">
+            <span class="sum-card-label">Expected Annual Return</span>
+            <span class="sum-card-value blue-text">12 – 14%</span>
+            <span class="sum-card-sub">CAGR Projected</span>
+          </div>
+          <div class="summary-card glass-card reveal reveal--delay-3">
+            <span class="sum-card-label">Investment Horizon</span>
+            <span class="sum-card-value purple-text">5 Years</span>
+            <span class="sum-card-sub">Optimal Tenure</span>
+          </div>
+          <div class="summary-card glass-card reveal reveal--delay-4">
+            <span class="sum-card-label">AI Confidence Score</span>
+            <span class="sum-card-value cyan-text">91%</span>
+            <span class="sum-card-sub green-text">High Alignment</span>
+          </div>
+        </section>
+
+        <!-- SECTION 2: PORTFOLIO ALLOCATION CARDS (MATCHING REFERENCE IMAGE 09) -->
+        <section class="allocation-section">
+          <div class="section-title-row reveal">
+            <div>
+              <h2 class="section-heading">Recommended Investments</h2>
+              <p class="card-sub">Based on your risk profile</p>
+            </div>
+            <span class="badge badge--green">AI Optimized</span>
+          </div>
+
+          <div class="allocation-grid">
+
+            <!-- Card 1: Index Fund -->
+            <div class="alloc-card glass-card reveal">
+              <div class="alloc-card-header">
+                <div>
+                  <h3 class="alloc-title">Index Fund</h3>
+                  <span class="alloc-pct blue-text">40%</span>
+                </div>
+                <div class="alloc-icon blue-bg">📊</div>
+              </div>
+              <div class="alloc-risk-badge"><span class="badge badge--blue">Medium Risk</span></div>
+              <div class="alloc-footer">
+                <span class="alloc-lbl">Expected Return</span>
+                <span class="alloc-val">12%</span>
+              </div>
+              <div class="alloc-tag">⭐ Highly Recommended</div>
+            </div>
+
+            <!-- Card 2: Debt Fund -->
+            <div class="alloc-card glass-card reveal reveal--delay-1">
+              <div class="alloc-card-header">
+                <div>
+                  <h3 class="alloc-title">Debt Fund</h3>
+                  <span class="alloc-pct green-text">20%</span>
+                </div>
+                <div class="alloc-icon green-bg">🏦</div>
+              </div>
+              <div class="alloc-risk-badge"><span class="badge badge--green">Low Risk</span></div>
+              <div class="alloc-footer">
+                <span class="alloc-lbl">Expected Return</span>
+                <span class="alloc-val">7%</span>
+              </div>
+            </div>
+
+            <!-- Card 3: Gold ETF -->
+            <div class="alloc-card glass-card reveal reveal--delay-2">
+              <div class="alloc-card-header">
+                <div>
+                  <h3 class="alloc-title">Gold ETF</h3>
+                  <span class="alloc-pct orange-text">20%</span>
+                </div>
+                <div class="alloc-icon orange-bg">🪙</div>
+              </div>
+              <div class="alloc-risk-badge"><span class="badge badge--orange">Medium Risk</span></div>
+              <div class="alloc-footer">
+                <span class="alloc-lbl">Expected Return</span>
+                <span class="alloc-val">9%</span>
+              </div>
+            </div>
+
+            <!-- Card 4: Liquid Fund -->
+            <div class="alloc-card glass-card reveal reveal--delay-3">
+              <div class="alloc-card-header">
+                <div>
+                  <h3 class="alloc-title">Liquid Fund</h3>
+                  <span class="alloc-pct cyan-text">10%</span>
+                </div>
+                <div class="alloc-icon cyan-bg">💧</div>
+              </div>
+              <div class="alloc-risk-badge"><span class="badge badge--cyan">Very Low Risk</span></div>
+              <div class="alloc-footer">
+                <span class="alloc-lbl">Expected Return</span>
+                <span class="alloc-val">5%</span>
+              </div>
+            </div>
+
+            <!-- Card 5: Blue Chip Stocks -->
+            <div class="alloc-card glass-card reveal reveal--delay-4">
+              <div class="alloc-card-header">
+                <div>
+                  <h3 class="alloc-title">Blue Chip Stocks</h3>
+                  <span class="alloc-pct purple-text">10%</span>
+                </div>
+                <div class="alloc-icon purple-bg">💎</div>
+              </div>
+              <div class="alloc-risk-badge"><span class="badge badge--purple">Moderate Risk</span></div>
+              <div class="alloc-footer">
+                <span class="alloc-lbl">Expected Return</span>
+                <span class="alloc-val">15%</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="alloc-banner-text">
+            <span>⚡ Invest small amounts starting from <strong>₹500/month</strong></span>
+          </div>
+        </section>
+
+        <!-- SECTION 3: DONUT CHART + AI RECOMMENDATIONS (2 COLUMNS) -->
+        <section class="chart-rec-grid">
+
+          <!-- Left: Portfolio Donut Chart -->
+          <div class="glass-card reveal">
+            <h3 class="card-heading">Asset Allocation Mix</h3>
+            <p class="card-sub" style="margin-bottom:16px;">Visual breakdown of portfolio weights</p>
+            <div class="donut-chart-box">
+              <canvas id="portfolioDonutChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Right: AI Recommendations Panel -->
+          <div class="glass-card reveal reveal--delay-1">
+            <h3 class="card-heading" style="margin-bottom:16px;">AI Portfolio Guidance</h3>
+            <div class="rec-list">
+              <div class="rec-item">
+                <div class="rec-icon-circle green-bg">✓</div>
+                <div class="rec-text-wrap">
+                  <h4>Maintain monthly SIP discipline</h4>
+                  <p>Automate monthly SIP transfers on the 1st of every month for compound growth.</p>
+                </div>
+              </div>
+              <div class="rec-item">
+                <div class="rec-icon-circle blue-bg">✓</div>
+                <div class="rec-text-wrap">
+                  <h4>Review portfolio every 6 months</h4>
+                  <p>Rebalance asset classes if equity exceeds 50% due to market fluctuations.</p>
+                </div>
+              </div>
+              <div class="rec-item">
+                <div class="rec-icon-circle purple-bg">✓</div>
+                <div class="rec-text-wrap">
+                  <h4>Avoid unverified high-risk assets</h4>
+                  <p>Steer clear of speculative crypto or penny stocks to preserve capital security.</p>
+                </div>
+              </div>
+              <div class="rec-item">
+                <div class="rec-icon-circle orange-bg">✓</div>
+                <div class="rec-text-wrap">
+                  <h4>Step-up SIP as monthly income grows</h4>
+                  <p>Increase monthly investment by 10% annually with every salary raise.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- SECTION 4: PORTFOLIO BENEFITS -->
+        <section class="benefits-section">
+          <h2 class="section-heading reveal" style="margin-bottom:16px;">Key Portfolio Benefits</h2>
+          <div class="benefits-grid">
+            <div class="benefit-card glass-card reveal">
+              <div class="benefit-emoji green-bg">🛡️</div>
+              <h4 class="benefit-title">Diversification</h4>
+              <p class="benefit-desc">Spread across equities, debt, gold, and cash equivalents.</p>
+            </div>
+            <div class="benefit-card glass-card reveal reveal--delay-1">
+              <div class="benefit-emoji blue-bg">📉</div>
+              <h4 class="benefit-title">Lower Volatility</h4>
+              <p class="benefit-desc">Debt and liquid funds act as a shock absorber during market pullbacks.</p>
+            </div>
+            <div class="benefit-card glass-card reveal reveal--delay-2">
+              <div class="benefit-emoji purple-bg">🚀</div>
+              <h4 class="benefit-title">Long-Term Growth</h4>
+              <p class="benefit-desc">Index funds & Blue Chips capture compounding equity market gains.</p>
+            </div>
+            <div class="benefit-card glass-card reveal reveal--delay-3">
+              <div class="benefit-emoji cyan-bg">💧</div>
+              <h4 class="benefit-title">High Liquidity</h4>
+              <p class="benefit-desc">Liquid fund reserves ensure immediate access to funds within 24 hours.</p>
+            </div>
+            <div class="benefit-card glass-card reveal reveal--delay-4">
+              <div class="benefit-emoji orange-bg">⚖️</div>
+              <h4 class="benefit-title">Stable Returns</h4>
+              <p class="benefit-desc">Consistent 12–14% average annual return target across cycles.</p>
+            </div>
+            <div class="benefit-card glass-card reveal reveal--delay-5">
+              <div class="benefit-emoji emerald-bg">📈</div>
+              <h4 class="benefit-title">Inflation Protection</h4>
+              <p class="benefit-desc">Gold ETFs and index funds hedge against purchasing power erosion.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: INVESTMENT TIMELINE & NEXT STEP -->
+        <section class="timeline-cta-section reveal">
+          <div class="timeline-card glass-card">
+            <h3 class="card-heading" style="text-align:center; margin-bottom:20px;">Your Investment Journey</h3>
+            <div class="journey-timeline-row">
+              <div class="j-step">
+                <span class="j-icon">📍</span>
+                <span class="j-name">Today</span>
+                <span class="j-sub">Profile Verified</span>
+              </div>
+              <div class="j-arrow">➔</div>
+              <div class="j-step">
+                <span class="j-icon">💳</span>
+                <span class="j-name">Monthly SIP</span>
+                <span class="j-sub">₹2,000 / month</span>
+              </div>
+              <div class="j-arrow">➔</div>
+              <div class="j-step">
+                <span class="j-icon">📈</span>
+                <span class="j-name">Compound Growth</span>
+                <span class="j-sub">12–14% CAGR</span>
+              </div>
+              <div class="j-arrow">➔</div>
+              <div class="j-step">
+                <span class="j-icon">🏆</span>
+                <span class="j-name">Goal Achievement</span>
+                <span class="j-sub">₹2,00,000 Target</span>
+              </div>
+            </div>
+
+            <div class="cta-btn-wrap">
+              <a href="{% url 'simulator' %}" class="btn btn-primary btn-lg">Open Growth Simulator →</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    
+{% endblock %}

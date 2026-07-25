@@ -4,6 +4,7 @@ import logging
 from allauth.account.adapter import DefaultAccountAdapter
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
 from allauth.socialaccount.models import SocialLogin
+from django.urls import reverse
 
 from .constants import AUTH_PROVIDER_GOOGLE
 
@@ -17,12 +18,12 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         """Redirect after login based on onboarding status."""
         user = request.user
         if user.is_authenticated and user.onboarding_completed:
-            return '/04-dashboard/dashboard.html'
-        return '/03-onboarding/index.html'
+            return reverse('dashboard')
+        return reverse('onboarding')
 
     def get_logout_redirect_url(self, request):
         """Redirect to landing page after logout."""
-        return '/01-landing-page/index.html'
+        return reverse('landing')
 
 
 class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):

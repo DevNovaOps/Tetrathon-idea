@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Achievements & Milestones{% endblock %}
+{% block page_title %}Achievements & Milestones{% endblock %}
+{% block page_subtitle %}Keep going, you're doing great!{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'achievements/achievements.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'achievements/achievements.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="page-body">
+
+      <!-- ROW 1: SUMMARY -->
+      <section class="ach-summary-row">
+        <div class="ach-sum glass-card reveal"><span class="ach-sum-icon blue-bg">🏅</span><span class="ach-sum-label">Unlocked</span><span class="ach-sum-val">18</span></div>
+        <div class="ach-sum glass-card reveal reveal--d1"><span class="ach-sum-icon green-bg">📊</span><span class="ach-sum-label">Completion</span><span class="ach-sum-val green-text">72%</span></div>
+        <div class="ach-sum glass-card reveal reveal--d2"><span class="ach-sum-icon purple-bg">🎖️</span><span class="ach-sum-label">Current Level</span><span class="ach-sum-val purple-text">Finance Explorer</span></div>
+        <div class="ach-sum glass-card reveal reveal--d3"><span class="ach-sum-icon orange-bg">🔥</span><span class="ach-sum-label">Current Streak</span><span class="ach-sum-val orange-text">14 Days</span></div>
+      </section>
+
+      <!-- ROW 2: UNLOCKED BADGES GRID (Matching Ref Image 14) -->
+      <section class="badges-section">
+        <h2 class="section-heading reveal">Unlocked Achievements</h2>
+        <div class="badges-grid">
+          <div class="ach-card glass-card unlocked reveal"><div class="ach-icon green-bg">📊</div><h4>First Investment</h4><p>Made your first investment</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d1"><div class="ach-icon blue-bg">💰</div><h4>7-Day Savings</h4><p>Saved money for 7 consecutive days</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d2"><div class="ach-icon orange-bg">🔥</div><h4>Bill Payment Streak</h4><p>Paid bills on time for 5 months</p><div class="ach-status"><span class="ach-progress-text">3 / 5</span></div><div class="ach-bar"><div class="ach-bar-fill" style="width:60%"></div></div></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d3"><div class="ach-icon purple-bg">🛡️</div><h4>Credit Score Improved</h4><p>Increased score by 50+ points</p><div class="ach-status"><span class="ach-progress-text">40 / 50</span></div><div class="ach-bar"><div class="ach-bar-fill" style="width:80%"></div></div></div>
+          <div class="ach-card glass-card unlocked reveal"><div class="ach-icon cyan-bg">🏠</div><h4>Savings Goal</h4><p>Saved ₹10,000</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div><div class="ach-bar"><div class="ach-bar-fill" style="width:100%"></div></div><span class="ach-subprogress">₹10,000 / ₹10,000</span></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d1"><div class="ach-icon emerald-bg">📈</div><h4>Investment Streak</h4><p>Invested for 3 months</p><div class="ach-status"><span class="ach-progress-text">2 / 3</span></div><div class="ach-bar"><div class="ach-bar-fill" style="width:67%"></div></div></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d2"><div class="ach-icon blue-bg">📖</div><h4>Completed Profile</h4><p>Filled in all profile details</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d3"><div class="ach-icon green-bg">🤖</div><h4>First AI Assessment</h4><p>Completed your first AI review</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div></div>
+          <div class="ach-card glass-card unlocked reveal"><div class="ach-icon orange-bg">🏆</div><h4>Budget Master</h4><p>Stayed within budget for 3 months</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d1"><div class="ach-icon purple-bg">🔥</div><h4>7-Day Learning Streak</h4><p>Completed lessons 7 days in a row</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d2"><div class="ach-icon cyan-bg">💎</div><h4>Smart Saver</h4><p>Saved 20%+ of income for 3 months</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div></div>
+          <div class="ach-card glass-card unlocked reveal reveal--d3"><div class="ach-icon blue-bg">🚀</div><h4>Finance Explorer</h4><p>Explored all Finora features</p><div class="ach-status"><span class="ach-earned green-text">✓ Earned</span></div></div>
+        </div>
+      </section>
+
+      <!-- ROW 3: LOCKED / NEXT ACHIEVEMENTS -->
+      <section class="locked-section">
+        <h2 class="section-heading reveal">Next Milestones</h2>
+        <div class="locked-grid">
+          <div class="locked-card glass-card reveal"><div class="locked-icon">🔒</div><h4>Credit Score 800+</h4><p>Reach a credit score of 800 or above.</p><div class="locked-bar"><div class="locked-bar-fill" style="width:91%"></div></div><span class="locked-progress">730 / 800</span></div>
+          <div class="locked-card glass-card reveal reveal--d1"><div class="locked-icon">🔒</div><h4>Complete 50 Lessons</h4><p>Finish 50 educational lessons.</p><div class="locked-bar"><div class="locked-bar-fill" style="width:36%"></div></div><span class="locked-progress">18 / 50</span></div>
+          <div class="locked-card glass-card reveal reveal--d2"><div class="locked-icon">🔒</div><h4>30-Day Consistency</h4><p>Stay active for 30 consecutive days.</p><div class="locked-bar"><div class="locked-bar-fill" style="width:47%"></div></div><span class="locked-progress">14 / 30 Days</span></div>
+          <div class="locked-card glass-card reveal reveal--d3"><div class="locked-icon">🔒</div><h4>₹5L Portfolio</h4><p>Grow your portfolio to ₹5,00,000.</p><div class="locked-bar"><div class="locked-bar-fill" style="width:40%"></div></div><span class="locked-progress">₹2L / ₹5L</span></div>
+          <div class="locked-card glass-card reveal reveal--d4"><div class="locked-icon">🔒</div><h4>Investment Journey</h4><p>Complete the full investment journey.</p><div class="locked-bar"><div class="locked-bar-fill" style="width:65%"></div></div><span class="locked-progress">65% Done</span></div>
+        </div>
+      </section>
+
+      <!-- ROW 4: USER STATS -->
+      <section class="user-stats-section">
+        <h2 class="section-heading reveal">Your Statistics</h2>
+        <div class="user-stats-grid">
+          <div class="ustat glass-card reveal"><span class="ustat-emoji blue-bg">📚</span><span class="ustat-label">Courses Completed</span><span class="ustat-val">8</span></div>
+          <div class="ustat glass-card reveal reveal--d1"><span class="ustat-emoji green-bg">📄</span><span class="ustat-label">Reports Generated</span><span class="ustat-val">12</span></div>
+          <div class="ustat glass-card reveal reveal--d2"><span class="ustat-emoji purple-bg">🤖</span><span class="ustat-label">AI Assessments</span><span class="ustat-val">6</span></div>
+          <div class="ustat glass-card reveal reveal--d3"><span class="ustat-emoji orange-bg">💼</span><span class="ustat-label">Investment Plans</span><span class="ustat-val">3</span></div>
+          <div class="ustat glass-card reveal reveal--d4"><span class="ustat-emoji cyan-bg">🎯</span><span class="ustat-label">Financial Goals</span><span class="ustat-val">5</span></div>
+          <div class="ustat glass-card reveal reveal--d5"><span class="ustat-emoji emerald-bg">⏱</span><span class="ustat-label">Learning Hours</span><span class="ustat-val">24h</span></div>
+        </div>
+      </section>
+
+      <!-- ROW 5: MOTIVATION -->
+      <section class="motivation-section reveal">
+        <div class="motivation-card glass-card">
+          <div class="moti-icon">🌟</div>
+          <div class="moti-body"><h3>You're making excellent progress!</h3><p>Keep improving your financial habits to unlock more achievements and reach the <strong>Finance Master</strong> level.</p></div>
+          <a href="../13-education/education.html" class="btn btn-primary">Continue Learning →</a>
+        </div>
+      </section>
+    </div>
+  
+{% endblock %}

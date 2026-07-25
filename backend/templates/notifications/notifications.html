@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Notifications{% endblock %}
+{% block page_title %}Notifications{% endblock %}
+{% block page_subtitle %}Stay informed with personalized financial alerts and AI recommendations.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'notifications/notifications.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'notifications/notifications.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+      <div class="page-body">
+
+        <!-- FILTER CHIPS -->
+        <div class="filter-bar reveal">
+          <button class="chip active">All</button>
+          <button class="chip">Unread <span class="chip-count">5</span></button>
+          <button class="chip">Bills</button>
+          <button class="chip">Investments</button>
+          <button class="chip">Credit Score</button>
+          <button class="chip">Security</button>
+          <button class="chip">Education</button>
+          <button class="chip">AI Insights</button>
+        </div>
+
+        <!-- 2-COLUMN LAYOUT: NOTIF LIST + STATS PANEL -->
+        <div class="notif-layout">
+
+          <!-- LEFT: NOTIFICATION LIST -->
+          <div class="notif-list-col">
+
+            <!-- TODAY GROUP -->
+            <div class="notif-group reveal">
+              <h3 class="group-label">Today</h3>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon green-bg">⚡</div>
+                <div class="notif-body">
+                  <h4>Electricity Bill Paid Successfully</h4>
+                  <p>Your electricity bill of ₹1,250 has been paid on time.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">Just Now</span><span class="notif-badge badge--green">Success</span></div>
+              </div>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon blue-bg">💰</div>
+                <div class="notif-body">
+                  <h4>Salary Credited — ₹50,000 Added</h4>
+                  <p>Your monthly salary has been deposited to your primary account.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">30 min ago</span></div>
+              </div>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon purple-bg">🛡️</div>
+                <div class="notif-body">
+                  <h4>Credit Score Updated — 730</h4>
+                  <p>Your credit score increased by +18 points this month. Great job!</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">1 hr ago</span><span class="notif-badge badge--purple">Credit</span></div>
+              </div>
+            </div>
+
+            <!-- THIS WEEK GROUP -->
+            <div class="notif-group reveal reveal--d1">
+              <h3 class="group-label">This Week</h3>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon orange-bg">🧠</div>
+                <div class="notif-body">
+                  <h4>AI Recommendation</h4>
+                  <p>Increase your monthly SIP by ₹500 to improve 5-year returns by 28%.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">2 days ago</span><span class="notif-badge badge--orange">Priority</span></div>
+              </div>
+
+              <div class="notif-card glass-card unread">
+                <div class="notif-dot-wrap"><span class="unread-dot"></span></div>
+                <div class="notif-icon blue-bg">📊</div>
+                <div class="notif-body">
+                  <h4>Investment Reminder</h4>
+                  <p>Your monthly SIP of ₹2,000 is due tomorrow. Ensure sufficient balance.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">3 days ago</span></div>
+              </div>
+
+              <div class="notif-card glass-card">
+                <div class="notif-icon cyan-bg">🛟</div>
+                <div class="notif-body">
+                  <h4>Emergency Fund Reminder</h4>
+                  <p>Maintain at least 6 months of expenses in your emergency fund.</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">4 days ago</span></div>
+              </div>
+
+              <div class="notif-card glass-card">
+                <div class="notif-icon green-bg">📈</div>
+                <div class="notif-body">
+                  <h4>Weekly Financial Summary</h4>
+                  <p>Your savings improved by 8% this week. Keep up the momentum!</p>
+                </div>
+                <div class="notif-meta"><span class="notif-time">5 days ago</span></div>
+              </div>
+            </div>
+
+            <!-- OLDER GROUP -->
+            <div class="notif-group reveal reveal--d2">
+              <h3 class="group-label">Older</h3>
+
+              <div class="notif-card glass-card">
+                <div class="notif-icon purple-bg">🏆</div>
+                <div class="notif-body"><h4>Portfolio Milestone Reached</h4><p>Your investment portfolio crossed ₹1,00,000 for the first time!</p></div>
+                <div class="notif-meta"><span class="notif-time">1 week ago</span></div>
+              </div>
+              <div class="notif-card glass-card">
+                <div class="notif-icon blue-bg">📄</div>
+                <div class="notif-body"><h4>Financial Report Generated</h4><p>Your April 2024 financial report is ready to download.</p></div>
+                <div class="notif-meta"><span class="notif-time">2 weeks ago</span></div>
+              </div>
+              <div class="notif-card glass-card">
+                <div class="notif-icon green-bg">📚</div>
+                <div class="notif-body"><h4>New Educational Article</h4><p>"How to Build an Emergency Fund in 6 Months" is now available.</p></div>
+                <div class="notif-meta"><span class="notif-time">2 weeks ago</span></div>
+              </div>
+              <div class="notif-card glass-card">
+                <div class="notif-icon orange-bg">👤</div>
+                <div class="notif-body"><h4>Profile Updated Successfully</h4><p>Your contact details and investment preferences have been updated.</p></div>
+                <div class="notif-meta"><span class="notif-time">3 weeks ago</span></div>
+              </div>
+              <div class="notif-card glass-card">
+                <div class="notif-icon cyan-bg">✅</div>
+                <div class="notif-body"><h4>Risk Assessment Completed</h4><p>Your risk profile has been analyzed. View your results in Risk Profile.</p></div>
+                <div class="notif-meta"><span class="notif-time">1 month ago</span></div>
+              </div>
+            </div>
+
+            <!-- VIEW ALL CTA -->
+            <div class="view-all-cta reveal reveal--d3">
+              <button class="btn btn-outline btn-full">View All Notifications</button>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: STATS + QUICK ACTIONS -->
+          <div class="stats-col">
+
+            <div class="glass-card stats-card reveal">
+              <h3 class="card-heading" style="margin-bottom:16px;">Notification Stats</h3>
+              <div class="stat-list">
+                <div class="stat-row"><span class="stat-label">Unread</span><span class="stat-val" style="color:#EF4444;">5</span></div>
+                <div class="stat-row"><span class="stat-label">Today's Alerts</span><span class="stat-val">3</span></div>
+                <div class="stat-row"><span class="stat-label">This Week</span><span class="stat-val">8</span></div>
+                <div class="stat-row"><span class="stat-label">AI Recommendations</span><span class="stat-val blue-text">6</span></div>
+                <div class="stat-row"><span class="stat-label">Security Alerts</span><span class="stat-val green-text">0</span></div>
+              </div>
+            </div>
+
+            <div class="glass-card actions-card reveal reveal--d1">
+              <h3 class="card-heading" style="margin-bottom:14px;">Quick Actions</h3>
+              <div class="qa-list">
+                <button class="qa-btn"><span class="qa-icon">✓</span> Mark All as Read</button>
+                <button class="qa-btn"><span class="qa-icon">📥</span> Download History</button>
+                <button class="qa-btn"><span class="qa-icon">⚙️</span> Manage Preferences</button>
+                <button class="qa-btn"><span class="qa-icon">🧠</span> View AI Recommendations</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    
+{% endblock %}

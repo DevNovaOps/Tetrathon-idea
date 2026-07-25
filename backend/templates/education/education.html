@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Financial Learning Hub{% endblock %}
+{% block page_title %}Financial Learning Hub{% endblock %}
+{% block page_subtitle %}Learn smart financial habits through bite-sized AI-curated educational content.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'education/education.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'education/education.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="page-body">
+
+      <!-- ROW 1: LEARNING PROGRESS SUMMARY -->
+      <section class="progress-row">
+        <div class="progress-ring-card glass-card reveal">
+          <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--gauge-track)" stroke-width="10"/><circle cx="60" cy="60" r="52" fill="none" stroke="url(#learnGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 327" id="learnArc" transform="rotate(-90 60 60)"/><defs><linearGradient id="learnGrad" x1="0%" y1="0%" x2="100%"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs></svg>
+            <div class="ring-center"><span class="ring-big" id="learnPctText">0%</span><span class="ring-sub">Completed</span></div>
+          </div>
+        </div>
+        <div class="stat-card glass-card reveal reveal--d1"><span class="stat-emoji blue-bg">📖</span><span class="stat-label">Lessons Completed</span><span class="stat-val">18 <span class="stat-dim">/ 30</span></span></div>
+        <div class="stat-card glass-card reveal reveal--d2"><span class="stat-emoji purple-bg">🏆</span><span class="stat-label">Current Level</span><span class="stat-val purple-text">Intermediate</span></div>
+        <div class="stat-card glass-card reveal reveal--d3"><span class="stat-emoji orange-bg">🔥</span><span class="stat-label">Learning Streak</span><span class="stat-val orange-text">14 Days</span></div>
+      </section>
+
+      <!-- ROW 2: FEATURED COURSE -->
+      <section class="featured-card glass-card reveal">
+        <div class="featured-inner">
+          <div class="featured-left">
+            <span class="badge badge--accent">Featured Course</span>
+            <h2 class="featured-title">Master Personal Finance</h2>
+            <p class="featured-desc">A comprehensive beginner-friendly course covering budgeting, saving, investing, and building long-term financial security.</p>
+            <div class="featured-meta">
+              <span>⏱ 4 Hours</span><span>📚 12 Lessons</span><span>🟢 Beginner</span>
+            </div>
+            <div class="featured-progress-wrap">
+              <div class="featured-progress-labels"><span>Progress</span><span class="green-text">65%</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:65%"></div></div>
+            </div>
+            <button class="btn btn-primary">Continue Learning →</button>
+          </div>
+          <div class="featured-right">
+            <div class="course-art">📘</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROW 3: LEARNING CATEGORIES (Matching Reference Image 13) -->
+      <section class="categories-section">
+        <h2 class="section-heading reveal">Learning Categories</h2>
+        <div class="cat-grid">
+          <div class="cat-card glass-card reveal"><span class="cat-icon purple-bg">🛡️</span><h4>What is Credit Score?</h4><p>Understand how credit score works.</p><span class="cat-count">4 Lessons</span></div>
+          <div class="cat-card glass-card reveal reveal--d1"><span class="cat-icon green-bg">📊</span><h4>Mutual Funds</h4><p>Learn about mutual funds and types.</p><span class="cat-count">5 Lessons</span></div>
+          <div class="cat-card glass-card reveal reveal--d2"><span class="cat-icon blue-bg">💰</span><h4>SIPs</h4><p>Everything about Systematic Investment Plans.</p><span class="cat-count">3 Lessons</span></div>
+          <div class="cat-card glass-card reveal reveal--d3"><span class="cat-icon cyan-bg">🛟</span><h4>Emergency Fund</h4><p>Why it's important and how to build one.</p><span class="cat-count">3 Lessons</span></div>
+          <div class="cat-card glass-card reveal reveal--d4"><span class="cat-icon orange-bg">📖</span><h4>Financial Literacy</h4><p>Basic financial concepts everyone should know.</p><span class="cat-count">6 Lessons</span></div>
+          <div class="cat-card glass-card reveal reveal--d5"><span class="cat-icon red-bg">💳</span><h4>Budgeting</h4><p>How to budget and manage money.</p><span class="cat-count">4 Lessons</span></div>
+          <div class="cat-card glass-card reveal"><span class="cat-icon emerald-bg">📈</span><h4>Stock Market Basics</h4><p>Introduction to equities and trading.</p><span class="cat-count">5 Lessons</span></div>
+          <div class="cat-card glass-card reveal reveal--d1"><span class="cat-icon pink-bg">🏛️</span><h4>Tax Planning</h4><p>Save more through smart tax strategies.</p><span class="cat-count">3 Lessons</span></div>
+          <div class="cat-card glass-card reveal reveal--d2"><span class="cat-icon blue-bg">🔐</span><h4>Financial Security</h4><p>Protect your wealth and identity.</p><span class="cat-count">4 Lessons</span></div>
+        </div>
+      </section>
+
+      <!-- ROW 4: RECOMMENDED ARTICLES -->
+      <section class="articles-section">
+        <h2 class="section-heading reveal">Recommended Articles</h2>
+        <div class="articles-grid">
+          <div class="article-card glass-card reveal"><span class="art-tag">Credit</span><h4>How Credit Scores Work</h4><p>Understand the 5 key factors that impact your CIBIL score.</p><span class="art-meta">5 min read · Beginner</span></div>
+          <div class="article-card glass-card reveal reveal--d1"><span class="art-tag green-tag">Saving</span><h4>Top 10 Saving Habits</h4><p>Simple habits that can help you save ₹5,000+ per month.</p><span class="art-meta">4 min read · Beginner</span></div>
+          <div class="article-card glass-card reveal reveal--d2"><span class="art-tag orange-tag">Investing</span><h4>Investment Mistakes to Avoid</h4><p>Common pitfalls every new investor should watch out for.</p><span class="art-meta">6 min read · Intermediate</span></div>
+          <div class="article-card glass-card reveal reveal--d3"><span class="art-tag purple-tag">Growth</span><h4>Understanding Compound Interest</h4><p>The 8th wonder of the world — and how to use it.</p><span class="art-meta">3 min read · Beginner</span></div>
+          <div class="article-card glass-card reveal reveal--d4"><span class="art-tag cyan-tag">Planning</span><h4>Financial Planning for Beginners</h4><p>A step-by-step guide to securing your financial future.</p><span class="art-meta">7 min read · Beginner</span></div>
+        </div>
+      </section>
+
+      <!-- ROW 5: AI LEARNING TIPS -->
+      <section class="tips-section">
+        <div class="section-title-row reveal"><span>🧠</span><h2 class="section-heading">AI Learning Tips</h2></div>
+        <div class="tips-grid">
+          <div class="tip-card glass-card reveal"><div class="tip-icon green-bg">💡</div><div class="tip-body"><h4>Complete one lesson daily</h4><p>Consistency beats intensity. Aim for 15 minutes of learning every day.</p></div></div>
+          <div class="tip-card glass-card reveal reveal--d1"><div class="tip-icon blue-bg">📘</div><div class="tip-body"><h4>Review budgeting concepts</h4><p>Revisit the 50/30/20 rule and apply it to your current spending.</p></div></div>
+          <div class="tip-card glass-card reveal reveal--d2"><div class="tip-icon purple-bg">📊</div><div class="tip-body"><h4>Start learning about SIPs</h4><p>Understanding systematic investment plans is key to long-term wealth.</p></div></div>
+          <div class="tip-card glass-card reveal reveal--d3"><div class="tip-icon orange-bg">🎯</div><div class="tip-body"><h4>Improve your financial literacy gradually</h4><p>Focus on one topic per week to build strong foundational knowledge.</p></div></div>
+        </div>
+      </section>
+
+      <!-- ROW 6: ACHIEVEMENT PREVIEW -->
+      <section class="badges-preview reveal">
+        <div class="glass-card">
+          <h3 class="card-heading" style="margin-bottom:16px;">Unlock Badges by Learning</h3>
+          <div class="badge-row">
+            <div class="badge-item unlocked"><span class="badge-emoji">🏅</span><span class="badge-name">First Lesson</span></div>
+            <div class="badge-item unlocked"><span class="badge-emoji">📖</span><span class="badge-name">Bookworm</span></div>
+            <div class="badge-item unlocked"><span class="badge-emoji">🔥</span><span class="badge-name">7-Day Streak</span></div>
+            <div class="badge-item"><span class="badge-emoji locked-emoji">🎓</span><span class="badge-name">Course Master</span></div>
+            <div class="badge-item"><span class="badge-emoji locked-emoji">💎</span><span class="badge-name">Finance Pro</span></div>
+            <div class="badge-item"><span class="badge-emoji locked-emoji">🏆</span><span class="badge-name">Top Learner</span></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  
+{% endblock %}

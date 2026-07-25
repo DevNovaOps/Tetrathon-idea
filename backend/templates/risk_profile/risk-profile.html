@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Your Risk Profile{% endblock %}
+{% block page_title %}Your Risk Profile{% endblock %}
+{% block page_subtitle %}Based on your financial profile, our AI has generated the following investment risk assessment.{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'risk_profile/risk-profile.css' %}" />
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'risk_profile/risk-profile.js' %}"></script>
+{% endblock %}
+{% block top_nav_extras %}
+<div class="search-box"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search..." /></div>
+{% endblock %}
+
+{% block content %}
+
+
+      <!-- PAGE BODY -->
+      <div class="page-body">
+
+        <!-- ROW 1: MAIN HERO CARD (Compact Split Layout Matching Reference Image 08 Exactly) -->
+        <section class="main-hero-card glass-card reveal">
+          <div class="hero-split-grid">
+
+            <!-- LEFT: Gauge Column -->
+            <div class="gauge-col">
+              <h2 class="card-heading" style="text-align:center; margin-bottom: 8px;">Your Risk Profile</h2>
+              <div class="gauge-wrapper">
+                <svg viewBox="0 0 260 145" class="gauge-svg" id="riskGaugeSvg">
+                  <defs>
+                    <linearGradient id="riskGaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#10B981"/>
+                      <stop offset="40%" stop-color="#EAB308"/>
+                      <stop offset="65%" stop-color="#F97316"/>
+                      <stop offset="100%" stop-color="#EF4444"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M30 130 A100 100 0 0 1 230 130" fill="none" stroke="var(--gauge-track)" stroke-width="22" stroke-linecap="round"/>
+                  <path d="M30 130 A100 100 0 0 1 230 130" fill="none" stroke="url(#riskGaugeGrad)" stroke-width="22" stroke-linecap="round" id="riskGaugeArc" stroke-dasharray="0 314"/>
+                  <line id="riskNeedle" x1="130" y1="130" x2="130" y2="50" stroke="var(--text-heading)" stroke-width="3.5" stroke-linecap="round" opacity="0"/>
+                  <circle cx="130" cy="130" r="9" fill="var(--accent)" stroke="var(--bg-card)" stroke-width="3"/>
+                </svg>
+                <div class="gauge-labels-row">
+                  <span class="gauge-label-text green-text">Low</span>
+                  <span class="gauge-label-text orange-text">Moderate</span>
+                  <span class="gauge-label-text red-text">High</span>
+                </div>
+                <div class="gauge-center-text">
+                  <span class="risk-level-big" id="riskLevelText">Moderate</span>
+                  <span class="risk-sub-label">Risk</span>
+                  <span class="confidence-badge"><span class="pulse-dot"></span> 91% Confidence</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: About You + Suitable Investments -->
+            <div class="info-col">
+
+              <!-- About You Inner Card -->
+              <div class="inner-info-card">
+                <h3 class="inner-heading">About You</h3>
+                <div class="about-text">
+                  <p>You are a <strong>balanced investor</strong>. You prefer stability with moderate returns.</p>
+                  <p>Your income and savings behaviour indicate <strong>consistent financial discipline</strong>.</p>
+                </div>
+              </div>
+
+              <!-- Suitable Investments Inner Card -->
+              <div class="inner-info-card">
+                <h3 class="inner-heading">Suitable For</h3>
+                <div class="suitable-list">
+                  <div class="suitable-item">
+                    <div class="suit-icon green-bg">📈</div>
+                    <div class="suit-info"><span class="suit-name">Index Funds</span><span class="suit-meta">Low Risk · 10–12% Returns</span></div>
+                  </div>
+                  <div class="suitable-item">
+                    <div class="suit-icon blue-bg">🏦</div>
+                    <div class="suit-info"><span class="suit-name">Debt Funds</span><span class="suit-meta">Low Risk · 6–8% Returns</span></div>
+                  </div>
+                  <div class="suitable-item">
+                    <div class="suit-icon purple-bg">⚖️</div>
+                    <div class="suit-info"><span class="suit-name">Balanced Funds</span><span class="suit-meta">Moderate Risk · 8–14% Returns</span></div>
+                  </div>
+                  <div class="suitable-item">
+                    <div class="suit-icon orange-bg">🪙</div>
+                    <div class="suit-info"><span class="suit-name">Gold ETFs</span><span class="suit-meta">Low Risk · 8–10% Returns</span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ROW 2: RISK BREAKDOWN METRICS -->
+        <section class="breakdown-section">
+          <div class="section-title-row reveal">
+            <div class="title-with-badge"><span class="sparkle-icon">📊</span><h2 class="section-heading">Risk Breakdown</h2></div>
+            <span class="ai-live-badge"><span class="pulse-dot"></span> AI Analyzed</span>
+          </div>
+          <div class="breakdown-grid">
+            <div class="metric-mini-card glass-card reveal">
+              <div class="metric-emoji green-bg">💼</div>
+              <span class="metric-title">Income Stability</span>
+              <span class="metric-val green-text">High</span>
+            </div>
+            <div class="metric-mini-card glass-card reveal reveal--delay-1">
+              <div class="metric-emoji blue-bg">🏦</div>
+              <span class="metric-title">Savings Habit</span>
+              <span class="metric-val blue-text">Good</span>
+            </div>
+            <div class="metric-mini-card glass-card reveal reveal--delay-2">
+              <div class="metric-emoji green-bg">🛡️</div>
+              <span class="metric-title">Emergency Fund</span>
+              <span class="metric-val green-text">Available</span>
+            </div>
+            <div class="metric-mini-card glass-card reveal reveal--delay-3">
+              <div class="metric-emoji purple-bg">📚</div>
+              <span class="metric-title">Investment Knowledge</span>
+              <span class="metric-val purple-text">Beginner</span>
+            </div>
+            <div class="metric-mini-card glass-card reveal reveal--delay-4">
+              <div class="metric-emoji orange-bg">⚡</div>
+              <span class="metric-title">Risk Capacity</span>
+              <span class="metric-val orange-text">Moderate</span>
+            </div>
+            <div class="metric-mini-card glass-card reveal reveal--delay-5">
+              <div class="metric-emoji cyan-bg">✅</div>
+              <span class="metric-title">Financial Discipline</span>
+              <span class="metric-val" style="color:#06B6D4;">Good</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ROW 3: AI INSIGHTS -->
+        <section class="ai-insights-section">
+          <div class="section-title-row reveal">
+            <div class="title-with-badge"><span class="sparkle-icon">🧠</span><h2 class="section-heading">AI Investment Insights</h2></div>
+          </div>
+          <div class="insights-grid">
+            <div class="insight-card glass-card reveal">
+              <div class="insight-icon green-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+              <div class="insight-body">
+                <h4>You are suitable for long-term wealth creation.</h4>
+                <p>Your stable income and consistent savings pattern show excellent potential for systematic investing over 5+ years.</p>
+              </div>
+            </div>
+            <div class="insight-card glass-card reveal reveal--delay-1">
+              <div class="insight-icon blue-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div class="insight-body">
+                <h4>Maintain emergency savings before increasing investment risk.</h4>
+                <p>Keep at least 6 months of expenses in liquid savings before allocating more towards equity or aggressive instruments.</p>
+              </div>
+            </div>
+            <div class="insight-card glass-card reveal reveal--delay-2">
+              <div class="insight-icon purple-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="insight-body">
+                <h4>Invest consistently every month via SIPs.</h4>
+                <p>Rupee cost averaging through monthly SIPs in index funds reduces market timing risk and builds disciplined habits.</p>
+              </div>
+            </div>
+            <div class="insight-card glass-card reveal reveal--delay-3">
+              <div class="insight-icon orange-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              <div class="insight-body">
+                <h4>Avoid high-volatility investments at this stage.</h4>
+                <p>As a beginner investor, steer clear of individual stocks, crypto, and leveraged products until you gain more experience.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ROW 4: NEXT STEP CTA -->
+        <section class="cta-section reveal">
+          <div class="cta-card glass-card">
+            <div class="cta-icon">🚀</div>
+            <div class="cta-content">
+              <h3 class="cta-title">Ready to see your personalized investment recommendations?</h3>
+              <p class="cta-text">Based on your <strong>Moderate</strong> risk profile, we've curated a portfolio tailored to your financial goals and comfort level.</p>
+            </div>
+            <a href="#" class="btn btn-primary btn-cta">View Investment Plan →</a>
+          </div>
+        </section>
+
+      </div>
+    
+{% endblock %}
