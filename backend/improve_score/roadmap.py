@@ -17,7 +17,10 @@ class RoadmapGenerator:
         
         assigned_tasks = set()
         
-        for week in weeks:
+        for idx, week in enumerate(weeks):
+            # Week 1 starts 'In Progress', others start 'Upcoming'
+            initial_status = WEEK_STATUS_IN_PROGRESS if idx == 0 else WEEK_STATUS_UPCOMING
+            
             # Try to find a task matching the theme
             task_for_week = None
             for t in self.tasks:
@@ -38,7 +41,7 @@ class RoadmapGenerator:
                     "week_number": week["num"],
                     "title": task_for_week['title'],
                     "description": task_for_week['description'],
-                    "status": WEEK_STATUS_UPCOMING
+                    "status": initial_status
                 })
             else:
                 # Fallback if we don't have 4 tasks
@@ -46,7 +49,7 @@ class RoadmapGenerator:
                     "week_number": week["num"],
                     "title": f"{week['theme']} Focus",
                     "description": f"Focus on optimizing your {week['theme'].lower()} this week.",
-                    "status": WEEK_STATUS_UPCOMING
+                    "status": initial_status
                 })
                 
         return roadmap

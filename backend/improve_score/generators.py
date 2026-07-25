@@ -17,7 +17,9 @@ class TaskGenerator:
         if self.profile.bill_payment_habit in ['Frequently late', 'Occasionally late']:
             tasks.append({
                 "title": "Avoid late utility bill payments",
-                "description": "Enable auto-pay for electricity, internet, and water bills to maintain a 100% clean credit history.",
+                "description": "Enable auto-pay for electricity, internet, and water bills.",
+                "reason": "Late bill payments severely damage your credit history and drop your score instantly.",
+                "benefit": "Maintains a 100% clean payment history, signaling high reliability to lenders.",
                 "priority": TASK_PRIORITY_CRITICAL,
                 "expected_points": 25,
                 "difficulty": TASK_DIFFICULTY_EASY,
@@ -30,7 +32,9 @@ class TaskGenerator:
         if expense_ratio > 0.60:
             tasks.append({
                 "title": "Reduce discretionary spending",
-                "description": "Cut non-essential dining and streaming subscriptions by 10% to improve disposable income buffer.",
+                "description": "Cut non-essential dining and subscriptions by 10% this month.",
+                "reason": f"Your current expense ratio ({int(expense_ratio * 100)}%) is too high, limiting wealth accumulation.",
+                "benefit": "Improves your disposable income buffer and reduces financial stress.",
                 "priority": TASK_PRIORITY_MEDIUM if expense_ratio < 0.80 else TASK_PRIORITY_HIGH,
                 "expected_points": 15,
                 "difficulty": TASK_DIFFICULTY_MEDIUM,
@@ -41,13 +45,13 @@ class TaskGenerator:
         # Rule 3: Savings Rate
         savings_ratio = self.raw.get('savings_ratio', 0)
         income = self.raw.get('income', 0)
-        # If savings < 2 months of income or monthly savings rate is low
-        # Since we only have total savings, let's use savings_ratio (months of income saved)
         if savings_ratio < 2.0:
             target_monthly = int(income * 0.20) if income > 0 else 2000
             tasks.append({
                 "title": f"Increase savings by ₹{target_monthly:,} monthly",
-                "description": f"Automate ₹{target_monthly:,} monthly transfer to liquid savings to build a stronger financial buffer.",
+                "description": f"Automate a ₹{target_monthly:,} monthly transfer to your liquid savings account.",
+                "reason": "Your current savings provide less than two months of runway.",
+                "benefit": "Builds a stronger financial buffer to absorb unexpected shocks.",
                 "priority": TASK_PRIORITY_HIGH,
                 "expected_points": 20,
                 "difficulty": TASK_DIFFICULTY_EASY,
@@ -60,7 +64,9 @@ class TaskGenerator:
         if ef_coverage < 6:
             tasks.append({
                 "title": "Build an emergency fund",
-                "description": "Deposit funds monthly into high-yield savings to expand emergency liquidity coverage to 6 full months.",
+                "description": "Deposit funds monthly into high-yield savings to expand liquidity.",
+                "reason": "You currently lack a 6-month safety net.",
+                "benefit": "Prevents the need for high-interest borrowing during emergencies.",
                 "priority": TASK_PRIORITY_HIGH,
                 "expected_points": 12,
                 "difficulty": TASK_DIFFICULTY_MEDIUM,
@@ -73,7 +79,9 @@ class TaskGenerator:
         if investment_ratio == 0:
             tasks.append({
                 "title": "Start your first SIP",
-                "description": "Begin investing a small amount monthly in Index Funds to kickstart wealth generation.",
+                "description": "Begin investing a small amount monthly in Index Funds.",
+                "reason": "You currently have 0% of your income allocated to investments.",
+                "benefit": "Kickstarts long-term compounding wealth generation.",
                 "priority": TASK_PRIORITY_MEDIUM,
                 "expected_points": 10,
                 "difficulty": TASK_DIFFICULTY_EASY,
@@ -83,7 +91,9 @@ class TaskGenerator:
         elif investment_ratio < 0.15:
             tasks.append({
                 "title": "Maintain monthly investments",
-                "description": "Keep recurring mutual fund SIPs active without skipping cycles to demonstrate disciplined habits.",
+                "description": "Keep recurring mutual fund SIPs active without skipping cycles.",
+                "reason": "Consistent investing signals strong financial discipline.",
+                "benefit": "Maximizes returns and steadily boosts your investment readiness score.",
                 "priority": TASK_PRIORITY_LOW,
                 "expected_points": 18,
                 "difficulty": TASK_DIFFICULTY_MEDIUM,
@@ -96,7 +106,9 @@ class TaskGenerator:
         if loans in ['Personal Loan', 'Multiple Loans']:
             tasks.append({
                 "title": "Reduce active loan burden",
-                "description": "Target paying off high-interest personal loans to bring down overall credit utilization.",
+                "description": "Target paying off high-interest personal loans aggressively.",
+                "reason": "Multiple loans increase your debt-to-income ratio significantly.",
+                "benefit": "Lowers your credit utilization and frees up monthly cash flow.",
                 "priority": TASK_PRIORITY_CRITICAL,
                 "expected_points": 30,
                 "difficulty": TASK_DIFFICULTY_HARD,
@@ -104,11 +116,13 @@ class TaskGenerator:
                 "impact_type": "debt"
             })
 
-        # Ensure we always have at least 4 tasks for the roadmap
+        # Ensure we always have at least 4 tasks
         if len(tasks) < 4:
             tasks.append({
                 "title": "Review Credit Profile Regularly",
                 "description": "Check your credit report monthly for inaccuracies.",
+                "reason": "Errors in credit reports can drag down your score silently.",
+                "benefit": "Ensures your profile accurately reflects your good habits.",
                 "priority": TASK_PRIORITY_LOW,
                 "expected_points": 5,
                 "difficulty": TASK_DIFFICULTY_EASY,

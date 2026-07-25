@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
+from django.db.models import Prefetch
+from .models import ImprovementPlan, ImprovementTask, WeeklyRoadmap
 from .services import ImproveScoreService
 from .serializers import ImprovementPlanSerializer
 from .metrics import ImprovementMetricsGenerator
@@ -13,10 +15,12 @@ class ImproveScoreAPIView(APIView):
     def get(self, request):
         try:
             plan = ImproveScoreService.get_or_generate_plan(request.user)
+            
+            # Re-fetch to apply prefetch_related for performance
+            plan = ImprovementPlan.objects.prefetch_related('tasks', 'roadmap_weeks').get(id=plan.id)
+            
             serializer = ImprovementPlanSerializer(plan)
             
-            # Generate success metrics dynamically
-            # Assuming potential expected_points is the difference between target and current score
             expected_points = plan.target_score - plan.current_score
             metrics = ImprovementMetricsGenerator(request.user.profile, expected_points).generate()
             
@@ -29,6 +33,8 @@ class ImproveScoreAPIView(APIView):
             }, status=status.HTTP_200_OK)
             
         except Exception as e:
+            import logging
+            logging.exception(e)
             return Response({
                 "success": False,
                 "message": str(e)
@@ -62,6 +68,10 @@ class CompleteTaskAPIView(APIView):
     def post(self, request, task_id):
         try:
             plan = ImproveScoreService.complete_task(task_id, request.user)
+            
+            # Re-fetch to apply prefetch_related for performance
+            plan = ImprovementPlan.objects.prefetch_related('tasks', 'roadmap_weeks').get(id=plan.id)
+            
             serializer = ImprovementPlanSerializer(plan)
             return Response({
                 "success": True,
@@ -77,6 +87,10 @@ class RegeneratePlanAPIView(APIView):
     def post(self, request):
         try:
             plan = ImproveScoreService.generate_new_plan(request.user)
+            
+            # Re-fetch to apply prefetch_related for performance
+            plan = ImprovementPlan.objects.prefetch_related('tasks', 'roadmap_weeks').get(id=plan.id)
+            
             serializer = ImprovementPlanSerializer(plan)
             
             expected_points = plan.target_score - plan.current_score

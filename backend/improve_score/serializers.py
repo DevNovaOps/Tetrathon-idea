@@ -4,7 +4,7 @@ from .models import ImprovementPlan, ImprovementTask, WeeklyRoadmap
 class ImprovementTaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImprovementTask
-        fields = ['id', 'title', 'description', 'priority', 'expected_points', 'difficulty', 'duration', 'status', 'order']
+        fields = ['id', 'title', 'description', 'reason', 'benefit', 'priority', 'expected_points', 'difficulty', 'duration', 'status', 'order']
 
 class WeeklyRoadmapSerializer(serializers.ModelSerializer):
     class Meta:

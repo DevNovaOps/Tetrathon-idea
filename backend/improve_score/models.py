@@ -28,6 +28,8 @@ class ImprovementTask(models.Model):
     plan = models.ForeignKey(ImprovementPlan, on_delete=models.CASCADE, related_name='tasks')
     title = models.CharField(max_length=255)
     description = models.TextField()
+    reason = models.TextField(default='')
+    benefit = models.TextField(default='')
     priority = models.CharField(max_length=50) # e.g., 'Critical', 'High', 'Medium', 'Low'
     expected_points = models.IntegerField()
     difficulty = models.CharField(max_length=50) # e.g., 'Easy', 'Medium', 'Hard'
