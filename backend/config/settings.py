@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'credit_score.apps.CreditScoreConfig',
     'improve_score.apps.ImproveScoreConfig',
     'ai_assistant.apps.AiAssistantConfig',
+    'risk_profile.apps.RiskProfileConfig',
 ]
 
 # ---------------------------------------------------------------------------

@@ -30,6 +30,9 @@ urlpatterns = [
     # API — AI Assistant
     path('api/assistant/', include('ai_assistant.urls')),
 
+    # API — Risk Profile
+    path('api/risk-profile/', include('risk_profile.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 

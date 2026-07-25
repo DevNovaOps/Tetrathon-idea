@@ -9,7 +9,6 @@
   const themeToggle = document.getElementById('themeToggle');
   const mobileToggle = document.getElementById('mobileToggle');
   const sidebar = document.getElementById('sidebar');
-  const revealEls = document.querySelectorAll('.reveal');
 
   /* ---- THEME ---- */
   function stored() { try { return localStorage.getItem('finora-theme'); } catch(e) { return null; } }
@@ -26,21 +25,21 @@
   /* ---- REVEAL ON SCROLL ---- */
   function checkReveals() {
     const trigger = window.innerHeight * 0.92;
-    revealEls.forEach(el => { if (el.getBoundingClientRect().top < trigger) el.classList.add('visible'); });
+    document.querySelectorAll('.reveal').forEach(el => { 
+      if (el.getBoundingClientRect().top < trigger) el.classList.add('visible'); 
+    });
   }
   window.addEventListener('scroll', checkReveals, { passive: true });
   window.addEventListener('load', checkReveals);
   setTimeout(checkReveals, 100);
 
   /* ---- ANIMATED RISK GAUGE ---- */
-  function animateRiskGauge() {
+  function animateRiskGauge(fraction) {
     const arc = document.getElementById('riskGaugeArc');
     const needle = document.getElementById('riskNeedle');
     if (!arc) return;
 
     const ARC_LENGTH = 314;
-    // Moderate = ~50% of the arc (middle of the gauge)
-    const fraction = 0.5;
     const targetDash = fraction * ARC_LENGTH;
 
     let frame = 0;
@@ -76,8 +75,122 @@
   }
 
   /* ---- BOOT ---- */
-  function boot() {
-    animateRiskGauge();
+  /* ---- BOOT AND FETCH ---- */
+  async function boot() {
+    try {
+      const res = await fetch('/api/risk-profile/');
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = '../01-landing-page/index.html';
+        return;
+      }
+      
+      const json = await res.json();
+      if (json.success && json.data) {
+        populateUI(json.data);
+      } else {
+        animateRiskGauge(0.5); // Fallback
+      }
+    } catch (e) {
+      console.error(e);
+      animateRiskGauge(0.5); // Fallback
+    }
+  }
+
+  function populateUI(data) {
+    // Gauge & Score
+    const fraction = Math.max(0, Math.min(100, data.risk_score)) / 100;
+    animateRiskGauge(fraction);
+    
+    const riskLevelText = document.getElementById('riskLevelText');
+    if (riskLevelText) riskLevelText.textContent = data.risk_bucket;
+    
+    // Confidence
+    const confBadge = document.querySelector('.confidence-badge');
+    if (confBadge) confBadge.innerHTML = `<span class="pulse-dot"></span> ${data.confidence_score}% Confidence`;
+    
+    // About You Text (AI Explanation)
+    const aboutText = document.querySelector('.about-text');
+    if (aboutText && data.ai_summary && data.ai_summary.natural_language_explanation) {
+      aboutText.innerHTML = `<p>${data.ai_summary.natural_language_explanation}</p>`;
+    }
+
+    // Suitable Investments
+    const suitableList = document.querySelector('.suitable-list');
+    if (suitableList && data.portfolio_allocation && data.portfolio_allocation.length > 0) {
+      suitableList.innerHTML = '';
+      data.portfolio_allocation.forEach(port => {
+        // Simple mapping for color/emoji based on risk
+        let color = 'green'; let emoji = '📈';
+        if (port.risk === 'Moderate') { color = 'blue'; emoji = '🏦'; }
+        else if (port.risk === 'High' || port.risk === 'Very High') { color = 'orange'; emoji = '⚡'; }
+        else if (port.risk === 'Very Low') { color = 'purple'; emoji = '⚖️'; }
+
+        suitableList.innerHTML += `
+          <div class="suitable-item">
+            <div class="suit-icon ${color}-bg">${emoji}</div>
+            <div class="suit-info"><span class="suit-name">${port.name} (${port.allocation_pct}%)</span><span class="suit-meta">${port.risk} Risk · ${port.cagr} Returns</span></div>
+          </div>
+        `;
+      });
+    }
+    
+    // Risk Breakdown Grid
+    const grid = document.querySelector('.breakdown-grid');
+    if (grid && data.risk_breakdown && data.risk_breakdown.length > 0) {
+      grid.innerHTML = '';
+      data.risk_breakdown.forEach((f, idx) => {
+        grid.innerHTML += `
+          <div class="metric-mini-card glass-card reveal visible reveal--delay-${idx}">
+            <div class="metric-emoji ${f.color}-bg">${f.emoji}</div>
+            <span class="metric-title">${f.title}</span>
+            <span class="metric-val ${f.color}-text">${f.percentage}% (${f.status})</span>
+          </div>
+        `;
+      });
+    }
+
+    // AI Insights (Recommendations)
+    const insightsGrid = document.querySelector('.insights-grid');
+    if (insightsGrid && data.recommendations && data.recommendations.length > 0) {
+      insightsGrid.innerHTML = '';
+      data.recommendations.forEach((rec, idx) => {
+        insightsGrid.innerHTML += `
+          <div class="insight-card glass-card reveal visible reveal--delay-${idx}">
+            <div class="insight-icon blue-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+            <div class="insight-body">
+              <h4>${rec.action} <span style="font-size: 0.8em; opacity: 0.8; margin-left: 8px;">(Priority: ${rec.priority})</span></h4>
+              <p>${rec.reason} <br/><strong>Benefit:</strong> ${rec.benefit} <br/><em>Impact: -${rec.risk_reduction_estimate} Risk | Time: ${rec.estimated_completion_time}</em></p>
+            </div>
+          </div>
+        `;
+      });
+    }
+    
+    // Investment Readiness CTA
+    const ctaContent = document.querySelector('.cta-content');
+    if (ctaContent && data.investment_readiness) {
+      ctaContent.innerHTML = `
+        <h3 class="cta-title">Investment Readiness: ${data.investment_readiness.percentage}% (${data.investment_readiness.readiness_level})</h3>
+        <p class="cta-text">${data.investment_readiness.reason} <br/><strong>Next Action:</strong> ${data.investment_readiness.next_action}</p>
+      `;
+    }
+    
+    // Educational Disclaimer
+    if (data.educational_disclaimer) {
+      const footer = document.querySelector('.cta-section');
+      if (footer) {
+        let disc = document.getElementById('apiDisclaimer');
+        if (!disc) {
+          disc = document.createElement('p');
+          disc.id = 'apiDisclaimer';
+          disc.style = 'text-align: center; font-size: 0.8rem; opacity: 0.6; margin-top: 2rem; width: 100%;';
+          footer.parentElement.appendChild(disc);
+        }
+        disc.innerText = data.educational_disclaimer;
+      }
+    }
+    
+    checkReveals();
   }
 
   document.addEventListener('DOMContentLoaded', boot);
