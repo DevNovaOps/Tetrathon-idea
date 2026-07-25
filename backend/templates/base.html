@@ -10,6 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   {% load static %}
+  <style>
+    /* Global theme icon visibility to prevent side-by-side icons on any page */
+    [data-theme="dark"] .ti--sun, [data-theme="dark"] .theme-icon--sun { display: block !important; }
+    [data-theme="dark"] .ti--moon, [data-theme="dark"] .theme-icon--moon { display: none !important; }
+    [data-theme="light"] .ti--sun, [data-theme="light"] .theme-icon--sun { display: none !important; }
+    [data-theme="light"] .ti--moon, [data-theme="light"] .theme-icon--moon { display: block !important; }
+  </style>
   {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -107,7 +114,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link">
+            <a href="{% url 'learn' %}" class="nav-link {% if request.resolver_match.url_name == 'learn' %}active{% endif %}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
               </svg>
@@ -115,7 +122,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link">
+            <a href="{% url 'achievements' %}" class="nav-link {% if request.resolver_match.url_name == 'achievements' %}active{% endif %}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
               </svg>
@@ -123,7 +130,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link">
+            <a href="{% url 'notifications' %}" class="nav-link {% if request.resolver_match.url_name == 'notifications' %}active{% endif %}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
               </svg>
@@ -131,7 +138,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link">
+            <a href="{% url 'profile' %}" class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
               </svg>
@@ -139,7 +146,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link">
+            <a href="{% url 'settings' %}" class="nav-link {% if request.resolver_match.url_name == 'settings' %}active{% endif %}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
               </svg>
@@ -179,20 +186,20 @@
           {% block top_nav_extras %}{% endblock %}
           
           <button class="icon-btn" id="themeToggle" aria-label="Toggle Theme">
-            <svg class="ti ti--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="ti ti--sun theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
             </svg>
-            <svg class="ti ti--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="ti ti--moon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
           </button>
 
-          <button class="icon-btn" aria-label="Notifications">
+          <a href="{% url 'notifications' %}" class="icon-btn" aria-label="Notifications" title="Notifications">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
             </svg>
             <span class="bell-badge"></span>
-          </button>
+          </a>
 
           <div class="user-profile-btn">
             <div class="profile-avatar-circle">
@@ -208,6 +215,18 @@
     </main>
   </div>
   
+  <!-- Global base JS: theme initial load, mobile sidebar -->
+  <script>
+  (function(){
+    var html=document.documentElement;
+    var mobBtn=document.getElementById('mobileToggle');
+    var side=document.getElementById('sidebar');
+    function stored(){try{return localStorage.getItem('finora-theme')}catch(e){return null}}
+    function setTheme(t){html.setAttribute('data-theme',t);try{localStorage.setItem('finora-theme',t)}catch(e){}}
+    setTheme(stored()||'dark');
+    if(mobBtn&&side){mobBtn.addEventListener('click',function(e){e.stopPropagation();side.classList.toggle('open');});document.addEventListener('click',function(e){if(side.classList.contains('open')&&!side.contains(e.target)&&e.target!==mobBtn)side.classList.remove('open');});}
+  })();
+  </script>
   {% block extra_js %}{% endblock %}
 </body>
 </html>

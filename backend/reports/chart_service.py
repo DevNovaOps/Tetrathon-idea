@@ -5,7 +5,7 @@ import random
 class ChartService:
     @staticmethod
     def get_monthly_chart_data(user, month_str=None, year_str=None):
-        summary = AnalyticsService.get_summary(user)
+        summary = AnalyticsService.get_summary(user, month_str, year_str)
         raw = summary["_raw"]
         
         base_income = raw["income"] or 50000
@@ -69,24 +69,41 @@ class ChartService:
         }
 
     @staticmethod
-    def get_expense_breakdown(user):
-        summary = AnalyticsService.get_summary(user)
+    def get_expense_breakdown(user, month_str=None, year_str=None):
+        summary = AnalyticsService.get_summary(user, month_str, year_str)
         expenses = summary["_raw"]["expenses"] or 30000
         
-        # Simulated distribution of expenses
-        distribution = {
-            "Housing": 0.35,
-            "Food": 0.20,
-            "Transport": 0.12,
-            "Shopping": 0.10,
-            "Entertainment": 0.08,
-            "Utilities": 0.07,
-            "Healthcare": 0.05,
-            "Others": 0.03
+        try:
+            target_year = int(year_str) if year_str else datetime.date.today().year
+            target_month = int(month_str) if month_str else datetime.date.today().month
+        except (ValueError, TypeError):
+            target_year, target_month = datetime.date.today().year, datetime.date.today().month
+
+        seed_str = f"exp-dist-{user.email if user else 'demo'}-{target_year}-{target_month}"
+        random.seed(seed_str)
+        
+        base_dist = {
+            "Housing": 35,
+            "Food": 20,
+            "Transport": 12,
+            "Shopping": 10,
+            "Entertainment": 8,
+            "Utilities": 7,
+            "Healthcare": 5,
+            "Others": 3
         }
         
-        labels = list(distribution.keys())
-        data = [round(expenses * dist) for dist in distribution.values()]
+        # Vary category shares deterministically for this month
+        raw_weights = {k: max(1, v + random.uniform(-4.5, 4.5)) for k, v in base_dist.items()}
+        total_w = sum(raw_weights.values())
+        
+        labels = list(raw_weights.keys())
+        data = [round(expenses * (w / total_w)) for w in raw_weights.values()]
+        
+        # Ensure exact sum matches total monthly expenses
+        diff = expenses - sum(data)
+        if data:
+            data[0] += diff
         
         return {
             "labels": labels,

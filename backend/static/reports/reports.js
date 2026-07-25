@@ -48,13 +48,13 @@
   }
 
   function renderData(data) {
-      // 1. Top Summary
+      // 1. Top Summary — use pre-formatted values from API
       const tsVals = document.querySelectorAll('.ts-val');
       if (tsVals.length >= 4) {
-          tsVals[0].textContent = '₹' + parseInt(data.summary.income).toLocaleString('en-IN');
-          tsVals[1].textContent = '₹' + parseInt(data.summary.expenses).toLocaleString('en-IN');
-          tsVals[2].textContent = '₹' + parseInt(data.summary.savings).toLocaleString('en-IN');
-          tsVals[3].textContent = '₹' + parseInt(data.summary.investments || 0).toLocaleString('en-IN');
+          tsVals[0].textContent = data.summary.total_income;
+          tsVals[1].textContent = data.summary.total_expenses;
+          tsVals[2].textContent = data.summary.total_savings;
+          tsVals[3].textContent = data.summary.investment_value;
       }
 
       // 2. Bar Chart
@@ -78,7 +78,7 @@
           pVals[1].textContent = data.performance.investment_growth;
           pVals[2].textContent = data.performance.credit_score_change;
           pVals[3].textContent = data.performance.expense_reduction;
-          pVals[4].textContent = data.performance.emergency_fund;
+          pVals[4].textContent = data.performance.emergency_fund_months;
       }
 
       // 5. AI Insights
@@ -98,14 +98,10 @@
       // 6. Financial Health Score
       if (data.health) {
           animateHealthRing(data.health.score);
-          const statusText = document.querySelector('.health-card .card-sub');
-          if (statusText) statusText.textContent = data.health.explanation;
-          
-          // Make Health text green if score >= 80, orange if 50-79, red < 50
-          if (statusText) {
-              statusText.style.color = data.health.score >= 80 ? '#10B981' : (data.health.score >= 50 ? '#F59E0B' : '#EF4444');
-              statusText.style.fontWeight = '600';
-              statusText.style.marginTop = '8px';
+          const healthVerdict = document.querySelector('.health-verdict');
+          if (healthVerdict) {
+              healthVerdict.textContent = data.health.explanation;
+              healthVerdict.style.color = data.health.score >= 80 ? '#10B981' : (data.health.score >= 50 ? '#F59E0B' : '#EF4444');
           }
       }
       
@@ -149,6 +145,45 @@
               sel.value = initial.value;
           }
       }
+      
+      // 8. Update download card descriptions dynamically
+      updateDownloadLabels();
+  }
+  
+  function updateDownloadLabels() {
+      const cards = document.querySelectorAll('.dl-card');
+      if (!cards.length || !currentMonth || !currentYear) return;
+      
+      const yr = parseInt(currentYear);
+      const mo = parseInt(currentMonth);
+      const monthNames = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+      const currentLabel = monthNames[mo] + ' ' + yr;
+      
+      // Quarter calculation
+      const q = Math.ceil(mo / 3);
+      const qLabel = 'Q' + q + ' ' + yr + ' breakdown';
+      
+      // FY calculation (Indian FY: April to March)
+      let fyLabel;
+      if (mo >= 4) {
+          fyLabel = 'FY ' + yr + '-' + String(yr + 1).slice(-2);
+      } else {
+          fyLabel = 'FY ' + (yr - 1) + '-' + String(yr).slice(-2);
+      }
+      
+      const descMap = [
+          currentLabel + ' summary',
+          qLabel,
+          fyLabel,
+          'Portfolio details',
+          'Score history',
+          'Overall analysis'
+      ];
+      
+      cards.forEach((card, i) => {
+          const p = card.querySelector('p');
+          if (p && descMap[i]) p.textContent = descMap[i];
+      });
   }
 
   async function fetchReports() {

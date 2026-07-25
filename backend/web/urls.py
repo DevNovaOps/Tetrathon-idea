@@ -41,6 +41,22 @@ class ForgotPasswordView(TemplateView):
 class OnboardingView(TemplateView):
     template_name = 'onboarding/index.html'
 
+# Sidebar pages
+class EducationView(TemplateView):
+    template_name = 'education/education.html'
+
+class AchievementsView(TemplateView):
+    template_name = 'achievements/achievements.html'
+
+class NotificationsView(TemplateView):
+    template_name = 'notifications/notifications.html'
+
+class ProfileView(TemplateView):
+    template_name = 'profile/profile.html'
+
+class SettingsView(TemplateView):
+    template_name = 'settings/settings.html'
+
 urlpatterns = [
     path('', LandingView.as_view(), name='landing'),
     path('login/', LoginView.as_view(), name='login'),
@@ -55,4 +71,10 @@ urlpatterns = [
     path('investments/', InvestmentView.as_view(), name='investment'),
     path('simulator/', SimulatorView.as_view(), name='simulator'),
     path('reports/', ReportsView.as_view(), name='reports'),
+    path('learn/', EducationView.as_view(), name='learn'),
+    path('achievements/', AchievementsView.as_view(), name='achievements'),
+    path('notifications/', NotificationsView.as_view(), name='notifications'),
+    path('profile/', ProfileView.as_view(), name='profile'),
+    path('settings/', SettingsView.as_view(), name='settings'),
 ]
+

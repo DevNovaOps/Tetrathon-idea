@@ -24,22 +24,30 @@ class FullReportView(APIView):
 class MonthlyChartView(APIView):
     def get(self, request):
         user = request.user if request.user.is_authenticated else None
-        return Response(ChartService.get_monthly_chart_data(user))
+        month = request.query_params.get("month")
+        year = request.query_params.get("year")
+        return Response(ChartService.get_monthly_chart_data(user, month, year))
 
 class ExpensesChartView(APIView):
     def get(self, request):
         user = request.user if request.user.is_authenticated else None
-        return Response(ChartService.get_expense_breakdown(user))
+        month = request.query_params.get("month")
+        year = request.query_params.get("year")
+        return Response(ChartService.get_expense_breakdown(user, month, year))
 
 class PerformanceView(APIView):
     def get(self, request):
         user = request.user if request.user.is_authenticated else None
-        return Response(AnalyticsService.get_performance(user))
+        month = request.query_params.get("month")
+        year = request.query_params.get("year")
+        return Response(AnalyticsService.get_performance(user, month, year))
 
 class InsightsView(APIView):
     def get(self, request):
         user = request.user if request.user.is_authenticated else None
-        return Response(InsightService.get_insights(user))
+        month = request.query_params.get("month")
+        year = request.query_params.get("year")
+        return Response(InsightService.get_insights(user, month, year))
 
 class HistoryView(APIView):
     def get(self, request):

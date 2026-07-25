@@ -10,16 +10,17 @@ class ReportService:
         """
         Orchestrates the entire report payload for the frontend
         """
-        summary = AnalyticsService.get_summary(user)
+        summary = AnalyticsService.get_summary(user, month, year)
         
         return {
             "summary": {k: v for k, v in summary.items() if not k.startswith("_")},
-            "performance": AnalyticsService.get_performance(user),
+            "performance": AnalyticsService.get_performance(user, month, year),
             "charts": {
                 "monthly": ChartService.get_monthly_chart_data(user, month, year),
-                "expenses": ChartService.get_expense_breakdown(user)
+                "expenses": ChartService.get_expense_breakdown(user, month, year)
             },
-            "insights": InsightService.get_insights(user),
+            "insights": InsightService.get_insights(user, month, year),
             "health": FinancialHealthEngine.calculate_health(user),
             "available_months": HistoryService.get_available_months()
         }
+
