@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'credit_score.apps.CreditScoreConfig',
     'improve_score.apps.ImproveScoreConfig',
-    'ai_assistant',
+    'ai_assistant.apps.AiAssistantConfig',
 ]
 
 # ---------------------------------------------------------------------------
@@ -253,5 +253,15 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
+        'ai_assistant': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
     },
 }
+
+# ---------------------------------------------------------------------------
+# Groq AI
+# ---------------------------------------------------------------------------
+GROQ_API_KEY = os.getenv('GROQ_API_KEY', '')

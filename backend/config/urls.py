@@ -27,7 +27,7 @@ urlpatterns = [
     # API — Improve Score
     path('api/improve-score/', include('improve_score.urls')),
 
-    # API - AI Assistant
+    # API — AI Assistant
     path('api/assistant/', include('ai_assistant.urls')),
 
     # django-allauth (Google OAuth callbacks)
