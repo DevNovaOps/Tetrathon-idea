@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'reports.apps.ReportsConfig',
     'learning.apps.LearningConfig',
     'achievements.apps.AchievementsConfig',
+    'notifications.apps.NotificationsConfig',
     'web.apps.WebConfig',
 ]
 

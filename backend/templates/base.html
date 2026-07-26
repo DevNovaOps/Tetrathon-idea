@@ -225,6 +225,25 @@
     function setTheme(t){html.setAttribute('data-theme',t);try{localStorage.setItem('finora-theme',t)}catch(e){}}
     setTheme(stored()||'dark');
     if(mobBtn&&side){mobBtn.addEventListener('click',function(e){e.stopPropagation();side.classList.toggle('open');});document.addEventListener('click',function(e){if(side.classList.contains('open')&&!side.contains(e.target)&&e.target!==mobBtn)side.classList.remove('open');});}
+    function updateGlobalBell(){
+      var bellBadge=document.querySelector('.bell-badge');
+      if(!bellBadge)return;
+      fetch('/api/notifications/unread/')
+        .then(function(r){return r.json();})
+        .then(function(res){
+          if(res&&typeof res.count !== 'undefined'){
+            if(res.count > 0){
+              bellBadge.style.display='block';
+              if(bellBadge.clientWidth > 10 || bellBadge.textContent.trim() !== '') {
+                bellBadge.textContent = res.count > 99 ? '99+' : res.count;
+              }
+            } else {
+              bellBadge.style.display='none';
+            }
+          }
+        }).catch(function(e){});
+    }
+    updateGlobalBell();
   })();
   </script>
   {% block extra_js %}{% endblock %}
