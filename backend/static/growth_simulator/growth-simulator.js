@@ -60,6 +60,19 @@
     return '₹' + num.toLocaleString('en-IN');
   }
 
+  function formatAbbreviatedRupees(num) {
+    if (num >= 10000000) {
+      return '₹' + (num / 10000000).toFixed(2) + ' Cr';
+    } else if (num >= 100000) {
+      return '₹' + (num / 100000).toFixed(2) + ' L';
+    } else if (num >= 1000) {
+      const kVal = num / 1000;
+      return '₹' + (Number.isInteger(kVal) ? kVal.toFixed(0) : kVal.toFixed(1)) + ' K';
+    } else {
+      return '₹' + Math.round(num);
+    }
+  }
+
   async function fetchSimulationData() {
     // Abort previous request to prevent race conditions
     if (currentAbortController) {
@@ -140,11 +153,11 @@
     growthChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+        labels: ['Year 0', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
         datasets: [
           {
             label: 'Aggressive (16%)',
-            data: [26000, 56000, 92000, 136000, 188000],
+            data: [0, 26000, 56000, 92000, 136000, 188000],
             borderColor: '#A855F7',
             backgroundColor: 'rgba(168,85,247,0.08)',
             fill: true,
@@ -155,7 +168,7 @@
           },
           {
             label: 'Moderate (12%)',
-            data: [25500, 53000, 84000, 122000, 168000],
+            data: [0, 25500, 53000, 84000, 122000, 168000],
             borderColor: '#6366F1',
             backgroundColor: 'rgba(99,102,241,0.12)',
             fill: true,
@@ -166,7 +179,7 @@
           },
           {
             label: 'Conservative (8%)',
-            data: [25000, 51000, 78000, 108000, 142000],
+            data: [0, 25000, 51000, 78000, 108000, 142000],
             borderColor: '#F97316',
             backgroundColor: 'rgba(249,115,22,0.05)',
             fill: true,
@@ -247,6 +260,30 @@
     if (totalInvestedText) totalInvestedText.textContent = formatRupees(data.summary_metrics.total_invested);
     if (estReturnsText) estReturnsText.textContent = formatRupees(data.summary_metrics.estimated_returns);
     if (futureValueText) futureValueText.textContent = formatRupees(data.summary_metrics.future_value);
+
+    // Update dynamic sub-labels in summary metrics
+    const totalInv = data.summary_metrics.total_invested || 1;
+    const estRet = data.summary_metrics.estimated_returns || 0;
+    const gainPct = ((estRet / totalInv) * 100).toFixed(1);
+    const estRetSub = estReturnsText ? estReturnsText.parentElement.querySelector('.res-sub') : null;
+    if (estRetSub) estRetSub.textContent = `+${gainPct}% Capital Gain`;
+
+    const fvSub = futureValueText ? futureValueText.parentElement.querySelector('.res-sub') : null;
+    if (fvSub) fvSub.textContent = `At ${years} Year Maturity`;
+
+    // Update section subtitle for comparison
+    const compSub = document.querySelector('.scenarios-section .card-sub');
+    if (compSub) compSub.textContent = `Compare ${years}-year future value across risk models`;
+
+    // Update Chart Legend Badges
+    if (data.scenarios) {
+      data.scenarios.forEach(scen => {
+        const badgeStrong = document.querySelector(`.leg-badge.leg-${scen.color} strong`);
+        if (badgeStrong) {
+          badgeStrong.textContent = formatAbbreviatedRupees(scen.future_value);
+        }
+      });
+    }
 
     // 3. Scenario Cards
     const scenGrid = document.querySelector('.scenario-grid');
