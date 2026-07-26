@@ -845,6 +845,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  padding-right: 4px;
+}
+
+.summary-list::-webkit-scrollbar {
+  width: 4px;
+}
+.summary-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.summary-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
 }
 .summary-item {
   display: flex;
