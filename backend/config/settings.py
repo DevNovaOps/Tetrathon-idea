@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'investment.apps.InvestmentConfig',
     'growth_simulator.apps.GrowthSimulatorConfig',
     'reports.apps.ReportsConfig',
+    'learning.apps.LearningConfig',
+    'achievements.apps.AchievementsConfig',
     'web.apps.WebConfig',
 ]
 

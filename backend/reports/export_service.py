@@ -124,6 +124,11 @@ class ExportService:
         
         # 3. Dynamic Content depending on report_type
         from .analytics_service import AnalyticsService
+        try:
+            from achievements.services.unlock_service import UnlockService
+            UnlockService.check_and_unlock(user, 'report_downloaded', 1)
+        except Exception:
+            pass
         summary = AnalyticsService.get_summary(user, month, year)
         perf = AnalyticsService.get_performance(user, month, year)
         raw = summary.get("_raw", {})

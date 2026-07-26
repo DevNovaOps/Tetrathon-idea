@@ -76,6 +76,36 @@
           <a href="../13-education/education.html" class="btn btn-primary">Continue Learning →</a>
         </div>
       </section>
+
+      <!-- EXPLAINABLE AI ACHIEVEMENT MODAL -->
+      <div id="explainModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center; padding:20px;">
+        <div class="glass-card" style="max-width:650px; width:100%; max-height:90vh; overflow-y:auto; position:relative; padding:32px;">
+          <button id="closeExplainBtn" style="position:absolute; top:16px; right:20px; background:none; border:none; color:inherit; font-size:24px; cursor:pointer;">&times;</button>
+          <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+            <div id="explainIcon" class="ach-icon green-bg" style="font-size:36px; width:64px; height:64px; display:flex; align-items:center; justify-content:center; border-radius:50%;">🏆</div>
+            <div>
+              <h2 id="explainTitle" style="margin:0; font-size:22px;">Achievement Title</h2>
+              <span id="explainStatus" class="green-text" style="font-weight:600; font-size:14px;">Unlocked 🎉</span>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03); padding:16px; border-radius:12px; margin-bottom:20px;">
+            <h4 style="margin-top:0; margin-bottom:8px; display:flex; align-items:center; gap:8px;">🤖 Explainable AI Engine Analysis</h4>
+            <p id="explainText" style="line-height:1.6; margin:0; font-size:15px; opacity:0.9;"></p>
+          </div>
+          <div style="margin-bottom:20px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:14px;">
+              <span>Progress Requirement</span>
+              <span id="explainProgressText" style="font-weight:600;">100 / 100</span>
+            </div>
+            <div class="ach-bar" style="height:10px;"><div id="explainProgressBar" class="ach-bar-fill" style="width:100%;"></div></div>
+          </div>
+          <div>
+            <h4 style="margin-bottom:10px;">⚡ Action Steps & Rules</h4>
+            <ul id="explainSteps" style="margin:0; padding-left:20px; line-height:1.7; opacity:0.9;"></ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   
 {% endblock %}

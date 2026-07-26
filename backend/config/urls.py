@@ -42,6 +42,10 @@ urlpatterns = [
     # API — Reports
     path('api/reports/', include('reports.urls')),
 
+    # API — Learning Hub & Achievements
+    path('api/learning/', include('learning.urls')),
+    path('api/achievements/', include('achievements.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 
