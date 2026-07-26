@@ -352,13 +352,47 @@ Authentication is handled securely via Django's Session framework for traditiona
 
 ## 10. Screenshots
 
-*(Replace the paths below with your actual screenshot images once added to the repository)*
+<details>
+<summary><b>🚀 Landing Page</b></summary>
+<br/>
+<img src="backend/static/img/screenshots/landing.png" alt="Landing Page" width="100%" />
+</details>
 
-1. **Landing Page:** `![Landing Page](backend/static/img/screenshots/landing.png)`
-2. **Dashboard & AI Insights:** `![Dashboard](backend/static/img/screenshots/dashboard.png)`
-3. **Credit Score Engine:** `![Credit Score](backend/static/img/screenshots/credit_score.png)`
-4. **AI Risk Assessment Chat:** `![AI Chat](backend/static/img/screenshots/ai_chat.png)`
-5. **Growth Simulator:** `![Simulator](backend/static/img/screenshots/simulator.png)`
+<details>
+<summary><b>📊 Dashboard & Financial Overview</b></summary>
+<br/>
+<img src="backend/static/img/screenshots/dashboard1.png" alt="Dashboard 1" width="100%" />
+<br/>
+<img src="backend/static/img/screenshots/dashboard2.png" alt="Dashboard 2" width="100%" />
+<br/>
+<img src="backend/static/img/screenshots/dashboard3.png" alt="Dashboard 3" width="100%" />
+</details>
+
+<details>
+<summary><b>📈 Credit Score Engine & Improvement</b></summary>
+<br/>
+<img src="backend/static/img/screenshots/creditscore.png" alt="Credit Score" width="100%" />
+<br/>
+<img src="backend/static/img/screenshots/creditscore2.png" alt="Credit Score Breakdown" width="100%" />
+<br/>
+<img src="backend/static/img/screenshots/improve-score.png" alt="Improve Score" width="100%" />
+</details>
+
+<details>
+<summary><b>🤖 AI Financial Assistant</b></summary>
+<br/>
+<img src="backend/static/img/screenshots/ai-assistant.png" alt="AI Assistant" width="100%" />
+<br/>
+<img src="backend/static/img/screenshots/ai-assistant2.png" alt="AI Assistant 2" width="100%" />
+</details>
+
+<details>
+<summary><b>💰 Investments & Growth Simulator</b></summary>
+<br/>
+<img src="backend/static/img/screenshots/investements.png" alt="Investments" width="100%" />
+<br/>
+<img src="backend/static/img/screenshots/Growth%20SImulator.png" alt="Growth Simulator" width="100%" />
+</details>
 
 ---
 <div align="center">
