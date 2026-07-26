@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -77,6 +78,7 @@ def lesson_detail(request, id):
         return Response({"error": "Lesson not found"}, status=404)
     return Response(data)
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def complete_lesson(request, id):
@@ -86,6 +88,7 @@ def complete_lesson(request, id):
         return Response(res, status=400)
     return Response(res)
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def submit_quiz(request, id):

@@ -119,13 +119,31 @@
       .catch(err => console.error("Error loading lesson:", err));
   }
 
+  function getCSRFToken() {
+    let cookieValue = '';
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, 10) === 'csrftoken=') {
+          cookieValue = decodeURIComponent(cookie.substring(10));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
   function completeCurrentLesson(){
     if(!currentLessonId) return;
     const markBtn = document.getElementById('markCompleteBtn');
     markBtn.textContent = "Saving...";
     fetch(`/api/learning/lesson/${currentLessonId}/complete/`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken()
+      },
       body: JSON.stringify({})
     })
     .then(r => r.json())
@@ -156,7 +174,10 @@
       submitQuizBtn.textContent = "Evaluating AI Quiz...";
       fetch(`/api/learning/quiz/${currentLessonId}/submit/`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCSRFToken()
+        },
         body: JSON.stringify({ selected_option: parseInt(sel.value) })
       })
       .then(r => r.json())

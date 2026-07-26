@@ -5,10 +5,12 @@ from achievements.services.reward_service import RewardService
 class QuizService:
     @staticmethod
     def evaluate_submission(user, quiz_id, selected_option):
-        try:
-            quiz = Quiz.objects.select_related("lesson", "lesson__course").get(id=quiz_id)
-        except Quiz.DoesNotExist:
-            return {"error": "Quiz not found"}
+        quiz = Quiz.objects.select_related("lesson", "lesson__course").filter(lesson__id=quiz_id).first()
+        if not quiz:
+            try:
+                quiz = Quiz.objects.select_related("lesson", "lesson__course").get(id=quiz_id)
+            except (Quiz.DoesNotExist, ValueError):
+                return {"error": "Quiz not found"}
 
         try:
             selected_idx = int(selected_option)
