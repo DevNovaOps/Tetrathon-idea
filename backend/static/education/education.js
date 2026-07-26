@@ -313,10 +313,26 @@
           if(featProgLabel) featProgLabel.textContent = `${feat.progress_pct}%`;
           if(featProgFill) featProgFill.style.width = `${feat.progress_pct}%`;
           if(contBtn){
-            contBtn.onclick = () => {
-              if(feat.next_lesson_id) openLessonModal(feat.next_lesson_id);
-              else alert("No remaining lessons in featured course!");
-            };
+            if(feat.progress_pct >= 100){
+              contBtn.textContent = "Course Completed 🎓 (Review Lessons)";
+              contBtn.style.background = "#10B981";
+              contBtn.onclick = () => {
+                openBadgeModal({
+                  icon: "🎓",
+                  title: `${feat.title} Mastered!`,
+                  unlocked: true,
+                  xp: 300,
+                  description: "Congratulations! You have completed 100% of this featured financial course. You can click on any category below to review lessons or practice quizzes."
+                });
+              };
+            } else {
+              contBtn.textContent = "Continue Learning →";
+              contBtn.style.background = "";
+              contBtn.onclick = () => {
+                if(feat.next_lesson_id) openLessonModal(feat.next_lesson_id);
+                else alert("No remaining lessons in featured course!");
+              };
+            }
           }
         }
 

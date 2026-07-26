@@ -234,20 +234,141 @@ class ContentService:
                     article=f"### Comprehensive Study Guide: {l['title']}\n\n{l['content']}\n\n**Key Takeaway**: Apply this principle immediately to strengthen your personal financial health."
                 )
                 # Create a quiz for this lesson
+                q_data = ContentService.get_quiz_data_for_lesson(l["title"], cat["category"])
                 Quiz.objects.create(
                     lesson=lesson,
-                    question=f"What is the core principle taught in '{l['title']}'?",
-                    options=[
-                        "Consistent discipline and proactive financial planning lead to long-term compounding growth.",
-                        "Ignoring expenses and borrowing high-interest consumer loans is the fastest way to wealth.",
-                        "Financial planning is only useful for people who are already millionaires.",
-                        "Keeping all cash hidden at home protects against inflation."
-                    ],
-                    correct_answer=0,
-                    explanation="Consistent discipline, automated saving habits, and understanding financial rules are essential for wealth compounding.",
+                    question=q_data["question"],
+                    options=q_data["options"],
+                    correct_answer=q_data["correct_answer"],
+                    explanation=q_data["explanation"],
                     marks=30
                 )
         return count
+
+    @staticmethod
+    def get_quiz_data_for_lesson(title, category=""):
+        t = title.lower()
+        c = category.lower() if category else ""
+        if "50/30/20" in t or "budget" in t or "budget" in c:
+            return {
+                "question": f"When applying the 50/30/20 rule covered in '{title}', how should your net monthly income be divided?",
+                "options": [
+                    "50% Needs (Rent, Food), 30% Wants (Dining, Travel), 20% Savings & Debt Repayment.",
+                    "50% Savings, 30% Wants, 20% Needs.",
+                    "50% Wants, 30% Savings, 20% Taxes.",
+                    "50% Investments, 30% Entertainment, 20% Rent."
+                ],
+                "correct_answer": 0,
+                "explanation": "The 50/30/20 rule is a foundational budgeting framework: 50% goes to non-negotiable living essentials, 30% to lifestyle choice expenditures, and a dedicated 20% toward savings, investments, and debt clearance."
+            }
+        elif "cibil" in t or "credit" in t or "utilization" in t or "due date" in t or "credit" in c:
+            return {
+                "question": f"Based on the credit guidelines taught in '{title}', what is the most effective rule for maintaining a credit score above 750?",
+                "options": [
+                    "Always pay 100% of your credit card bill on time and keep credit utilization strictly under 30%.",
+                    "Utilize your entire credit limit every month and only pay the minimum due amount.",
+                    "Close all old bank accounts and credit cards to erase your credit history.",
+                    "Apply for multiple new personal loans simultaneously every six months."
+                ],
+                "correct_answer": 0,
+                "explanation": "Payment history (35%) and credit utilization (30%) make up 65% of your CIBIL rating. On-time full payments and maintaining utilization below 30% prove reliable credit behavior."
+            }
+        elif "sip" in t or "rupee cost" in t or "step-up" in t or "compound" in t or "sip" in c:
+            return {
+                "question": f"What is the primary wealth-building advantage of Systematic Investment Plans (SIPs) as discussed in '{title}'?",
+                "options": [
+                    "Rupee Cost Averaging automatically buys more units during market dips and harnesses long-term compounding.",
+                    "SIPs guarantee a fixed government-backed return of 20% per annum regardless of stock markets.",
+                    "SIPs eliminate all taxation and allow unlimited tax-free withdrawals at any time.",
+                    "You only invest when the stock market is at an all-time peak."
+                ],
+                "correct_answer": 0,
+                "explanation": "SIPs eliminate the impossible task of timing the market. By investing a fixed amount monthly, you average out unit costs across market cycles and let exponential compounding multiply your wealth over decades."
+            }
+        elif "expense ratio" in t or "ter" in t or "direct vs regular" in t or "mutual fund" in t or "mutual fund" in c:
+            return {
+                "question": f"Why do Direct Mutual Fund plans outperform Regular plans over a 15-to-20 year investment horizon as explained in '{title}'?",
+                "options": [
+                    "Direct plans have a lower Total Expense Ratio (TER) by eliminating distributor commission fees, compounding into lakhs of extra returns.",
+                    "Direct plans invest only in top-secret government bonds not available to regular fund managers.",
+                    "Regular plans are subject to 50% income tax whereas direct plans are completely tax-free.",
+                    "Direct plans guarantee zero stock market risk backed by RBI."
+                ],
+                "correct_answer": 0,
+                "explanation": "Direct plans bypass distributor commissions, saving 1% to 1.5% in expense ratios annually. When reinvested over 15+ years, this seemingly small difference compounds into lakhs of additional retirement wealth."
+            }
+        elif "tax" in t or "80c" in t or "elss" in t or "nps" in t or "regime" in t or "tax" in c:
+            return {
+                "question": f"What makes an Equity Linked Saving Scheme (ELSS) unique among Section 80C tax-saving instruments covered in '{title}'?",
+                "options": [
+                    "ELSS combines tax deduction up to ₹1.5 lakh with equity compounding and has the shortest lock-in period (3 years).",
+                    "ELSS allows daily tax-free withdrawals without any lock-in period or exit loads.",
+                    "ELSS offers a fixed 15% guaranteed interest rate backed by the Ministry of Finance.",
+                    "ELSS is restricted only to senior citizens above 60 years of age."
+                ],
+                "correct_answer": 0,
+                "explanation": "Among all Section 80C tax-saving options (like PPF, NSC, or 5-year Tax FDs), ELSS features the shortest mandatory lock-in of just 3 years while delivering inflation-beating equity market returns."
+            }
+        elif "emergency" in t or "6 months" in t or "shield" in t or "emergency" in c:
+            return {
+                "question": f"Where is the safest and most suitable place to park your 6-month emergency fund according to '{title}'?",
+                "options": [
+                    "In liquid mutual funds or high-yield savings accounts that offer instant liquidity and capital preservation.",
+                    "In volatile cryptocurrency altcoins or high-risk small-cap stocks for maximum returns.",
+                    "Locked away in a 15-year PPF account or illiquid real estate property.",
+                    "In a 5-year lock-in tax-saving fixed deposit."
+                ],
+                "correct_answer": 0,
+                "explanation": "An emergency fund is your financial safety net. The paramount goals are capital protection and 24/7 instant withdrawal access, making liquid mutual funds and savings accounts ideal."
+            }
+        elif "share" in t or "stock" in t or "nse" in t or "bse" in t or "p/e" in t or "market" in t or "stock" in c:
+            return {
+                "question": f"What is the core concept of long-term equity investing taught in '{title}'?",
+                "options": [
+                    "Buying a stock represents owning a fractional piece of a real business, where wealth is built through long-term corporate earnings growth.",
+                    "Stock markets are purely a short-term casino where guessing daily price movements is the only way to earn.",
+                    "SEBI guarantees that no shareholder will ever experience a temporary drop in share prices.",
+                    "You should sell your entire portfolio in panic whenever the stock market drops 5%."
+                ],
+                "correct_answer": 0,
+                "explanation": "Equities represent business ownership. While prices fluctuate in the short term based on sentiment, long-term stock prices inevitably follow the underlying corporate earnings growth and economic expansion."
+            }
+        elif "nominee" in t or "will" in t or "two-factor" in t or "fraud" in t or "security" in t or "security" in c:
+            return {
+                "question": f"Why is registering nominees and creating a digital financial will emphasized in '{title}'?",
+                "options": [
+                    "It ensures seamless, legal transmission of bank accounts, mutual funds, and assets to family members without arduous court succession certificates.",
+                    "It automatically doubles your bank balance and mutual fund returns every 5 years.",
+                    "It makes your bank accounts completely exempt from annual income tax filing.",
+                    "It prevents the bank from ever charging SMS notification or ATM fees."
+                ],
+                "correct_answer": 0,
+                "explanation": "Without registered nominees and clear financial documentation, grieving family members face prolonged legal hurdles and frozen accounts to claim rightful inheritance. Nominee registration ensures smooth wealth transmission."
+            }
+        else:
+            return {
+                "question": f"What is the overarching financial literacy principle highlighted in '{title}'?",
+                "options": [
+                    "Consistent financial discipline, automated saving, and informed investing are essential for long-term financial independence.",
+                    "Ignoring personal expenses and relying on high-interest consumer debt is the quickest path to wealth.",
+                    "Financial planning and budgeting are only useful for multi-millionaires.",
+                    "Keeping all your cash hidden in a home safe protects your money from inflation."
+                ],
+                "correct_answer": 0,
+                "explanation": "Building wealth is a methodical process. Consistent discipline, living below your means, and investing systematically allow compound interest to work in your favor."
+            }
+
+    @staticmethod
+    def update_existing_quizzes():
+        for q in Quiz.objects.select_related("lesson", "lesson__course").all():
+            l_title = q.lesson.title if q.lesson else ""
+            c_cat = q.lesson.course.category if (q.lesson and q.lesson.course) else ""
+            q_data = ContentService.get_quiz_data_for_lesson(l_title, c_cat)
+            q.question = q_data["question"]
+            q.options = q_data["options"]
+            q.correct_answer = q_data["correct_answer"]
+            q.explanation = q_data["explanation"]
+            q.save()
 
     @staticmethod
     def seed_articles():
