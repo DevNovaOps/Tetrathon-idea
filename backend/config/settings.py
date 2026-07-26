@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'learning.apps.LearningConfig',
     'achievements.apps.AchievementsConfig',
     'notifications.apps.NotificationsConfig',
+    'user_profile.apps.UserProfileConfig',
+    'user_settings.apps.UserSettingsConfig',
     'web.apps.WebConfig',
 ]
 

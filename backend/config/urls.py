@@ -49,6 +49,10 @@ urlpatterns = [
     # API — Notifications
     path('api/notifications/', include('notifications.urls')),
 
+    # API — Profile & Settings
+    path('api/profile/', include('user_profile.urls')),
+    path('api/settings/', include('user_settings.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 

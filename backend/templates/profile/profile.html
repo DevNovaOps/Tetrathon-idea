@@ -173,9 +173,86 @@
         <section class="about-me-section reveal">
           <div class="about-me-card glass-card">
             <div class="am-header"><span class="am-icon purple-bg">💬</span><h3 class="card-heading">About Me</h3></div>
-            <p class="am-text">"I am focused on improving my financial health through disciplined savings, smart investments, and continuous financial learning with Finora."</p>
+            <p class="am-text" id="aboutMeText">"I am focused on improving my financial health through disciplined savings, smart investments, and continuous financial learning with Finora."</p>
+            <div class="explainable-box" id="explainableAiBox" style="display:none;">
+              <div class="explainable-title"><span>🧠</span> Memory-Based Explainable AI Summary</div>
+              <div id="explainableAiText">Analyzing historical financial identity snapshots...</div>
+            </div>
           </div>
         </section>
+
+        <!-- PROFILE EDIT MODAL -->
+        <div class="modal-overlay" id="profileEditModal">
+          <div class="modal-box">
+            <div class="modal-header">
+              <span class="modal-title">Edit Financial Identity</span>
+              <button class="modal-close" onclick="closeProfileModal()">&times;</button>
+            </div>
+            <form id="profileEditForm" onsubmit="submitProfileEdit(event)">
+              <div class="form-group"><label>Full Name</label><input type="text" id="editFullName" class="form-input" required /></div>
+              <div class="form-group"><label>Phone Number</label><input type="text" id="editPhone" class="form-input" /></div>
+              <div class="form-group"><label>Occupation</label><input type="text" id="editOccupation" class="form-input" /></div>
+              <div class="form-group"><label>City / Location</label><input type="text" id="editCity" class="form-input" /></div>
+              <div class="form-group"><label>Preferred Currency</label><select id="editCurrency" class="form-select"><option value="INR">INR (₹)</option><option value="USD">USD ($)</option><option value="EUR">EUR (€)</option></select></div>
+              <div class="modal-actions">
+                <button type="button" class="btn btn-outline" onclick="closeProfileModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- GOAL MANAGE MODAL -->
+        <div class="modal-overlay" id="goalManageModal">
+          <div class="modal-box">
+            <div class="modal-header">
+              <span class="modal-title" id="goalModalTitle">Add Financial Goal</span>
+              <button class="modal-close" onclick="closeGoalModal()">&times;</button>
+            </div>
+            <form id="goalForm" onsubmit="submitGoalForm(event)">
+              <input type="hidden" id="editGoalId" value="" />
+              <div class="form-group"><label>Goal Name</label><input type="text" id="goalNameInput" class="form-input" placeholder="e.g. Emergency Fund, Buy House" required /></div>
+              <div class="form-group"><label>Target Amount (₹)</label><input type="number" id="goalTargetInput" class="form-input" placeholder="150000" required /></div>
+              <div class="form-group"><label>Monthly Contribution (₹)</label><input type="number" id="goalMonthlyInput" class="form-input" placeholder="10000" /></div>
+              <div class="form-group" id="goalContributeGroup" style="display:none;"><label style="color:#22c55e;">+ Add New Contribution (₹)</label><input type="number" id="goalAddAmt" class="form-input" placeholder="Enter deposit amount to complete goal" /></div>
+              <div class="form-group"><label style="cursor:pointer;"><input type="checkbox" id="goalIsPrimaryInput" style="margin-right:6px;" /> Set as ACTIVE PRIMARY GOAL (Simulator Goal)</label></div>
+              <div class="modal-actions">
+                <button type="button" class="btn btn-outline" onclick="closeGoalModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="goalSubmitBtn">Create Goal</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- SERVICE ADD MODAL -->
+        <div class="modal-overlay" id="serviceAddModal">
+          <div class="modal-box">
+            <div class="modal-header">
+              <span class="modal-title">Connect Financial Service</span>
+              <button class="modal-close" onclick="closeServiceModal()">&times;</button>
+            </div>
+            <form id="serviceForm" onsubmit="submitServiceForm(event)">
+              <div class="form-group"><label>Service Type</label><select id="serviceTypeSelect" class="form-select" onchange="toggleServiceFields()"><option value="bank">Bank Account</option><option value="upi">UPI ID</option><option value="card">Debit / Credit Card</option></select></div>
+              <div id="bankFields">
+                <div class="form-group"><label>Bank Name</label><input type="text" id="svcBankName" class="form-input" placeholder="e.g. HDFC Bank, ICICI Bank" /></div>
+                <div class="form-group"><label>Account Number</label><input type="text" id="svcAccNum" class="form-input" placeholder="Enter 4 to 12 digits" /></div>
+              </div>
+              <div id="upiFields" style="display:none;">
+                <div class="form-group"><label>UPI ID</label><input type="text" id="svcUpiId" class="form-input" placeholder="username@okaxis" /></div>
+                <div class="form-group"><label>UPI App</label><input type="text" id="svcUpiApp" class="form-input" placeholder="Google Pay, PhonePe" value="Google Pay" /></div>
+              </div>
+              <div id="cardFields" style="display:none;">
+                <div class="form-group"><label>Card Type</label><select id="svcCardType" class="form-select"><option value="Debit">Debit Card</option><option value="Credit">Credit Card</option></select></div>
+                <div class="form-group"><label>Issuer / Bank</label><input type="text" id="svcCardIssuer" class="form-input" placeholder="HDFC Platinum, SBI Card" /></div>
+                <div class="form-group"><label>Last 4 Digits</label><input type="text" id="svcCardDigits" class="form-input" maxlength="4" placeholder="4821" /></div>
+              </div>
+              <div class="modal-actions">
+                <button type="button" class="btn btn-outline" onclick="closeServiceModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Connect Service</button>
+              </div>
+            </form>
+          </div>
+        </div>
 
       </div>
     
