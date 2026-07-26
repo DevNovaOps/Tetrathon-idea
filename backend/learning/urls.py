@@ -10,4 +10,5 @@ urlpatterns = [
     path('quiz/<uuid:id>/submit/', views.submit_quiz, name='learning-quiz-submit'),
     path('recommendations/', views.recommendations, name='learning-recommendations'),
     path('progress/', views.progress, name='learning-progress'),
+    path('course/<uuid:id>/reset/', views.reset_course, name='learning-course-reset'),
 ]

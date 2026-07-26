@@ -1,6 +1,7 @@
 from learning.models import Course, Lesson, UserProgress
 from learning.services.streak_service import StreakService
 from achievements.services.reward_service import RewardService
+from achievements.services.unlock_service import UnlockService
 
 class ProgressService:
     @staticmethod
@@ -15,6 +16,7 @@ class ProgressService:
                 "learning_hours": "2.5h"
             }
 
+        UnlockService.sync_course_badges(user)
         total_lessons = Lesson.objects.count()
         if total_lessons == 0:
             return {

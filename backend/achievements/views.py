@@ -4,12 +4,15 @@ from rest_framework.response import Response
 from achievements.services.achievement_service import AchievementService
 from achievements.services.statistics_service import StatisticsService
 from achievements.services.badge_service import BadgeService
+from achievements.services.unlock_service import UnlockService
 from achievements.models import Achievement, Badge
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def achievements_summary(request):
     user = request.user if request.user.is_authenticated else None
+    if user:
+        UnlockService.sync_course_badges(user)
     summary = AchievementService.get_summary_data(user)
     unlocked = AchievementService.get_unlocked_grid(user)
     locked = AchievementService.get_locked_milestones(user)

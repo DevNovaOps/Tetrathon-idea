@@ -295,6 +295,49 @@
     document.getElementById('badgeModalDesc').textContent = b.description || 'Complete learning tasks to earn this badge.';
   }
 
+  function openCourseCompletedModal(cData) {
+    const modal = document.getElementById('courseCompletedModal');
+    if (!modal) return;
+    document.getElementById('ccModalTitle').textContent = `${cData.title || cData.category} Mastered!`;
+    modal.style.display = 'flex';
+
+    const closeBtn = document.getElementById('closeCourseCompletedBtn');
+    if (closeBtn) closeBtn.onclick = () => { modal.style.display = 'none'; };
+
+    const reviewBtn = document.getElementById('ccReviewBtn');
+    if (reviewBtn) reviewBtn.onclick = () => {
+      modal.style.display = 'none';
+      if (cData.lessons && cData.lessons.length > 0) {
+        openLessonModal(cData.lessons[0].id);
+      }
+    };
+
+    const resetBtn = document.getElementById('ccResetBtn');
+    if (resetBtn) resetBtn.onclick = () => {
+      if (!confirm("Are you sure you want to reset your progress for this course? Your earned mastery badges and XP will remain in your profile!")) return;
+      resetBtn.textContent = "Resetting...";
+      fetch(`/api/learning/course/${cData.id}/reset/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCSRFToken()
+        },
+        body: JSON.stringify({})
+      })
+      .then(r => r.json())
+      .then(res => {
+        resetBtn.textContent = "🔄 Reset & Try Again";
+        modal.style.display = 'none';
+        alert("Progress reset successfully! You can now retake all lessons and quizzes.");
+        loadDashboardData();
+      })
+      .catch(e => {
+        console.error("Error resetting course:", e);
+        resetBtn.textContent = "🔄 Reset & Try Again";
+      });
+    };
+  }
+
   /* Load Live Dashboard Data */
   function loadDashboardData(){
     fetch('/api/learning/dashboard/')
@@ -331,13 +374,11 @@
               contBtn.textContent = "Course Completed 🎓 (Review Lessons)";
               contBtn.style.background = "#10B981";
               contBtn.onclick = () => {
-                openBadgeModal({
-                  icon: "🎓",
-                  title: `${feat.title} Mastered!`,
-                  unlocked: true,
-                  xp: 300,
-                  description: "Congratulations! You have completed 100% of this featured financial course. You can click on any category below to review lessons or practice quizzes."
-                });
+                fetch(`/api/learning/course/${feat.id}/`)
+                  .then(r => r.json())
+                  .then(cData => {
+                    if(cData) openCourseCompletedModal(cData);
+                  });
               };
             } else {
               contBtn.textContent = "Continue Learning →";
@@ -371,7 +412,9 @@
                   fetch(`/api/learning/course/${cat.id}/`)
                     .then(r => r.json())
                     .then(cData => {
-                      if(cData && cData.lessons && cData.lessons.length > 0){
+                      if(cData && cData.progress_pct >= 100){
+                        openCourseCompletedModal(cData);
+                      } else if(cData && cData.lessons && cData.lessons.length > 0){
                         openLessonModal(cData.lessons[0].id);
                       } else {
                         alert(`Explore our curated lessons in ${cat.name}!`);

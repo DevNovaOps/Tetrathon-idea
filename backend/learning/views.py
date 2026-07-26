@@ -113,3 +113,13 @@ def progress(request):
     user = request.user if request.user.is_authenticated else None
     prog = ProgressService.get_dashboard_progress(user)
     return Response({"progress": prog})
+
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def reset_course(request, id):
+    user = request.user if request.user.is_authenticated else None
+    if user:
+        from learning.models import UserProgress
+        UserProgress.objects.filter(user=user, course_id=id).update(completed=False, completion_pct=0.0)
+    return Response({"status": "reset", "course_id": str(id)})

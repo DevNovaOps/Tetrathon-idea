@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class UnlockService:
     @staticmethod
-    def check_and_unlock(user, event_type, value=1.0):
+    def check_and_unlock(user, event_type, value=1.0, specific_rule=None):
         if not user or not user.is_authenticated:
             return []
 
@@ -14,10 +14,17 @@ class UnlockService:
 
         # Map event_type to potential badge rules
         rules_to_check = []
-        if event_type == "lesson_completed":
+        if specific_rule:
+            rules_to_check = [specific_rule]
+        elif event_type == "lesson_completed":
             rules_to_check = ["first_lesson", "bookworm", "complete_50_lessons"]
         elif event_type == "course_completed":
-            rules_to_check = ["course_master", "finance_pro", "master_personal_finance"]
+            rules_to_check = [
+                "course_master", "finance_pro", "master_personal_finance",
+                "module_credit_score", "module_mutual_funds", "module_sips",
+                "module_emergency_fund", "module_financial_literacy", "module_budgeting",
+                "module_stock_market", "module_tax_planning", "module_financial_security"
+            ]
         elif event_type == "report_downloaded":
             rules_to_check = ["report_reader"]
         elif event_type == "investment_added":
@@ -79,3 +86,39 @@ class UnlockService:
                 ach.save()
 
         return unlocked_list
+
+    @staticmethod
+    def sync_course_badges(user):
+        if not user or not user.is_authenticated:
+            return []
+        from learning.models import Course, UserProgress
+        cat_to_rule = {
+            "What is Credit Score?": "module_credit_score",
+            "Mutual Funds": "module_mutual_funds",
+            "SIPs": "module_sips",
+            "Emergency Fund": "module_emergency_fund",
+            "Financial Literacy": "module_financial_literacy",
+            "Budgeting": "module_budgeting",
+            "Stock Market Basics": "module_stock_market",
+            "Tax Planning": "module_tax_planning",
+            "Financial Security": "module_financial_security",
+            "Featured Course": "master_personal_finance",
+        }
+        unlocked_any = []
+        completed_courses_count = 0
+        for course in Course.objects.all():
+            total_l = course.lessons.count()
+            if total_l == 0:
+                continue
+            user_l = UserProgress.objects.filter(user=user, course=course, completed=True).count()
+            if user_l >= total_l:
+                completed_courses_count += 1
+                rule = cat_to_rule.get(course.category)
+                if rule:
+                    res = UnlockService.check_and_unlock(user, "specific_rule", 1, specific_rule=rule)
+                    unlocked_any.extend(res)
+        if completed_courses_count >= 1:
+            unlocked_any.extend(UnlockService.check_and_unlock(user, "specific_rule", 1, specific_rule="course_master"))
+        if completed_courses_count >= 3:
+            unlocked_any.extend(UnlockService.check_and_unlock(user, "specific_rule", 1, specific_rule="finance_pro"))
+        return unlocked_any
