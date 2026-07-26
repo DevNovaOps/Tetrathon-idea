@@ -108,8 +108,9 @@
 
         const markBtn = document.getElementById('markCompleteBtn');
         if(data.completed){
-          markBtn.textContent = "Completed ✓";
+          markBtn.textContent = "Completed ✓ (Next Lesson →)";
           markBtn.style.background = "var(--emerald-bg, #10B981)";
+          markBtn.onclick = () => handleNextOrClose();
         } else {
           markBtn.textContent = "Mark Lesson Complete ✓";
           markBtn.style.background = "";
@@ -134,6 +135,16 @@
     return cookieValue;
   }
 
+  function handleNextOrClose() {
+    const nextBtn = document.getElementById('nextLessonBtn');
+    if (nextBtn && nextBtn.style.display !== 'none' && nextBtn.onclick) {
+      nextBtn.onclick();
+    } else {
+      const modal = document.getElementById('lessonModal');
+      if (modal) modal.style.display = 'none';
+    }
+  }
+
   function completeCurrentLesson(){
     if(!currentLessonId) return;
     const markBtn = document.getElementById('markCompleteBtn');
@@ -148,8 +159,9 @@
     })
     .then(r => r.json())
     .then(res => {
-      markBtn.textContent = "Completed ✓";
+      markBtn.textContent = "Completed ✓ (Next Lesson →)";
       markBtn.style.background = "#10B981";
+      markBtn.onclick = () => handleNextOrClose();
       if(res.unlocked && res.unlocked.length > 0){
         openBadgeModal(res.unlocked[0]);
       }
@@ -157,7 +169,8 @@
     })
     .catch(e => {
       console.error("Error completing lesson:", e);
-      markBtn.textContent = "Completed ✓";
+      markBtn.textContent = "Completed ✓ (Next Lesson →)";
+      markBtn.onclick = () => handleNextOrClose();
     });
   }
 
@@ -188,8 +201,9 @@
         if(res.passed){
           fb.style.color = "#10B981";
           const markBtn = document.getElementById('markCompleteBtn');
-          markBtn.textContent = "Completed ✓ (Quiz Passed)";
+          markBtn.textContent = "Completed ✓ (Next Lesson →)";
           markBtn.style.background = "#10B981";
+          markBtn.onclick = () => handleNextOrClose();
           if(res.unlocked && res.unlocked.length > 0){
             setTimeout(() => openBadgeModal(res.unlocked[0]), 300);
           }

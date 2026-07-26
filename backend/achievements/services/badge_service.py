@@ -20,6 +20,7 @@ class BadgeService:
             {"rule": "7_day_streak", "title": "7-Day Streak", "desc": "Completed lessons 7 days in a row", "icon": "🔥", "xp": 50, "target": 7, "milestone": False},
             {"rule": "course_master", "title": "Course Master", "desc": "Completed your first full course", "icon": "🏆", "xp": 100, "target": 1, "milestone": False},
             {"rule": "finance_pro", "title": "Finance Pro", "desc": "Completed 3 full financial courses", "icon": "🎖️", "xp": 150, "target": 3, "milestone": False},
+            {"rule": "master_personal_finance", "title": "Master Personal Finance Mastered!", "desc": "Completed 100% of Master Personal Finance course", "icon": "🎓", "xp": 300, "target": 1, "milestone": False},
             {"rule": "first_investment", "title": "First Investment", "desc": "Made your first investment", "icon": "📊", "xp": 25, "target": 1, "milestone": False},
             {"rule": "7_day_savings", "title": "7-Day Savings", "desc": "Saved money for 7 consecutive days", "icon": "💰", "xp": 30, "target": 7, "milestone": False},
             {"rule": "credit_improved", "title": "Credit Score Improved", "desc": "Increased score by 50+ points", "icon": "🛡️", "xp": 40, "target": 50, "milestone": False},

@@ -17,7 +17,7 @@ class UnlockService:
         if event_type == "lesson_completed":
             rules_to_check = ["first_lesson", "bookworm", "complete_50_lessons"]
         elif event_type == "course_completed":
-            rules_to_check = ["course_master", "finance_pro"]
+            rules_to_check = ["course_master", "finance_pro", "master_personal_finance"]
         elif event_type == "report_downloaded":
             rules_to_check = ["report_reader"]
         elif event_type == "investment_added":
