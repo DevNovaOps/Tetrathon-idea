@@ -4,27 +4,21 @@
 
 <br/>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=900&color=6366F1&center=true&vCenter=true&multiline=true&repeat=true&width=760&height=75&lines=Alternative+Digital+Signals+%C2%B7+Explainable+Wealth+Generation;AI+Financial+Assistant+%C2%B7+Risk+Assessment+%C2%B7+Credit+Scoring;FinTech+Hackathon+%C2%B7+24+Hours)](https://finora.vercel.app/)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=900&color=6366F1&center=true&vCenter=true&multiline=true&repeat=true&width=760&height=75&lines=Alternative+Digital+Signals+%C2%B7+Explainable+Wealth+Generation;AI+Financial+Assistant+%C2%B7+Risk+Assessment+%C2%B7+Credit+Scoring;AI+Powered+%C2%B7+Fully+Transparent)](https://finora.com/)
 
 <br/>
 
-<a href="https://finora.vercel.app/">
-  <img src="https://img.shields.io/badge/%F0%9F%96%A5%EF%B8%8F_UI_Preview-finora.vercel.app-6366F1?style=for-the-badge&labelColor=0f172a" alt="UI Preview"/>
-</a>
-&nbsp;
 <a href="https://figma.com/">
   <img src="https://img.shields.io/badge/%F0%9F%96%8A%EF%B8%8F_Mockup-Figma-06B6D4?style=for-the-badge&labelColor=0f172a" alt="Mockup"/>
 </a>
 
 <br/><br/>
 
-<img src="https://img.shields.io/badge/FinTech_Hackathon-24_Hours-FF6B35?style=flat-square" alt="Hackathon"/>
-<img src="https://img.shields.io/badge/Status-Live_Preview_on_Vercel-22C55E?style=flat-square" alt="Status"/>
 <img src="https://img.shields.io/badge/AI-Groq_LLaMA_3-7C3AED?style=flat-square" alt="AI"/>
 <img src="https://img.shields.io/badge/DB-Local_MySQL_Only-336791?style=flat-square&logo=mysql&logoColor=white" alt="DB"/>
 <img src="https://img.shields.io/badge/Frontend-Vanilla_JS_+_CSS-61DAFB?style=flat-square&logo=javascript&logoColor=black" alt="Frontend"/>
 <img src="https://img.shields.io/badge/API-Django_5-092E20?style=flat-square&logo=django&logoColor=white" alt="API"/>
-<img src="https://img.shields.io/badge/UI_Hosted-Vercel-black?style=flat-square&logo=vercel&logoColor=white" alt="Vercel"/>
+<img src="https://img.shields.io/badge/Architecture-Event_Driven-black?style=flat-square&logo=apachekafka&logoColor=white" alt="Event Driven"/>
 
 <br/><br/>
 
@@ -36,9 +30,9 @@
 
 ---
 
-> **FinTech Hackathon** · Next-Gen Financial Operations Platform  
-> **UI Preview (Vercel):** [https://finora.vercel.app/](https://finora.vercel.app/) — frontend only  
-> **Full stack (API + MySQL):** **local only** — database is not connected on Vercel
+> **Finora Intelligence** · Next-Gen Financial Operations Platform  
+> **Platform Status:** Operational  
+> **Architecture:** Full Stack AI Integration  
 
 Finora democratizes credit access and optimizes wealth accumulation by ingesting non-traditional digital signals and delivering Explainable AI insights — built as a central intelligence platform for users' financial health.
 
@@ -61,7 +55,7 @@ Finora democratizes credit access and optimizes wealth accumulation by ingesting
 
 | # | Section | # | Section |
 |---:|---|---:|---|
-| 1 | [Overview](#1-overview) | 6 | [Architecture](#6-architecture) |
+| 1 | [Overview](#1-overview) | 6 | [Architecture & Workflows](#6-architecture--workflows) |
 | 2 | [Problem & Goal](#2-problem--goal) | 7 | [Repository Structure](#7-repository-structure) |
 | 3 | [Links & Credentials](#3-links--credentials) | 8 | [Authentication](#8-authentication) |
 | 4 | [Features & Deliverables](#4-features--deliverables) | 9 | [Setup (Local)](#9-setup-local) |
@@ -73,7 +67,7 @@ Finora democratizes credit access and optimizes wealth accumulation by ingesting
 
 ## 1. Overview
 
-**Finora** is a full-stack web app for the FinTech Hackathon. It covers the user's financial lifecycle end-to-end:
+**Finora** is a futuristic, full-stack web application designed to map the entire financial lifecycle of a user. It pushes beyond traditional banking by integrating advanced AI modules:
 
 | Capability | What it does |
 |---|---|
@@ -84,8 +78,6 @@ Finora democratizes credit access and optimizes wealth accumulation by ingesting
 | Financial Reports | Dashboards displaying categorized expenses, savings, and performance metrics. |
 
 Stack shape: **Vanilla JS + CSS** frontend · **Django 5** REST API · **MySQL** (local) · Groq LLM · Session Authentication · dark mode.
-
-> End-to-end data workflows need local MySQL + API. The Vercel URL is a **UI preview** only.
 
 ---
 
@@ -98,7 +90,7 @@ Stack shape: **Vanilla JS + CSS** frontend · **Django 5** REST API · **MySQL**
 | Static financial advice | Dynamic, conversational AI Assistant |
 | Disconnected wealth planning | Interactive Growth Simulator tied to real-time risk profiles |
 
-**Hackathon objective:** Build a scalable, AI-driven personal finance platform that democratizes access to credit and intelligently guides wealth generation.
+**Core Objective:** Build a scalable, AI-driven personal finance platform that democratizes access to credit and intelligently guides wealth generation.
 
 ---
 
@@ -106,7 +98,6 @@ Stack shape: **Vanilla JS + CSS** frontend · **Django 5** REST API · **MySQL**
 
 | Resource | Link / note |
 |---|---|
-| UI Preview (Vercel) | [https://finora.vercel.app/](https://finora.vercel.app/) — **no live MySQL** |
 | Full stack + database | Local — Django `:8000` + MySQL |
 | Local API | `http://127.0.0.1:8000` |
 
@@ -141,7 +132,7 @@ Run `python manage.py seed_demo_users` to generate:
 |---:|---|:---:|
 | B1 | Dark mode / Light mode toggle | ✅ |
 | B2 | Gamified Financial Learning Module | ✅ |
-| B3 | Automated Database Seeder for hackathon | ✅ |
+| B3 | Automated Database Seeder | ✅ |
 | B4 | Interactive API Documentation (Swagger) | ✅ |
 
 ---
@@ -166,34 +157,134 @@ Run `python manage.py seed_demo_users` to generate:
 
 ---
 
-## 6. Architecture
+## 6. Architecture & Workflows
 
+### 6.1 Overall System Architecture
 ![Enterprise Cloud Architecture](backend/static/diagram-export-7-27-2026-12_18_14-AM.png)
+
+### 6.2 AI Decision Pipeline
+```mermaid
+graph TD
+    A[User Input / Transactions] --> B{AI Data Aggregator}
+    B --> C[Risk Profile Engine]
+    B --> D[Credit Score Engine]
+    C --> E[Groq LLaMA-3 Inference]
+    D --> E
+    E --> F[Explainable AI Insights]
+    E --> G[Investment Allocation Engine]
+    F --> H((Frontend Dashboard))
+    G --> H
+```
+
+### 6.3 Credit Score Engine Architecture
+```mermaid
+flowchart LR
+    subgraph Data Sources
+        T[UPI Transactions]
+        O[OTT / Utility Bills]
+        E[E-commerce Velocity]
+    end
+    
+    subgraph Credit Engine
+        FE[Feature Extraction]
+        WT[Weighting Matrix]
+        BM[Baseline Calculation]
+    end
+    
+    T --> FE
+    O --> FE
+    E --> FE
+    FE --> WT
+    WT --> BM
+    BM --> CS((Final Credit Score))
+```
+
+### 6.4 Risk Assessment Workflow
+```mermaid
+sequenceDiagram
+    participant User
+    participant AIAssistant
+    participant RiskEngine
+    participant Database
+
+    User->>AIAssistant: Provides financial goals & demographics
+    AIAssistant->>RiskEngine: Submits structured JSON profile
+    RiskEngine->>RiskEngine: Calculates Risk Score (0-100)
+    RiskEngine->>RiskEngine: Categorizes (Conservative, Moderate, Aggressive)
+    RiskEngine->>Database: Persists Risk Profile
+    RiskEngine-->>AIAssistant: Triggers Portfolio Allocation
+    AIAssistant-->>User: Presents customized investment strategy
+```
+
+### 6.5 Event-Driven Architecture (AI Memory)
+```mermaid
+graph TD
+    E1[Bill Payment] -->|Signal| EB(Event Bus / Signals)
+    E2[Quiz Completed] -->|Signal| EB
+    E3[Profile Update] -->|Signal| EB
+    
+    EB -->|Dispatch| M[Memory Service]
+    M -->|Create| DB[(AI Memory DB)]
+    
+    DB -->|Fetch| XAI[Explainability Engine]
+    XAI -->|Generate Insights| UI[User Interface]
+```
+
+### 6.6 REST API Request Flow
+```mermaid
+graph LR
+    Client([Frontend App]) -->|HTTPS Request| N[Nginx / Web Server]
+    N -->|WSGI| D[Django Router]
+    D -->|Auth Check| M[Middleware]
+    M -->|Valid Session| V[API View]
+    V --> S[Service Layer]
+    S --> DB[(MySQL)]
+    DB --> S
+    S --> V
+    V -->|JSON Response| Client
+```
 
 ---
 
 ## 7. Repository Structure
 
 ```text
-backend/
-├── accounts/           # User models, OAuth, Authentication API
-├── ai_assistant/       # Groq integration, conversational logic
-├── ai_memory/          # Event tracking, Explainable AI insights
-├── config/             # Core Django settings & routing
-├── core/               # Shared utilities, base models
-├── credit_score/       # Scoring engine, signal modifiers
-├── investment/         # Asset allocation, portfolio generation
-├── learning/           # Quizzes, educational content
-├── notifications/      # Real-time alerts, event subscriptions
-├── onboarding/         # Initial user setup flows
-├── reports/            # Financial reporting, AI Insights generator
-├── risk_profile/       # Risk assessment scoring
-├── static/             # Static assets (CSS, JS, Images)
-├── templates/          # Frontend HTML rendering (Monolithic views)
-├── transactions/       # Spending categorization, history
-├── user_profile/       # Profile management, connected services
-├── user_settings/      # User preferences
-└── web/                # Base views for web frontend
+finora/
+├── 01-landing-page/      # UI components and layout for the landing page
+├── 02-auth/              # Authentication flows and UI
+├── 03-onboarding/        # Initial user setup flows
+├── 04-dashboard/         # Main financial dashboard views
+├── 05-credit-score/      # Credit score visualization and UI
+├── 06-improve-score/     # Actionable tips for credit improvement
+├── 07-ai-assistant/      # Conversational interface components
+├── 08-risk-profile/      # Risk assessment questionnaire and results
+├── 09-investment/        # Investment tracking and recommendations
+├── 10-growth-simulator/  # Interactive CAGR charting components
+├── 11-reports/           # Financial reports and insights
+├── 12-notifications/     # Alert system and history
+├── 13-education/         # Financial literacy modules
+├── 14-achievements/      # Gamification and XP tracking
+├── 15-profile/           # User profile settings
+├── 16-settings/          # App configuration and preferences
+└── backend/              # Core Django monolithic backend
+    ├── accounts/           # User models, OAuth, Authentication API
+    ├── ai_assistant/       # Groq integration, conversational logic
+    ├── ai_memory/          # Event tracking, Explainable AI insights
+    ├── config/             # Core Django settings & routing
+    ├── core/               # Shared utilities, base models
+    ├── credit_score/       # Scoring engine, signal modifiers
+    ├── investment/         # Asset allocation, portfolio generation
+    ├── learning/           # Quizzes, educational content
+    ├── notifications/      # Real-time alerts, event subscriptions
+    ├── onboarding/         # Initial user setup flows
+    ├── reports/            # Financial reporting, AI Insights generator
+    ├── risk_profile/       # Risk assessment scoring
+    ├── static/             # Static assets (CSS, JS, Images)
+    ├── templates/          # Frontend HTML rendering (Monolithic views)
+    ├── transactions/       # Spending categorization, history
+    ├── user_profile/       # Profile management, connected services
+    ├── user_settings/      # User preferences
+    └── web/                # Base views for web frontend
 ```
 
 ---
@@ -209,21 +300,18 @@ Authentication is handled securely via Django's Session framework for traditiona
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/your-username/finora.git
-   cd finora/backend
+   cd finora
    ```
 
-2. **Create a virtual environment:**
+2. **Backend Setup:**
    ```bash
+   cd backend
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies:**
-   ```bash
    pip install -r requirements.txt
    ```
 
-4. **Environment Variables (.env):**
+3. **Environment Variables (.env):**
    ```env
    SECRET_KEY=your_django_secret
    DEBUG=True
@@ -233,13 +321,13 @@ Authentication is handled securely via Django's Session framework for traditiona
    DB_PASSWORD=your_password
    ```
 
-5. **Run Migrations & Seed Data:**
+4. **Run Migrations & Seed Data:**
    ```bash
    python manage.py migrate
    python manage.py seed_demo_users
    ```
 
-6. **Start the Development Server:**
+5. **Start the Development Server:**
    ```bash
    python manage.py runserver
    ```
@@ -259,5 +347,5 @@ Authentication is handled securely via Django's Session framework for traditiona
 
 ---
 <div align="center">
-  <i>Built with ❤️ for the Hackathon</i>
+  <i>Built with ❤️ by the Finora Team</i>
 </div>
