@@ -17,20 +17,20 @@ class ContentService:
     def update_existing_content():
         category_videos = {
             "Featured Course": "https://www.youtube.com/embed/p7HKvqRI_Bo",
-            "What is Credit Score?": "https://www.youtube.com/embed/V9B4b2j8g7c",
-            "Mutual Funds": "https://www.youtube.com/embed/WJ12X0Xb6y4",
-            "SIPs": "https://www.youtube.com/embed/ruxLdbvL_yA",
-            "Emergency Fund": "https://www.youtube.com/embed/6T2H4G9V1t0",
-            "Financial Literacy": "https://www.youtube.com/embed/X9hA-S23l1M",
-            "Budgeting": "https://www.youtube.com/embed/6T2H4G9V1t0",
-            "Stock Market Basics": "https://www.youtube.com/embed/p7HKvqRI_Bo",
-            "Tax Planning": "https://www.youtube.com/embed/7Q25-STIZTs",
+            "What is Credit Score?": "https://www.youtube.com/embed/4j2emMn7UaI",
+            "Mutual Funds": "https://www.youtube.com/embed/F3QpgXBtDeo",
+            "SIPs": "https://www.youtube.com/embed/PHe0bXAIuk0",
+            "Emergency Fund": "https://www.youtube.com/embed/sdpxddDzXfE",
+            "Financial Literacy": "https://www.youtube.com/embed/4j2emMn7UaI",
+            "Budgeting": "https://www.youtube.com/embed/f60dheI4ARg",
+            "Stock Market Basics": "https://www.youtube.com/embed/F3QpgXBtDeo",
+            "Tax Planning": "https://www.youtube.com/embed/PHe0bXAIuk0",
             "Financial Security": "https://www.youtube.com/embed/sdpxddDzXfE",
         }
         for course in Course.objects.all():
             vid_url = category_videos.get(course.category, "https://www.youtube.com/embed/p7HKvqRI_Bo")
             for lesson in course.lessons.all():
-                if lesson.video_url == "https://www.youtube.com/embed/dQw4w9WgXcQ" or not lesson.video_url:
+                if lesson.video_url != vid_url:
                     lesson.video_url = vid_url
                     lesson.save()
 
@@ -55,14 +55,14 @@ class ContentService:
 
         category_videos = {
             "Featured Course": "https://www.youtube.com/embed/p7HKvqRI_Bo",
-            "What is Credit Score?": "https://www.youtube.com/embed/V9B4b2j8g7c",
-            "Mutual Funds": "https://www.youtube.com/embed/WJ12X0Xb6y4",
-            "SIPs": "https://www.youtube.com/embed/ruxLdbvL_yA",
-            "Emergency Fund": "https://www.youtube.com/embed/6T2H4G9V1t0",
-            "Financial Literacy": "https://www.youtube.com/embed/X9hA-S23l1M",
-            "Budgeting": "https://www.youtube.com/embed/6T2H4G9V1t0",
-            "Stock Market Basics": "https://www.youtube.com/embed/p7HKvqRI_Bo",
-            "Tax Planning": "https://www.youtube.com/embed/7Q25-STIZTs",
+            "What is Credit Score?": "https://www.youtube.com/embed/4j2emMn7UaI",
+            "Mutual Funds": "https://www.youtube.com/embed/F3QpgXBtDeo",
+            "SIPs": "https://www.youtube.com/embed/PHe0bXAIuk0",
+            "Emergency Fund": "https://www.youtube.com/embed/sdpxddDzXfE",
+            "Financial Literacy": "https://www.youtube.com/embed/4j2emMn7UaI",
+            "Budgeting": "https://www.youtube.com/embed/f60dheI4ARg",
+            "Stock Market Basics": "https://www.youtube.com/embed/F3QpgXBtDeo",
+            "Tax Planning": "https://www.youtube.com/embed/PHe0bXAIuk0",
             "Financial Security": "https://www.youtube.com/embed/sdpxddDzXfE",
         }
 
