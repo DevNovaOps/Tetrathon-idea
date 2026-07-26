@@ -184,6 +184,32 @@
     });
   }
 
+  const articleModal = document.getElementById('articleModal');
+  const closeArticleBtn = document.getElementById('closeArticleBtn');
+  if(closeArticleBtn && articleModal){
+    closeArticleBtn.addEventListener('click', () => { articleModal.style.display = 'none'; });
+    articleModal.addEventListener('click', (e) => { if(e.target === articleModal) articleModal.style.display = 'none'; });
+  }
+
+  function openArticleModal(art){
+    if(!art || !articleModal) return;
+    articleModal.style.display = 'flex';
+    document.getElementById('articleTitle').textContent = art.title;
+    document.getElementById('articleTag').textContent = art.tag;
+    document.getElementById('articleTag').className = `art-tag ${art.tag_color || 'blue-tag'}`;
+    document.getElementById('articleMeta').textContent = `${art.read_time} · ${art.difficulty}`;
+    document.getElementById('articleSummary').textContent = art.summary;
+    document.getElementById('articleBody').innerHTML = (art.content || "").replace(/\n\n/g, '<br><br>');
+    const extLink = document.getElementById('articleExtLink');
+    if(art.url){
+      extLink.href = art.url;
+      extLink.style.display = 'inline-flex';
+    } else {
+      extLink.href = "https://zerodha.com/varsity/";
+      extLink.style.display = 'inline-flex';
+    }
+  }
+
   /* Load Live Dashboard Data */
   function loadDashboardData(){
     fetch('/api/learning/dashboard/')
@@ -275,7 +301,7 @@
                 <p>${art.summary}</p>
                 <span class="art-meta">${art.read_time} · ${art.difficulty}</span>
               `;
-              card.onclick = () => alert(`📖 Article Summary: ${art.title}\n\n${art.summary}\n\nKey insight: Continuous reading improves financial literacy and boosts credit rating understanding.`);
+              card.onclick = () => openArticleModal(art);
               artGrid.appendChild(card);
             });
           }
@@ -298,7 +324,7 @@
                   <p>${tip.content}</p>
                 </div>
               `;
-              card.onclick = () => alert(`🧠 Explainable AI Tip: ${tip.title}\n\nWhy this was recommended: Based on your financial profile and simulator activity, applying this deterministic principle will optimize cash flow and credit stability.`);
+              card.onclick = () => alert(`🤖 Groq AI Personalized Insight:\n\nTitle: ${tip.title}\n\nAnalysis: ${tip.content}\n\nWhy Groq generated this: Our LLM analyzed your live database metrics (Credit Score, Level, Streak, and Risk Profile) to deliver this tailored financial recommendation.`);
               tipsGrid.appendChild(card);
             });
           }

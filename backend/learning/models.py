@@ -82,17 +82,20 @@ class Article(models.Model):
     read_time = models.CharField(max_length=50, default="5 min read")
     difficulty = models.CharField(max_length=50, default="Beginner")
     content = models.TextField()
+    url = models.URLField(max_length=500, blank=True, null=True)
 
     def __str__(self):
         return self.title
 
 class AiTip(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, related_name="ai_tips")
     title = models.CharField(max_length=200)
     content = models.TextField()
     icon = models.CharField(max_length=50, default="💡")
     icon_bg = models.CharField(max_length=50, default="green-bg")
     category = models.CharField(max_length=100, default="General")
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.title
