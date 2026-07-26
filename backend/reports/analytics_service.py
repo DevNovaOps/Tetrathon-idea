@@ -8,12 +8,12 @@ class AnalyticsService:
     @staticmethod
     def get_summary(user, month_str=None, year_str=None):
         try:
-            profile = UserProfile.objects.get(user=user)
-        except UserProfile.DoesNotExist:
-            return AnalyticsService._fallback_summary()
-
-        base_income = float(profile.monthly_income or 51000)
-        base_expenses = float(profile.monthly_expenses or 9000)
+            profile = UserProfile.objects.get(user=user) if user else None
+            base_income = float(profile.monthly_income) if (profile and profile.monthly_income) else 51000.0
+            base_expenses = float(profile.monthly_expenses) if (profile and profile.monthly_expenses) else 9000.0
+        except Exception:
+            base_income = 51000.0
+            base_expenses = 9000.0
 
         try:
             inv_profile = InvestmentProfile.objects.get(user=user)

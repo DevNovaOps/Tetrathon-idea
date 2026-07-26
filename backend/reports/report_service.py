@@ -20,7 +20,7 @@ class ReportService:
                 "expenses": ChartService.get_expense_breakdown(user, month, year)
             },
             "insights": InsightService.get_insights(user, month, year),
-            "health": FinancialHealthEngine.calculate_health(user),
+            "health": FinancialHealthEngine.calculate_health(user, month, year),
             "available_months": HistoryService.get_available_months()
         }
 
