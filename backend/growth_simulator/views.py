@@ -10,8 +10,9 @@ class SimulationProjectView(APIView):
         sip = request.GET.get('sip')
         years = request.GET.get('years')
         scenario = request.GET.get('scenario')
+        goal_id = request.GET.get('goal_id')
         
-        result = SimulationService.run_simulation(request.user, sip, years, scenario)
+        result = SimulationService.run_simulation(request.user, sip, years, scenario, goal_id)
         try:
             from achievements.services.unlock_service import UnlockService
             UnlockService.check_and_unlock(request.user, 'simulator_run', 1)

@@ -6,4 +6,5 @@ urlpatterns = [
     path('update/', views.update_settings_view, name='settings-update'),
     path('notifications/', views.settings_notifications_view, name='settings-notifications'),
     path('privacy/action/', views.privacy_action_view, name='settings-privacy-action'),
+    path('export/', views.export_data_view, name='settings-export'),
 ]

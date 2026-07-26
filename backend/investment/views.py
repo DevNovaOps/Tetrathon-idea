@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from .orchestrator import InvestmentOrchestrator
 from .serializers import InvestmentProfileSerializer
+from config.disclaimers import EDUCATIONAL_DISCLAIMER
 
 class InvestmentPlanView(APIView):
     permission_classes = [IsAuthenticated]
@@ -13,4 +14,7 @@ class InvestmentPlanView(APIView):
         profile = InvestmentOrchestrator.run_pipeline(request.user)
         
         serializer = InvestmentProfileSerializer(profile)
-        return Response(serializer.data)
+        data = serializer.data
+        data['educational_disclaimer'] = EDUCATIONAL_DISCLAIMER
+        return Response(data)
+

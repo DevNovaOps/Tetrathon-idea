@@ -53,6 +53,15 @@ urlpatterns = [
     path('api/profile/', include('user_profile.urls')),
     path('api/settings/', include('user_settings.urls')),
 
+    # API — Transactions
+    path('api/transactions/', include('transactions.urls')),
+
+    # API — Digital Signals
+    path('api/digital-signals/', include('digital_signals.urls')),
+
+    # API — AI Memory
+    path('api/ai-memory/', include('ai_memory.urls')),
+
     # django-allauth (Google OAuth callbacks)
     path('accounts/', include('allauth.urls')),
 

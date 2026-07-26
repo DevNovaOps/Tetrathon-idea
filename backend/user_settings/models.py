@@ -16,6 +16,10 @@ class UserPreference(models.Model):
     marketing_emails = models.BooleanField(default=False)
     weekly_reports_email = models.BooleanField(default=True)
     monthly_reports_email = models.BooleanField(default=True)
+    ai_recommendations = models.BooleanField(default=True)
+    bill_alerts = models.BooleanField(default=True)
+    investment_alerts = models.BooleanField(default=True)
+    educational_updates = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

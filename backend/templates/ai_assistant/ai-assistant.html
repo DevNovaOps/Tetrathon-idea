@@ -67,7 +67,7 @@
                 <div class="msg-avatar ai-avatar">🤖</div>
                 <div class="msg-bubble ai-bubble">
                   <div class="msg-sender">Finora AI</div>
-                  <p>Hi Dev 👋</p>
+                  <p>Hi {{ request.user.display_name|default:"User" }} 👋</p>
                   <p>I'm your AI Financial Assistant. Let's understand your financial profile before generating your personalized investment recommendation.</p>
                   <span class="msg-time">10:00 AM</span>
                 </div>
@@ -219,7 +219,7 @@
               <div class="message ai-message fade-in">
                 <div class="msg-avatar ai-avatar">🤖</div>
                 <div class="msg-bubble ai-bubble summary-bubble">
-                  <p>✅ Thank you, Dev! I've collected all the information I need.</p>
+                  <p>✅ Thank you, {{ request.user.display_name|default:"User" }}! I've collected all the information I need.</p>
                   <p>I'm now analyzing your financial profile to generate your personalized <strong>Risk Assessment</strong>.</p>
                   <a href="{% url 'risk-profile' %}" class="btn btn-primary btn-inline">View Risk Assessment →</a>
                   <span class="msg-time">10:06 AM</span>

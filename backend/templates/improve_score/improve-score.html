@@ -329,7 +329,7 @@
           <div class="motivation-card glass-card">
             <div class="motivation-icon">🌟</div>
             <div class="motivation-content">
-              <h3 class="motivation-title">You're already doing great, Dev!</h3>
+              <h3 class="motivation-title">You're already doing great, {{ request.user.display_name|default:"User" }}!</h3>
               <p class="motivation-text">Complete <strong>three more recommendations</strong> on your roadmap to reach your target score of <strong>820</strong> and unlock premium loan rates.</p>
             </div>
             <a href="#" class="btn btn-primary btn-motivation">Continue Roadmap →</a>

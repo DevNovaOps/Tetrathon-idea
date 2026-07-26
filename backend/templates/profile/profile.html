@@ -20,16 +20,16 @@
         <section class="profile-header-card glass-card reveal">
           <div class="ph-main-row">
             <div class="ph-avatar-wrap">
-              <div class="ph-avatar-circle"><span>D</span></div>
+              <div class="ph-avatar-circle"><span>{{ request.user.display_name|make_list|first|upper|default:"U" }}</span></div>
               <span class="ph-status-dot" title="Verified Account">✓</span>
             </div>
             <div class="ph-info-col">
               <div class="ph-name-line">
-                <h2 class="ph-user-name">Dev Sharma</h2>
+                <h2 class="ph-user-name">{{ request.user.display_name|default:"User" }}</h2>
                 <span class="ph-verified-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Verified User</span>
               </div>
               <div class="ph-meta-pills">
-                <span>📧 devsharma@gmail.com</span>
+                <span>📧 {{ request.user.email }}</span>
                 <span>📱 +91 98765 43210</span>
                 <span>🗓 Member Since May 2024</span>
               </div>
@@ -44,11 +44,11 @@
           <div class="info-grid">
             <div class="info-cell">
               <span class="info-label">Full Name</span>
-              <span class="info-value">Dev Sharma</span>
+              <span class="info-value">{{ request.user.display_name|default:"Not provided" }}</span>
             </div>
             <div class="info-cell">
               <span class="info-label">Email</span>
-              <span class="info-value">devsharma@gmail.com</span>
+              <span class="info-value">{{ request.user.email }}</span>
             </div>
             <div class="info-cell">
               <span class="info-label">Phone</span>

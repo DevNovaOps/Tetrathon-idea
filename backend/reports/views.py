@@ -7,6 +7,7 @@ from .chart_service import ChartService
 from .insight_service import InsightService
 from .history_service import HistoryService
 from .export_service import ExportService
+from config.disclaimers import EDUCATIONAL_DISCLAIMER
 
 class FullReportView(APIView):
     # Temporarily remove permission for testing/demo without login
@@ -19,6 +20,7 @@ class FullReportView(APIView):
         year = request.query_params.get("year")
         
         data = ReportService.get_full_report(user, month, year)
+        data['educational_disclaimer'] = EDUCATIONAL_DISCLAIMER
         return Response(data)
 
 class MonthlyChartView(APIView):

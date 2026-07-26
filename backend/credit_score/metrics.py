@@ -59,7 +59,8 @@ class FinancialMetricsCalculator:
             "financial_stability": self._score_financial_stability(expense_ratio, ef_coverage),
             "investment_behaviour": self._score_investment_behaviour(investment_ratio),
             "upi_activity": self._score_upi_activity(),
-            "utility_bills": self._score_utility_bills()
+            "utility_bills": self._score_utility_bills(),
+            "digital_signals": self._score_digital_signals()
         }
 
         return {
@@ -154,3 +155,11 @@ class FinancialMetricsCalculator:
         elif bills == 'Occasionally late': return 50
         elif bills == 'Frequently late': return 20
         return 0
+
+    def _score_digital_signals(self) -> int:
+        """Score from the Digital Signals feature engine (0-100)."""
+        try:
+            from digital_signals.services import DigitalSignalService
+            return DigitalSignalService.get_credit_score_input(self.profile.user)
+        except Exception:
+            return 50  # neutral default if module not available

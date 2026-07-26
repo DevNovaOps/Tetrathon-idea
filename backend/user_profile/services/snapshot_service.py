@@ -3,6 +3,11 @@ from user_profile.models import FinancialSnapshotHistory
 
 class SnapshotService:
     @staticmethod
+    def record_snapshot(user):
+        """Alias for get_financial_snapshot which automatically records it."""
+        return SnapshotService.get_financial_snapshot(user)
+
+    @staticmethod
     def get_financial_snapshot(user):
         if not user or not user.is_authenticated:
             return {

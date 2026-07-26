@@ -19,12 +19,13 @@ RISK_LEVELS = [
 # Weights for Sub-metrics
 # These MUST add up to 1.0 (100%)
 METRIC_WEIGHTS = {
-    "payment_behaviour": 0.25,
-    "savings_habit": 0.20,
-    "financial_stability": 0.20,
-    "investment_behaviour": 0.15,
-    "upi_activity": 0.10,
-    "utility_bills": 0.10,
+    "payment_behaviour": 0.22,
+    "savings_habit": 0.18,
+    "financial_stability": 0.18,
+    "investment_behaviour": 0.13,
+    "upi_activity": 0.08,
+    "utility_bills": 0.09,
+    "digital_signals": 0.12,
 }
 
 # Feature Importance Display Order
@@ -34,7 +35,8 @@ FEATURE_LABELS = {
     "financial_stability": "Income Stability",
     "investment_behaviour": "Investment Behaviour",
     "upi_activity": "UPI Usage",
-    "utility_bills": "Electricity Bills"
+    "utility_bills": "Electricity Bills",
+    "digital_signals": "Digital Footprint"
 }
 
 # Ideal Thresholds for Explanations

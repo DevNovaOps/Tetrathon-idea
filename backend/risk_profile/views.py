@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from .orchestrator import RiskProfileOrchestrator
 from .models import RiskProfile
 from .serializers import RiskProfileSerializer
+from config.disclaimers import EDUCATIONAL_DISCLAIMER
 
 class RiskProfileView(APIView):
     permission_classes = [IsAuthenticated]
@@ -24,5 +25,7 @@ class RiskProfileView(APIView):
         serializer = RiskProfileSerializer(profile)
         return Response({
             "success": True,
-            "data": serializer.data
+            "data": serializer.data,
+            "educational_disclaimer": EDUCATIONAL_DISCLAIMER
         })
+

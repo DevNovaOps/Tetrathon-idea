@@ -93,7 +93,7 @@
               <div class="form-group">
                 <label for="fullName" class="form-label">Full Name</label>
                 <div class="input-wrapper">
-                  <input type="text" id="fullName" class="form-input" value="Dev Sharma" placeholder="Enter full name" />
+                  <input type="text" id="fullName" class="form-input" value="{{ request.user.display_name|default:'' }}" placeholder="Enter full name" />
                 </div>
               </div>
 
@@ -294,7 +294,7 @@
                   <h4>Personal Information</h4>
                 </div>
                 <div class="summary-details">
-                  <p><strong>Name:</strong> <span id="sumName">Dev Sharma</span></p>
+                  <p><strong>Name:</strong> <span id="sumName">{{ request.user.display_name|default:"Not provided" }}</span></p>
                   <p><strong>Age:</strong> <span id="sumAge">23</span> | <strong>Gender:</strong> <span id="sumGender">Male</span></p>
                   <p><strong>Occupation:</strong> <span id="sumOcc">Student / Freelancer</span></p>
                   <p><strong>City:</strong> <span id="sumCity">Vadodara</span> | <strong>Language:</strong> <span id="sumLang">English</span></p>

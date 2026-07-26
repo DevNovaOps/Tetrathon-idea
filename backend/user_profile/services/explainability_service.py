@@ -230,3 +230,206 @@ class ExplainabilityService:
             "learning_hours": learning_hours,
             "days_active": days_active
         }
+
+    # ── Enhanced Dynamic Explainability (Module 8) ────────────────────
+
+    @staticmethod
+    def generate_dynamic_explanation(user):
+        """
+        Memory-backed dynamic explanation using actual AI Memory entries.
+        Never hallucinate — all text is derived from stored data points.
+        """
+        if not user or not user.is_authenticated:
+            return ExplainabilityService.get_latest_summary(user)
+
+        try:
+            from ai_memory.memory_service import MemoryService
+            context = MemoryService.get_memory_context(user)
+            trends = MemoryService.get_improvement_trends(user)
+        except Exception:
+            return ExplainabilityService.get_latest_summary(user)
+
+        # Build dynamic explanation from real memory data
+        paragraphs = []
+
+        highlights = context.get('highlights', {})
+
+        # Credit insight
+        if highlights.get('latest_credit'):
+            paragraphs.append(highlights['latest_credit']['summary'])
+
+        # Risk insight
+        if highlights.get('latest_risk'):
+            paragraphs.append(highlights['latest_risk']['summary'])
+
+        # Goal insight
+        if highlights.get('latest_goal'):
+            paragraphs.append(highlights['latest_goal']['summary'])
+
+        # Learning insight
+        if highlights.get('latest_learning'):
+            paragraphs.append(highlights['latest_learning']['summary'])
+
+        # Add improvement trends
+        for trend in trends[:3]:
+            paragraphs.append(trend)
+
+        if not paragraphs:
+            return ExplainabilityService.get_latest_summary(user)
+
+        full_text = "\n\n".join(paragraphs)
+
+        ref_data = {
+            "total_memories": context.get('total_memories', 0),
+            "type_counts": context.get('type_counts', {}),
+            "source": "ai_memory_dynamic"
+        }
+
+        entry = ExplainabilityHistory.objects.create(
+            user=user,
+            summary_text=full_text,
+            reference_data=ref_data
+        )
+
+        return {
+            "id": str(entry.id),
+            "summary_text": entry.summary_text,
+            "reference_data": entry.reference_data,
+            "date_formatted": entry.created_at.strftime("%B %d, %Y")
+        }
+
+    @staticmethod
+    def get_top_positive_factors(user):
+        """Extract positive factors from risk profile features."""
+        positive = []
+        try:
+            from risk_profile.models import RiskFeature, RiskProfile
+            profile = RiskProfile.objects.filter(user=user).first()
+            if profile:
+                features = RiskFeature.objects.filter(risk_profile=profile, is_positive=True)[:5]
+                for f in features:
+                    positive.append({
+                        "feature": f.feature_name,
+                        "impact": f.impact,
+                        "reason": f.reason,
+                    })
+        except Exception:
+            pass
+        return positive
+
+    @staticmethod
+    def get_top_negative_factors(user):
+        """Extract negative/improvement factors from risk profile features."""
+        negative = []
+        try:
+            from risk_profile.models import RiskFeature, RiskProfile
+            profile = RiskProfile.objects.filter(user=user).first()
+            if profile:
+                features = RiskFeature.objects.filter(risk_profile=profile, is_positive=False)[:5]
+                for f in features:
+                    negative.append({
+                        "feature": f.feature_name,
+                        "impact": f.impact,
+                        "reason": f.reason,
+                    })
+        except Exception:
+            pass
+        return negative
+
+    @staticmethod
+    def get_recent_improvements(user):
+        """Get recent improvements from AI Memory change entries."""
+        improvements = []
+        try:
+            from ai_memory.models import MemoryEntry
+            entries = MemoryEntry.objects.filter(
+                user=user,
+                memory_type__in=['credit_change', 'risk_change', 'goal_completed', 'learning_milestone']
+            ).order_by('-created_at')[:10]
+            for e in entries:
+                improvements.append({
+                    "type": e.memory_type,
+                    "title": e.title,
+                    "summary": e.summary,
+                    "date": e.created_at.strftime("%b %d, %Y"),
+                })
+        except Exception:
+            pass
+        return improvements
+
+    @staticmethod
+    def get_monthly_comparison(user):
+        """Compare current vs previous month financial snapshot."""
+        snapshots = list(
+            FinancialSnapshotHistory.objects.filter(user=user).order_by('-recorded_at')[:2]
+        )
+        if len(snapshots) < 2:
+            return None
+
+        current = snapshots[0]
+        previous = snapshots[1]
+
+        return {
+            "current": {
+                "credit_score": current.credit_score,
+                "health_score": current.financial_health_score,
+                "savings": float(current.monthly_savings),
+                "net_worth": float(current.net_worth),
+                "date": current.recorded_at.strftime("%b %Y"),
+            },
+            "previous": {
+                "credit_score": previous.credit_score,
+                "health_score": previous.financial_health_score,
+                "savings": float(previous.monthly_savings),
+                "net_worth": float(previous.net_worth),
+                "date": previous.recorded_at.strftime("%b %Y"),
+            },
+            "changes": {
+                "credit_score": current.credit_score - previous.credit_score,
+                "health_score": current.financial_health_score - previous.financial_health_score,
+                "savings_pct": round(
+                    ((float(current.monthly_savings) - float(previous.monthly_savings)) /
+                     max(float(previous.monthly_savings), 1)) * 100, 1
+                ),
+            }
+        }
+
+    @staticmethod
+    def get_goal_impact(user):
+        """Analyze how goals are impacting financial health."""
+        active = FinancialGoal.objects.filter(user=user, is_deleted=False, status='Active')
+        completed = FinancialGoal.objects.filter(user=user, is_deleted=False, status='Completed')
+
+        total_target = sum(float(g.target_amount) for g in active) + sum(float(g.target_amount) for g in completed)
+        total_progress = sum(float(g.current_progress) for g in active) + sum(float(g.target_amount) for g in completed)
+
+        return {
+            "active_goals": active.count(),
+            "completed_goals": completed.count(),
+            "total_target": total_target,
+            "total_progress": total_progress,
+            "overall_pct": round(total_progress / max(total_target, 1) * 100, 1),
+        }
+
+    @staticmethod
+    def get_credit_impact(user):
+        """Analyze credit score trend from snapshot history."""
+        snapshots = list(
+            FinancialSnapshotHistory.objects.filter(user=user).order_by('recorded_at')[:12]
+        )
+        if not snapshots:
+            return None
+
+        trend = [{
+            "score": s.credit_score,
+            "date": s.recorded_at.strftime("%b %Y"),
+        } for s in snapshots]
+
+        first = snapshots[0].credit_score
+        last = snapshots[-1].credit_score
+
+        return {
+            "trend": trend,
+            "net_change": last - first,
+            "direction": "improving" if last > first else ("stable" if last == first else "declining"),
+        }

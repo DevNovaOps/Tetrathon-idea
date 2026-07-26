@@ -59,6 +59,9 @@ INSTALLED_APPS = [
     'notifications.apps.NotificationsConfig',
     'user_profile.apps.UserProfileConfig',
     'user_settings.apps.UserSettingsConfig',
+    'digital_signals.apps.DigitalSignalsConfig',
+    'transactions.apps.TransactionsConfig',
+    'ai_memory.apps.AiMemoryConfig',
     'web.apps.WebConfig',
 ]
 
