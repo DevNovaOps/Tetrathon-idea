@@ -81,7 +81,7 @@
 
   /* ---------- COUNTER ANIMATION ---------- */
   function animateCounters() {
-    countUpElements.forEach(function (el) {
+    document.querySelectorAll('.count-up').forEach(function (el) {
       const target = parseInt(el.getAttribute('data-target'), 10);
       if (isNaN(target) || el.classList.contains('animated')) return;
 
@@ -101,8 +101,8 @@
 
   /* ---------- REVEAL ANIMATION ---------- */
   function checkReveals() {
-    const triggerBottom = window.innerHeight * 0.9;
-    revealElements.forEach(function (el) {
+    const triggerBottom = window.innerHeight * 0.95;
+    document.querySelectorAll('.reveal').forEach(function (el) {
       const top = el.getBoundingClientRect().top;
       if (top < triggerBottom) {
         el.classList.add('visible');
@@ -358,7 +358,14 @@
           svgIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`;
         }
         
-        let colorClass = insight.badge_color === 'green' ? 'emerald-bg' : insight.badge_color === 'orange' ? 'orange-bg' : insight.badge_color === 'purple' ? 'purple-bg' : insight.badge_color === 'cyan' ? 'cyan-bg' : 'blue-bg';
+        let colorClass = 'blue-bg';
+        if (insight.badge_color === 'green' || insight.badge_color === 'emerald') colorClass = 'emerald-bg';
+        else if (insight.badge_color === 'orange') colorClass = 'orange-bg';
+        else if (insight.badge_color === 'purple') colorClass = 'purple-bg';
+        else if (insight.badge_color === 'cyan') colorClass = 'cyan-bg';
+        else if (insight.badge_color === 'rose') colorClass = 'rose-bg';
+        else if (insight.badge_color === 'indigo') colorClass = 'indigo-bg';
+        else if (insight.badge_color === 'amber') colorClass = 'amber-bg';
 
         insightsContainer.innerHTML += `
           <div class="insight-card reveal ${index > 0 ? 'reveal--delay-' + Math.min(index, 3) : ''}">
