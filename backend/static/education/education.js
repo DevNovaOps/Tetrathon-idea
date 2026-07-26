@@ -133,7 +133,7 @@
       markBtn.textContent = "Completed ✓";
       markBtn.style.background = "#10B981";
       if(res.unlocked && res.unlocked.length > 0){
-        alert(`🎉 Congratulations! You unlocked achievement: ${res.unlocked[0].icon} ${res.unlocked[0].title} (+${res.unlocked[0].xp} XP)`);
+        openBadgeModal(res.unlocked[0]);
       }
       loadDashboardData();
     })
@@ -170,7 +170,7 @@
           markBtn.textContent = "Completed ✓ (Quiz Passed)";
           markBtn.style.background = "#10B981";
           if(res.unlocked && res.unlocked.length > 0){
-            setTimeout(() => alert(`🎉 You unlocked: ${res.unlocked[0].icon} ${res.unlocked[0].title}!`), 300);
+            setTimeout(() => openBadgeModal(res.unlocked[0]), 300);
           }
           loadDashboardData();
         } else {
@@ -208,6 +208,56 @@
       extLink.href = "https://zerodha.com/varsity/";
       extLink.style.display = 'inline-flex';
     }
+  }
+
+  const tipModal = document.getElementById('tipModal');
+  const closeTipBtn = document.getElementById('closeTipBtn');
+  const closeTipActionBtn = document.getElementById('closeTipActionBtn');
+  if(tipModal){
+    if(closeTipBtn) closeTipBtn.addEventListener('click', () => { tipModal.style.display = 'none'; });
+    if(closeTipActionBtn) closeTipActionBtn.addEventListener('click', () => { tipModal.style.display = 'none'; });
+    tipModal.addEventListener('click', (e) => { if(e.target === tipModal) tipModal.style.display = 'none'; });
+  }
+
+  function openTipModal(tip){
+    if(!tip || !tipModal) return;
+    tipModal.style.display = 'flex';
+    document.getElementById('tipModalIcon').textContent = tip.icon || '🤖';
+    document.getElementById('tipModalTitle').textContent = tip.title || 'Finora AI Insight';
+    document.getElementById('tipModalContent').textContent = tip.content || '';
+  }
+
+  const badgeModal = document.getElementById('badgeModal');
+  const closeBadgeBtn = document.getElementById('closeBadgeBtn');
+  const closeBadgeActionBtn = document.getElementById('closeBadgeActionBtn');
+  if(badgeModal){
+    if(closeBadgeBtn) closeBadgeBtn.addEventListener('click', () => { badgeModal.style.display = 'none'; });
+    if(closeBadgeActionBtn) closeBadgeActionBtn.addEventListener('click', () => { badgeModal.style.display = 'none'; });
+    badgeModal.addEventListener('click', (e) => { if(e.target === badgeModal) badgeModal.style.display = 'none'; });
+  }
+
+  function openBadgeModal(b){
+    if(!b || !badgeModal) return;
+    badgeModal.style.display = 'flex';
+    document.getElementById('badgeModalIcon').textContent = b.icon || '🏅';
+    document.getElementById('badgeModalTitle').textContent = b.title || 'Badge Title';
+    const statusEl = document.getElementById('badgeModalStatus');
+    if(statusEl){
+      if(b.unlocked){
+        statusEl.textContent = 'Unlocked ✓';
+        statusEl.style.background = 'rgba(16, 185, 129, 0.2)';
+        statusEl.style.color = '#10b981';
+        statusEl.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+      } else {
+        statusEl.textContent = 'Locked 🔒';
+        statusEl.style.background = 'rgba(245, 158, 11, 0.2)';
+        statusEl.style.color = '#f59e0b';
+        statusEl.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+      }
+    }
+    const xpEl = document.getElementById('badgeModalXp');
+    if(xpEl) xpEl.textContent = `+${b.xp || 50} XP`;
+    document.getElementById('badgeModalDesc').textContent = b.description || 'Complete learning tasks to earn this badge.';
   }
 
   /* Load Live Dashboard Data */
@@ -324,7 +374,7 @@
                   <p>${tip.content}</p>
                 </div>
               `;
-              card.onclick = () => alert(`🤖 Groq AI Personalized Insight:\n\nTitle: ${tip.title}\n\nAnalysis: ${tip.content}\n\nWhy Groq generated this: Our LLM analyzed your live database metrics (Credit Score, Level, Streak, and Risk Profile) to deliver this tailored financial recommendation.`);
+              card.onclick = () => openTipModal(tip);
               tipsGrid.appendChild(card);
             });
           }
@@ -340,7 +390,7 @@
               item.className = `badge-item ${b.unlocked ? 'unlocked' : ''}`;
               item.style.cursor = 'pointer';
               item.innerHTML = `<span class="badge-emoji">${b.icon}</span><span class="badge-name">${b.title}</span>`;
-              item.onclick = () => alert(`🏅 Badge: ${b.title}\n\n${b.description}\n\nReward: +${b.xp} XP\nStatus: ${b.unlocked ? 'Unlocked ✓' : 'Locked 🔒'}`);
+              item.onclick = () => openBadgeModal(b);
               badgeRow.appendChild(item);
             });
           }

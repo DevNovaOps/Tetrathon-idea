@@ -35,16 +35,16 @@ class ContentService:
                     lesson.save()
 
         article_urls = {
-            "How Credit Scores Work": "https://zerodha.com/varsity/chapter/credit-score-and-credit-reports/",
-            "Top 10 Saving Habits": "https://zerodha.com/varsity/module/personal-finance/",
-            "Investment Mistakes to Avoid": "https://zerodha.com/varsity/chapter/common-mistakes-in-investing/",
-            "Understanding Compound Interest": "https://www.investopedia.com/terms/c/compoundinterest.asp",
-            "Financial Planning for Beginners": "https://zerodha.com/varsity/chapter/introduction-to-personal-finance/",
-            "Mutual Fund Direct vs Regular Plans": "https://zerodha.com/varsity/chapter/mutual-fund-schemes/",
-            "How to Read Your CIBIL Report": "https://www.cibil.com/faq/understand-your-credit-score"
+            "How Credit Scores Work": "https://www.cibil.com/",
+            "Top 10 Saving Habits": "https://zerodha.com/varsity/",
+            "Investment Mistakes to Avoid": "https://www.amfiindia.com/",
+            "Understanding Compound Interest": "https://www.nseindia.com/",
+            "Financial Planning for Beginners": "https://zerodha.com/varsity/",
+            "Mutual Fund Direct vs Regular Plans": "https://www.amfiindia.com/",
+            "How to Read Your CIBIL Report": "https://www.cibil.com/"
         }
         for art in Article.objects.all():
-            if not art.url and art.title in article_urls:
+            if art.title in article_urls:
                 art.url = article_urls[art.title]
                 art.save()
 
@@ -254,13 +254,13 @@ class ContentService:
         if Article.objects.count() > 0:
             return 0
         articles = [
-            {"title": "How Credit Scores Work", "tag": "Credit", "color": "blue-tag", "time": "5 min read", "diff": "Beginner", "url": "https://zerodha.com/varsity/chapter/credit-score-and-credit-reports/", "summary": "Understand the 5 key factors that impact your CIBIL score.", "content": "Your credit score is evaluated based on payment history (35%), credit utilization (30%), length of credit history (15%), credit mix (10%), and new credit inquiries (10%). Maintaining utilization strictly under 30% and automating payments are the two fastest ways to build an 800+ rating."},
-            {"title": "Top 10 Saving Habits", "tag": "Saving", "color": "green-tag", "time": "4 min read", "diff": "Beginner", "url": "https://zerodha.com/varsity/module/personal-finance/", "summary": "Simple habits that can help you save ₹5,000+ per month.", "content": "Automating your savings transfer on salary day, packing homemade lunch, auditing recurring subscriptions, and using the 24-hour rule before major purchases can save thousands. Treat your monthly savings as a non-negotiable expense."},
-            {"title": "Investment Mistakes to Avoid", "tag": "Investing", "color": "orange-tag", "time": "6 min read", "diff": "Intermediate", "url": "https://zerodha.com/varsity/chapter/common-mistakes-in-investing/", "summary": "Common pitfalls every new investor should watch out for.", "content": "Never invest based on hot stock tips from social media, avoid stopping SIPs during market dips, and always check expense ratios before buying regular mutual fund schemes. Stay consistent with index funds and direct equity mutual funds."},
-            {"title": "Understanding Compound Interest", "tag": "Growth", "color": "purple-tag", "time": "3 min read", "diff": "Beginner", "url": "https://www.investopedia.com/terms/c/compoundinterest.asp", "summary": "The 8th wonder of the world — and how to use it.", "content": "Compounding means earning interest on your interest. Starting at age 25 instead of age 35 with the same monthly amount can result in 3x more wealth at retirement due to exponential compounding."},
-            {"title": "Financial Planning for Beginners", "tag": "Planning", "color": "cyan-tag", "time": "7 min read", "diff": "Beginner", "url": "https://zerodha.com/varsity/chapter/introduction-to-personal-finance/", "summary": "A step-by-step guide to securing your financial future.", "content": "Step 1: Get term and health insurance. Step 2: Build a 6-month emergency fund in a liquid fund. Step 3: Clear high-interest credit card debt. Step 4: Start an equity SIP for retirement."},
-            {"title": "Mutual Fund Direct vs Regular Plans", "tag": "Investing", "color": "emerald-tag", "time": "6 min read", "diff": "Intermediate", "url": "https://zerodha.com/varsity/chapter/mutual-fund-schemes/", "summary": "Why saving distributor commissions generates lakhs in extra returns.", "content": "Direct mutual fund plans bypass distributor commissions, resulting in a 1% to 1.5% lower Total Expense Ratio (TER). Over a 20-year investment horizon, this difference compounds into lakhs of additional wealth."},
-            {"title": "How to Read Your CIBIL Report", "tag": "Credit", "color": "blue-tag", "time": "5 min read", "diff": "Beginner", "url": "https://www.cibil.com/faq/understand-your-credit-score", "summary": "Step-by-step instructions for checking DPD and credit inquiries.", "content": "Check your Days Past Due (DPD) section to ensure all entries show '000' (on-time payment). If you see any unauthorized loan accounts or hard credit inquiries you did not initiate, dispute them immediately on the CIBIL portal."}
+            {"title": "How Credit Scores Work", "tag": "Credit", "color": "blue-tag", "time": "5 min read", "diff": "Beginner", "url": "https://www.cibil.com/", "summary": "Understand the 5 key factors that impact your CIBIL score.", "content": "Your credit score is evaluated based on payment history (35%), credit utilization (30%), length of credit history (15%), credit mix (10%), and new credit inquiries (10%). Maintaining utilization strictly under 30% and automating payments are the two fastest ways to build an 800+ rating."},
+            {"title": "Top 10 Saving Habits", "tag": "Saving", "color": "green-tag", "time": "4 min read", "diff": "Beginner", "url": "https://zerodha.com/varsity/", "summary": "Simple habits that can help you save ₹5,000+ per month.", "content": "Automating your savings transfer on salary day, packing homemade lunch, auditing recurring subscriptions, and using the 24-hour rule before major purchases can save thousands. Treat your monthly savings as a non-negotiable expense."},
+            {"title": "Investment Mistakes to Avoid", "tag": "Investing", "color": "orange-tag", "time": "6 min read", "diff": "Intermediate", "url": "https://www.amfiindia.com/", "summary": "Common pitfalls every new investor should watch out for.", "content": "Never invest based on hot stock tips from social media, avoid stopping SIPs during market dips, and always check expense ratios before buying regular mutual fund schemes. Stay consistent with index funds and direct equity mutual funds."},
+            {"title": "Understanding Compound Interest", "tag": "Growth", "color": "purple-tag", "time": "3 min read", "diff": "Beginner", "url": "https://www.nseindia.com/", "summary": "The 8th wonder of the world — and how to use it.", "content": "Compounding means earning interest on your interest. Starting at age 25 instead of age 35 with the same monthly amount can result in 3x more wealth at retirement due to exponential compounding."},
+            {"title": "Financial Planning for Beginners", "tag": "Planning", "color": "cyan-tag", "time": "7 min read", "diff": "Beginner", "url": "https://zerodha.com/varsity/", "summary": "A step-by-step guide to securing your financial future.", "content": "Step 1: Get term and health insurance. Step 2: Build a 6-month emergency fund in a liquid fund. Step 3: Clear high-interest credit card debt. Step 4: Start an equity SIP for retirement."},
+            {"title": "Mutual Fund Direct vs Regular Plans", "tag": "Investing", "color": "emerald-tag", "time": "6 min read", "diff": "Intermediate", "url": "https://www.amfiindia.com/", "summary": "Why saving distributor commissions generates lakhs in extra returns.", "content": "Direct mutual fund plans bypass distributor commissions, resulting in a 1% to 1.5% lower Total Expense Ratio (TER). Over a 20-year investment horizon, this difference compounds into lakhs of additional wealth."},
+            {"title": "How to Read Your CIBIL Report", "tag": "Credit", "color": "blue-tag", "time": "5 min read", "diff": "Beginner", "url": "https://www.cibil.com/", "summary": "Step-by-step instructions for checking DPD and credit inquiries.", "content": "Check your Days Past Due (DPD) section to ensure all entries show '000' (on-time payment). If you see any unauthorized loan accounts or hard credit inquiries you did not initiate, dispute them immediately on the CIBIL portal."}
         ]
         for a in articles:
             Article.objects.create(
