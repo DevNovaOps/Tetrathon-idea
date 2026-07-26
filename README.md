@@ -9,14 +9,14 @@
 <br/>
 
 <a href="https://figma.com/">
-  <img src="https://img.shields.io/badge/%F0%9F%96%8A%EF%B8%8F_Mockup-Figma-06B6D4?style=for-the-badge&labelColor=0f172a" alt="Mockup"/>
+  <img src="https://img.shields.io/badge/%F0%9F%96%8A%EF%B8%8F_MOCKUP-FIGMA-00C4CC?style=for-the-badge&labelColor=0f172a" alt="Mockup"/>
 </a>
 
 <br/><br/>
 
-<img src="https://img.shields.io/badge/AI-Groq_LLaMA_3-7C3AED?style=flat-square" alt="AI"/>
+<img src="https://img.shields.io/badge/AI-Groq_LLaMA_3-8A2BE2?style=flat-square" alt="AI"/>
 <img src="https://img.shields.io/badge/DB-Local_MySQL_Only-336791?style=flat-square&logo=mysql&logoColor=white" alt="DB"/>
-<img src="https://img.shields.io/badge/Frontend-Vanilla_JS_+_CSS-61DAFB?style=flat-square&logo=javascript&logoColor=black" alt="Frontend"/>
+<img src="https://img.shields.io/badge/Frontend-Vanilla_JS_+_CSS-48D1CC?style=flat-square&logo=javascript&logoColor=black" alt="Frontend"/>
 <img src="https://img.shields.io/badge/API-Django_5-092E20?style=flat-square&logo=django&logoColor=white" alt="API"/>
 <img src="https://img.shields.io/badge/Architecture-Event_Driven-black?style=flat-square&logo=apachekafka&logoColor=white" alt="Event Driven"/>
 
@@ -56,7 +56,7 @@ Finora democratizes credit access and optimizes wealth accumulation by ingesting
 | # | Section | # | Section |
 |---:|---|---:|---|
 | 1 | [Overview](#1-overview) | 6 | [Architecture & Workflows](#6-architecture--workflows) |
-| 2 | [Problem & Goal](#2-problem--goal) | 7 | [Repository Structure](#7-repository-structure) |
+| 2 | [Problem Statement](#2-problem-statement) | 7 | [Repository Structure](#7-repository-structure) |
 | 3 | [Links & Credentials](#3-links--credentials) | 8 | [Authentication](#8-authentication) |
 | 4 | [Features & Deliverables](#4-features--deliverables) | 9 | [Setup (Local)](#9-setup-local) |
 | 5 | [Technology Stack](#5-technology-stack) | 10 | [Screenshots](#10-screenshots) |
@@ -81,16 +81,31 @@ Stack shape: **Vanilla JS + CSS** frontend · **Django 5** REST API · **MySQL**
 
 ---
 
-## 2. Problem & Goal
+## 2. Problem Statement
 
-| Pain (traditional finance) | Finora fix |
-|---|---|
-| Invisible "thin-file" users | Alternative digital signals integrated directly into scoring |
-| "Black Box" credit scores | Explainable AI (XAI) provides transparent reasoning |
-| Static financial advice | Dynamic, conversational AI Assistant |
-| Disconnected wealth planning | Interactive Growth Simulator tied to real-time risk profiles |
+### Transparent Credit Scoring & AI-Driven Micro-Investment Advisor for Underserved Users
 
-**Core Objective:** Build a scalable, AI-driven personal finance platform that democratizes access to credit and intelligently guides wealth generation.
+**Problem Abstract**
+Over 190 million adults in India remain credit-invisible, lacking formal credit history, while millions more — especially first-time retail investors from Tier-2 and Tier-3 cities — face information asymmetry, jargon barriers, and absence of personalised guidance for small-ticket investments (Rs. 500–Rs. 5,000/month). 
+
+Participants must build an integrated FinTech prototype that:
+1. Designs a credit-likelihood scoring engine ingesting non-traditional digital signals (mobile recharge frequency, utility payment regularity, e-commerce transaction patterns) to produce an interpretable score with top-3 feature explanation and actionable improvement pathway.
+2. Profiles a user's risk appetite through a short conversational assessment, maps their profile to suitable instrument categories, and generates a plain-language micro-investment allocation recommendation with a simulated 1–5 year projected growth chart — all built on synthetic or fully consented sample data with a clear disclaimer that outputs are for educational purposes only and do not constitute regulated financial advice.
+
+**Expected Outcomes**
+- `→` Feature engineering pipeline for non-traditional digital signals with scoring model and interpretability layer
+- `→` Risk bucket classification (Low / Medium / High) with top-3 feature explanations and score-improvement recommendations
+- `→` REST API endpoint (Django 5) and dashboard UI showing at least 10 sample user profiles across all risk buckets
+- `→` 5-8 question conversational risk-profiling assessment with profile-to-instrument mapping engine
+- `→` Plain-language micro-investment recommendation with simulated growth projection chart (3 scenarios)
+- `→` Prominent disclaimer on all investment outputs: for educational purposes only, not regulated financial advice
+
+**Evaluation Criteria Mapping**
+| Criteria | Implementation in Finora |
+|:---|:---|
+| **Understanding of Problem** | Directly targets the 190M credit-invisible demographic through digital footprint extraction and jargon-free XAI insights. |
+| **Proposed Approach** | Leverages a highly scalable Django 5 + MySQL architecture, driven by Groq LLaMA-3 for real-time conversational profiling and non-traditional credit logic. |
+| **Market Fit & Relevance** | Addresses real Tier-2/Tier-3 accessibility gaps with a highly visual UI, micro-investment feasibility (Rs 500+), and completely gamified educational workflows. |
 
 ---
 
@@ -102,7 +117,7 @@ Stack shape: **Vanilla JS + CSS** frontend · **Django 5** REST API · **MySQL**
 | Local API | `http://127.0.0.1:8000` |
 
 ### Demo Users (Local)
-Run `python manage.py seed_demo_users` to generate:
+Run `python manage.py seed_demo_users` to generate the required 10 sample user profiles across risk buckets. Key profiles include:
 
 | Persona | Email | Password | Landing |
 |---|---|---|---|
