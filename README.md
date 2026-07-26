@@ -4,7 +4,7 @@
 
 <br/>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=900&color=6366F1&center=true&vCenter=true&multiline=true&repeat=true&width=760&height=75&lines=Alternative+Digital+Signals+%C2%B7+Explainable+Wealth+Generation;AI+Financial+Assistant+%C2%B7+Risk+Assessment+%C2%B7+Credit+Scoring;AI+Powered+%C2%B7+Fully+Transparent)](https://finora.com/)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=900&color=6366F1&center=true&vCenter=true&multiline=true&repeat=true&width=760&height=120&lines=Alternative+Digital+Signals+%C2%B7+Explainable+Wealth+Generation;AI+Financial+Assistant+%C2%B7+Risk+Assessment+%C2%B7+Credit+Scoring;AI+Powered+%C2%B7+Fully+Transparent)](https://finora.com/)
 
 <br/>
 
@@ -14,11 +14,11 @@
 
 <br/><br/>
 
-<img src="https://img.shields.io/badge/AI-Groq_LLaMA_3-8A2BE2?style=flat-square" alt="AI"/>
-<img src="https://img.shields.io/badge/DB-Local_MySQL_Only-336791?style=flat-square&logo=mysql&logoColor=white" alt="DB"/>
-<img src="https://img.shields.io/badge/Frontend-Vanilla_JS_+_CSS-48D1CC?style=flat-square&logo=javascript&logoColor=black" alt="Frontend"/>
-<img src="https://img.shields.io/badge/API-Django_5-092E20?style=flat-square&logo=django&logoColor=white" alt="API"/>
-<img src="https://img.shields.io/badge/Architecture-Event_Driven-black?style=flat-square&logo=apachekafka&logoColor=white" alt="Event Driven"/>
+<img src="https://img.shields.io/badge/AI-Groq_LLaMA_3-8A2BE2?style=for-the-badge&labelColor=0f172a" alt="AI"/>
+<img src="https://img.shields.io/badge/DB-Local_MySQL_Only-336791?style=for-the-badge&logo=mysql&logoColor=white&labelColor=0f172a" alt="DB"/>
+<img src="https://img.shields.io/badge/Frontend-Vanilla_JS_+_CSS-48D1CC?style=for-the-badge&logo=javascript&logoColor=black&labelColor=0f172a" alt="Frontend"/>
+<img src="https://img.shields.io/badge/API-Django_5-092E20?style=for-the-badge&logo=django&logoColor=white&labelColor=0f172a" alt="API"/>
+<img src="https://img.shields.io/badge/Architecture-Event_Driven-black?style=for-the-badge&logo=apachekafka&logoColor=white&labelColor=0f172a" alt="Event Driven"/>
 
 <br/><br/>
 
