@@ -10,39 +10,22 @@
   <code>Alternative Digital Signals</code>
 </p>
 
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/💻_UI_PREVIEW-FINORA.VERCEL.APP-6366F1?style=for-the-badge" alt="Preview" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/✏️_MOCKUP-FIGMA-00C4CC?style=for-the-badge" alt="Figma" /></a>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/FinTech_Hackathon-24_Hours-F97316?style=for-the-badge" alt="Hackathon" />
-  <img src="https://img.shields.io/badge/Status-Live_Preview_on_Vercel-10B981?style=for-the-badge" alt="Status" />
-  <img src="https://img.shields.io/badge/RBAC-3_Roles-8B5CF6?style=for-the-badge" alt="Roles" />
-  <img src="https://img.shields.io/badge/DB-Local_MySQL_Only-475569?style=for-the-badge" alt="DB" />
-  <img src="https://img.shields.io/badge/Frontend-Vanilla_JS_+_CSS-3B82F6?style=for-the-badge" alt="Frontend" />
-  <br>
-  <img src="https://img.shields.io/badge/API-Django_REST-092E20?style=for-the-badge" alt="API" />
-  <img src="https://img.shields.io/badge/AI-Groq_LLaMA_3-FF9900?style=for-the-badge" alt="AI" />
-  <img src="https://img.shields.io/badge/UI_Hosted-Vercel-000000?style=for-the-badge" alt="Hosting" />
-</p>
-
 ---
 
 ## 🛠️ Technology Stack
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,django,mysql,js,html,css,github,figma" alt="Skill Icons" />
+    <img src="https://skillicons.dev/icons?i=py,django,mysql,js,html,css,github" alt="Skill Icons" />
   </a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/PYTHON-3.11-09090B?style=for-the-badge&logo=python&logoColor=3776AB&labelColor=27272A" alt="Python" />
-  <img src="https://img.shields.io/badge/DJANGO-5.0-09090B?style=for-the-badge&logo=django&logoColor=092E20&labelColor=27272A" alt="Django" />
-  <img src="https://img.shields.io/badge/MYSQL-8.0-09090B?style=for-the-badge&logo=mysql&logoColor=4479A1&labelColor=27272A" alt="MySQL" />
-  <img src="https://img.shields.io/badge/GROQ-LLaMA_3-09090B?style=for-the-badge&logo=openai&logoColor=FF9900&labelColor=27272A" alt="Groq" />
-  <img src="https://img.shields.io/badge/JAVASCRIPT-ES6-09090B?style=for-the-badge&logo=javascript&logoColor=F7DF1E&labelColor=27272A" alt="JS" />
+  <img src="https://img.shields.io/badge/PYTHON-3.11-09090B?style=for-the-badge&logo=python&logoColor=white&labelColor=27272A" alt="Python" />
+  <img src="https://img.shields.io/badge/DJANGO-5.0-09090B?style=for-the-badge&logo=django&logoColor=white&labelColor=27272A" alt="Django" />
+  <img src="https://img.shields.io/badge/MYSQL-8.0-09090B?style=for-the-badge&logo=mysql&logoColor=white&labelColor=27272A" alt="MySQL" />
+  <img src="https://img.shields.io/badge/JAVASCRIPT-ES6-09090B?style=for-the-badge&logo=javascript&logoColor=white&labelColor=27272A" alt="JS" />
+  <img src="https://img.shields.io/badge/GROQ-LLaMA_3-09090B?style=for-the-badge&logo=openai&logoColor=white&labelColor=27272A" alt="Groq" />
 </p>
 
 ---
@@ -74,8 +57,7 @@
 ## 🏗️ Architecture & Workflows
 
 ### 1. Overall System Architecture
-*(Save your Eraser Enterprise Cloud Architecture export as `backend/static/img/architecture.png` to display it here)*
-![Overall System Architecture](backend/static/img/architecture.png)
+![Overall System Architecture](backend/static/diagram-export-7-27-2026-12_18_14-AM.png)
 
 ### 2. AI Decision Pipeline
 ```mermaid
@@ -189,21 +171,25 @@ graph LR
 
 ### 8. Project Service Architecture
 ```text
-finora/
-├── backend/
-│   ├── accounts/           # User models, OAuth, Authentication API
-│   ├── ai_assistant/       # Groq integration, conversational logic
-│   ├── ai_memory/          # Event tracking, Explainable AI insights
-│   ├── credit_score/       # Scoring engine, signal modifiers
-│   ├── digital_signals/    # Alternative data ingestion (UPI, OTT)
-│   ├── growth_simulator/   # CAGR projections, wealth algorithms
-│   ├── investment/         # Asset allocation, portfolio generation
-│   ├── learning/           # Quizzes, educational content
-│   ├── risk_profile/       # Risk assessment scoring
-│   ├── transactions/       # Spending categorization, history
-│   ├── web/                # Frontend template rendering (Monolithic views)
-│   └── config/             # Core Django settings & routing
-└── (Add your frontend/mobile folders here for full-stack expansion)
+backend/
+├── accounts/           # User models, OAuth, Authentication API
+├── ai_assistant/       # Groq integration, conversational logic
+├── ai_memory/          # Event tracking, Explainable AI insights
+├── config/             # Core Django settings & routing
+├── core/               # Shared utilities, base models
+├── credit_score/       # Scoring engine, signal modifiers
+├── investment/         # Asset allocation, portfolio generation
+├── learning/           # Quizzes, educational content
+├── notifications/      # Real-time alerts, event subscriptions
+├── onboarding/         # Initial user setup flows
+├── reports/            # Financial reporting, AI Insights generator
+├── risk_profile/       # Risk assessment scoring
+├── static/             # Static assets (CSS, JS, Images)
+├── templates/          # Frontend HTML rendering (Monolithic views)
+├── transactions/       # Spending categorization, history
+├── user_profile/       # Profile management, connected services
+├── user_settings/      # User preferences
+└── web/                # Base views for web frontend
 ```
 
 ---
