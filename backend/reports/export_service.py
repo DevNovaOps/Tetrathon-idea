@@ -162,9 +162,9 @@ class ExportService:
             story.append(Spacer(1, 20))
             
             story.append(Paragraph("AI Recommendations", heading_style))
-            story.append(Paragraph(f"{RUPEE} You saved {summary['total_savings']} this month ({summary['savings_rate']} savings rate), demonstrating strong financial discipline.", normal_style))
-            story.append(Paragraph(f"{RUPEE} Your emergency fund currently covers {summary['emergency_fund_coverage']}, providing vital financial security.", normal_style))
-            story.append(Paragraph(f"{RUPEE} Consider setting an automated cap on discretionary shopping to maximize monthly cash flow.", normal_style))
+            story.append(Paragraph(f"• You saved {summary['total_savings']} this month ({summary['savings_rate']} savings rate), demonstrating strong financial discipline.", normal_style))
+            story.append(Paragraph(f"• Your emergency fund currently covers {summary['emergency_fund_coverage']}, providing vital financial security.", normal_style))
+            story.append(Paragraph(f"➔ Consider setting an automated cap on discretionary shopping to maximize monthly cash flow.", normal_style))
             
         elif report_type == "quarterly":
             try:
@@ -199,8 +199,8 @@ class ExportService:
             story.append(Spacer(1, 20))
             
             story.append(Paragraph("Quarterly Summary & Strategic Insights", heading_style))
-            story.append(Paragraph(f"{RUPEE} Your total quarterly savings reached {RUPEE}{total_sav:,.0f} with an average savings rate of {avg_rate}.", normal_style))
-            story.append(Paragraph(f"{RUPEE} Consistent cash flow across Q{q} strengthens long-term compounding opportunities.", normal_style))
+            story.append(Paragraph(f"• Your total quarterly savings reached {RUPEE}{total_sav:,.0f} with an average savings rate of {avg_rate}.", normal_style))
+            story.append(Paragraph(f"➔ Consistent cash flow across Q{q} strengthens long-term compounding opportunities.", normal_style))
 
         elif report_type == "annual":
             try:
@@ -233,8 +233,8 @@ class ExportService:
             story.append(Spacer(1, 20))
             
             story.append(Paragraph("Annual Wealth & Tax Advisory", heading_style))
-            story.append(Paragraph(f"{RUPEE} Your estimated annual savings of {RUPEE}{sav_val*12:,.0f} places you on a strong trajectory toward financial independence.", normal_style))
-            story.append(Paragraph(f"{RUPEE} Review your tax-saving allocations (ELSS, PPF, NPS) before fiscal year close to optimize tax liability.", normal_style))
+            story.append(Paragraph(f"• Your estimated annual savings of {RUPEE}{sav_val*12:,.0f} places you on a strong trajectory toward financial independence.", normal_style))
+            story.append(Paragraph(f"➔ Review your tax-saving allocations (ELSS, PPF, NPS) before fiscal year close to optimize tax liability.", normal_style))
 
         elif report_type == "investment":
             story.append(Paragraph(f"Investment Portfolio Breakdown ({date_str})", heading_style))
@@ -252,8 +252,8 @@ class ExportService:
             story.append(Spacer(1, 20))
             
             story.append(Paragraph("Portfolio Optimization Notes", heading_style))
-            story.append(Paragraph(f"{RUPEE} Your portfolio valuation currently stands at {summary['investment_value']}, growing at {perf.get('investment_growth', '+10%')} this period.", normal_style))
-            story.append(Paragraph(f"{RUPEE} Your risk profile is categorized as <b>{summary.get('risk_level', 'Moderate')}</b>. Maintain discipline in automated SIP contributions.", normal_style))
+            story.append(Paragraph(f"• Your portfolio valuation currently stands at {summary['investment_value']}, growing at {perf.get('investment_growth', '+10%')} this period.", normal_style))
+            story.append(Paragraph(f"➔ Your risk profile is categorized as <b>{summary.get('risk_level', 'Moderate')}</b>. Maintain discipline in automated SIP contributions.", normal_style))
 
         elif report_type == "credit":
             story.append(Paragraph(f"Credit Health & Score Analysis ({date_str})", heading_style))
@@ -281,8 +281,8 @@ class ExportService:
             story.append(Spacer(1, 20))
             
             story.append(Paragraph("Credit Defense Strategy", heading_style))
-            story.append(Paragraph(f"{RUPEE} Your credit score of {score_val} qualifies you for top-tier interest rates on loans and mortgages.", normal_style))
-            story.append(Paragraph(f"{RUPEE} Keep your credit utilization below 30% and automate full statement balance payments to preserve excellent standing.", normal_style))
+            story.append(Paragraph(f"• Your credit score of {score_val} qualifies you for top-tier interest rates on loans and mortgages.", normal_style))
+            story.append(Paragraph(f"➔ Keep your credit utilization below 30% and automate full statement balance payments to preserve excellent standing.", normal_style))
             
         elif report_type == "financial-health":
             story.append(Paragraph(f"Financial Health Engine Analysis ({date_str})", heading_style))
