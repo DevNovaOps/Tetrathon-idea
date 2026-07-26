@@ -53,7 +53,7 @@ class InsightService:
             from ai_assistant.groq_client import GroqService
             
             prompt = f"""You are Finora AI, an expert FinTech wealth advisor.
-Generate exactly 4 personalized financial insights for user '{user.first_name if user and getattr(user, 'first_name', '') else "Dev"}' for {month_label} {target_year}.
+Generate exactly 4 personalized financial insights for user '{getattr(user, 'display_name', 'User')}' for {month_label} {target_year}.
 
 USER FINANCIAL MEMORY & SNAPSHOT ({month_label} {target_year}):
 - Monthly Income: ₹{raw['income']:,.0f}
