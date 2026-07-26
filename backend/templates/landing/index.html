@@ -19,16 +19,7 @@
       <!-- Logo -->
       <a href="#home" class="nav-logo" aria-label="Finora Home">
         <div class="nav-logo-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <rect width="28" height="28" rx="8" fill="url(#navLogoGrad)"/>
-            <path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/>
-            <defs>
-              <linearGradient id="navLogoGrad" x1="0" y1="0" x2="28" y2="28">
-                <stop stop-color="#6366F1"/>
-                <stop offset="1" stop-color="#8B5CF6"/>
-              </linearGradient>
-            </defs>
-          </svg>
+          <img src="{% static 'img/logo-icon.png' %}" alt="Finora Logo" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <span>Finora</span>
       </a>
@@ -525,12 +516,8 @@
         <div class="footer-brand">
           <a href="#home" class="footer-logo">
             <div class="nav-logo-icon">
-              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-                <rect width="28" height="28" rx="8" fill="url(#footLogoGrad)"/>
-                <path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/>
-                <defs><linearGradient id="footLogoGrad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs>
-              </svg>
-            </div>
+          <img src="{% static 'img/logo-icon.png' %}" alt="Finora Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
             <span>Finora</span>
           </a>
           <p class="footer-tagline">Transparent AI Credit Intelligence for modern wealth management.</p>

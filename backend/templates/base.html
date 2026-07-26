@@ -32,16 +32,7 @@
       <div class="sidebar-header">
         <a href="{% url 'landing' %}" class="brand-logo" aria-label="Finora Home">
           <div class="brand-icon">
-            <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-              <rect width="28" height="28" rx="8" fill="url(#brandGrad)"/>
-              <path d="M9 19V9h8v2.5H12v2h4v2.5h-4V19H9z" fill="#fff"/>
-              <defs>
-                <linearGradient id="brandGrad" x1="0" y1="0" x2="28" y2="28">
-                  <stop stop-color="#6366F1"/>
-                  <stop offset="1" stop-color="#8B5CF6"/>
-                </linearGradient>
-              </defs>
-            </svg>
+            <img src="{% static 'img/logo-icon.png' %}" alt="Finora Logo" style="width: 100%; height: 100%; object-fit: contain;">
           </div>
           <span class="brand-name">Finora</span>
         </a>
