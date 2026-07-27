@@ -68,6 +68,21 @@
     }
   }
 
+  function updateOnboardingVideo(theme) {
+    var video = document.getElementById('onboarding-avatar-video');
+    var source = document.getElementById('onboarding-video-src');
+    if (video && source) {
+      var isDjango = source.getAttribute('data-django') === 'true';
+      var basePath = isDjango ? '/static/video/' : './video/';
+      var newSrc = basePath + (theme === 'light' ? 'onboarding_white.mp4' : 'onboarding_black.mp4');
+      if (source.getAttribute('src') !== newSrc) {
+        source.setAttribute('src', newSrc);
+        video.load();
+        video.play().catch(function() {});
+      }
+    }
+  }
+
   function setTheme(theme) {
     html.setAttribute('data-theme', theme);
     try {
@@ -75,6 +90,7 @@
     } catch (e) {
       // silently fail
     }
+    updateOnboardingVideo(theme);
   }
 
   (function initTheme() {

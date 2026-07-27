@@ -21,10 +21,26 @@
     catch (e) { return null; }
   }
 
+  function updateVideoSource(theme) {
+    var video = document.getElementById('hero-landing-video');
+    var source = document.getElementById('hero-landing-video-src');
+    if (video && source) {
+      var isDjango = source.getAttribute('data-django') === 'true';
+      var basePath = isDjango ? '/static/video/' : './video/';
+      var newSrc = basePath + (theme === 'light' ? 'landing_white.mp4' : 'landing_black.mp4');
+      if (source.getAttribute('src') !== newSrc) {
+        source.setAttribute('src', newSrc);
+        video.load();
+        video.play().catch(function() {});
+      }
+    }
+  }
+
   function setTheme(theme) {
     html.setAttribute('data-theme', theme);
     try { localStorage.setItem('finora-theme', theme); }
     catch (e) { /* silently fail */ }
+    updateVideoSource(theme);
   }
 
   // Initialise theme
