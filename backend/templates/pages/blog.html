@@ -1,0 +1,55 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Finora Blog — AI Financial Insights & Research{% endblock %}
+{% block meta_description %}Read the latest articles on explainable AI credit scoring, wealth management algorithms, and personal finance strategies.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">📚 Finora Blog & Research</div>
+  <h1 class="page-hero-title">Financial Intelligence & AI Insights</h1>
+  <p class="page-hero-subtitle">Deep dives into AI credit scoring, explainable algorithms, portfolio rebalancing, and modern wealth strategies.</p>
+</section>
+
+<div class="page-body-container">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+    
+    <div class="page-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="tag-badge">AI Research</div>
+        <h2>Democratizing Credit Scoring with Explainable Neural Models</h2>
+        <p>Why black-box traditional scoring models fail non-traditional income earners and how multi-variate Shapley values provide bias-free evaluation.</p>
+      </div>
+      <div style="margin-top: 20px; font-size: 13px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+        <span>Jul 24, 2026 • 6 min read</span>
+        <a href="#" style="color: var(--accent); font-weight: 600;" onclick="alert('Article coming soon!')">Read Article →</a>
+      </div>
+    </div>
+
+    <div class="page-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="tag-badge">Wealth Building</div>
+        <h2>5 Key Drivers To Boost Your Credit Score by +50 Points in 90 Days</h2>
+        <p>A step-by-step tactical playbook on credit utilization optimization, reporting error disputes, and payment timing automation.</p>
+      </div>
+      <div style="margin-top: 20px; font-size: 13px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+        <span>Jul 18, 2026 • 4 min read</span>
+        <a href="#" style="color: var(--accent); font-weight: 600;" onclick="alert('Article coming soon!')">Read Article →</a>
+      </div>
+    </div>
+
+    <div class="page-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div class="tag-badge">Investment Tech</div>
+        <h2>Algorithmic Monte Carlo Simulations for Inflation-Proof Portfolios</h2>
+        <p>How Finora's scenario engine projects 1,000 market outcomes to protect your retirement savings against macroeconomic volatility.</p>
+      </div>
+      <div style="margin-top: 20px; font-size: 13px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+        <span>Jul 10, 2026 • 8 min read</span>
+        <a href="#" style="color: var(--accent); font-weight: 600;" onclick="alert('Article coming soon!')">Read Article →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

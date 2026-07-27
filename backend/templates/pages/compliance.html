@@ -1,0 +1,44 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Regulatory Compliance & Standards — Finora{% endblock %}
+{% block meta_description %}Overview of Finora regulatory standards, FINRA/SEC alignment, GDPR, CCPA, and SOC2 certifications.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">📜 Regulatory Oversight</div>
+  <h1 class="page-hero-title">Regulatory Compliance & Audits</h1>
+  <p class="page-hero-subtitle">Finora operates under strict international financial security standards and data governance frameworks.</p>
+</section>
+
+<div class="page-body-container">
+  <div class="page-card">
+    <h2>Certifications & Regulatory Alignment</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 24px;">
+      <div style="padding: 20px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <span style="font-size: 20px; font-weight: 800; color: var(--accent); display: block; margin-bottom: 8px;">SOC2 Type II</span>
+        <h4 style="color: var(--text-heading); font-size: 15px; margin-bottom: 6px;">Audit Certified</h4>
+        <p style="font-size: 13px; margin: 0; color: var(--text-secondary);">Verified for security, confidentiality, and system availability standards by independent audit firms.</p>
+      </div>
+
+      <div style="padding: 20px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <span style="font-size: 20px; font-weight: 800; color: var(--accent); display: block; margin-bottom: 8px;">GDPR & CCPA</span>
+        <h4 style="color: var(--text-heading); font-size: 15px; margin-bottom: 6px;">Data Protection</h4>
+        <p style="font-size: 13px; margin: 0; color: var(--text-secondary);">Full compliance with European Union and California Consumer Privacy Act requirements.</p>
+      </div>
+
+      <div style="padding: 20px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <span style="font-size: 20px; font-weight: 800; color: var(--accent); display: block; margin-bottom: 8px;">FCRA Compliant</span>
+        <h4 style="color: var(--text-heading); font-size: 15px; margin-bottom: 6px;">Fair Credit Reporting</h4>
+        <p style="font-size: 13px; margin: 0; color: var(--text-secondary);">Adheres to Fair Credit Reporting Act standards for consumer data handling and soft inquiries.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <h2>Compliance Inquiries</h2>
+    <p>For institutional compliance audits, SOC2 report requests, or regulatory questions, please contact our Legal & Compliance Office at <a href="mailto:compliance@finora.ai" style="color: var(--accent);">compliance@finora.ai</a>.</p>
+  </div>
+</div>
+{% endblock %}

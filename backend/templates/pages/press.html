@@ -1,0 +1,58 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Press Kit & Media Assets — Finora{% endblock %}
+{% block meta_description %}Official Finora press kit, brand logos, executive bios, and media contact resources.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">📰 Press & Media</div>
+  <h1 class="page-hero-title">Press Kit & Brand Assets</h1>
+  <p class="page-hero-subtitle">Official logos, brand guidelines, company overview, and media inquiries.</p>
+</section>
+
+<div class="page-body-container">
+  <div class="page-card">
+    <h2>About Finora</h2>
+    <p>Finora is a next-generation AI-powered financial wellness platform that provides transparent credit intelligence, personalized investment advice, and real-time scenario simulation. Unlike black-box credit models, Finora provides explainable multi-variate insights to help individuals build sustainable wealth.</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0;">
+      <div style="background: var(--bg-body); padding: 16px; border-radius: 10px; text-align: center;">
+        <span style="font-size: 24px; font-weight: 800; color: var(--accent); display: block;">2024</span>
+        <span style="font-size: 12px; color: var(--text-muted);">Founded Year</span>
+      </div>
+      <div style="background: var(--bg-body); padding: 16px; border-radius: 10px; text-align: center;">
+        <span style="font-size: 24px; font-weight: 800; color: var(--accent); display: block;">10,000+</span>
+        <span style="font-size: 12px; color: var(--text-muted);">Active Platform Users</span>
+      </div>
+      <div style="background: var(--bg-body); padding: 16px; border-radius: 10px; text-align: center;">
+        <span style="font-size: 24px; font-weight: 800; color: var(--accent); display: block;">$32M+</span>
+        <span style="font-size: 12px; color: var(--text-muted);">Assets Analyzed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <h2>Brand Assets & Logos</h2>
+    <p>Download official SVG and high-resolution PNG logos for digital and print media.</p>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px;">
+      <div style="flex: 1; min-width: 200px; padding: 24px; background: var(--bg-body); border-radius: 12px; text-align: center; border: 1px solid var(--border);">
+        <img src="{% static 'img/logo-icon.png' %}" alt="Finora Mark" style="height: 48px; margin-bottom: 12px; object-fit: contain;">
+        <h4 style="color: var(--text-heading); font-size: 14px;">Logo Mark (PNG/SVG)</h4>
+        <button class="btn btn-outline" style="margin-top: 12px; font-size: 12px;" onclick="alert('Downloading Brand Assets Pack...')">Download Zip</button>
+      </div>
+      <div style="flex: 1; min-width: 200px; padding: 24px; background: var(--bg-body); border-radius: 12px; text-align: center; border: 1px solid var(--border);">
+        <div style="font-size: 20px; font-weight: 800; color: var(--text-heading); margin-bottom: 12px;">Finora Brand Guide</div>
+        <h4 style="color: var(--text-heading); font-size: 14px;">Typography & Colors</h4>
+        <button class="btn btn-outline" style="margin-top: 12px; font-size: 12px;" onclick="alert('Downloading PDF Brand Guidelines...')">Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <h2>Media Contact</h2>
+    <p>For press inquiries, interview requests, or quote requests, please reach out to our communications team.</p>
+    <p><strong>Press Email:</strong> <a href="mailto:press@finora.ai" style="color: var(--accent);">press@finora.ai</a></p>
+  </div>
+</div>
+{% endblock %}

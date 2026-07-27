@@ -1,0 +1,64 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Contact Us — Finora Support & Sales{% endblock %}
+{% block meta_description %}Get in touch with the Finora team for support, enterprise sales, partnerships, or press inquiries.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">📬 Get In Touch</div>
+  <h1 class="page-hero-title">Contact Our Team</h1>
+  <p class="page-hero-subtitle">Have questions about our AI platform, enterprise plans, or account support? We're here to help 24/7.</p>
+</section>
+
+<div class="page-body-container">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+    <div class="page-card">
+      <h2>Send Us a Message</h2>
+      <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully. Our team will get back to you within 2 hours.'); this.reset();">
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px;">Full Name</label>
+          <input type="text" required placeholder="John Doe" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-body); color: var(--text-primary); font-size: 14px;">
+        </div>
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px;">Email Address</label>
+          <input type="email" required placeholder="john@example.com" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-body); color: var(--text-primary); font-size: 14px;">
+        </div>
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px;">Subject</label>
+          <select style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-body); color: var(--text-primary); font-size: 14px;">
+            <option>General Inquiry</option>
+            <option>Enterprise Sales</option>
+            <option>Technical Support</option>
+            <option>Partnerships</option>
+          </select>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px;">Message</label>
+          <textarea rows="4" required placeholder="How can we help you?" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-body); color: var(--text-primary); font-size: 14px; font-family: inherit;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+      </form>
+    </div>
+
+    <div>
+      <div class="page-card">
+        <h2>Direct Contacts</h2>
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--text-heading); font-size: 15px; margin-bottom: 4px;">Customer Support</h4>
+          <p style="font-size: 14px; margin: 0;">Email: <a href="mailto:support@finora.ai" style="color: var(--accent);">support@finora.ai</a></p>
+          <p style="font-size: 12px; color: var(--text-muted);">24/7 Priority Concierge Response</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <h4 style="color: var(--text-heading); font-size: 15px; margin-bottom: 4px;">Enterprise & Institutional Sales</h4>
+          <p style="font-size: 14px; margin: 0;">Email: <a href="mailto:sales@finora.ai" style="color: var(--accent);">sales@finora.ai</a></p>
+        </div>
+        <div>
+          <h4 style="color: var(--text-heading); font-size: 15px; margin-bottom: 4px;">Headquarters</h4>
+          <p style="font-size: 14px; margin: 0; color: var(--text-secondary);">Finora Inc.<br/>500 Howard Street, Suite 400<br/>San Francisco, CA 94105</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Security & Encryption — Finora Protection{% endblock %}
+{% block meta_description %}Learn how Finora protects your financial data using 256-bit encryption, SOC2 Type II compliance, and zero-knowledge protocols.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">🛡️ Bank-Level Security</div>
+  <h1 class="page-hero-title">Security & Data Privacy Standard</h1>
+  <p class="page-hero-subtitle">Your trust is our foundation. We employ enterprise-grade security protocols to keep your financial information safe.</p>
+</section>
+
+<div class="page-body-container">
+  <div class="page-card">
+    <h2>Enterprise Security Architecture</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 24px;">
+      <div style="padding: 20px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="color: var(--accent); font-size: 16px; margin-bottom: 8px;">256-Bit AES Encryption</h3>
+        <p style="font-size: 13px; margin: 0;">All user financial data is encrypted at rest using AES-256 keys and in transit via TLS 1.3 cryptographic channels.</p>
+      </div>
+
+      <div style="padding: 20px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="color: var(--accent); font-size: 16px; margin-bottom: 8px;">SOC2 Type II Certified</h3>
+        <p style="font-size: 13px; margin: 0;">Independently audited for strict security, availability, confidential storage, and processing integrity compliance.</p>
+      </div>
+
+      <div style="padding: 20px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="color: var(--accent); font-size: 16px; margin-bottom: 8px;">Zero-Knowledge Isolation</h3>
+        <p style="font-size: 13px; margin: 0;">Your raw credentials are never stored on Finora servers. We use tokenized API connections for read-only telemetry.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <h2>Vulnerability Disclosure & Bug Bounty</h2>
+    <p>If you discover a security vulnerability or bug in Finora services, please report it immediately to our security research group.</p>
+    <p><strong>Security Reporting Email:</strong> <a href="mailto:security@finora.ai" style="color: var(--accent);">security@finora.ai</a></p>
+  </div>
+</div>
+{% endblock %}

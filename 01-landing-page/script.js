@@ -31,10 +31,27 @@
       if (source.getAttribute('src') !== newSrc) {
         source.setAttribute('src', newSrc);
         video.load();
-        video.play().catch(function() {});
+        video.play().then(function() {
+          video.playbackRate = 0.9;
+        }).catch(function() {});
+      } else {
+        video.playbackRate = 0.9;
       }
     }
   }
+
+  // Set video playback rate to 0.90x
+  var heroVideo = document.getElementById('hero-landing-video');
+  if (heroVideo) {
+    heroVideo.playbackRate = 0.9;
+    heroVideo.addEventListener('play', function() {
+      heroVideo.playbackRate = 0.9;
+    });
+    heroVideo.addEventListener('loadedmetadata', function() {
+      heroVideo.playbackRate = 0.9;
+    });
+  }
+
 
   function setTheme(theme) {
     html.setAttribute('data-theme', theme);

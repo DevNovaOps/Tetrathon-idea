@@ -1,0 +1,38 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Help Center & FAQ — Finora Support{% endblock %}
+{% block meta_description %}Find answers to frequently asked questions about credit scores, account security, AI recommendations, and subscription billing.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">❓ Knowledge Base</div>
+  <h1 class="page-hero-title">How Can We Help You?</h1>
+  <p class="page-hero-subtitle">Search our knowledge base or browse common support categories below.</p>
+</section>
+
+<div class="page-body-container">
+  <div class="page-card" style="text-align: center; padding: 40px;">
+    <input type="text" placeholder="Search articles (e.g. 'How is credit score calculated?')..." style="width: 100%; max-width: 600px; padding: 14px 20px; border-radius: 50px; border: 1px solid var(--accent); background: var(--bg-body); color: var(--text-primary); font-size: 15px;">
+  </div>
+
+  <div class="page-card">
+    <h2>Frequently Asked Questions</h2>
+
+    <div style="margin-bottom: 24px;">
+      <h3 style="color: var(--accent);">How does Finora calculate my credit score?</h3>
+      <p>Finora combines traditional bureau metrics (payment history, credit utilization, length of history) with dynamic AI behavior analysis to provide a real-time, 100% explainable credit model.</p>
+    </div>
+
+    <div style="margin-bottom: 24px;">
+      <h3 style="color: var(--accent);">Will using Finora hurt my official credit score?</h3>
+      <p>No! Finora uses soft credit inquiries only. Checking your score or receiving AI recommendations on Finora never impacts your official credit rating.</p>
+    </div>
+
+    <div style="margin-bottom: 24px;">
+      <h3 style="color: var(--accent);">Is my bank and financial data safe?</h3>
+      <p>Yes. Finora uses SOC2 Type II certified infrastructure with 256-bit AES encryption at rest and TLS 1.3 in transit. We never sell your personal data.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

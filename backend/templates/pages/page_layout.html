@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Finora{% endblock %} — Transparent AI Credit Intelligence</title>
+  <meta name="description" content="{% block meta_description %}Get smart credit insights, personalized investment advice, and grow your wealth using transparent AI.{% endblock %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'landing/style.css' %}" />
+  <style>
+    /* Public Page Subpage Specific Styles */
+    .page-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 30%, var(--accent-glow) 0%, transparent 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .page-hero-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .page-body-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      min-height: 60vh;
+    }
+    .page-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .page-card h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 16px;
+    }
+    .page-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin: 20px 0 10px;
+    }
+    .page-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .page-card ul {
+      margin: 0 0 20px 20px;
+      list-style-type: disc;
+      color: var(--text-secondary);
+    }
+    .page-card li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .tag-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--accent-light);
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+  </style>
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- ===== FIXED NAVBAR ===== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="{% url 'landing' %}" class="nav-logo" aria-label="Finora Home">
+        <div class="nav-logo-icon">
+          <img src="{% static 'img/logo-icon.png' %}" alt="Finora Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <span>Finora</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="{% url 'landing' %}#home" class="nav-item">Home</a></li>
+        <li><a href="{% url 'landing' %}#features" class="nav-item">Features</a></li>
+        <li><a href="{% url 'landing' %}#how-it-works" class="nav-item">How It Works</a></li>
+        <li><a href="{% url 'landing' %}#benefits" class="nav-item">Benefits</a></li>
+        <li><a href="{% url 'landing' %}#pricing" class="nav-item">Pricing</a></li>
+        <li><a href="{% url 'landing' %}#about" class="nav-item">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.3 3.3l1.4 1.4M13.3 13.3l1.4 1.4M3.3 14.7l1.4-1.4M13.3 4.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M15.5 9.5a6.5 6.5 0 01-7-7 6.5 6.5 0 107 7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <a href="{% url 'login' %}" class="btn btn-primary btn-nav">Get Started</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  {% block content %}{% endblock %}
+
+  <!-- ===== SHARED FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="{% url 'landing' %}" class="footer-logo">
+            <div class="nav-logo-icon">
+              <img src="{% static 'img/logo-icon.png' %}" alt="Finora Logo" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <span>Finora</span>
+          </a>
+          <p class="footer-tagline">Transparent AI Credit Intelligence for modern wealth management.</p>
+        </div>
+
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="{% url 'landing' %}#about">About Us</a></li>
+              <li><a href="{% url 'careers' %}">Careers</a></li>
+              <li><a href="{% url 'press' %}">Press Kit</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="{% url 'landing' %}#features">AI Scoring</a></li>
+              <li><a href="{% url 'landing' %}#how-it-works">How It Works</a></li>
+              <li><a href="{% url 'blog' %}">Blog</a></li>
+              <li><a href="{% url 'docs' %}">Documentation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="{% url 'help' %}">Help Center</a></li>
+              <li><a href="{% url 'community' %}">Community</a></li>
+              <li><a href="{% url 'status' %}">System Status</a></li>
+              <li><a href="{% url 'security' %}">Security</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="{% url 'terms' %}">Terms of Service</a></li>
+              <li><a href="{% url 'cookies' %}">Cookie Preferences</a></li>
+              <li><a href="{% url 'compliance' %}">Compliance</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Finora Inc. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="https://x.com/finora_tech" target="_blank" rel="noopener noreferrer" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+
+
+          <a href="https://www.linkedin.com/in/finora-ai-527770425/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg></a>
+
+          <a href="https://github.com/DevNovaOps/Tetrathon-idea" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'landing/script.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

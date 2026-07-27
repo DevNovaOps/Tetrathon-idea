@@ -1,0 +1,38 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Community Hub — Finora Ecosystem{% endblock %}
+{% block meta_description %}Join 10,000+ members in the Finora global community to share wealth strategies, credit tips, and AI feature requests.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">💬 Community Hub</div>
+  <h1 class="page-hero-title">Join The Finora Community</h1>
+  <p class="page-hero-subtitle">Connect with thousands of proactive wealth builders, quantitative investors, and financial enthusiasts.</p>
+</section>
+
+<div class="page-body-container">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+    <div class="page-card" style="text-align: center;">
+      <div style="font-size: 40px; margin-bottom: 12px;">👾</div>
+      <h2>Official Discord</h2>
+      <p>Chat live with engineers, product managers, and financial analysts in our active Discord server.</p>
+      <button class="btn btn-primary" onclick="alert('Redirecting to Discord Community...')">Join Discord Server</button>
+    </div>
+
+    <div class="page-card" style="text-align: center;">
+      <div style="font-size: 40px; margin-bottom: 12px;">💡</div>
+      <h2>Feature Wishlist & Forum</h2>
+      <p>Vote on upcoming AI models, request integrations, and share your feedback directly with our roadmap team.</p>
+      <button class="btn btn-outline" onclick="alert('Opening Community Roadmap...')">View Roadmap</button>
+    </div>
+
+    <div class="page-card" style="text-align: center;">
+      <div style="font-size: 40px; margin-bottom: 12px;">🏆</div>
+      <h2>Finora Masterclasses</h2>
+      <p>Weekly webinars on tax optimization, credit hacking, and scenario simulation led by industry experts.</p>
+      <button class="btn btn-outline" onclick="alert('Subscribing to Masterclass calendar...')">Explore Events</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

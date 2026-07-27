@@ -1,0 +1,56 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}System Status — Finora Platform Reliability{% endblock %}
+{% block meta_description %}Real-time operational status, API response times, and incident history for Finora services.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge" style="background: rgba(16,185,129,0.15); color: #10B981;">🟢 All Systems Operational</div>
+  <h1 class="page-hero-title">Real-Time System Status</h1>
+  <p class="page-hero-subtitle">Live status tracking for Finora API endpoints, database clusters, and AI inference pipelines.</p>
+</section>
+
+<div class="page-body-container">
+  <div class="page-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+      <h2>Current Service Health</h2>
+      <span style="font-size: 13px; color: #10B981; font-weight: 700;">99.97% Uptime (Past 90 Days)</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: var(--bg-body); border-radius: 10px; border: 1px solid var(--border);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #10B981;"></span>
+          <span style="font-weight: 600; color: var(--text-heading);">REST API & Auth Service</span>
+        </div>
+        <span style="font-size: 13px; color: #10B981;">Operational (42ms)</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: var(--bg-body); border-radius: 10px; border: 1px solid var(--border);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #10B981;"></span>
+          <span style="font-weight: 600; color: var(--text-heading);">AI Scoring & Groq Inference Engine</span>
+        </div>
+        <span style="font-size: 13px; color: #10B981;">Operational (115ms)</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: var(--bg-body); border-radius: 10px; border: 1px solid var(--border);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #10B981;"></span>
+          <span style="font-weight: 600; color: var(--text-heading);">Database & Transaction Ledger</span>
+        </div>
+        <span style="font-size: 13px; color: #10B981;">Operational (12ms)</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: var(--bg-body); border-radius: 10px; border: 1px solid var(--border);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #10B981;"></span>
+          <span style="font-weight: 600; color: var(--text-heading);">PDF Report Generation Pipeline</span>
+        </div>
+        <span style="font-size: 13px; color: #10B981;">Operational (85ms)</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

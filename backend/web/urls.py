@@ -57,6 +57,46 @@ class ProfileView(TemplateView):
 class SettingsView(TemplateView):
     template_name = 'settings/settings.html'
 
+# Footer Subpages
+class CareersView(TemplateView):
+    template_name = 'pages/careers.html'
+
+class PressView(TemplateView):
+    template_name = 'pages/press.html'
+
+class ContactView(TemplateView):
+    template_name = 'pages/contact.html'
+
+class BlogView(TemplateView):
+    template_name = 'pages/blog.html'
+
+class DocsView(TemplateView):
+    template_name = 'pages/docs.html'
+
+class HelpView(TemplateView):
+    template_name = 'pages/help.html'
+
+class CommunityView(TemplateView):
+    template_name = 'pages/community.html'
+
+class StatusView(TemplateView):
+    template_name = 'pages/status.html'
+
+class SecurityView(TemplateView):
+    template_name = 'pages/security.html'
+
+class PrivacyView(TemplateView):
+    template_name = 'pages/privacy.html'
+
+class TermsView(TemplateView):
+    template_name = 'pages/terms.html'
+
+class CookiesView(TemplateView):
+    template_name = 'pages/cookies.html'
+
+class ComplianceView(TemplateView):
+    template_name = 'pages/compliance.html'
+
 urlpatterns = [
     path('', LandingView.as_view(), name='landing'),
     path('login/', LoginView.as_view(), name='login'),
@@ -76,5 +116,21 @@ urlpatterns = [
     path('notifications/', NotificationsView.as_view(), name='notifications'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('settings/', SettingsView.as_view(), name='settings'),
+
+    # Footer Subpage URLs
+    path('careers/', CareersView.as_view(), name='careers'),
+    path('press/', PressView.as_view(), name='press'),
+    path('contact/', ContactView.as_view(), name='contact'),
+    path('blog/', BlogView.as_view(), name='blog'),
+    path('docs/', DocsView.as_view(), name='docs'),
+    path('help/', HelpView.as_view(), name='help'),
+    path('community/', CommunityView.as_view(), name='community'),
+    path('status/', StatusView.as_view(), name='status'),
+    path('security/', SecurityView.as_view(), name='security'),
+    path('privacy/', PrivacyView.as_view(), name='privacy'),
+    path('terms/', TermsView.as_view(), name='terms'),
+    path('cookies/', CookiesView.as_view(), name='cookies'),
+    path('compliance/', ComplianceView.as_view(), name='compliance'),
 ]
+
 

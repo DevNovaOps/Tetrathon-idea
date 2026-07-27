@@ -1,0 +1,54 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Cookie Preferences & Policy — Finora{% endblock %}
+{% block meta_description %}Manage your cookie preferences and learn how Finora uses cookies to secure and optimize your session.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">🍪 Cookie Settings</div>
+  <h1 class="page-hero-title">Cookie Preferences & Policy</h1>
+  <p class="page-hero-subtitle">Control and customize how cookies and tracking technologies are used on your device.</p>
+</section>
+
+<div class="page-body-container">
+  <div class="page-card">
+    <h2>Manage Your Cookie Settings</h2>
+    <p>We use essential cookies to maintain secure sessions and optional analytics cookies to improve our AI scoring engine performance.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 20px; margin: 24px 0;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <div>
+          <h4 style="color: var(--text-heading); font-size: 15px;">Strictly Necessary Cookies</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin: 4px 0 0;">Required for authentication, security, CSRF protection, and session persistence.</p>
+        </div>
+        <span style="font-size: 12px; color: #10B981; font-weight: 700;">Always Active</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <div>
+          <h4 style="color: var(--text-heading); font-size: 15px;">Functional & Performance Cookies</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin: 4px 0 0;">Saves theme preferences (light/dark) and layout customizations.</p>
+        </div>
+        <label style="position: relative; display: inline-block; width: 44px; height: 24px;">
+          <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;" onchange="alert('Cookie preferences updated!')">
+          <span style="position: absolute; cursor: pointer; inset: 0; background-color: var(--accent); border-radius: 24px;"></span>
+        </label>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px; background: var(--bg-body); border-radius: 12px; border: 1px solid var(--border);">
+        <div>
+          <h4 style="color: var(--text-heading); font-size: 15px;">Analytics Telemetry</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin: 4px 0 0;">Helps us measure page load speeds and optimize UI responsiveness anonymously.</p>
+        </div>
+        <label style="position: relative; display: inline-block; width: 44px; height: 24px;">
+          <input type="checkbox" style="opacity: 0; width: 0; height: 0;" onchange="alert('Analytics cookie setting updated!')">
+          <span style="position: absolute; cursor: pointer; inset: 0; background-color: var(--border); border-radius: 24px;"></span>
+        </label>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="alert('Cookie preferences saved successfully!')">Save Preferences</button>
+  </div>
+</div>
+{% endblock %}

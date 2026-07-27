@@ -1,0 +1,58 @@
+{% extends 'pages/page_layout.html' %}
+{% load static %}
+{% block title %}Documentation & API Reference — Finora{% endblock %}
+{% block meta_description %}Developer guides, API endpoints, SDKs, and integration documentation for the Finora AI Credit & Wealth API.{% endblock %}
+
+
+{% block content %}
+<section class="page-hero">
+  <div class="tag-badge">💻 Developer Platform</div>
+  <h1 class="page-hero-title">Documentation & API Reference</h1>
+  <p class="page-hero-subtitle">Integrate Finora's real-time credit scoring, AI memory, and risk profiling engines directly into your applications.</p>
+</section>
+
+<div class="page-body-container">
+  <div style="display: grid; grid-template-columns: 240px 1fr; gap: 32px;">
+    <!-- Sidebar nav -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; height: fit-content;">
+      <h4 style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Getting Started</h4>
+      <ul style="list-style: none; margin: 0; padding: 0;">
+        <li style="margin-bottom: 8px;"><a href="#overview" style="color: var(--accent); font-weight: 600; font-size: 14px;">Overview</a></li>
+        <li style="margin-bottom: 8px;"><a href="#authentication" style="color: var(--text-secondary); font-size: 14px;">Authentication</a></li>
+        <li style="margin-bottom: 8px;"><a href="#endpoints" style="color: var(--text-secondary); font-size: 14px;">REST Endpoints</a></li>
+        <li style="margin-bottom: 8px;"><a href="#sdks" style="color: var(--text-secondary); font-size: 14px;">SDKs & Libraries</a></li>
+      </ul>
+    </div>
+
+    <!-- Content -->
+    <div>
+      <div class="page-card" id="overview">
+        <h2>Finora REST API Overview</h2>
+        <p>The Finora API allows developers and financial institutions to query real-time credit score factors, simulate financial growth scenarios, and generate AI insights via standard JSON over HTTPS.</p>
+        <div style="background: var(--bg-body); padding: 16px; border-radius: 8px; border: 1px solid var(--border); font-family: monospace; font-size: 13px; color: var(--accent);">
+          https://finora.ai/api/v1/credit-score/analyze/
+        </div>
+      </div>
+
+      <div class="page-card" id="authentication">
+        <h2>Authentication</h2>
+        <p>All API requests must pass a valid Bearer JWT token in the <code>Authorization</code> header:</p>
+        <pre style="background: #090D16; color: #A5B4FC; padding: 16px; border-radius: 8px; font-size: 13px; overflow-x: auto;">
+Authorization: Bearer &lt;YOUR_API_JWT_TOKEN&gt;
+Content-Type: application/json
+        </pre>
+      </div>
+
+      <div class="page-card" id="endpoints">
+        <h2>Available API Endpoints</h2>
+        <ul style="margin: 0 0 0 16px;">
+          <li><code>GET /api/credit-score/summary/</code> — Fetch current user credit score & metrics</li>
+          <li><code>POST /api/assistant/chat/</code> — Send prompt to Groq-powered AI Assistant</li>
+          <li><code>GET /api/reports/summary/</code> — Generate monthly PDF/JSON tax statement</li>
+          <li><code>POST /api/simulator/predict/</code> — Run Monte Carlo financial simulation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
