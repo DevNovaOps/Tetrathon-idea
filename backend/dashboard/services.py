@@ -261,36 +261,36 @@ class DashboardAnalyticsService:
                 "name": "Improve Credit Score",
                 "sub": "View AI Roadmap",
                 "icon_bg": "indigo-bg",
-                "link": "#credit-score"
+                "link": "/improve-score/"
             },
             {
                 "name": "Start AI Assessment",
                 "sub": "Run Neural Check",
                 "icon_bg": "emerald-bg",
-                "link": "#ai-assistant"
+                "link": "/ai-assistant/"
             },
             {
                 "name": "View Investment Plan",
                 "sub": "Smart Allocation",
                 "icon_bg": "purple-bg",
-                "link": "#investments"
+                "link": "/investments/"
             },
             {
                 "name": "Open Growth Simulator",
                 "sub": "Monte Carlo Engine",
                 "icon_bg": "cyan-bg",
-                "link": "#simulator"
+                "link": "/simulator/"
             },
             {
                 "name": "Download Report",
                 "sub": "Export PDF Summary",
                 "icon_bg": "rose-bg",
-                "link": "#reports"
+                "link": "/reports/"
             },
             {
                 "name": "Learn Finance",
                 "sub": "Educational Guides",
                 "icon_bg": "amber-bg",
-                "link": "#learn"
+                "link": "/learn/"
             },
         ]
